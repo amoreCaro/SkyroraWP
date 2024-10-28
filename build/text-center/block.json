@@ -1,0 +1,79 @@
+{
+  "apiVersion": 3,
+  "name": "app/text-center",
+  "title": "Text Center",
+  "category": "advanced",
+  "icon": "star-filled",
+  "description": "A section with an image, title, text, and button.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "id": {
+      "type": "string",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonName": {
+      "type": "string",
+      "default": ""
+    },
+    "text": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonOpenInNewTab": {
+      "type": "boolean",
+      "default": false
+    },
+    "sectionAlignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "backgroundType": {
+      "type": "string",
+      "default": "image"
+    },
+    "backgroundUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "gradientColor1": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "gradientColor2": {
+      "type": "string",
+      "default": "#ffffff"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css",
+  "example": {
+    "attributes": {
+      "title": "Sample Title",
+      "imageUrl": "https://via.placeholder.com/150",
+      "buttonUrl": "https://example.com",
+      "buttonName": "Click Me",
+      "text": "This is a sample text.",
+      "buttonOpenInNewTab": true,
+      "sectionAlignment": "left",
+      "backgroundType": "image",
+      "backgroundUrl": "https://via.placeholder.com/600",
+      "gradientColor1": "#ff0000",
+      "gradientColor2": "#0000ff"
+    }
+  }
+}

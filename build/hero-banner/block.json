@@ -1,0 +1,74 @@
+{
+  "apiVersion": 3,
+  "title": "Hero Banner",
+  "name": "app/hero-banner",
+  "category": "advanced",
+  "icon": "star-filled",
+  "keywords": [
+    "hero"
+  ],
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "attributes": {
+    "id": {
+      "type": "string",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "source": "html",
+      "selector": "h1",
+      "default": "Your Title Here"
+    },
+    "content": {
+      "type": "string",
+      "source": "html",
+      "selector": "p",
+      "default": "Your content here."
+    },
+    "text": {
+      "type": "string",
+      "source": "html",
+      "selector": ".hero__partners-title",
+      "default": "Our Partners"
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageId": {
+      "type": "number",
+      "default": 0
+    },
+    "videoUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "videoId": {
+      "type": "number",
+      "default": 0
+    },
+    "gallery": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "id": {
+            "type": "number"
+          }
+        }
+      },
+      "default": []
+    },
+    "backgroundType": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false
+  }
+}

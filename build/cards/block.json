@@ -1,0 +1,112 @@
+{
+  "apiVersion": 3,
+  "title": "Cards",
+  "name": "app/cards",
+  "category": "advanced",
+  "icon": "star-filled",
+  "keywords": [
+    "cards"
+  ],
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "attributes": {
+    "id": {
+      "type": "string",
+      "default": ""
+    },
+    "title": {
+      "type": "string",
+      "source": "html",
+      "selector": ".about-title"
+    },
+    "subtitle": {
+      "type": "string",
+      "source": "html",
+      "selector": ".about-title"
+    },
+    "text": {
+      "type": "string",
+      "source": "html",
+      "selector": ".about-text"
+    },
+    "buttonText": {
+      "type": "string",
+      "selector": ".info-block__button a"
+    },
+    "buttonUrl": {
+      "type": "string"
+    },
+    "buttonOpenInNewTab": {
+      "type": "boolean",
+      "default": false
+    },
+    "buttonColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "imageId": {
+      "type": "number"
+    },
+    "backgroundUrl": {
+      "type": "string"
+    },
+    "backgroundId": {
+      "type": "number"
+    },
+    "backgroundType": {
+      "type": "string"
+    },
+    "sectionAlignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "sectionVisibility": {
+      "type": "string",
+      "default": "show"
+    },
+    "sectionOverlay": {
+      "type": "string",
+      "default": "overlay"
+    },
+    "sectionPadding": {
+      "type": "string",
+      "default": "large-padding"
+    },
+    "gradientColor1": {
+      "type": "string",
+      "default": "#32ffb8"
+    },
+    "gradientColor2": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Title",
+          "imageUrl": ""
+        }
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "default": "title"
+          },
+          "imageUrl": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    }
+  },
+  "supports": {
+    "html": false
+  }
+}

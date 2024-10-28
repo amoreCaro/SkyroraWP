@@ -1,0 +1,14 @@
+{
+  "apiVersion": 3,
+  "title": "Header",
+  "description": "",
+  "name": "app/header",
+  "category": "advanced",
+  "icon": "smiley",
+  "keywords": [
+    "layouts"
+  ],
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style.css"
+}

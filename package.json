@@ -1,0 +1,22 @@
+{
+    "name": "@app/minimal-block-ca6eda",
+    "description": "",
+    "version": "0.1.0",
+    "scripts": {
+        "build": "wp-scripts build",
+        "plugin-zip": "wp-scripts plugin-zip",
+        "start": "wp-scripts start",
+        "env": "wp-env start"
+    },
+    "devDependencies": {
+        "@wordpress/env": "^9.9.0",
+        "@wordpress/scripts": "^27.8.0"
+    },
+    "files": [
+        "*"
+    ],
+    "dependencies": {
+        "normalize.css": "^8.0.1",
+        "react-loading-skeleton": "^3.5.0"
+    }
+}

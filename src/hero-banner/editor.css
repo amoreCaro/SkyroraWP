@@ -1,0 +1,15 @@
+.gallery-preview {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gallery-image {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.gallery-image img {
+    height: 150px;
+    width: 150px;
+    border: 1px solid gainsboro;
+    background-color: white;
+}
