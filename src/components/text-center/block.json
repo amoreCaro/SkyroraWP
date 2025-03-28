@@ -1,0 +1,89 @@
+{
+    "apiVersion": 3,
+    "name": "app/text-center",
+    "title": "Text Center",
+    "category": "advanced",
+    "icon": "star-filled",
+    "description": "A section with an image, title, text, and button.",
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "isVisible": {
+            "type": "boolean",
+            "default": true
+        },
+        "id": {
+            "type": "string",
+            "default": ""
+        },
+        "title": {
+            "type": "string",
+            "default": "Title Simple"
+        },
+        "text": {
+            "type": "string",
+            "default": "Text Simple"
+        },
+        "imageUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "videoUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "buttonUrl": {
+            "type": "string",
+            "default": "#"
+        },
+        "buttonName": {
+            "type": "string",
+            "default": "Read more"
+        },
+        "buttonOpenInNewTab": {
+            "type": "boolean",
+            "default": false
+        },
+        "backgroundTab": {
+            "type": "string",
+            "default": "background-gradient"
+        },
+        "mediaTab": {
+            "type": "string",
+            "default": "image"
+        },
+        "backgroundColor": {
+            "type": "string",
+            "default": "red"
+        },
+        "backgroundGradient": {
+            "type": "string",
+            "default": "linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)"
+        },
+        "backgroundImage": {
+            "type": "string",
+            "default": ""
+        },
+        "backgroundVideo": {
+            "type": "string",
+            "default": ""
+        },
+        "sectionOverlay": {
+            "type": "string",
+            "default": "overlay"
+        },
+        "sectionPadding": {
+            "type": "string",
+            "default": "large-padding"
+        },
+        "sectionAlignment": {
+            "type": "string",
+            "default": "left"
+        }
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css",
+    "example": null
+}
