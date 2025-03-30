@@ -1,0 +1,41 @@
+{
+  "apiVersion": 3,
+  "title": "Custom Divider",
+  "name": "app/divider",
+  "category": "advanced",
+  "icon": "star-filled",
+  "keywords": [
+    "divider",
+    "block",
+    "separator"
+  ],
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "attributes": {
+    "id": {
+      "type": "string",
+      "default": ""
+    },
+    "align": {
+      "type": "string",
+      "default": "center"
+    },
+    "style": {
+      "type": "string",
+      "default": "solid"
+    },
+    "color": {
+      "type": "string",
+      "default": "#B8BDCC"
+    }
+  },
+  "supports": {
+    "html": true,
+    "align": [
+      "left",
+      "center",
+      "right"
+    ],
+    "customClassName": true
+  }
+}
