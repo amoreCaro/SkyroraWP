@@ -1,18 +1,17 @@
 {
   "apiVersion": 3,
-  "name": "app/heading",
-  "title": "Custom Heading",
+  "name": "app/paragraph",
+  "title": "Custom Paragraph",
   "category": "advanced",
   "icon": "star-filled",
-
-  "description": "Heading block with customizable styles.",
+  "description": "Paragraph block with customizable styles.",
   "supports": {
     "html": false
   },
   "attributes": {
     "content": {
       "type": "string",
-      "default": "Enter your heading"
+      "default": "Enter your paragrpaph"
     },
     "level": {
       "type": "number",
@@ -24,15 +23,15 @@
     },
     "color": {
       "type": "string",
-      "default": "#1A1A1A"
+      "default": "#0E0F17"
     },
     "fontWeight": {
       "type": "string",
-      "default": "700"
+      "default": "400"
     },
     "fontSize": {
       "type": "string",
-      "default": "26px"
+      "default": "14px"
     },
     "lineHeight": {
       "type": "string",
@@ -44,7 +43,7 @@
     },
     "textTransform": {
       "type": "string",
-      "default": "uppercase"
+      "default": "none"
     }
   },
   "editorScript": "file:./index.js",

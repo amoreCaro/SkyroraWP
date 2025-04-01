@@ -4,7 +4,6 @@
   "title": "Custom Heading",
   "category": "advanced",
   "icon": "star-filled",
-
   "description": "Heading block with customizable styles.",
   "supports": {
     "html": false

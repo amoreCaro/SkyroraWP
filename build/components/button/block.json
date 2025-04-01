@@ -1,11 +1,10 @@
 {
   "apiVersion": 3,
-  "name": "app/heading",
-  "title": "Custom Heading",
+  "name": "app/button",
+  "title": "Custom Button",
   "category": "advanced",
   "icon": "star-filled",
-
-  "description": "Heading block with customizable styles.",
+  "description": "Button block with customizable styles.",
   "supports": {
     "html": false
   },
@@ -14,29 +13,29 @@
       "type": "string",
       "default": "Enter your heading"
     },
-    "level": {
-      "type": "number",
-      "default": 2
-    },
     "textAlign": {
       "type": "string",
-      "default": "left"
+      "default": "center"
     },
     "color": {
       "type": "string",
-      "default": "#1A1A1A"
+      "default": "#FFFFFF"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#164BDC"
     },
     "fontWeight": {
       "type": "string",
-      "default": "700"
+      "default": "600"
     },
     "fontSize": {
       "type": "string",
-      "default": "26px"
+      "default": "14px"
     },
     "lineHeight": {
       "type": "string",
-      "default": "1.2"
+      "default": "1.4"
     },
     "fontFamily": {
       "type": "string",

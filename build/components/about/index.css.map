@@ -1,1 +1,0 @@
-{"version":3,"file":"components/about/index.css","mappings":";;;AAAA;IACI,4BAA4B;AAChC,C","sources":["webpack://@app/minimal-block-ca6eda/./src/components/about/editor.css"],"sourcesContent":[".btn--green{\n    background-color: aquamarine;\n}"],"names":[],"sourceRoot":""}
