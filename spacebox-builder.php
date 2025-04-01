@@ -63,8 +63,6 @@ function register_custom_blocks() {
 }
 add_action( 'init', 'register_custom_blocks' );
 
-
-
 function moneyline_enqueue_block_editor_assets() {
 
     wp_enqueue_style(

@@ -1,0 +1,26 @@
+{
+    "apiVersion": 2,
+    "name": "custom/section-block",
+    "title": "Section Block",
+    "category": "layout",
+    "icon": "layout",
+    "supports": {
+      "html": false,
+      "spacing": {
+        "margin": true,
+        "padding": true
+      }
+    },
+    "attributes": {
+      "marginTop": {
+        "type": "string",
+        "default": "0px"
+      },
+      "marginBottom": {
+        "type": "string",
+        "default": "0px"
+      }
+    },
+    "editorScript": "file:./index.js"
+  }
+  

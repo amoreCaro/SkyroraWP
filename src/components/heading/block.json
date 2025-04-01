@@ -45,7 +45,15 @@
     "textTransform": {
       "type": "string",
       "default": "uppercase"
-    }
+    },
+    "marginTop": {
+        "type": "string",
+        "default": "24px"
+      },
+      "marginBottom": {
+        "type": "string",
+        "default": "24px"
+      }
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
