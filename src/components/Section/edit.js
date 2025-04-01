@@ -1,35 +1,47 @@
-import { __ } from '@wordpress/i18n';
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, TextControl } from '@wordpress/components';
+import { useBlockProps } from '@wordpress/block-editor';
+import { InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, RangeControl } from '@wordpress/components';
 
-const Edit = ({ attributes, setAttributes }) => {
+const Edit = ({ attributes, setAttributes, children }) => {
     const { marginTop, marginBottom } = attributes;
 
+    const onChangeMarginTop = (newMarginTop) => {
+        setAttributes({ marginTop: `${newMarginTop}px` });
+    };
+
+    const onChangeMarginBottom = (newMarginBottom) => {
+        setAttributes({ marginBottom: `${newMarginBottom}px` });
+    };
+
     return (
-        <>
+        <div {...useBlockProps()}>
             <InspectorControls>
-                <PanelBody title={__('Spacing Settings', 'custom-section')}>
-                    <TextControl
-                        label={__('Top Margin (px)', 'custom-section')}
-                        value={marginTop}
-                        onChange={(newValue) => setAttributes({ marginTop: newValue })}
+                <PanelBody title="Section Settings" initialOpen={true}>
+                    <RangeControl
+                        label="Margin Top"
+                        value={parseInt(marginTop)}
+                        onChange={onChangeMarginTop}
+                        min={0}
+                        max={100}
                     />
-                    <TextControl
-                        label={__('Bottom Margin (px)', 'custom-section')}
-                        value={marginBottom}
-                        onChange={(newValue) => setAttributes({ marginBottom: newValue })}
+                    <RangeControl
+                        label="Margin Bottom"
+                        value={parseInt(marginBottom)}
+                        onChange={onChangeMarginBottom}
+                        min={0}
+                        max={100}
                     />
                 </PanelBody>
             </InspectorControls>
-            <div {...useBlockProps({
-                style: {
+            <div
+                style={{
                     marginTop,
                     marginBottom,
-                }
-            })}>
-                <p>Content of the Section Block</p>
+                }}
+            >
+                {children}
             </div>
-        </>
+        </div>
     );
 };
 

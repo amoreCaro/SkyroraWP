@@ -1,18 +1,19 @@
 import { useBlockProps } from '@wordpress/block-editor';
 
-const save = ({ attributes }) => {
+const Save = ({ attributes, children }) => {
     const { marginTop, marginBottom } = attributes;
 
     return (
-        <div {...useBlockProps.save({
-            style: {
+        <div
+            {...useBlockProps.save()}
+            style={{
                 marginTop,
                 marginBottom,
-            }
-        })}>
-            <p>Content of the Section Block</p>
+            }}
+        >
+            {children}
         </div>
     );
 };
 
-export default save;
+export default Save;

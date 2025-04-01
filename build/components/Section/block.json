@@ -1,25 +1,19 @@
 {
   "apiVersion": 2,
-  "name": "custom/section-block",
-  "title": "Section Block",
-  "category": "layout",
-  "icon": "layout",
-  "supports": {
-    "html": false,
-    "spacing": {
-      "margin": true,
-      "padding": true
-    }
-  },
+  "name": "app/section",
+  "title": "Section",
+  "category": "advanced",
+  "icon": "star-filled",
   "attributes": {
     "marginTop": {
       "type": "string",
-      "default": "0px"
+      "default": "20px"
     },
     "marginBottom": {
       "type": "string",
-      "default": "0px"
+      "default": "20px"
     }
   },
-  "editorScript": "file:./index.js"
+  "edit": "./edit.js",
+  "save": "./save.js"
 }
