@@ -1,15 +1,29 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
+import Section from '../Section/block.json'; // Імпортуємо компонент Section
 
-export default function Save({ attributes }) {
-    const { content, level, textAlign, color, fontWeight, fontSize, lineHeight, fontFamily, textTransform, marginTop, marginBottom } = attributes;
+const Save = ({ attributes }) => {
+  const { content, level, textAlign, color, fontWeight, fontSize, lineHeight, fontFamily, textTransform, marginTop, marginBottom } = attributes;
 
-    return (
-        <RichText.Content
-            {...useBlockProps.save({
-                style: { color, fontSize, fontWeight, lineHeight, fontFamily, textTransform, marginTop, marginBottom, textAlign },
-            })}
-            tagName={`h${level}`}
-            value={content}
-        />
-    );
-}
+  return (
+
+    <div {...useBlockProps.save()} style={{ marginTop, marginBottom }}>
+      <RichText.Content
+        style={{
+          color,
+          fontWeight,
+          fontSize,
+          lineHeight,
+          fontFamily,
+          textTransform,
+          textAlign,
+        }}
+        tagName={`h${level}`}
+        value={content}
+      />
+    </div>
+
+  );
+};
+
+export default Save;
+
