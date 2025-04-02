@@ -5,17 +5,10 @@
   "category": "advanced",
   "icon": "star-filled",
   "description": "Paragraph block with customizable styles.",
-  "supports": {
-    "html": false
-  },
   "attributes": {
     "content": {
       "type": "string",
-      "default": "Enter your paragrpaph"
-    },
-    "level": {
-      "type": "number",
-      "default": 2
+      "default": "Enter your paragraph"
     },
     "textAlign": {
       "type": "string",
@@ -39,7 +32,7 @@
     },
     "fontFamily": {
       "type": "string",
-      "default": "Bai Jamjure, sans-serif"
+      "default": "Bai Jamjuree, sans-serif"
     },
     "textTransform": {
       "type": "string",
@@ -48,6 +41,5 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
-  "style": "file:./style.css",
-  "example": null
+  "style": "file:./style.css"
 }

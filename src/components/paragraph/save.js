@@ -1,12 +1,12 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 const save = ({ attributes }) => {
-    const { content, level, textAlign, color, fontWeight, fontSize, lineHeight, fontFamily, textTransform } = attributes;
+    const { content, textAlign, color, fontWeight, fontSize, lineHeight, fontFamily, textTransform, marginTop, marginBottom } = attributes;
 
     return (
-        <RichText.Content
-            {...useBlockProps.save({
-                style: {
+        <div {...useBlockProps.save()} style={{ marginTop, marginBottom }}>
+            <RichText.Content
+                style={{
                     color,
                     fontWeight,
                     fontSize,
@@ -14,11 +14,11 @@ const save = ({ attributes }) => {
                     fontFamily,
                     textTransform,
                     textAlign,
-                },
-            })}
-            tagName={`h${level}`}
-            value={content}
-        />
+                }}
+                tagName="p"  // Використовуємо <p> тег
+                value={content}
+            />
+        </div>
     );
 };
 

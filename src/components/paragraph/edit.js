@@ -2,28 +2,15 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps, RichText, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, ColorPalette, TextControl } from '@wordpress/components';
 
-const HeadingEdit = ({ attributes, setAttributes }) => {
-    const { content, level, textAlign, color, fontWeight, fontSize, lineHeight, fontFamily, textTransform } = attributes;
+const ParagraphEdit = ({ attributes, setAttributes }) => {
+    const { content, textAlign, color, fontWeight, fontSize, lineHeight, fontFamily, textTransform } = attributes;
 
     return (
         <>
             <InspectorControls>
-                <PanelBody title={__('Heading Settings', 'custom-heading')}>                    
+                <PanelBody title={__('Paragraph Settings', 'custom-paragraph')}>
                     <SelectControl
-                        label={__('Heading Level', 'custom-heading')}
-                        value={level}
-                        options={[
-                            { label: 'H1', value: 1 },
-                            { label: 'H2', value: 2 },
-                            { label: 'H3', value: 3 },
-                            { label: 'H4', value: 4 },
-                            { label: 'H5', value: 5 },
-                            { label: 'H6', value: 6 },
-                        ]}
-                        onChange={(newLevel) => setAttributes({ level: parseInt(newLevel) })}
-                    />
-                    <SelectControl
-                        label={__('Text Align', 'custom-heading')}
+                        label={__('Text Align', 'custom-paragraph')}
                         value={textAlign}
                         options={[
                             { label: 'Left', value: 'left' },
@@ -33,27 +20,27 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
                         onChange={(newAlign) => setAttributes({ textAlign: newAlign })}
                     />
                     <ColorPalette
-                        label={__('Text Color', 'custom-heading')}
+                        label={__('Text Color', 'custom-paragraph')}
                         value={color}
                         onChange={(newColor) => setAttributes({ color: newColor })}
                     />
                     <TextControl
-                        label={__('Font Size', 'custom-heading')}
+                        label={__('Font Size', 'custom-paragraph')}
                         value={fontSize}
                         onChange={(newSize) => setAttributes({ fontSize: newSize })}
                     />
                     <TextControl
-                        label={__('Line Height', 'custom-heading')}
+                        label={__('Line Height', 'custom-paragraph')}
                         value={lineHeight}
                         onChange={(newHeight) => setAttributes({ lineHeight: newHeight })}
                     />
                     <TextControl
-                        label={__('Font Family', 'custom-heading')}
+                        label={__('Font Family', 'custom-paragraph')}
                         value={fontFamily}
                         onChange={(newFont) => setAttributes({ fontFamily: newFont })}
                     />
                     <SelectControl
-                        label={__('Font Weight', 'custom-heading')}
+                        label={__('Font Weight', 'custom-paragraph')}
                         value={fontWeight}
                         options={[
                             { label: 'Normal', value: '400' },
@@ -63,7 +50,7 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
                         onChange={(newWeight) => setAttributes({ fontWeight: newWeight })}
                     />
                     <SelectControl
-                        label={__('Text Transform', 'custom-heading')}
+                        label={__('Text Transform', 'custom-paragraph')}
                         value={textTransform}
                         options={[
                             { label: 'None', value: 'none' },
@@ -87,13 +74,13 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
                         textAlign,
                     },
                 })}
-                tagName={`h${level}`}
+                tagName="p"
                 value={content}
                 onChange={(newContent) => setAttributes({ content: newContent })}
-                placeholder={__('Enter heading text...', 'custom-heading')}
+                placeholder={__('Enter paragraph text...', 'custom-paragraph')}
             />
         </>
     );
 };
 
-export default HeadingEdit;
+export default ParagraphEdit;
