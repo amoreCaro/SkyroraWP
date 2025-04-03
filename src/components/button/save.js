@@ -7,8 +7,8 @@ const save = ({ attributes }) => {
         <div
             {...useBlockProps.save({
                 style: {
-                    marginBottom: '20px',  // Set the margin-bottom
-                    marginTop: '20px',     // Set the margin-top
+                    marginBottom: '20px',  
+                    marginTop: '20px',    
                 },
             })}
         >
@@ -27,7 +27,6 @@ const save = ({ attributes }) => {
                         cursor: 'pointer',
                         display: 'inline-block',
                         maxWidth: '256px',   
-                        width: '100%',       
                         height: '56px',    
                     },
                 })}
