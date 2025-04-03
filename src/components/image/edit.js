@@ -37,4 +37,4 @@ const ImageEdit = ({ attributes, setAttributes }) => {
     );
 };
 
-export default HeadingEdit;
+export default ImageEdit;

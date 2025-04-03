@@ -1,24 +1,29 @@
-import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { useBlockProps } from '@wordpress/block-editor';
 
 const save = ({ attributes }) => {
-    const { content, level, textAlign, color, fontWeight, fontSize, lineHeight, fontFamily, textTransform } = attributes;
+    const { content, textAlign, color, backgroundColor, fontWeight, fontSize, lineHeight, fontFamily, textTransform } = attributes;
 
     return (
-        <RichText.Content
+        <button
             {...useBlockProps.save({
                 style: {
+                    textAlign,
                     color,
+                    backgroundColor,
                     fontWeight,
                     fontSize,
                     lineHeight,
                     fontFamily,
                     textTransform,
-                    textAlign,
+                    padding: '10px 20px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'inline-block',
                 },
             })}
-            tagName={`h${level}`}
-            value={content}
-        />
+        >
+            {content}
+        </button>
     );
 };
 
