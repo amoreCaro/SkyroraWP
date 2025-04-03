@@ -26,7 +26,8 @@ const save = ({ attributes }) => {
                         border: 'none',
                         cursor: 'pointer',
                         display: 'inline-block',
-                        maxWidth: '256px',   
+                        maxWidth: '256px',  
+                        width: '100%', 
                         height: '56px',    
                     },
                 })}
