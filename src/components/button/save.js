@@ -4,26 +4,37 @@ const save = ({ attributes }) => {
     const { content, textAlign, color, backgroundColor, fontWeight, fontSize, lineHeight, fontFamily, textTransform } = attributes;
 
     return (
-        <button
+        <div
             {...useBlockProps.save({
                 style: {
-                    textAlign,
-                    color,
-                    backgroundColor,
-                    fontWeight,
-                    fontSize,
-                    lineHeight,
-                    fontFamily,
-                    textTransform,
-                    padding: '10px 20px',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'inline-block',
+                    marginBottom: '20px',  // Set the margin-bottom
+                    marginTop: '20px',     // Set the margin-top
                 },
             })}
         >
-            {content}
-        </button>
+            <button
+                {...useBlockProps.save({
+                    style: {
+                        textAlign,
+                        color,
+                        backgroundColor,
+                        fontWeight,
+                        fontSize,
+                        lineHeight,
+                        fontFamily,
+                        textTransform,
+                        border: 'none',
+                        cursor: 'pointer',
+                        display: 'inline-block',
+                        maxWidth: '256px',   
+                        width: '100%',       
+                        height: '56px',    
+                    },
+                })}
+            >
+                {content}
+            </button>
+        </div>
     );
 };
 
