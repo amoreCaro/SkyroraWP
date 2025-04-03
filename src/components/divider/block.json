@@ -12,14 +12,6 @@
         "type": "string",
         "default": ""
       },
-      "align": {
-        "type": "string",
-        "default": "center"
-      },
-      "style": {
-        "type": "string",
-        "default": "solid"
-      },
       "color": {
         "type": "string",
         "default": "#B8BDCC"

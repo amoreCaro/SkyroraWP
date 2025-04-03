@@ -11,8 +11,8 @@ const Save = ({ attributes }) => {
                 textAlign: align,
                 borderStyle: style,
                 borderColor: color,
-                borderWidth: '2px',
-                padding: '12px',
+                borderWidth: '1px',
+
             }}
         />
     );

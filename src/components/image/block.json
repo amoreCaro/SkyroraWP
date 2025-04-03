@@ -1,17 +1,13 @@
 {
     "apiVersion": 3,
     "title": "Image Component",
-    "name": "app/image-component",
+    "name": "app/image",
     "category": "advanced",
     "icon": "star-filled",
     "keywords": ["image", "media"],
     "editorScript": "file:./index.js",
     "editorStyle": "file:./editor.css",
     "attributes": {
-      "id": {
-        "type": "string",
-        "default": ""
-      },
       "imageUrl": {
         "type": "string",
         "default": ""
@@ -19,24 +15,6 @@
       "imageId": {
         "type": "number",
         "default": 0
-      },
-      "altText": {
-        "type": "string",
-        "default": ""
-      },
-      "caption": {
-        "type": "string",
-        "source": "html",
-        "selector": ".image-caption",
-        "default": ""
-      },
-      "alignment": {
-        "type": "string",
-        "default": "center"
-      },
-      "size": {
-        "type": "string",
-        "default": "medium"
       }
     },
     "supports": {
