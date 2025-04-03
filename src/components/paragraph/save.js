@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 const save = ({ attributes }) => {
-    const { content, level, textAlign, color, fontWeight, fontSize, lineHeight, fontFamily, textTransform } = attributes;
+    const { content, textAlign, color, fontWeight, fontSize, lineHeight, fontFamily, textTransform } = attributes;
 
     return (
         <RichText.Content
@@ -16,7 +16,7 @@ const save = ({ attributes }) => {
                     textAlign,
                 },
             })}
-            tagName={`h${level}`}
+            tagName="p"
             value={content}
         />
     );
