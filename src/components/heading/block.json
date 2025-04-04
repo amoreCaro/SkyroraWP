@@ -1,53 +1,52 @@
 {
-    "apiVersion": 3,
-    "name": "app/heading",
-    "title": "Custom Heading",
-    "category": "advanced",
-    "icon": "star-filled",
-    "description": "Heading block with customizable styles.",
-    "supports": {
-        "html": false
+  "apiVersion": 3,
+  "name": "app/heading",
+  "title": "Custom Heading",
+  "category": "advanced",
+  "icon": "star-filled",
+  "description": "Heading block with customizable styles.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "content": {
+      "type": "string",
+      "default": "Enter your heading"
     },
-    "attributes": {
-        "content": {
-            "type": "string",
-            "default": "Enter your heading"
-        },
-        "level": {
-            "type": "number",
-            "default": 2
-        },
-        "textAlign": {
-            "type": "string",
-            "default": "left"
-        },
-        "color": {
-            "type": "string",
-            "default": "#1A1A1A"
-        },
-        "fontWeight": {
-            "type": "string",
-            "default": "700"
-        },
-        "fontSize": {
-            "type": "string",
-            "default": "26px"
-        },
-        "lineHeight": {
-            "type": "string",
-            "default": "1.2"
-        },
-        "fontFamily": {
-            "type": "string",
-            "default": "Bai Jamjure, sans-serif"
-        },
-        "textTransform": {
-            "type": "string",
-            "default": "uppercase"
-        }
+    "level": {
+      "type": "number",
+      "default": 2
     },
-    "editorScript": "file:./index.js",
-    "editorStyle": "file:./editor.css",
-    "style": "file:./style.css",
-    "example": null
+    "textAlign": {
+      "type": "string",
+      "default": "left"
+    },
+    "color": {
+      "type": "string",
+      "default": "#1A1A1A"
+    },
+    "fontWeight": {
+      "type": "string",
+      "default": "700"
+    },
+    "fontSize": {
+      "type": "string",
+      "default": "26px"
+    },
+    "lineHeight": {
+      "type": "string",
+      "default": "1.2"
+    },
+    "fontFamily": {
+      "type": "string",
+      "default": "Bai Jamjuree, sans-serif"
+    },
+    "textTransform": {
+      "type": "string",
+      "default": "uppercase"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
 }

@@ -39,7 +39,7 @@
     },
     "fontFamily": {
       "type": "string",
-      "default": "Bai Jamjure, sans-serif"
+      "default": "Bai Jamjuree, sans-serif"
     },
     "textTransform": {
       "type": "string",
@@ -48,6 +48,5 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
-  "style": "file:./style.css",
-  "example": null
+  "style": "file:./style.css"
 }
