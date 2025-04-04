@@ -4,17 +4,23 @@ const Save = ({ attributes }) => {
     const { id, align, style, color } = attributes;
 
     return (
-        <hr
-            {...useBlockProps.save()}
-            id={id}
+        <div
             style={{
-                textAlign: align,
-                borderStyle: style,
-                borderColor: color,
-                borderWidth: '1px',
-
+                marginTop: '16px',
+                marginBottom: '16px',
             }}
-        />
+        >
+            <hr
+                {...useBlockProps.save()}
+                id={id}
+                style={{
+                    textAlign: align,
+                    borderStyle: style,
+                    borderColor: color,
+                    borderWidth: '1px',
+                }}
+            />
+        </div>
     );
 };
 
