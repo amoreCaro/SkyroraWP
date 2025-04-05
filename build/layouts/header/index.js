@@ -29,16 +29,44 @@ function Edit({
   setAttributes
 }) {
   const {
-    id
+    id,
+    svgUrl
   } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
+
+  // Handle the selection of an SVG
+  const onSelectSVG = media => {
+    setAttributes({
+      svgUrl: media.url
+    });
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     id: id,
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "app-block app-block--preview"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Header"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    class: "dashicons dashicons-edit"
+  }, svgUrl ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: svgUrl,
+    alt: "Uploaded SVG",
+    style: {
+      maxWidth: '114px',
+      height: '60px',
+      width: '100%'
+    }
+  }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "No SVG uploaded"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+    onSelect: onSelectSVG,
+    allowedTypes: ['image/svg+xml'] // Only allow SVG images
+    ,
+    value: svgUrl,
+    render: ({
+      open
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+      onClick: open
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      className: "dashicons dashicons-upload"
+    }), " Upload SVG")
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "dashicons dashicons-edit"
   }), " Edit Header")));
 }
 
@@ -52,7 +80,7 @@ function Edit({
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ save)
+/* harmony export */   "default": () => (/* binding */ Save)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
@@ -60,12 +88,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 
 
-
-function save() {
+function Save({
+  attributes
+}) {
+  const {
+    id,
+    svgUrl
+  } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    id: id,
     ...blockProps
-  });
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "app-block app-block--preview"
+  }, svgUrl ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("object", {
+    type: "image/svg+xml",
+    data: svgUrl,
+    style: {
+      maxWidth: '114px',
+      height: '60px',
+      width: '100%'
+    },
+    className: "uploaded-svg"
+  }, "Your browser does not support SVG") : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "No SVG uploaded")));
 }
 
 /***/ }),

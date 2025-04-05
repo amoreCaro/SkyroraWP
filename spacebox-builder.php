@@ -10,21 +10,25 @@ add_filter( 'allowed_block_types_all', 'theme_allowed_blocks', 10, 2 );
 function theme_allowed_blocks( $allowed_blocks, $block_editor_context ) {
     // Масив дозволених блоків
     return array(
+        'app/header',
         'app/heading',
         'app/paragraph',
         'app/image',
         'app/button',
         'app/divider',
+
     );
 }
 
 function register_custom_blocks() {
     // components
+    register_block_type( __DIR__ . '/build/components/header');
     register_block_type( __DIR__ . '/build/components/heading');
     register_block_type( __DIR__ . '/build/components/paragraph');
     register_block_type( __DIR__ . '/build/components/image');
     register_block_type( __DIR__ . '/build/components/button');
     register_block_type( __DIR__ . '/build/components/divider');
+
     
     wp_localize_script( 'dynamic-posts-grid-block', 'wpApiSettings', array(
         'root' => esc_url( rest_url() ),
@@ -35,6 +39,12 @@ function register_custom_blocks() {
 }
 add_action( 'init', 'register_custom_blocks' );
 
+function allow_svg_uploads($mimes) {
+    // Add SVG file type to allowed mime types
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter('upload_mimes', 'allow_svg_uploads');
 
 
 function moneyline_enqueue_block_editor_assets() {
