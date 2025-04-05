@@ -28,6 +28,8 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                         label={__('Font Size', 'custom-paragraph')}
                         value={fontSize}
                         onChange={(newSize) => setAttributes({ fontSize: newSize })}
+                        type="number" // Ensure only numeric values are entered
+                        min={0}
                     />
                     <TextControl
                         label={__('Line Height', 'custom-paragraph')}
@@ -62,6 +64,7 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                     />
                 </PanelBody>
             </InspectorControls>
+
             <RichText
                 {...useBlockProps({
                     style: {

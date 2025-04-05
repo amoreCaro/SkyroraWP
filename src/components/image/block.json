@@ -1,26 +1,25 @@
 {
-    "apiVersion": 3,
-    "title": "Image Component",
-    "name": "app/image",
-    "category": "advanced",
-    "icon": "star-filled",
-    "keywords": ["image", "media"],
-    "editorScript": "file:./index.js",
-    "editorStyle": "file:./editor.css",
-    "attributes": {
-      "imageUrl": {
-        "type": "string",
-        "default": ""
-      },
-      "imageId": {
-        "type": "number",
-        "default": 0
-      }
+  "apiVersion": 3,
+  "title": "Image Component",
+  "name": "app/image",
+  "category": "advanced",
+  "icon": "star-filled",
+  "keywords": ["image", "media"],
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "attributes": {
+    "imageUrl": {
+      "type": "string",
+      "default": ""
     },
-    "supports": {
-      "html": false,
-      "align": ["left", "center", "right"],
-      "customClassName": true
+    "imageId": {
+      "type": "number",
+      "default": 0
     }
+  },
+  "supports": {
+    "html": false,
+    "align": ["left", "center", "right"],
+    "customClassName": true
   }
-  
+}

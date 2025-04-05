@@ -5,11 +5,11 @@ export default function save({ attributes }) {
     const { imageUrl } = attributes;
 
     return (
-        <div {...blockProps} className="wp-image" style={{ margin: '24px 0', maxWidth: '544px', width: '100%' }}>
+        <div {...blockProps} className="wp-image">
             <img
                 src={imageUrl}
                 alt="Selected"
-                style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                className="wp-image__img"
             />
         </div>
     );
