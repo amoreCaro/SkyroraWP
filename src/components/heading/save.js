@@ -13,10 +13,14 @@ const save = ({ attributes }) => {
         textTransform,
     } = attributes;
 
+    const blockProps = useBlockProps.save();
+
     return (
-        <RichText.Content
-            {...useBlockProps.save({
-                style: {
+        <div {...blockProps} className="wp-heading">
+            <RichText.Content
+                tagName={`h${level}`}
+                value={content}
+                style={{
                     color,
                     fontWeight,
                     fontSize,
@@ -24,11 +28,9 @@ const save = ({ attributes }) => {
                     fontFamily,
                     textTransform,
                     textAlign,
-                },
-            })}
-            tagName={`h${level}`}
-            value={content}
-        />
+                }}
+            />
+        </div>
     );
 };
 

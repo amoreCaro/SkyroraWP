@@ -3,12 +3,22 @@ import { useBlockProps, RichText, InspectorControls } from '@wordpress/block-edi
 import { PanelBody, SelectControl, ColorPalette, TextControl } from '@wordpress/components';
 
 const ParagraphEdit = ({ attributes, setAttributes }) => {
-    const { content, textAlign, color, fontWeight, fontSize, lineHeight, fontFamily, textTransform } = attributes;
+    const {
+        content,
+        textAlign,
+        color,
+        fontWeight,
+        fontSize,
+        lineHeight,
+        fontFamily,
+        textTransform
+    } = attributes;
 
     return (
         <>
             <InspectorControls>
                 <PanelBody title={__('Paragraph Settings', 'custom-paragraph')}>
+                    {/* Text Align Control */}
                     <SelectControl
                         label={__('Text Align', 'custom-paragraph')}
                         value={textAlign}
@@ -19,28 +29,33 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                         ]}
                         onChange={(newAlign) => setAttributes({ textAlign: newAlign })}
                     />
+                    {/* Text Color Control */}
                     <ColorPalette
                         label={__('Text Color', 'custom-paragraph')}
                         value={color}
                         onChange={(newColor) => setAttributes({ color: newColor })}
                     />
+                    {/* Font Size Control */}
                     <TextControl
                         label={__('Font Size', 'custom-paragraph')}
                         value={fontSize}
                         onChange={(newSize) => setAttributes({ fontSize: newSize })}
-                        type="number" // Ensure only numeric values are entered
+                        type="number"
                         min={0}
                     />
+                    {/* Line Height Control */}
                     <TextControl
                         label={__('Line Height', 'custom-paragraph')}
                         value={lineHeight}
                         onChange={(newHeight) => setAttributes({ lineHeight: newHeight })}
                     />
+                    {/* Font Family Control */}
                     <TextControl
                         label={__('Font Family', 'custom-paragraph')}
                         value={fontFamily}
                         onChange={(newFont) => setAttributes({ fontFamily: newFont })}
                     />
+                    {/* Font Weight Control */}
                     <SelectControl
                         label={__('Font Weight', 'custom-paragraph')}
                         value={fontWeight}
@@ -51,6 +66,7 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                         ]}
                         onChange={(newWeight) => setAttributes({ fontWeight: newWeight })}
                     />
+                    {/* Text Transform Control */}
                     <SelectControl
                         label={__('Text Transform', 'custom-paragraph')}
                         value={textTransform}
@@ -65,6 +81,7 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                 </PanelBody>
             </InspectorControls>
 
+            {/* Editable Paragraph Content */}
             <RichText
                 {...useBlockProps({
                     style: {

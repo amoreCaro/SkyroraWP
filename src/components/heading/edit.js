@@ -51,7 +51,7 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
             label={__('Heading Level', 'custom-heading')}
             value={level}
             options={Array.from({ length: 6 }, (_, i) => ({
-              label: `H${i + 1}`, // Corrected template literal
+              label: `H${i + 1}`,
               value: i + 1,
             }))}
             onChange={(newLevel) => setAttributes({ level: parseInt(newLevel, 10) })}

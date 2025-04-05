@@ -1,12 +1,21 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 const save = ({ attributes }) => {
-    const { content, textAlign, color, fontWeight, fontSize, lineHeight, fontFamily, textTransform } = attributes;
+    const {
+        content,
+        textAlign,
+        color,
+        fontWeight,
+        fontSize,
+        lineHeight,
+        fontFamily,
+        textTransform
+    } = attributes;
 
     return (
-        <RichText.Content
-            {...useBlockProps.save({
-                style: {
+        <div {...useBlockProps.save()} className="wp-paragraph">
+            <RichText.Content
+                style={{
                     color,
                     fontWeight,
                     fontSize,
@@ -14,11 +23,11 @@ const save = ({ attributes }) => {
                     fontFamily,
                     textTransform,
                     textAlign,
-                },
-            })}
-            tagName="p"
-            value={content}
-        />
+                }}
+                tagName="p"
+                value={content}
+            />
+        </div>
     );
 };
 
