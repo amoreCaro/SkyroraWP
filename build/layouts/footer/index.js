@@ -91,6 +91,16 @@ function Save({
     id
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
+  const copyrightStyle = {
+    fontFamily: 'Bai Jamjuree',
+    fontWeight: 400,
+    fontSize: '12px',
+    lineHeight: '100%',
+    letterSpacing: '0px',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    color: "#B8BDCC"
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     id: id,
     ...blockProps,
@@ -100,18 +110,11 @@ function Save({
       justifyContent: 'center',
       alignItems: 'center'
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    style: {
-      fontFamily: 'Bai Jamjuree',
-      fontWeight: 400,
-      fontSize: '12px',
-      lineHeight: '100%',
-      letterSpacing: '0px',
-      textAlign: 'center',
-      textTransform: 'uppercase',
-      color: "#B8BDCC"
-    }
-  }, copyright));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    tagName: "span",
+    value: copyright,
+    style: copyrightStyle
+  }));
 }
 
 /***/ }),
