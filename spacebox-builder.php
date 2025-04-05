@@ -8,7 +8,6 @@
 add_filter( 'allowed_block_types_all', 'theme_allowed_blocks', 10, 2 );
 
 function theme_allowed_blocks( $allowed_blocks, $block_editor_context ) {
-    // Масив дозволених блоків
     return array(
         'app/header',
         'app/heading',
@@ -16,9 +15,10 @@ function theme_allowed_blocks( $allowed_blocks, $block_editor_context ) {
         'app/image',
         'app/button',
         'app/divider',
-
+        'app/footer', // Ensure this is exactly as the block is registered
     );
 }
+
 
 function register_custom_blocks() {
     // components
@@ -28,6 +28,7 @@ function register_custom_blocks() {
     register_block_type( __DIR__ . '/build/components/image');
     register_block_type( __DIR__ . '/build/components/button');
     register_block_type( __DIR__ . '/build/components/divider');
+    register_block_type( __DIR__ . '/build/layouts/footer');
 
     
     wp_localize_script( 'dynamic-posts-grid-block', 'wpApiSettings', array(

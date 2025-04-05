@@ -1,0 +1,12 @@
+{
+  "apiVersion": 3,
+  "title": "Footer",
+  "description": "",
+  "name": "app/footer",
+  "category": "advanced",
+  "icon": "star-filled",
+  "keywords": ["layouts"],
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style.css"
+}
