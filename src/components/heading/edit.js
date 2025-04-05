@@ -27,6 +27,25 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
     textTransform,
   } = attributes;
 
+  const headingSize = (hLevel) => {
+    switch (hLevel) {
+      case 1:
+        return "2.5rem";
+      case 2:
+        return "2.0rem";
+      case 3:
+        return "1.75rem";
+      case 4:
+        return "1.5rem";
+      case 5:
+        return "1.25rem";
+      case 6:
+        return "1.0rem";
+      default:
+        return "2rem";
+    }
+  }
+
   return (
     <>
       {/* Toolbar for Heading Levels */}
@@ -72,10 +91,10 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
             onChange={(newColor) => setAttributes({ color: newColor || '#000000' })}
           />
           <TextControl
-            label={__('Font Size (px)', 'custom-heading')}
+            label={__('Font Size (rem)', 'custom-heading')}
             type="number"
-            value={fontSize.replace('px', '')}
-            onChange={(newSize) => setAttributes({ fontSize: `${newSize}px` })}
+            value={fontSize.replace('rem', '')}
+            onChange={(newSize) => setAttributes({ fontSize: `${newSize}rem` })}
           />
           <TextControl
             label={__('Line Height', 'custom-heading')}
@@ -119,7 +138,7 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
           style: {
             color,
             fontWeight,
-            fontSize,
+            fontSize: { headingSize },
             lineHeight,
             fontFamily,
             textTransform,

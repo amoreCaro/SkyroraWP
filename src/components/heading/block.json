@@ -31,7 +31,7 @@
 		},
 		"fontSize": {
 			"type": "string",
-			"default": "26px"
+			"default": "1.625rem"
 		},
 		"lineHeight": {
 			"type": "string",

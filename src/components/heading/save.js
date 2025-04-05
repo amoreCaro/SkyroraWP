@@ -13,6 +13,26 @@ const save = ({ attributes }) => {
         textTransform,
     } = attributes;
 
+    const headingSize = (hLevel) => {
+        switch (hLevel) {
+            case 1:
+                return "2.5rem";  
+            case 2:
+                return "2.0rem";  
+            case 3:
+                return "1.75rem";
+            case 4:
+                return "1.5rem"; 
+            case 5:
+                return "1.25rem";
+            case 6:
+                return "1.0rem"; 
+            default:
+                return "2rem";   
+        }
+    }
+    
+
     const blockProps = useBlockProps.save();
 
     return (
@@ -23,7 +43,7 @@ const save = ({ attributes }) => {
                 style={{
                     color,
                     fontWeight,
-                    fontSize,
+                    fontSize: headingSize(level),  // Call the function with the correct argument
                     lineHeight,
                     fontFamily,
                     textTransform,

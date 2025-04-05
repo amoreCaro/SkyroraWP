@@ -5,40 +5,61 @@ import { Button } from '@wordpress/components';
 const ImageEdit = ({ attributes, setAttributes }) => {
     const { imageUrl, imageId } = attributes;
 
+    const imageWrapper = {
+        margin: "24px 0",
+        maxWidth: "544px",
+        width: "100%",
+    };
+
+    const image = {
+        width: "100%",
+        height: "auto",
+        objectFit: "cover",
+        display: "block",
+    };
+
     const onSelectImage = (media) => {
         setAttributes({ imageUrl: media.url, imageId: media.id });
     };
 
+    const onRemoveImage = () => {
+        setAttributes({ imageUrl: '', imageId: undefined });
+    };
+
     return (
-        <>
-            {!imageUrl && (
-                <MediaUpload
-                    onSelect={onSelectImage}
-                    allowedTypes={['image']}
-                    render={({ open }) => (
-                        <div className='wp-group__image'>
-                            <Button onClick={open} className="select-image-button">
-                                {imageUrl ? (
-                                    <img src={imageUrl} className="selected-image" alt="Selected" />
-                                ) : (
-                                    'Select Image'
-                                )}
-                            </Button>
-                            {imageUrl && (
-                                <Button 
-                                    onClick={() => setAttributes({ imageUrl: '', imageId: undefined })} 
+        <div {...useBlockProps()}>
+            <MediaUploadCheck>
+                <div style={imageWrapper} className="wp-image">
+                    {/* Display selected image */}
+                    {imageUrl ? (
+                        <>
+                            <img src={imageUrl} style={image} className="selected-image" alt="Selected" />
+
+                            {/* Default block toolbar with the remove button */}
+                            <div className="editor-block-toolbar">
+                                <Button
+                                    isLink
+                                    onClick={onRemoveImage}
+                                    icon="no-alt"
+                                    label={__('Remove Image')}
                                     className="remove-image-button"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" width="24px" height="24px" viewBox="-1.7 0 20.4 20.4" className="cf-icon-svg">
-                                        <path d="M16.417 10.283A7.917 7.917 0 1 1 8.5 2.366a7.916 7.916 0 0 1 7.917 7.917zm-6.804.01 3.032-3.033a.792.792 0 0 0-1.12-1.12L8.494 9.173 5.46 6.14a.792.792 0 0 0-1.12 1.12l3.034 3.033-3.033 3.033a.792.792 0 0 0 1.12 1.119l3.032-3.033 3.033 3.033a.792.792 0 0 0 1.12-1.12z" />
-                                    </svg>
+                                />
+                            </div>
+                        </>
+                    ) : (
+                        <MediaUpload
+                            onSelect={onSelectImage}
+                            allowedTypes={['image']}
+                            render={({ open }) => (
+                                <Button onClick={open} className="select-image-button">
+                                    {__('Select Image')}
                                 </Button>
                             )}
-                        </div>
+                        />
                     )}
-                />
-            )}
-        </>
+                </div>
+            </MediaUploadCheck>
+        </div>
     );
 };
 
