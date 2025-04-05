@@ -31,11 +31,11 @@ function Edit({
     copyright,
     id,
     listItems
-  } = attributes; // Додаємо listItems для зберігання списку
+  } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
-
-  // Стан для контролю введеного елементу списку
   const [newListItem, setNewListItem] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)("");
+  const [newListItemLink, setNewListItemLink] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)(""); // Додаємо стан для посилання
+
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
     if (!attributes.copyright) {
       setAttributes({
@@ -49,13 +49,17 @@ function Edit({
     }
   }, []);
   const handleAddListItem = () => {
-    if (newListItem.trim() !== "") {
-      // Додаємо новий елемент до списку
-      const updatedList = [...listItems, newListItem];
+    if (newListItem.trim() !== "" && newListItemLink.trim() !== "") {
+      const updatedList = [...listItems, {
+        text: newListItem,
+        link: newListItemLink
+      } // Додаємо текст і посилання
+      ];
       setAttributes({
         listItems: updatedList
       });
-      setNewListItem(""); // Очищаємо поле вводу
+      setNewListItem("");
+      setNewListItemLink(""); // Очищаємо поле для посилання
     }
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -91,6 +95,15 @@ function Edit({
       marginTop: '10px',
       padding: '5px'
     }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "text",
+    value: newListItemLink,
+    onChange: e => setNewListItemLink(e.target.value),
+    placeholder: "Enter link for list item",
+    style: {
+      marginTop: '10px',
+      padding: '5px'
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: handleAddListItem,
     style: {
@@ -105,13 +118,25 @@ function Edit({
       paddingLeft: 0,
       marginTop: '20px'
     }
-  }, listItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+  }, listItems.map((item, index) =>
+  // Перевірка на наявність посилання
+  item.link ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
     key: index,
     style: {
       color: "#B8BDCC",
       textAlign: 'center'
     }
-  }, item))));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: item.link,
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, item.text)) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    key: index,
+    style: {
+      color: "#B8BDCC",
+      textAlign: 'center'
+    }
+  }, item.text))));
 }
 
 /***/ }),
@@ -138,7 +163,7 @@ function Save({
   const {
     copyright,
     listItems = []
-  } = attributes; // Отримуємо список
+  } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   const copyrightStyle = {
     fontFamily: 'Bai Jamjuree',
@@ -168,13 +193,23 @@ function Save({
       paddingLeft: 0,
       marginTop: '20px'
     }
-  }, listItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+  }, listItems.map((item, index) => item.link ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
     key: index,
     style: {
       color: "#B8BDCC",
       textAlign: 'center'
     }
-  }, item))));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: item.link,
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, item.text)) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    key: index,
+    style: {
+      color: "#B8BDCC",
+      textAlign: 'center'
+    }
+  }, item.text))));
 }
 
 /***/ }),
