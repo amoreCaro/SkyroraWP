@@ -27,16 +27,37 @@ function Edit({
   attributes,
   setAttributes
 }) {
+  const {
+    copyright,
+    id,
+    listItems
+  } = attributes; // Додаємо listItems для зберігання списку
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
 
-  // Set the default value for copyright text if it's empty
+  // Стан для контролю введеного елементу списку
+  const [newListItem, setNewListItem] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)("");
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
     if (!attributes.copyright) {
       setAttributes({
         copyright: "© 2025 SKYRORA LIMITED"
       });
     }
+    if (!attributes.listItems) {
+      setAttributes({
+        listItems: []
+      });
+    }
   }, []);
+  const handleAddListItem = () => {
+    if (newListItem.trim() !== "") {
+      // Додаємо новий елемент до списку
+      const updatedList = [...listItems, newListItem];
+      setAttributes({
+        listItems: updatedList
+      });
+      setNewListItem(""); // Очищаємо поле вводу
+    }
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
     style: {
@@ -47,13 +68,12 @@ function Edit({
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "p",
-    value: attributes.copyright,
+    value: copyright,
     onChange: newCopyright => setAttributes({
       copyright: newCopyright
     }),
     placeholder: "Enter copyright text",
     style: {
-      // fontFamily: 'Bai Jamjuree',
       fontWeight: 400,
       fontSize: '12px',
       lineHeight: '100%',
@@ -62,7 +82,36 @@ function Edit({
       textTransform: 'uppercase',
       color: "#B8BDCC"
     }
-  }));
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "text",
+    value: newListItem,
+    onChange: e => setNewListItem(e.target.value),
+    placeholder: "Enter list item",
+    style: {
+      marginTop: '10px',
+      padding: '5px'
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: handleAddListItem,
+    style: {
+      marginTop: '10px',
+      padding: '5px 10px',
+      backgroundColor: '#7D0AF2',
+      color: 'white'
+    }
+  }, "Add list"), listItems && listItems.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    style: {
+      listStyleType: 'none',
+      paddingLeft: 0,
+      marginTop: '20px'
+    }
+  }, listItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    key: index,
+    style: {
+      color: "#B8BDCC",
+      textAlign: 'center'
+    }
+  }, item))));
 }
 
 /***/ }),
@@ -88,8 +137,8 @@ function Save({
 }) {
   const {
     copyright,
-    id
-  } = attributes;
+    listItems = []
+  } = attributes; // Отримуємо список
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   const copyrightStyle = {
     fontFamily: 'Bai Jamjuree',
@@ -102,7 +151,6 @@ function Save({
     color: "#B8BDCC"
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    id: id,
     ...blockProps,
     style: {
       display: 'flex',
@@ -114,7 +162,19 @@ function Save({
     tagName: "span",
     value: copyright,
     style: copyrightStyle
-  }));
+  }), listItems && listItems.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
+    style: {
+      listStyleType: 'none',
+      paddingLeft: 0,
+      marginTop: '20px'
+    }
+  }, listItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
+    key: index,
+    style: {
+      color: "#B8BDCC",
+      textAlign: 'center'
+    }
+  }, item))));
 }
 
 /***/ }),
