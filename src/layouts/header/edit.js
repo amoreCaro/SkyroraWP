@@ -34,13 +34,13 @@ export default function Edit({ attributes, setAttributes }) {
 
     const onChangePaddingLeft = (value) => {
         // Ensure the value is a valid number before updating the attribute
-        const paddingValue = value ? parseInt(value, 10) : 0;
+        const paddingValue = value ? parseInt(value) : 0;
         setAttributes({ paddingLeft: paddingValue });
     };
 
     const onChangePaddingRight = (value) => {
         // Ensure the value is a valid number before updating the attribute
-        const paddingValue = value ? parseInt(value, 10) : 0;
+        const paddingValue = value ? parseInt(value) : 0;
         setAttributes({ paddingRight: paddingValue });
     };
 
@@ -51,14 +51,14 @@ export default function Edit({ attributes, setAttributes }) {
                     {/* Fields for changing padding with TextControl */}
                     <TextControl
                         label="Padding Left (px)"
-                        value={paddingLeft || 0}
+                        value={paddingLeft}
                         onChange={onChangePaddingLeft}
                         type="number"
                         min={0}
                     />
                     <TextControl
                         label="Padding Right (px)"
-                        value={paddingRight || 0}
+                        value={paddingRight}
                         onChange={onChangePaddingRight}
                         type="number"
                         min={0}
@@ -72,10 +72,10 @@ export default function Edit({ attributes, setAttributes }) {
                         display: 'flex',
                         justifyContent: 'space-between',
                         background: '#181b24',
-                        paddingLeft: `${paddingLeft || 0}px`,
-                        paddingRight: `${paddingRight || 0}px`,
-                        paddingTop: '20px',
-                        paddingBottom: '32px',
+                        paddingLeft: `${paddingLeft}px`,  
+                        paddingRight: `${paddingRight}px`,  
+                        paddingTop:'20px',
+                        paddingBottom:'32px'
                     }}
                 >
                     {/* logo */}

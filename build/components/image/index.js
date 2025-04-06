@@ -30,12 +30,16 @@ const ImageEdit = ({
 }) => {
   const {
     imageUrl,
-    imageId
+    imageId,
+    paddingLeft,
+    paddingRight
   } = attributes;
   const imageWrapper = {
     margin: "24px 0",
     maxWidth: "544px",
-    width: "100%"
+    width: "100%",
+    paddingLeft: `${paddingLeft || 48}px`,
+    paddingRight: `${paddingRight || 48}px`
   };
   const image = {
     width: "100%",
@@ -55,7 +59,23 @@ const ImageEdit = ({
       imageId: undefined
     });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Image Settings', 'custom-image')
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Left (px)', 'custom-image'),
+    type: "number",
+    value: paddingLeft,
+    onChange: val => setAttributes({
+      paddingLeft: val
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Right (px)', 'custom-image'),
+    type: "number",
+    value: paddingRight,
+    onChange: val => setAttributes({
+      paddingRight: val
+    })
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: imageWrapper,
@@ -82,7 +102,7 @@ const ImageEdit = ({
       onClick: open,
       className: "select-image-button"
     }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Select Image'))
-  }))));
+  })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ImageEdit);
 
@@ -109,12 +129,16 @@ function save({
 }) {
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   const {
-    imageUrl
+    imageUrl,
+    paddingLeft,
+    paddingRight
   } = attributes;
   const imageWrapper = {
     margin: "24px 0",
     maxWidth: "544px",
-    width: "100%"
+    width: "100%",
+    paddingLeft: `${paddingLeft || 48}px`,
+    paddingRight: `${paddingRight || 48}px`
   };
   const image = {
     width: "100%",
