@@ -8,6 +8,18 @@
     "keywords": [
       "layouts"
     ],
+    "attributes": {
+      "imgUrl": {
+        "type": "string",
+        "default": ""
+      },
+      "text1": {
+        "type": "string"
+      },
+      "text2": {
+        "type": "string"
+      }
+    },
     "editorScript": "file:./index.js",
     "editorStyle": "file:./index.css",
     "style": "file:./style.css"

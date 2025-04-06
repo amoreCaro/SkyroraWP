@@ -9,20 +9,17 @@ import { PanelBody, Button } from '@wordpress/components';
 import './editor.css';
 
 export default function Edit({ attributes, setAttributes }) {
-    const { id, svgUrl, text1, text2 } = attributes;
+    const { id, imgUrl, text1, text2 } = attributes;
     const blockProps = useBlockProps();
 
-    // Block edit lock
-    const isEditable = attributes.isEditable !== false;  // Add condition to check if block is editable
+    const isEditable = attributes.isEditable !== false;
 
-    // Handle SVG file selection
-    const onSelectSVG = (media) => {
+    const onSelectImage = (media) => {
         if (isEditable) {
-            setAttributes({ svgUrl: media.url });
+            setAttributes({ imgUrl: media.url });
         }
     };
 
-    // Handle text changes
     const onChangeText1 = (value) => {
         if (isEditable) {
             setAttributes({ text1: value });
@@ -48,37 +45,51 @@ export default function Edit({ attributes, setAttributes }) {
                     style={{ display: 'flex', justifyContent: 'space-between' }}
                 >
                     <div>
-                        {svgUrl ? (
-                            <img
-                                src={svgUrl}
-                                alt="Uploaded SVG"
-                                style={{ maxWidth: '114px', height: '60px', width: '100%' }}
-                            />
-                        ) : (
-                            <div>No SVG uploaded</div>
-                        )}
+                        <div style={{ maxWidth: '114px', height: '60px', width: '100%', }}>
+                            {imgUrl ? (
+                                <img
+                                    src={imgUrl}
+                                    alt="Uploaded"
+                                    style={{
+                                        height: '100%',
+                                        width: '100%',
+                                        objectFit: 'contain',
+                                    }}
+                                    className="uploaded-img"
+                                />
+                            ) : (
+                                <div>No image uploaded</div>
+                            )}
+                        </div>
                         <MediaUploadCheck>
                             <MediaUpload
-                                onSelect={onSelectSVG}
-                                allowedTypes={['image/svg+xml']}
-                                value={svgUrl}
+                                onSelect={onSelectImage}
+                                allowedTypes={['image']}
+                                value={imgUrl}
                                 render={({ open }) => (
                                     <Button onClick={open} disabled={!isEditable}>
-                                        <span className="dashicons dashicons-upload"></span> Upload SVG
+                                        <span className="dashicons dashicons-upload"></span> Upload Image
                                     </Button>
                                 )}
                             />
                         </MediaUploadCheck>
                     </div>
-                    <div>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginRight: '12px' }}>
+                    <div style={{ position: 'relative' }}>
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'flex-end',
+                                marginRight: '12px',
+                            }}
+                        >
                             <RichText
                                 tagName="p"
                                 placeholder="Enter the first text..."
                                 value={text1}
                                 onChange={onChangeText1}
                                 style={{ margin: '0px 0px 8px 0px' }}
-                                disabled={!isEditable}  // Disable editing if not allowed
+                                disabled={!isEditable}
                             />
                             <RichText
                                 tagName="p"
@@ -86,10 +97,19 @@ export default function Edit({ attributes, setAttributes }) {
                                 value={text2}
                                 onChange={onChangeText2}
                                 style={{ margin: '0px' }}
-                                disabled={!isEditable}  // Disable editing if not allowed
+                                disabled={!isEditable}
                             />
                         </div>
-                        <div style={{position: 'absolute', right: '0px', top: '0px', height: '32px', width: '2px', backgroundColor: '#164BDC'}}></div>
+                        <div
+                            style={{
+                                position: 'absolute',
+                                right: '0px',
+                                top: '0px',
+                                height: '32px',
+                                width: '2px',
+                                backgroundColor: '#164BDC',
+                            }}
+                        ></div>
                     </div>
                 </div>
             </div>

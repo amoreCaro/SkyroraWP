@@ -1,31 +1,46 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function Save({ attributes }) {
-    const { id, svgUrl, text1, text2 } = attributes;
+    const { id, imgUrl, text1, text2 } = attributes;
     const blockProps = useBlockProps.save();
 
     return (
         <div
             id={id}
             {...blockProps}
-            style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+            style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+            }}
         >
             <div>
-                {svgUrl ? (
-                    <object
-                        type="image/svg+xml"
-                        data={svgUrl}
-                        style={{ maxWidth: '114px', height: '60px', width: '100%' }}
-                        className="uploaded-svg"
-                    >
-                        Your browser does not support SVG
-                    </object>
-                ) : (
-                    <div>No SVG uploaded</div>
-                )}
+                <div style={{ maxWidth: '114px', height: '60px', width: '100%', }}>
+                    {imgUrl ? (
+                        <img
+                            src={imgUrl}
+                            alt="Uploaded"
+                            style={{
+                                height: '100%',
+                                width: '100%',
+                                objectFit: 'contain',
+                            }}
+                            className="uploaded-img"
+                        />
+                    ) : (
+                        <div>No image uploaded</div>
+                    )}
+                </div>
             </div>
             <div style={{ position: 'relative' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginRight: '12px' }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'flex-end',
+                        marginRight: '12px',
+                    }}
+                >
                     <RichText.Content
                         tagName="p"
                         value={text1}
@@ -37,7 +52,16 @@ export default function Save({ attributes }) {
                         style={{ margin: '0px' }}
                     />
                 </div>
-                <div style={{ position: 'absolute', right: '0px', top: '0px', height: '32px', width: '2px', backgroundColor: '#164BDC' }}></div>
+                <div
+                    style={{
+                        position: 'absolute',
+                        right: '0px',
+                        top: '0px',
+                        height: '32px',
+                        width: '2px',
+                        backgroundColor: '#164BDC',
+                    }}
+                ></div>
             </div>
         </div>
     );
