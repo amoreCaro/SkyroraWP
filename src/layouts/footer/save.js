@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function Save({ attributes }) {
-    const { copyright, listItems = [] } = attributes;
+    const { copyright } = attributes;
     const blockProps = useBlockProps.save();
 
     const copyrightStyle = {
@@ -26,25 +26,6 @@ export default function Save({ attributes }) {
                 value={copyright}
                 style={copyrightStyle}
             />
-
-            {/* Виведення списку */}
-            {listItems && listItems.length > 0 && (
-                <ul style={{ listStyleType: 'none', paddingLeft: 0, marginTop: '20px' }}>
-                    {listItems.map((item, index) => (
-                        item.link ? (
-                            <li key={index} style={{ color: "#B8BDCC", textAlign: 'center' }}>
-                                <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                    {item.text}
-                                </a>
-                            </li>
-                        ) : (
-                            <li key={index} style={{ color: "#B8BDCC", textAlign: 'center' }}>
-                                {item.text}
-                            </li>
-                        )
-                    ))}
-                </ul>
-            )}
         </div>
     );
 }
