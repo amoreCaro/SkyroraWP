@@ -60,14 +60,14 @@ function Edit({
   };
   const onChangePaddingLeft = value => {
     // Ensure the value is a valid number before updating the attribute
-    const paddingValue = value ? parseInt(value) : 0;
+    const paddingValue = value ? parseInt(value, 10) : 0;
     setAttributes({
       paddingLeft: paddingValue
     });
   };
   const onChangePaddingRight = value => {
     // Ensure the value is a valid number before updating the attribute
-    const paddingValue = value ? parseInt(value) : 0;
+    const paddingValue = value ? parseInt(value, 10) : 0;
     setAttributes({
       paddingRight: paddingValue
     });
@@ -77,13 +77,13 @@ function Edit({
     initialOpen: true
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
     label: "Padding Left (px)",
-    value: paddingLeft,
+    value: paddingLeft || 0,
     onChange: onChangePaddingLeft,
     type: "number",
     min: 0
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
     label: "Padding Right (px)",
-    value: paddingRight,
+    value: paddingRight || 0,
     onChange: onChangePaddingRight,
     type: "number",
     min: 0
@@ -96,8 +96,8 @@ function Edit({
       display: 'flex',
       justifyContent: 'space-between',
       background: '#181b24',
-      paddingLeft: `${paddingLeft}px`,
-      paddingRight: `${paddingRight}px`,
+      paddingLeft: `${paddingLeft || 0}px`,
+      paddingRight: `${paddingRight || 0}px`,
       paddingTop: '20px',
       paddingBottom: '32px'
     }
@@ -196,7 +196,9 @@ function Save({
     id,
     imgUrl,
     text1,
-    text2
+    text2,
+    paddingLeft,
+    paddingRight
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -206,7 +208,11 @@ function Save({
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      background: '#181b24'
+      background: '#181b24',
+      paddingLeft: `${paddingLeft}px`,
+      paddingRight: `${paddingRight}px`,
+      paddingTop: '20px',
+      paddingBottom: '32px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {

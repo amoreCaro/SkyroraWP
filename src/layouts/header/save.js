@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function Save({ attributes }) {
-    const { id, imgUrl, text1, text2 } = attributes;
+    const { id, imgUrl, text1, text2, paddingLeft, paddingRight } = attributes;
     const blockProps = useBlockProps.save();
 
     return (
@@ -12,11 +12,15 @@ export default function Save({ attributes }) {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                background: '#181b24'
+                background: '#181b24',
+                paddingLeft: `${paddingLeft}px`,
+                paddingRight: `${paddingRight}px`,
+                paddingTop: '20px',
+                paddingBottom: '32px',
             }}
         >
             <div>
-                <div style={{ maxWidth: '114px', height: '60px', width: '100%', }}>
+                <div style={{ maxWidth: '114px', height: '60px', width: '100%' }}>
                     {imgUrl ? (
                         <img
                             src={imgUrl}

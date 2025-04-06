@@ -1,12 +1,10 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
-import { useState, useEffect } from '@wordpress/element';
+import { useEffect } from '@wordpress/element';
 import './editor.css';
 
 export default function Edit({ attributes, setAttributes }) {
-    const { copyright, id, listItems } = attributes;
+    const { copyright } = attributes;
     const blockProps = useBlockProps();
-    const [newListItem, setNewListItem] = useState("");
-    const [newListItemLink, setNewListItemLink] = useState(""); // Додаємо стан для посилання
 
     useEffect(() => {
         if (!attributes.copyright) {

@@ -28,14 +28,9 @@ function Edit({
   setAttributes
 }) {
   const {
-    copyright,
-    id,
-    listItems
+    copyright
   } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
-  const [newListItem, setNewListItem] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)("");
-  const [newListItemLink, setNewListItemLink] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useState)(""); // Додаємо стан для посилання
-
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
     if (!attributes.copyright) {
       setAttributes({
@@ -97,7 +92,9 @@ function Save({
   attributes
 }) {
   const {
-    copyright
+    copyright,
+    paddingLeft,
+    paddingRight
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   const copyrightStyle = {
@@ -116,7 +113,10 @@ function Save({
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      paddingLeft: `${paddingLeft}px`,
+      // Apply padding dynamically
+      paddingRight: `${paddingRight}px` // Apply padding dynamically
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "span",

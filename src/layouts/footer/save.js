@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function Save({ attributes }) {
-    const { copyright } = attributes;
+    const { copyright, paddingLeft, paddingRight } = attributes;
     const blockProps = useBlockProps.save();
 
     const copyrightStyle = {
@@ -18,9 +18,16 @@ export default function Save({ attributes }) {
     return (
         <div
             {...blockProps}
-            style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                paddingLeft: `${paddingLeft}px`,  // Apply padding dynamically
+                paddingRight: `${paddingRight}px`, // Apply padding dynamically
+            }}
         >
-            {/* Виведення copyright */}
+            {/* Display copyright */}
             <RichText.Content 
                 tagName="span"
                 value={copyright}
