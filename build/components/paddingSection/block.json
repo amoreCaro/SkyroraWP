@@ -1,0 +1,23 @@
+{
+  "apiVersion": 2,
+  "name": "app/padding-section",
+  "title": "Padding Section",
+  "category": "layout",
+  "icon": "align-center",
+  "description": "A block to add padding adjustments.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "paddingLeft": {
+      "type": "number",
+      "default": 48
+    },
+    "paddingRight": {
+      "type": "number",
+      "default": 48
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style.css"
+}

@@ -31,7 +31,9 @@ function Edit({
     id,
     imgUrl,
     text1,
-    text2
+    text2,
+    paddingLeft,
+    paddingRight
   } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const isEditable = attributes.isEditable !== false;
@@ -56,10 +58,36 @@ function Edit({
       });
     }
   };
+  const onChangePaddingLeft = value => {
+    // Ensure the value is a valid number before updating the attribute
+    const paddingValue = value ? parseInt(value) : 0;
+    setAttributes({
+      paddingLeft: paddingValue
+    });
+  };
+  const onChangePaddingRight = value => {
+    // Ensure the value is a valid number before updating the attribute
+    const paddingValue = value ? parseInt(value) : 0;
+    setAttributes({
+      paddingRight: paddingValue
+    });
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Block Settings",
     initialOpen: true
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Padding Left (px)",
+    value: paddingLeft,
+    onChange: onChangePaddingLeft,
+    type: "number",
+    min: 0
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Padding Right (px)",
+    value: paddingRight,
+    onChange: onChangePaddingRight,
+    type: "number",
+    min: 0
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     id: id,
     ...blockProps
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -67,7 +95,11 @@ function Edit({
     style: {
       display: 'flex',
       justifyContent: 'space-between',
-      background: '#181b24'
+      background: '#181b24',
+      paddingLeft: `${paddingLeft}px`,
+      paddingRight: `${paddingRight}px`,
+      paddingTop: '20px',
+      paddingBottom: '32px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
@@ -113,7 +145,8 @@ function Edit({
     value: text1,
     onChange: onChangeText1,
     style: {
-      margin: '0px 0px 8px 0px'
+      margin: '0px 0px 8px 0px',
+      color: '#FFFFFF'
     },
     disabled: !isEditable
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
@@ -122,7 +155,8 @@ function Edit({
     value: text2,
     onChange: onChangeText2,
     style: {
-      margin: '0px'
+      margin: '0px',
+      color: '#FFFFFF'
     },
     disabled: !isEditable
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -204,13 +238,15 @@ function Save({
     tagName: "p",
     value: text1,
     style: {
-      margin: '0px 0px 8px 0px'
+      margin: '0px 0px 8px 0px',
+      color: '#FFFFFF'
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "p",
     value: text2,
     style: {
-      margin: '0px'
+      margin: '0px',
+      color: '#FFFFFF'
     }
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {

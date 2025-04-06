@@ -45,12 +45,12 @@ export default function Save({ attributes }) {
                     <RichText.Content
                         tagName="p"
                         value={text1}
-                        style={{ margin: '0px 0px 8px 0px' }}
+                        style={{ margin: '0px 0px 8px 0px', color: '#FFFFFF' }}
                     />
                     <RichText.Content
                         tagName="p"
                         value={text2}
-                        style={{ margin: '0px' }}
+                        style={{ margin: '0px', color: '#FFFFFF' }}
                     />
                 </div>
                 <div

@@ -3,13 +3,13 @@ import {
     InspectorControls,
     RichText,
     MediaUpload,
-    MediaUploadCheck
+    MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { PanelBody, Button } from '@wordpress/components';
+import { PanelBody, Button, TextControl } from '@wordpress/components';
 import './editor.css';
 
 export default function Edit({ attributes, setAttributes }) {
-    const { id, imgUrl, text1, text2 } = attributes;
+    const { id, imgUrl, text1, text2, paddingLeft, paddingRight } = attributes;
     const blockProps = useBlockProps();
 
     const isEditable = attributes.isEditable !== false;
@@ -32,20 +32,55 @@ export default function Edit({ attributes, setAttributes }) {
         }
     };
 
+    const onChangePaddingLeft = (value) => {
+        // Ensure the value is a valid number before updating the attribute
+        const paddingValue = value ? parseInt(value) : 0;
+        setAttributes({ paddingLeft: paddingValue });
+    };
+
+    const onChangePaddingRight = (value) => {
+        // Ensure the value is a valid number before updating the attribute
+        const paddingValue = value ? parseInt(value) : 0;
+        setAttributes({ paddingRight: paddingValue });
+    };
+
     return (
         <>
             <InspectorControls>
                 <PanelBody title="Block Settings" initialOpen={true}>
-                    {/* Additional settings can be added here */}
+                    {/* Fields for changing padding with TextControl */}
+                    <TextControl
+                        label="Padding Left (px)"
+                        value={paddingLeft}
+                        onChange={onChangePaddingLeft}
+                        type="number"
+                        min={0}
+                    />
+                    <TextControl
+                        label="Padding Right (px)"
+                        value={paddingRight}
+                        onChange={onChangePaddingRight}
+                        type="number"
+                        min={0}
+                    />
                 </PanelBody>
             </InspectorControls>
             <div id={id} {...blockProps}>
                 <div
                     className="app-block app-block--preview"
-                    style={{ display: 'flex', justifyContent: 'space-between', background: '#181b24' }}
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        background: '#181b24',
+                        paddingLeft: `${paddingLeft}px`,  
+                        paddingRight: `${paddingRight}px`,  
+                        paddingTop:'20px',
+                        paddingBottom:'32px'
+                    }}
                 >
+                    {/* logo */}
                     <div>
-                        <div style={{ maxWidth: '114px', height: '60px', width: '100%', }}>
+                        <div style={{ maxWidth: '114px', height: '60px', width: '100%' }}>
                             {imgUrl ? (
                                 <img
                                     src={imgUrl}
@@ -74,6 +109,7 @@ export default function Edit({ attributes, setAttributes }) {
                             />
                         </MediaUploadCheck>
                     </div>
+                    {/* header__right */}
                     <div style={{ position: 'relative' }}>
                         <div
                             style={{
@@ -88,7 +124,7 @@ export default function Edit({ attributes, setAttributes }) {
                                 placeholder="Enter the first text..."
                                 value={text1}
                                 onChange={onChangeText1}
-                                style={{ margin: '0px 0px 8px 0px' }}
+                                style={{ margin: '0px 0px 8px 0px', color: '#FFFFFF' }}
                                 disabled={!isEditable}
                             />
                             <RichText
@@ -96,7 +132,7 @@ export default function Edit({ attributes, setAttributes }) {
                                 placeholder="Enter the second text..."
                                 value={text2}
                                 onChange={onChangeText2}
-                                style={{ margin: '0px' }}
+                                style={{ margin: '0px', color: '#FFFFFF' }}
                                 disabled={!isEditable}
                             />
                         </div>
