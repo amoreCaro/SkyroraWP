@@ -41,12 +41,12 @@ export default function Edit({ attributes, setAttributes }) {
                         onChange={(value) => updateListItem(value, index)}
                         placeholder={`Column ${index + 1}`}
                         style={{
-                            background: '#232125',
-                            color: '#FBFBFB',
-                            padding: '10px',
-                            borderRadius: '8px',
-                            minWidth: '150px',
-                            textAlign: 'center'
+                            fontSize:'12px',
+                            lineHeight:'100%',
+                            color: '#FFFFFF',
+                            gap: '16px',
+                            textAlign: 'center',
+                            textTransform:'uppercase'
                         }}
                     />
                 ))}
@@ -54,11 +54,10 @@ export default function Edit({ attributes, setAttributes }) {
 
             <button onClick={addListItem} style={{
                 marginTop: '20px',
-                backgroundColor: '#7D0AF2',
+                backgroundColor: '#164BDC',
                 color: 'white',
                 padding: '8px 16px',
                 border: 'none',
-                borderRadius: '6px',
                 cursor: 'pointer'
             }}>
                 Додати колонку

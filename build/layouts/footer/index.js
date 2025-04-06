@@ -77,22 +77,21 @@ function Edit({
     onChange: value => updateListItem(value, index),
     placeholder: `Column ${index + 1}`,
     style: {
-      background: '#232125',
-      color: '#FBFBFB',
-      padding: '10px',
-      borderRadius: '8px',
-      minWidth: '150px',
-      textAlign: 'center'
+      fontSize: '12px',
+      lineHeight: '100%',
+      color: '#FFFFFF',
+      gap: '16px',
+      textAlign: 'center',
+      textTransform: 'uppercase'
     }
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: addListItem,
     style: {
       marginTop: '20px',
-      backgroundColor: '#7D0AF2',
+      backgroundColor: '#164BDC',
       color: 'white',
       padding: '8px 16px',
       border: 'none',
-      borderRadius: '6px',
       cursor: 'pointer'
     }
   }, "\u0414\u043E\u0434\u0430\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
@@ -176,21 +175,20 @@ function Save({
     }
   }, listItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     key: index,
-    tagName: "div",
+    tagName: "a",
     value: item,
     style: {
-      background: '#232125',
-      color: '#FBFBFB',
-      padding: '10px',
-      borderRadius: '8px',
-      minWidth: '150px',
-      textAlign: 'center'
+      fontSize: '12px',
+      lineHeight: '100%',
+      color: '#FFFFFF',
+      gap: '16px',
+      textAlign: 'center',
+      textTransform: 'uppercase'
     }
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    tagName: "span",
-    value: copyright,
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    href: "#",
     style: copyrightStyle
-  }));
+  }, copyright));
 }
 
 /***/ }),

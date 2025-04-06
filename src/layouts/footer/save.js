@@ -24,8 +24,8 @@ export default function Save({ attributes }) {
                 justifyContent: 'center',
                 alignItems: 'center',
                 background: '#181B24',
-                paddingTop:'30px',
-                paddingBottom:'48px',
+                paddingTop: '30px',
+                paddingBottom: '48px',
                 paddingLeft: `${paddingLeft}px`,
                 paddingRight: `${paddingRight}px`,
             }}
@@ -34,25 +34,25 @@ export default function Save({ attributes }) {
                 {listItems.map((item, index) => (
                     <RichText.Content
                         key={index}
-                        tagName="div"
+                        tagName="a"
                         value={item}
                         style={{
-                            background: '#232125',
-                            color: '#FBFBFB',
-                            padding: '10px',
-                            borderRadius: '8px',
-                            minWidth: '150px',
-                            textAlign: 'center'
+                            fontSize: '12px',
+                            lineHeight: '100%',
+                            color: '#FFFFFF',
+                            gap: '16px',
+                            textAlign: 'center',
+                            textTransform: 'uppercase'
                         }}
                     />
                 ))}
             </div>
 
-            <RichText.Content 
-                tagName="span"
-                value={copyright}
-                style={copyrightStyle}
-            />
+
+            <span href="#" style={copyrightStyle}>
+                {copyright}
+            </span>
+
         </div>
     );
 }
