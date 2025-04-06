@@ -48,20 +48,6 @@ function Edit({
       });
     }
   }, []);
-  const handleAddListItem = () => {
-    if (newListItem.trim() !== "" && newListItemLink.trim() !== "") {
-      const updatedList = [...listItems, {
-        text: newListItem,
-        link: newListItemLink
-      } // Додаємо текст і посилання
-      ];
-      setAttributes({
-        listItems: updatedList
-      });
-      setNewListItem("");
-      setNewListItemLink(""); // Очищаємо поле для посилання
-    }
-  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
     style: {
@@ -86,57 +72,7 @@ function Edit({
       textTransform: 'uppercase',
       color: "#B8BDCC"
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
-    value: newListItem,
-    onChange: e => setNewListItem(e.target.value),
-    placeholder: "Enter list item",
-    style: {
-      marginTop: '10px',
-      padding: '5px'
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
-    value: newListItemLink,
-    onChange: e => setNewListItemLink(e.target.value),
-    placeholder: "Enter link for list item",
-    style: {
-      marginTop: '10px',
-      padding: '5px'
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    onClick: handleAddListItem,
-    style: {
-      marginTop: '10px',
-      padding: '5px 10px',
-      backgroundColor: '#7D0AF2',
-      color: 'white'
-    }
-  }, "Add list"), listItems && listItems.length > 0 && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", {
-    style: {
-      listStyleType: 'none',
-      paddingLeft: 0,
-      marginTop: '20px'
-    }
-  }, listItems.map((item, index) =>
-  // Перевірка на наявність посилання
-  item.link ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-    key: index,
-    style: {
-      color: "#B8BDCC",
-      textAlign: 'center'
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: item.link,
-    target: "_blank",
-    rel: "noopener noreferrer"
-  }, item.text)) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", {
-    key: index,
-    style: {
-      color: "#B8BDCC",
-      textAlign: 'center'
-    }
-  }, item.text))));
+  }));
 }
 
 /***/ }),

@@ -9,6 +9,7 @@ add_filter( 'allowed_block_types_all', 'theme_allowed_blocks', 10, 2 );
 
 function theme_allowed_blocks( $allowed_blocks, $block_editor_context ) {
     return array(
+        'core/columns',
         'app/header',
         'app/heading',
         'app/paragraph',
