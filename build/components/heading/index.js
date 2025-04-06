@@ -167,13 +167,13 @@ const HeadingEdit = ({
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Block Settings', 'custom-heading'),
     initialOpen: true
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Left (px)', 'custom-heading'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Left (rem)', 'custom-heading'),
     value: paddingLeft || 0,
     onChange: onChangePaddingLeft,
     type: "number",
     min: 0
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Right (px)', 'custom-heading'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Right (rem)', 'custom-heading'),
     value: paddingRight || 0,
     onChange: onChangePaddingRight,
     type: "number",
@@ -188,8 +188,8 @@ const HeadingEdit = ({
         fontFamily,
         textTransform,
         textAlign,
-        paddingLeft: `${paddingLeft}px`,
-        paddingRight: `${paddingRight}px`
+        paddingLeft: `${paddingLeft}rem`,
+        paddingRight: `${paddingRight}rem`
       }
     }),
     tagName: `h${level}`,
@@ -268,8 +268,8 @@ const save = ({
       fontFamily,
       textTransform,
       textAlign,
-      paddingLeft: `${paddingLeft}px`,
-      paddingRight: `${paddingRight}px`
+      paddingLeft: `${paddingLeft}rem`,
+      paddingRight: `${paddingRight}rem`
     }
   }));
 };

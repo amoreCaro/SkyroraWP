@@ -23,6 +23,9 @@ export default function Save({ attributes }) {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
+                background: '#181B24',
+                paddingTop:'30px',
+                paddingBottom:'48px',
                 paddingLeft: `${paddingLeft}px`,  // Apply padding dynamically
                 paddingRight: `${paddingRight}px`, // Apply padding dynamically
             }}

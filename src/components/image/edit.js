@@ -18,8 +18,8 @@ const ImageEdit = ({ attributes, setAttributes }) => {
         margin: "24px 0",
         maxWidth: "544px",
         width: "100%",
-        paddingLeft: `${paddingLeft || 48}px`,
-        paddingRight: `${paddingRight || 48}px`,
+        paddingLeft: `${paddingLeft || 3}rem`,
+        paddingRight: `${paddingRight || 3}rem`,
     };
 
     const image = {
@@ -42,13 +42,13 @@ const ImageEdit = ({ attributes, setAttributes }) => {
             <InspectorControls>
                 <PanelBody title={__('Image Settings', 'custom-image')}>
                     <TextControl
-                        label={__('Padding Left (px)', 'custom-image')}
+                        label={__('Padding Left (rem)', 'custom-image')}
                         type="number"
                         value={paddingLeft}
                         onChange={(val) => setAttributes({ paddingLeft: val })}
                     />
                     <TextControl
-                        label={__('Padding Right (px)', 'custom-image')}
+                        label={__('Padding Right (rem)', 'custom-image')}
                         type="number"
                         value={paddingRight}
                         onChange={(val) => setAttributes({ paddingRight: val })}

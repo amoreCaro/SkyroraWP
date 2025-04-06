@@ -8,8 +8,8 @@ export default function save({ attributes }) {
         margin: "24px 0",
         maxWidth: "544px",
         width: "100%",
-        paddingLeft: `${paddingLeft || 48}px`,
-        paddingRight: `${paddingRight || 48}px`,
+        paddingLeft: `${paddingLeft || 3}rem`,
+        paddingRight: `${paddingRight || 3}rem`,
     };
 
     const image = {

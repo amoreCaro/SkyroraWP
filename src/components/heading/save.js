@@ -47,8 +47,8 @@ const save = ({ attributes }) => {
           fontFamily,
           textTransform,
           textAlign,
-          paddingLeft: `${paddingLeft}px`,
-          paddingRight: `${paddingRight}px`,
+          paddingLeft: `${paddingLeft}rem`,
+          paddingRight: `${paddingRight}rem`,
         }}
       />
     </div>

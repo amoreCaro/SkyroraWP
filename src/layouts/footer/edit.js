@@ -16,8 +16,10 @@ export default function Edit({ attributes, setAttributes }) {
     }, []);
 
     return (
-        <div {...blockProps} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-
+        <div {...blockProps} style={{
+            display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: '#181B24', paddingTop: '30px', paddingBottom: '48px',
+        }}>
+            
             <RichText
                 tagName="p"
                 value={copyright}

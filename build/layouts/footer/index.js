@@ -49,7 +49,10 @@ function Edit({
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+      background: '#181B24',
+      paddingTop: '30px',
+      paddingBottom: '48px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "p",
@@ -114,6 +117,9 @@ function Save({
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
+      background: '#181B24',
+      paddingTop: '30px',
+      paddingBottom: '48px',
       paddingLeft: `${paddingLeft}px`,
       // Apply padding dynamically
       paddingRight: `${paddingRight}px` // Apply padding dynamically

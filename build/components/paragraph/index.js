@@ -121,7 +121,7 @@ const ParagraphEdit = ({
       textTransform: newTransform
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: "Padding Left (px)",
+    label: "Padding Left (rem)",
     value: paddingLeft || 0,
     onChange: value => setAttributes({
       paddingLeft: value
@@ -129,7 +129,7 @@ const ParagraphEdit = ({
     type: "number",
     min: 0
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: "Padding Right (px)",
+    label: "Padding Right (rem)",
     value: paddingRight || 0,
     onChange: value => setAttributes({
       paddingRight: value
@@ -146,8 +146,8 @@ const ParagraphEdit = ({
         fontFamily,
         textTransform,
         textAlign,
-        paddingLeft: `${paddingLeft || 48}px`,
-        paddingRight: `${paddingRight || 48}px`
+        paddingLeft: `${paddingLeft || 3}rem`,
+        paddingRight: `${paddingRight || 3}rem`
       }
     }),
     tagName: "p",

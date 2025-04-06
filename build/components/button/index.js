@@ -166,7 +166,8 @@ const save = ({
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
       style: {
         marginBottom: '20px',
-        marginTop: '20px'
+        marginTop: '20px',
+        marginLeft: '48px'
       }
     })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {

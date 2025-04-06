@@ -9,6 +9,7 @@ const save = ({ attributes }) => {
                 style: {
                     marginBottom: '20px',  
                     marginTop: '20px',    
+                    marginLeft: '48px'
                 },
             })}
         >

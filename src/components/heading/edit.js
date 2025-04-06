@@ -150,14 +150,14 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
         {/* Separate Padding Controls */}
         <PanelBody title={__('Block Settings', 'custom-heading')} initialOpen={true}>
           <TextControl
-            label={__('Padding Left (px)', 'custom-heading')}
+            label={__('Padding Left (rem)', 'custom-heading')}
             value={paddingLeft || 0}
             onChange={onChangePaddingLeft}
             type="number"
             min={0}
           />
           <TextControl
-            label={__('Padding Right (px)', 'custom-heading')}
+            label={__('Padding Right (rem)', 'custom-heading')}
             value={paddingRight || 0}
             onChange={onChangePaddingRight}
             type="number"
@@ -177,8 +177,8 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
             fontFamily,
             textTransform,
             textAlign,
-            paddingLeft: `${paddingLeft}px`,
-            paddingRight: `${paddingRight}px`,
+            paddingLeft: `${paddingLeft}rem`,
+            paddingRight: `${paddingRight}rem`,
           },
         })}
         tagName={`h${level}`}

@@ -38,8 +38,8 @@ const ImageEdit = ({
     margin: "24px 0",
     maxWidth: "544px",
     width: "100%",
-    paddingLeft: `${paddingLeft || 48}px`,
-    paddingRight: `${paddingRight || 48}px`
+    paddingLeft: `${paddingLeft || 3}rem`,
+    paddingRight: `${paddingRight || 3}rem`
   };
   const image = {
     width: "100%",
@@ -62,14 +62,14 @@ const ImageEdit = ({
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Image Settings', 'custom-image')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Left (px)', 'custom-image'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Left (rem)', 'custom-image'),
     type: "number",
     value: paddingLeft,
     onChange: val => setAttributes({
       paddingLeft: val
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Right (px)', 'custom-image'),
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Right (rem)', 'custom-image'),
     type: "number",
     value: paddingRight,
     onChange: val => setAttributes({
@@ -137,8 +137,8 @@ function save({
     margin: "24px 0",
     maxWidth: "544px",
     width: "100%",
-    paddingLeft: `${paddingLeft || 48}px`,
-    paddingRight: `${paddingRight || 48}px`
+    paddingLeft: `${paddingLeft || 3}rem`,
+    paddingRight: `${paddingRight || 3}rem`
   };
   const image = {
     width: "100%",

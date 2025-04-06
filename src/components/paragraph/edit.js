@@ -75,14 +75,14 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                     />
                     {/* Padding Controls */}
                     <TextControl
-                        label="Padding Left (px)"
+                        label="Padding Left (rem)"
                         value={paddingLeft || 0}
                         onChange={(value) => setAttributes({ paddingLeft: value })}
                         type="number"
                         min={0}
                     />
                     <TextControl
-                        label="Padding Right (px)"
+                        label="Padding Right (rem)"
                         value={paddingRight || 0}
                         onChange={(value) => setAttributes({ paddingRight: value })}
                         type="number"
@@ -101,8 +101,8 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                         fontFamily,
                         textTransform,
                         textAlign,
-                        paddingLeft: `${paddingLeft || 48}px`,
-                        paddingRight: `${paddingRight || 48}px`,
+                        paddingLeft: `${paddingLeft || 3}rem`,
+                        paddingRight: `${paddingRight || 3}rem`,
                     },
                 })}
                 tagName="p"
