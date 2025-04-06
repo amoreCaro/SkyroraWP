@@ -28,21 +28,29 @@ function Edit({
   setAttributes
 }) {
   const {
-    copyright
+    copyright,
+    listItems = []
   } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
-    if (!attributes.copyright) {
+    if (!copyright) {
       setAttributes({
         copyright: "© 2025 SKYRORA LIMITED"
       });
     }
-    if (!attributes.listItems) {
-      setAttributes({
-        listItems: []
-      });
-    }
   }, []);
+  const updateListItem = (value, index) => {
+    const newItems = [...listItems];
+    newItems[index] = value;
+    setAttributes({
+      listItems: newItems
+    });
+  };
+  const addListItem = () => {
+    setAttributes({
+      listItems: [...listItems, ""]
+    });
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
     style: {
@@ -54,11 +62,44 @@ function Edit({
       paddingTop: '30px',
       paddingBottom: '48px'
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "footer-columns",
+    style: {
+      display: 'flex',
+      gap: '20px',
+      flexWrap: 'wrap',
+      justifyContent: 'center'
+    }
+  }, listItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    key: index,
+    tagName: "div",
+    value: item,
+    onChange: value => updateListItem(value, index),
+    placeholder: `Column ${index + 1}`,
+    style: {
+      background: '#232125',
+      color: '#FBFBFB',
+      padding: '10px',
+      borderRadius: '8px',
+      minWidth: '150px',
+      textAlign: 'center'
+    }
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: addListItem,
+    style: {
+      marginTop: '20px',
+      backgroundColor: '#7D0AF2',
+      color: 'white',
+      padding: '8px 16px',
+      border: 'none',
+      borderRadius: '6px',
+      cursor: 'pointer'
+    }
+  }, "\u0414\u043E\u0434\u0430\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "p",
     value: copyright,
-    onChange: newCopyright => setAttributes({
-      copyright: newCopyright
+    onChange: newVal => setAttributes({
+      copyright: newVal
     }),
     placeholder: "Enter copyright text",
     style: {
@@ -68,7 +109,8 @@ function Edit({
       letterSpacing: '0px',
       textAlign: 'center',
       textTransform: 'uppercase',
-      color: "#B8BDCC"
+      color: "#B8BDCC",
+      marginTop: '24px'
     }
   }));
 }
@@ -97,7 +139,8 @@ function Save({
   const {
     copyright,
     paddingLeft,
-    paddingRight
+    paddingRight,
+    listItems = []
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   const copyrightStyle = {
@@ -105,10 +148,10 @@ function Save({
     fontWeight: 400,
     fontSize: '12px',
     lineHeight: '100%',
-    letterSpacing: '0px',
     textAlign: 'center',
     textTransform: 'uppercase',
-    color: "#B8BDCC"
+    color: "#B8BDCC",
+    marginTop: '24px'
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
@@ -121,10 +164,29 @@ function Save({
       paddingTop: '30px',
       paddingBottom: '48px',
       paddingLeft: `${paddingLeft}px`,
-      // Apply padding dynamically
-      paddingRight: `${paddingRight}px` // Apply padding dynamically
+      paddingRight: `${paddingRight}px`
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "footer-columns",
+    style: {
+      display: 'flex',
+      gap: '20px',
+      flexWrap: 'wrap',
+      justifyContent: 'center'
+    }
+  }, listItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    key: index,
+    tagName: "div",
+    value: item,
+    style: {
+      background: '#232125',
+      color: '#FBFBFB',
+      padding: '10px',
+      borderRadius: '8px',
+      minWidth: '150px',
+      textAlign: 'center'
+    }
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "span",
     value: copyright,
     style: copyrightStyle
@@ -191,7 +253,7 @@ module.exports = window["wp"]["element"];
   \***************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"title":"Footer","description":"","name":"app/footer","category":"advanced","icon":"star-filled","keywords":["layouts"],"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/footer","title":"Footer","category":"advanced","icon":"star-filled","description":"Footer block with customizable columns and copyright.","supports":{"html":false},"attributes":{"copyright":{"type":"string","default":"© 2025 SKYRORA LIMITED"},"paddingLeft":{"type":"number","default":0},"paddingRight":{"type":"number","default":0},"listItems":{"type":"array","default":[]}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
 
 /***/ })
 

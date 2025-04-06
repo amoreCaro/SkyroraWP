@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function Save({ attributes }) {
-    const { copyright, paddingLeft, paddingRight } = attributes;
+    const { copyright, paddingLeft, paddingRight, listItems = [] } = attributes;
     const blockProps = useBlockProps.save();
 
     const copyrightStyle = {
@@ -9,10 +9,10 @@ export default function Save({ attributes }) {
         fontWeight: 400,
         fontSize: '12px',
         lineHeight: '100%',
-        letterSpacing: '0px',
         textAlign: 'center',
         textTransform: 'uppercase',
-        color: "#B8BDCC"
+        color: "#B8BDCC",
+        marginTop: '24px'
     };
 
     return (
@@ -26,11 +26,28 @@ export default function Save({ attributes }) {
                 background: '#181B24',
                 paddingTop:'30px',
                 paddingBottom:'48px',
-                paddingLeft: `${paddingLeft}px`,  // Apply padding dynamically
-                paddingRight: `${paddingRight}px`, // Apply padding dynamically
+                paddingLeft: `${paddingLeft}px`,
+                paddingRight: `${paddingRight}px`,
             }}
         >
-            {/* Display copyright */}
+            <div className="footer-columns" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                {listItems.map((item, index) => (
+                    <RichText.Content
+                        key={index}
+                        tagName="div"
+                        value={item}
+                        style={{
+                            background: '#232125',
+                            color: '#FBFBFB',
+                            padding: '10px',
+                            borderRadius: '8px',
+                            minWidth: '150px',
+                            textAlign: 'center'
+                        }}
+                    />
+                ))}
+            </div>
+
             <RichText.Content 
                 tagName="span"
                 value={copyright}

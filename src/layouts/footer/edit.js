@@ -3,27 +3,71 @@ import { useEffect } from '@wordpress/element';
 import './editor.css';
 
 export default function Edit({ attributes, setAttributes }) {
-    const { copyright } = attributes;
+    const { copyright, listItems = [] } = attributes;
     const blockProps = useBlockProps();
 
     useEffect(() => {
-        if (!attributes.copyright) {
+        if (!copyright) {
             setAttributes({ copyright: "© 2025 SKYRORA LIMITED" });
-        }
-        if (!attributes.listItems) {
-            setAttributes({ listItems: [] });
         }
     }, []);
 
+    const updateListItem = (value, index) => {
+        const newItems = [...listItems];
+        newItems[index] = value;
+        setAttributes({ listItems: newItems });
+    };
+
+    const addListItem = () => {
+        setAttributes({ listItems: [...listItems, ""] });
+    };
+
     return (
         <div {...blockProps} style={{
-            display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', background: '#181B24', paddingTop: '30px', paddingBottom: '48px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            background: '#181B24',
+            paddingTop: '30px',
+            paddingBottom: '48px'
         }}>
-            
+            <div className="footer-columns" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                {listItems.map((item, index) => (
+                    <RichText
+                        key={index}
+                        tagName="div"
+                        value={item}
+                        onChange={(value) => updateListItem(value, index)}
+                        placeholder={`Column ${index + 1}`}
+                        style={{
+                            background: '#232125',
+                            color: '#FBFBFB',
+                            padding: '10px',
+                            borderRadius: '8px',
+                            minWidth: '150px',
+                            textAlign: 'center'
+                        }}
+                    />
+                ))}
+            </div>
+
+            <button onClick={addListItem} style={{
+                marginTop: '20px',
+                backgroundColor: '#7D0AF2',
+                color: 'white',
+                padding: '8px 16px',
+                border: 'none',
+                borderRadius: '6px',
+                cursor: 'pointer'
+            }}>
+                Додати колонку
+            </button>
+
             <RichText
                 tagName="p"
                 value={copyright}
-                onChange={(newCopyright) => setAttributes({ copyright: newCopyright })}
+                onChange={(newVal) => setAttributes({ copyright: newVal })}
                 placeholder="Enter copyright text"
                 style={{
                     fontWeight: 400,
@@ -32,7 +76,8 @@ export default function Edit({ attributes, setAttributes }) {
                     letterSpacing: '0px',
                     textAlign: 'center',
                     textTransform: 'uppercase',
-                    color: "#B8BDCC"
+                    color: "#B8BDCC",
+                    marginTop: '24px'
                 }}
             />
         </div>
