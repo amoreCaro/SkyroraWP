@@ -59,6 +59,12 @@ const HeadingEdit = ({
         return '2rem';
     }
   };
+  const onChangePaddingLeft = newPadding => setAttributes({
+    paddingLeft: parseInt(newPadding || 0, 10)
+  });
+  const onChangePaddingRight = newPadding => setAttributes({
+    paddingRight: parseInt(newPadding || 0, 10)
+  });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarGroup, null, [1, 2, 3, 4, 5, 6].map(hLevel => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
     key: hLevel,
     isPressed: level === hLevel,
@@ -158,24 +164,20 @@ const HeadingEdit = ({
       textTransform: newTransform
     })
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Settings', 'custom-heading'),
-    initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Block Settings', 'custom-heading'),
+    initialOpen: true
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Left (px)', 'custom-heading'),
-    value: paddingLeft,
-    onChange: value => setAttributes({
-      paddingLeft: value
-    }),
-    min: 0,
-    max: 100
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    value: paddingLeft || 0,
+    onChange: onChangePaddingLeft,
+    type: "number",
+    min: 0
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Right (px)', 'custom-heading'),
-    value: paddingRight,
-    onChange: value => setAttributes({
-      paddingRight: value
-    }),
-    min: 0,
-    max: 100
+    value: paddingRight || 0,
+    onChange: onChangePaddingRight,
+    type: "number",
+    min: 0
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
       style: {

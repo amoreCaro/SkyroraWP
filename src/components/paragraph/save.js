@@ -9,7 +9,9 @@ const save = ({ attributes }) => {
         fontSize,
         lineHeight,
         fontFamily,
-        textTransform
+        textTransform,
+        paddingLeft,
+        paddingRight,
     } = attributes;
 
     return (
@@ -23,6 +25,8 @@ const save = ({ attributes }) => {
                     fontFamily,
                     textTransform,
                     textAlign,
+                    paddingLeft: `${paddingLeft || 48}px`,
+                    paddingRight: `${paddingRight || 48}px`,
                 }}
                 tagName="p"
                 value={content}

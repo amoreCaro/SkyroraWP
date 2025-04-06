@@ -11,14 +11,15 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
         fontSize,
         lineHeight,
         fontFamily,
-        textTransform
+        textTransform,
+        paddingLeft,
+        paddingRight,
     } = attributes;
 
     return (
         <>
             <InspectorControls>
-                <PanelBody title={__('Paragraph Settings', 'custom-paragraph')}>
-                    {/* Text Align Control */}
+                <PanelBody title={__('Paragraph Settings', 'custom-paragraph')} initialOpen={true}>
                     <SelectControl
                         label={__('Text Align', 'custom-paragraph')}
                         value={textAlign}
@@ -29,13 +30,11 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                         ]}
                         onChange={(newAlign) => setAttributes({ textAlign: newAlign })}
                     />
-                    {/* Text Color Control */}
                     <ColorPalette
                         label={__('Text Color', 'custom-paragraph')}
                         value={color}
                         onChange={(newColor) => setAttributes({ color: newColor })}
                     />
-                    {/* Font Size Control */}
                     <TextControl
                         label={__('Font Size', 'custom-paragraph')}
                         value={fontSize}
@@ -43,19 +42,16 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                         type="number"
                         min={0}
                     />
-                    {/* Line Height Control */}
                     <TextControl
                         label={__('Line Height', 'custom-paragraph')}
                         value={lineHeight}
                         onChange={(newHeight) => setAttributes({ lineHeight: newHeight })}
                     />
-                    {/* Font Family Control */}
                     <TextControl
                         label={__('Font Family', 'custom-paragraph')}
                         value={fontFamily}
                         onChange={(newFont) => setAttributes({ fontFamily: newFont })}
                     />
-                    {/* Font Weight Control */}
                     <SelectControl
                         label={__('Font Weight', 'custom-paragraph')}
                         value={fontWeight}
@@ -66,7 +62,6 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                         ]}
                         onChange={(newWeight) => setAttributes({ fontWeight: newWeight })}
                     />
-                    {/* Text Transform Control */}
                     <SelectControl
                         label={__('Text Transform', 'custom-paragraph')}
                         value={textTransform}
@@ -78,10 +73,24 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                         ]}
                         onChange={(newTransform) => setAttributes({ textTransform: newTransform })}
                     />
+                    {/* Padding Controls */}
+                    <TextControl
+                        label="Padding Left (px)"
+                        value={paddingLeft || 0}
+                        onChange={(value) => setAttributes({ paddingLeft: value })}
+                        type="number"
+                        min={0}
+                    />
+                    <TextControl
+                        label="Padding Right (px)"
+                        value={paddingRight || 0}
+                        onChange={(value) => setAttributes({ paddingRight: value })}
+                        type="number"
+                        min={0}
+                    />
                 </PanelBody>
             </InspectorControls>
 
-            {/* Editable Paragraph Content */}
             <RichText
                 {...useBlockProps({
                     style: {
@@ -92,6 +101,8 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                         fontFamily,
                         textTransform,
                         textAlign,
+                        paddingLeft: `${paddingLeft || 48}px`,
+                        paddingRight: `${paddingRight || 48}px`,
                     },
                 })}
                 tagName="p"

@@ -12,7 +12,6 @@ import {
   TextControl,
   ToolbarGroup,
   ToolbarButton,
-  RangeControl,
 } from '@wordpress/components';
 
 const HeadingEdit = ({ attributes, setAttributes }) => {
@@ -49,6 +48,12 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
     }
   };
 
+  const onChangePaddingLeft = (newPadding) =>
+    setAttributes({ paddingLeft: parseInt(newPadding || 0, 10) });
+
+  const onChangePaddingRight = (newPadding) =>
+    setAttributes({ paddingRight: parseInt(newPadding || 0, 10) });
+
   return (
     <>
       {/* Toolbar for Heading Levels */}
@@ -66,7 +71,7 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
         </ToolbarGroup>
       </BlockControls>
 
-      {/* Sidebar Controls */}
+      {/* Main Controls */}
       <InspectorControls>
         <PanelBody title={__('Heading Settings', 'custom-heading')}>
           <SelectControl
@@ -76,7 +81,9 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
               label: `H${i + 1}`,
               value: i + 1,
             }))}
-            onChange={(newLevel) => setAttributes({ level: parseInt(newLevel, 10) })}
+            onChange={(newLevel) =>
+              setAttributes({ level: parseInt(newLevel, 10) })
+            }
           />
           <SelectControl
             label={__('Text Align', 'custom-heading')}
@@ -91,13 +98,17 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
           <ColorPalette
             label={__('Text Color', 'custom-heading')}
             value={color}
-            onChange={(newColor) => setAttributes({ color: newColor || '#000000' })}
+            onChange={(newColor) =>
+              setAttributes({ color: newColor || '#000000' })
+            }
           />
           <TextControl
             label={__('Font Size (rem)', 'custom-heading')}
             type="number"
             value={fontSize.replace('rem', '')}
-            onChange={(newSize) => setAttributes({ fontSize: `${newSize}rem` })}
+            onChange={(newSize) =>
+              setAttributes({ fontSize: `${newSize}rem` })
+            }
           />
           <TextControl
             label={__('Line Height', 'custom-heading')}
@@ -130,25 +141,27 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
               { label: 'Lowercase', value: 'lowercase' },
               { label: 'Capitalize', value: 'capitalize' },
             ]}
-            onChange={(newTransform) => setAttributes({ textTransform: newTransform })}
+            onChange={(newTransform) =>
+              setAttributes({ textTransform: newTransform })
+            }
           />
         </PanelBody>
 
-        {/* Padding Controls */}
-        <PanelBody title={__('Padding Settings', 'custom-heading')} initialOpen={false}>
-          <RangeControl
+        {/* Separate Padding Controls */}
+        <PanelBody title={__('Block Settings', 'custom-heading')} initialOpen={true}>
+          <TextControl
             label={__('Padding Left (px)', 'custom-heading')}
-            value={paddingLeft}
-            onChange={(value) => setAttributes({ paddingLeft: value })}
+            value={paddingLeft || 0}
+            onChange={onChangePaddingLeft}
+            type="number"
             min={0}
-            max={100}
           />
-          <RangeControl
+          <TextControl
             label={__('Padding Right (px)', 'custom-heading')}
-            value={paddingRight}
-            onChange={(value) => setAttributes({ paddingRight: value })}
+            value={paddingRight || 0}
+            onChange={onChangePaddingRight}
+            type="number"
             min={0}
-            max={100}
           />
         </PanelBody>
       </InspectorControls>

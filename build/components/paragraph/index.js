@@ -36,10 +36,13 @@ const ParagraphEdit = ({
     fontSize,
     lineHeight,
     fontFamily,
-    textTransform
+    textTransform,
+    paddingLeft,
+    paddingRight
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Paragraph Settings', 'custom-paragraph')
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Paragraph Settings', 'custom-paragraph'),
+    initialOpen: true
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Align', 'custom-paragraph'),
     value: textAlign,
@@ -117,6 +120,22 @@ const ParagraphEdit = ({
     onChange: newTransform => setAttributes({
       textTransform: newTransform
     })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: "Padding Left (px)",
+    value: paddingLeft || 0,
+    onChange: value => setAttributes({
+      paddingLeft: value
+    }),
+    type: "number",
+    min: 0
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: "Padding Right (px)",
+    value: paddingRight || 0,
+    onChange: value => setAttributes({
+      paddingRight: value
+    }),
+    type: "number",
+    min: 0
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
       style: {
@@ -126,7 +145,9 @@ const ParagraphEdit = ({
         lineHeight,
         fontFamily,
         textTransform,
-        textAlign
+        textAlign,
+        paddingLeft: `${paddingLeft || 48}px`,
+        paddingRight: `${paddingRight || 48}px`
       }
     }),
     tagName: "p",
@@ -168,7 +189,9 @@ const save = ({
     fontSize,
     lineHeight,
     fontFamily,
-    textTransform
+    textTransform,
+    paddingLeft,
+    paddingRight
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(),
@@ -181,7 +204,9 @@ const save = ({
       lineHeight,
       fontFamily,
       textTransform,
-      textAlign
+      textAlign,
+      paddingLeft: `${paddingLeft || 48}px`,
+      paddingRight: `${paddingRight || 48}px`
     },
     tagName: "p",
     value: content
