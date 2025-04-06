@@ -42,7 +42,7 @@ export default function Edit({ attributes, setAttributes }) {
             <div id={id} {...blockProps}>
                 <div
                     className="app-block app-block--preview"
-                    style={{ display: 'flex', justifyContent: 'space-between' }}
+                    style={{ display: 'flex', justifyContent: 'space-between', background: '#181b24' }}
                 >
                     <div>
                         <div style={{ maxWidth: '114px', height: '60px', width: '100%', }}>

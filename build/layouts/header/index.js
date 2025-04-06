@@ -66,7 +66,8 @@ function Edit({
     className: "app-block app-block--preview",
     style: {
       display: 'flex',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      background: '#181b24'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
@@ -170,7 +171,8 @@ function Save({
     style: {
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center'
+      alignItems: 'center',
+      background: '#181b24'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {

@@ -12,6 +12,7 @@ export default function Save({ attributes }) {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                background: '#181b24'
             }}
         >
             <div>
