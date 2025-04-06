@@ -37,24 +37,26 @@ const HeadingEdit = ({
     fontSize,
     lineHeight,
     fontFamily,
-    textTransform
+    textTransform,
+    paddingLeft,
+    paddingRight
   } = attributes;
   const headingSize = hLevel => {
     switch (hLevel) {
       case 1:
-        return "2.5rem";
+        return '2.5rem';
       case 2:
-        return "2.0rem";
+        return '2.0rem';
       case 3:
-        return "1.75rem";
+        return '1.75rem';
       case 4:
-        return "1.5rem";
+        return '1.5rem';
       case 5:
-        return "1.25rem";
+        return '1.25rem';
       case 6:
-        return "1.0rem";
+        return '1.0rem';
       default:
-        return "2rem";
+        return '2rem';
     }
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarGroup, null, [1, 2, 3, 4, 5, 6].map(hLevel => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
@@ -155,18 +157,37 @@ const HeadingEdit = ({
     onChange: newTransform => setAttributes({
       textTransform: newTransform
     })
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Settings', 'custom-heading'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Left (px)', 'custom-heading'),
+    value: paddingLeft,
+    onChange: value => setAttributes({
+      paddingLeft: value
+    }),
+    min: 0,
+    max: 100
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Right (px)', 'custom-heading'),
+    value: paddingRight,
+    onChange: value => setAttributes({
+      paddingRight: value
+    }),
+    min: 0,
+    max: 100
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
       style: {
         color,
         fontWeight,
-        fontSize: {
-          headingSize
-        },
+        fontSize: headingSize(level),
         lineHeight,
         fontFamily,
         textTransform,
-        textAlign
+        textAlign,
+        paddingLeft: `${paddingLeft}px`,
+        paddingRight: `${paddingRight}px`
       }
     }),
     tagName: `h${level}`,
@@ -209,29 +230,30 @@ const save = ({
     fontSize,
     lineHeight,
     fontFamily,
-    textTransform
+    textTransform,
+    paddingLeft,
+    paddingRight
   } = attributes;
   const headingSize = hLevel => {
     switch (hLevel) {
       case 1:
-        return "2.5rem";
+        return '2.5rem';
       case 2:
-        return "2.0rem";
+        return '2.0rem';
       case 3:
-        return "1.75rem";
+        return '1.75rem';
       case 4:
-        return "1.5rem";
+        return '1.5rem';
       case 5:
-        return "1.25rem";
+        return '1.25rem';
       case 6:
-        return "1.0rem";
+        return '1.0rem';
       default:
-        return "2rem";
+        return '2rem';
     }
   };
-  const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ...blockProps,
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(),
     className: "wp-heading"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: `h${level}`,
@@ -240,11 +262,12 @@ const save = ({
       color,
       fontWeight,
       fontSize: headingSize(level),
-      // Call the function with the correct argument
       lineHeight,
       fontFamily,
       textTransform,
-      textAlign
+      textAlign,
+      paddingLeft: `${paddingLeft}px`,
+      paddingRight: `${paddingRight}px`
     }
   }));
 };
@@ -320,7 +343,7 @@ module.exports = window["wp"]["i18n"];
   \*******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/heading","title":"Custom Heading","category":"advanced","icon":"star-filled","description":"Heading block with customizable styles.","supports":{"html":false},"attributes":{"content":{"type":"string","default":"Enter your heading"},"level":{"type":"number","default":2},"textAlign":{"type":"string","default":"left"},"color":{"type":"string","default":"#1A1A1A"},"fontWeight":{"type":"string","default":"700"},"fontSize":{"type":"string","default":"1.625rem"},"lineHeight":{"type":"string","default":"1.2"},"fontFamily":{"type":"string","default":"Bai Jamjuree, sans-serif"},"textTransform":{"type":"string","default":"uppercase"}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/heading","title":"Custom Heading","category":"advanced","icon":"star-filled","description":"Heading block with customizable styles.","supports":{"html":false},"attributes":{"content":{"type":"string","default":"Enter your heading"},"level":{"type":"number","default":2},"textAlign":{"type":"string","default":"left"},"color":{"type":"string","default":"#1A1A1A"},"fontWeight":{"type":"string","default":"700"},"fontSize":{"type":"string","default":"1.625rem"},"lineHeight":{"type":"string","default":"1.2"},"fontFamily":{"type":"string","default":"Bai Jamjuree, sans-serif"},"textTransform":{"type":"string","default":"uppercase"},"paddingLeft":{"type":"number","default":48},"paddingRight":{"type":"number","default":48}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css"}');
 
 /***/ })
 

@@ -27,6 +27,7 @@ const ImageEdit = ({ attributes, setAttributes }) => {
     };
 
     return (
+        
         <div {...useBlockProps()}>
             <MediaUploadCheck>
                 <div style={imageWrapper} className="wp-image">

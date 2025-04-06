@@ -12,6 +12,7 @@ import {
   TextControl,
   ToolbarGroup,
   ToolbarButton,
+  RangeControl,
 } from '@wordpress/components';
 
 const HeadingEdit = ({ attributes, setAttributes }) => {
@@ -25,26 +26,28 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
     lineHeight,
     fontFamily,
     textTransform,
+    paddingLeft,
+    paddingRight,
   } = attributes;
 
   const headingSize = (hLevel) => {
     switch (hLevel) {
       case 1:
-        return "2.5rem";
+        return '2.5rem';
       case 2:
-        return "2.0rem";
+        return '2.0rem';
       case 3:
-        return "1.75rem";
+        return '1.75rem';
       case 4:
-        return "1.5rem";
+        return '1.5rem';
       case 5:
-        return "1.25rem";
+        return '1.25rem';
       case 6:
-        return "1.0rem";
+        return '1.0rem';
       default:
-        return "2rem";
+        return '2rem';
     }
-  }
+  };
 
   return (
     <>
@@ -130,6 +133,24 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
             onChange={(newTransform) => setAttributes({ textTransform: newTransform })}
           />
         </PanelBody>
+
+        {/* Padding Controls */}
+        <PanelBody title={__('Padding Settings', 'custom-heading')} initialOpen={false}>
+          <RangeControl
+            label={__('Padding Left (px)', 'custom-heading')}
+            value={paddingLeft}
+            onChange={(value) => setAttributes({ paddingLeft: value })}
+            min={0}
+            max={100}
+          />
+          <RangeControl
+            label={__('Padding Right (px)', 'custom-heading')}
+            value={paddingRight}
+            onChange={(value) => setAttributes({ paddingRight: value })}
+            min={0}
+            max={100}
+          />
+        </PanelBody>
       </InspectorControls>
 
       {/* Editable Heading */}
@@ -138,11 +159,13 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
           style: {
             color,
             fontWeight,
-            fontSize: { headingSize },
+            fontSize: headingSize(level),
             lineHeight,
             fontFamily,
             textTransform,
             textAlign,
+            paddingLeft: `${paddingLeft}px`,
+            paddingRight: `${paddingRight}px`,
           },
         })}
         tagName={`h${level}`}

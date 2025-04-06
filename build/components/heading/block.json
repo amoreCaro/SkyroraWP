@@ -44,6 +44,14 @@
     "textTransform": {
       "type": "string",
       "default": "uppercase"
+    },
+    "paddingLeft": {
+      "type": "number",
+      "default": 48
+    },
+    "paddingRight": {
+      "type": "number",
+      "default": 48
     }
   },
   "editorScript": "file:./index.js",
