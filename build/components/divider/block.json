@@ -2,12 +2,12 @@
   "apiVersion": 3,
   "title": "Custom Divider",
   "name": "app/divider",
-  "category": "advanced",
-  "icon": "star-filled",
+  "category": "design",
+  "icon": "minus",
   "keywords": [
     "divider",
-    "block",
-    "separator"
+    "separator",
+    "line"
   ],
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
@@ -19,6 +19,18 @@
     "color": {
       "type": "string",
       "default": "#B8BDCC"
+    },
+    "paddingLeft": {
+      "type": "number",
+      "default": 3
+    },
+    "paddingRight": {
+      "type": "number",
+      "default": 3
+    },
+    "align": {
+      "type": "string",
+      "default": "center"
     }
   },
   "supports": {

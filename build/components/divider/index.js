@@ -32,7 +32,9 @@ const Edit = ({
 }) => {
   const {
     id,
-    color
+    color,
+    paddingLeft,
+    paddingRight
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Divider Settings', 'custom-divider')
@@ -48,12 +50,34 @@ const Edit = ({
     onChange: value => setAttributes({
       color: value
     })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Left (rem)', 'custom-divider'),
+    type: "number",
+    value: paddingLeft,
+    onChange: val => setAttributes({
+      paddingLeft: parseFloat(val)
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Right (rem)', 'custom-divider'),
+    type: "number",
+    value: paddingRight,
+    onChange: val => setAttributes({
+      paddingRight: parseFloat(val)
+    })
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "wp-block wp-divider"
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(),
+    className: "wp-block wp-divider",
     style: {
-      borderColor: color,
-      borderWidth: '1px'
+      paddingTop: '16px',
+      paddingBottom: '16px',
+      paddingLeft: `${paddingLeft}rem`,
+      paddingRight: `${paddingRight}rem`
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "divider-line",
+    style: {
+      borderBottom: `1px solid ${color}`,
+      width: '100%'
     }
   })));
 };
@@ -76,6 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 
+// Save.js
 
 const Save = ({
   attributes
@@ -84,12 +109,16 @@ const Save = ({
     id,
     align,
     style,
-    color
+    color,
+    paddingLeft = 3,
+    paddingRight = 3
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: '16px',
-      marginBottom: '16px'
+      marginBottom: '16px',
+      paddingLeft: `${paddingLeft}rem`,
+      paddingRight: `${paddingRight}rem`
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("hr", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save(),
@@ -186,7 +215,7 @@ module.exports = window["wp"]["i18n"];
   \*******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"title":"Custom Divider","name":"app/divider","category":"advanced","icon":"star-filled","keywords":["divider","block","separator"],"editorScript":"file:./index.js","editorStyle":"file:./editor.css","attributes":{"id":{"type":"string","default":""},"color":{"type":"string","default":"#B8BDCC"}},"supports":{"html":true,"align":["left","center","right"],"customClassName":true}}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"title":"Custom Divider","name":"app/divider","category":"design","icon":"minus","keywords":["divider","separator","line"],"editorScript":"file:./index.js","editorStyle":"file:./editor.css","attributes":{"id":{"type":"string","default":""},"color":{"type":"string","default":"#B8BDCC"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"align":{"type":"string","default":"center"}},"supports":{"html":true,"align":["left","center","right"],"customClassName":true}}');
 
 /***/ })
 
