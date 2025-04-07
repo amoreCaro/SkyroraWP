@@ -31,6 +31,7 @@ function Edit({
   const {
     copyright,
     listItems = [],
+    imageItems = [],
     paddingLeft,
     paddingRight
   } = attributes;
@@ -42,6 +43,8 @@ function Edit({
       });
     }
   }, []);
+
+  // Оновлення елемента списку
   const updateListItem = (value, index) => {
     const newItems = [...listItems];
     newItems[index] = value;
@@ -49,14 +52,50 @@ function Edit({
       listItems: newItems
     });
   };
-  const addListItem = () => {
+
+  // Додавання нової колонки для тексту
+  const addTextColumn = () => {
     setAttributes({
       listItems: [...listItems, ""]
     });
   };
-  const removeListItem = () => {
+
+  // Видалення останньої колонки для тексту
+  const removeTextColumn = () => {
     setAttributes({
       listItems: listItems.slice(0, -1)
+    });
+  };
+
+  // Додавання нової колонки для зображень
+  const addImageColumn = () => {
+    setAttributes({
+      imageItems: [...imageItems, ""]
+    });
+  };
+
+  // Видалення останньої колонки для зображень
+  const removeImageColumn = () => {
+    setAttributes({
+      imageItems: imageItems.slice(0, -1)
+    });
+  };
+
+  // Додавання зображення до колонки
+  const addImageItem = (media, index) => {
+    const newImageItems = [...imageItems];
+    newImageItems[index] = media.url;
+    setAttributes({
+      imageItems: newImageItems
+    });
+  };
+
+  // Видалення зображення з колонки
+  const removeImageItem = index => {
+    const newImageItems = [...imageItems];
+    newImageItems[index] = "";
+    setAttributes({
+      imageItems: newImageItems
     });
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
@@ -78,27 +117,47 @@ function Edit({
     }),
     type: "number",
     min: 0
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    onClick: removeListItem,
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: "Text Columns Controls",
+    initialOpen: true
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    onClick: removeTextColumn,
+    isDestructive: true
+  }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u0443 \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    onClick: addTextColumn
+  }, "\u0414\u043E\u0434\u0430\u0442\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u0443 \u043A\u043E\u043B\u043E\u043D\u043A\u0443")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: "Image Upload Controls",
+    initialOpen: true
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    onClick: removeImageColumn,
+    isDestructive: true
+  }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    onClick: addImageColumn
+  }, "\u0414\u043E\u0434\u0430\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, imageItems.map((_, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: index,
     style: {
-      marginTop: '20px',
-      backgroundColor: 'darkred',
-      color: 'white',
-      padding: '8px 16px',
-      border: 'none',
-      cursor: 'pointer'
+      marginBottom: '10px'
     }
-  }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    onClick: addListItem,
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+    onSelect: media => addImageItem(media, index),
+    allowedTypes: ['image'],
+    value: imageItems[index],
+    render: ({
+      open
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+      onClick: open
+    }, imageItems[index] ? 'Змінити зображення' : 'Додати зображення')
+  }), imageItems[index] && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: imageItems[index],
+    alt: `Column Image ${index + 1}`,
     style: {
-      marginTop: '20px',
-      backgroundColor: '#164BDC',
-      color: 'white',
-      padding: '8px 16px',
-      border: 'none',
-      cursor: 'pointer'
+      maxWidth: '100px',
+      marginTop: '10px'
     }
-  }, "\u0414\u043E\u0434\u0430\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    isDestructive: true,
+    onClick: () => removeImageItem(index)
+  }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F"))))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
     style: {
       display: 'flex',
@@ -112,6 +171,21 @@ function Edit({
       paddingRight: `${paddingRight || 0}rem`
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      display: 'flex',
+      gap: '20px',
+      flexWrap: 'wrap',
+      justifyContent: 'center'
+    }
+  }, imageItems.map((image, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    key: index,
+    src: image,
+    alt: `Column Image ${index + 1}`,
+    style: {
+      width: '100px',
+      height: 'auto'
+    }
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       display: 'flex',
       gap: '20px',
@@ -176,7 +250,8 @@ function Save({
     copyright,
     paddingLeft,
     paddingRight,
-    listItems = []
+    listItems = [],
+    imageItems = []
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   const copyrightStyle = {
@@ -203,6 +278,21 @@ function Save({
       paddingRight: `${paddingRight || 0}rem`
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      display: 'flex',
+      gap: '20px',
+      flexWrap: 'wrap',
+      justifyContent: 'center'
+    }
+  }, imageItems.map((image, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    key: index,
+    src: image,
+    alt: `Column Image ${index + 1}`,
+    style: {
+      width: '100px',
+      height: 'auto'
+    }
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "footer-columns",
     style: {
       display: 'flex',
@@ -284,7 +374,7 @@ module.exports = window["wp"]["element"];
   \***************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/footer","title":"Footer","category":"advanced","icon":"star-filled","description":"Footer block with customizable columns and copyright.","supports":{"html":false},"attributes":{"copyright":{"type":"string","default":"© 2025 SKYRORA LIMITED"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"listItems":{"type":"array","default":[]}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/footer","title":"Footer","category":"advanced","icon":"star-filled","description":"Footer block with customizable columns and copyright.","supports":{"html":false},"attributes":{"copyright":{"type":"string","default":"© 2025 SKYRORA LIMITED"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"listItems":{"type":"array","default":[]},"imageItems":{"type":"array","default":[]}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
 
 /***/ })
 

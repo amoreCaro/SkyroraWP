@@ -24,6 +24,10 @@
     "listItems": {
       "type": "array",
       "default": []
+    },
+    "imageItems": {
+      "type": "array",
+      "default": []
     }
   },
   "editorScript": "file:./index.js",

@@ -1,9 +1,9 @@
-import { useBlockProps, RichText, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, TextControl } from '@wordpress/components';
+import { useBlockProps, RichText, MediaUpload, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, TextControl, Button } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 
 export default function Edit({ attributes, setAttributes }) {
-    const { copyright, listItems = [], paddingLeft, paddingRight } = attributes;
+    const { copyright, listItems = [], imageItems = [], paddingLeft, paddingRight } = attributes;
     const blockProps = useBlockProps();
 
     useEffect(() => {
@@ -12,19 +12,46 @@ export default function Edit({ attributes, setAttributes }) {
         }
     }, []);
 
+    // Оновлення елемента списку
     const updateListItem = (value, index) => {
         const newItems = [...listItems];
         newItems[index] = value;
         setAttributes({ listItems: newItems });
     };
 
-    const addListItem = () => {
+    // Додавання нової колонки для тексту
+    const addTextColumn = () => {
         setAttributes({ listItems: [...listItems, ""] });
     };
-    const removeListItem = () => {
+
+    // Видалення останньої колонки для тексту
+    const removeTextColumn = () => {
         setAttributes({ listItems: listItems.slice(0, -1) });
     };
-    
+
+    // Додавання нової колонки для зображень
+    const addImageColumn = () => {
+        setAttributes({ imageItems: [...imageItems, ""] });
+    };
+
+    // Видалення останньої колонки для зображень
+    const removeImageColumn = () => {
+        setAttributes({ imageItems: imageItems.slice(0, -1) });
+    };
+
+    // Додавання зображення до колонки
+    const addImageItem = (media, index) => {
+        const newImageItems = [...imageItems];
+        newImageItems[index] = media.url;
+        setAttributes({ imageItems: newImageItems });
+    };
+
+    // Видалення зображення з колонки
+    const removeImageItem = (index) => {
+        const newImageItems = [...imageItems];
+        newImageItems[index] = "";
+        setAttributes({ imageItems: newImageItems });
+    };
 
     return (
         <>
@@ -44,26 +71,45 @@ export default function Edit({ attributes, setAttributes }) {
                         type="number"
                         min={0}
                     />
-                     <button onClick={removeListItem} style={{
-                        marginTop: '20px',
-                        backgroundColor: 'darkred',
-                        color: 'white',
-                        padding: '8px 16px',
-                        border: 'none',
-                        cursor: 'pointer'
-                    }}>
-                        Видалити колонку
-                    </button>
-                    <button onClick={addListItem} style={{
-                        marginTop: '20px',
-                        backgroundColor: '#164BDC',
-                        color: 'white',
-                        padding: '8px 16px',
-                        border: 'none',
-                        cursor: 'pointer'
-                    }}>
-                        Додати колонку
-                    </button>
+                </PanelBody>
+
+                <PanelBody title="Text Columns Controls" initialOpen={true}>
+                    <Button onClick={removeTextColumn} isDestructive>
+                        Видалити текстову колонку
+                    </Button>
+                    <Button onClick={addTextColumn}>Додати текстову колонку</Button>
+                </PanelBody>
+
+                <PanelBody title="Image Upload Controls" initialOpen={true}>
+                    <Button onClick={removeImageColumn} isDestructive>
+                        Видалити зображення колонку
+                    </Button>
+                    <Button onClick={addImageColumn}>Додати зображення колонку</Button>
+
+                    <div>
+                        {imageItems.map((_, index) => (
+                            <div key={index} style={{ marginBottom: '10px' }}>
+                                <MediaUpload
+                                    onSelect={(media) => addImageItem(media, index)}
+                                    allowedTypes={['image']}
+                                    value={imageItems[index]}
+                                    render={({ open }) => (
+                                        <Button onClick={open}>
+                                            {imageItems[index] ? 'Змінити зображення' : 'Додати зображення'}
+                                        </Button>
+                                    )}
+                                />
+                                {imageItems[index] && (
+                                    <div>
+                                        <img src={imageItems[index]} alt={`Column Image ${index + 1}`} style={{ maxWidth: '100px', marginTop: '10px' }} />
+                                        <Button isDestructive onClick={() => removeImageItem(index)}>
+                                            Видалити зображення
+                                        </Button>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
                 </PanelBody>
             </InspectorControls>
 
@@ -81,6 +127,12 @@ export default function Edit({ attributes, setAttributes }) {
                     paddingRight: `${paddingRight || 0}rem`
                 }}
             >
+                <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    {imageItems.map((image, index) => (
+                        <img key={index} src={image} alt={`Column Image ${index + 1}`} style={{ width: '100px', height: 'auto' }} />
+                    ))}
+                </div>
+
                 <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
                     {listItems.map((item, index) => (
                         <RichText
@@ -100,7 +152,6 @@ export default function Edit({ attributes, setAttributes }) {
                         />
                     ))}
                 </div>
-
 
                 <RichText
                     tagName="p"

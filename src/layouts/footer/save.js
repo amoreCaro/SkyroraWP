@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function Save({ attributes }) {
-    const { copyright, paddingLeft, paddingRight, listItems = [] } = attributes;
+    const { copyright, paddingLeft, paddingRight, listItems = [], imageItems = [] } = attributes;
     const blockProps = useBlockProps.save();
 
     const copyrightStyle = {
@@ -30,6 +30,12 @@ export default function Save({ attributes }) {
                 paddingRight: `${paddingRight || 0}rem`,
             }}
         >
+
+            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                {imageItems.map((image, index) => (
+                    <img key={index} src={image} alt={`Column Image ${index + 1}`} style={{ width: '100px', height: 'auto' }} />
+                ))}
+            </div>
             <div className="footer-columns" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
                 {listItems.map((item, index) => (
                     <RichText.Content
@@ -46,6 +52,7 @@ export default function Save({ attributes }) {
                     />
                 ))}
             </div>
+
 
             <span style={copyrightStyle}>
                 {copyright}
