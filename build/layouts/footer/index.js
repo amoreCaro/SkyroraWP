@@ -54,6 +54,11 @@ function Edit({
       listItems: [...listItems, ""]
     });
   };
+  const removeListItem = () => {
+    setAttributes({
+      listItems: listItems.slice(0, -1)
+    });
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Padding Controls",
     initialOpen: true
@@ -73,7 +78,27 @@ function Edit({
     }),
     type: "number",
     min: 0
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: removeListItem,
+    style: {
+      marginTop: '20px',
+      backgroundColor: 'darkred',
+      color: 'white',
+      padding: '8px 16px',
+      border: 'none',
+      cursor: 'pointer'
+    }
+  }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: addListItem,
+    style: {
+      marginTop: '20px',
+      backgroundColor: '#164BDC',
+      color: 'white',
+      padding: '8px 16px',
+      border: 'none',
+      cursor: 'pointer'
+    }
+  }, "\u0414\u043E\u0434\u0430\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
     style: {
       display: 'flex',
@@ -87,7 +112,6 @@ function Edit({
       paddingRight: `${paddingRight || 0}rem`
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "footer-columns",
     style: {
       display: 'flex',
       gap: '20px',
@@ -108,17 +132,7 @@ function Edit({
       textAlign: 'center',
       textTransform: 'uppercase'
     }
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    onClick: addListItem,
-    style: {
-      marginTop: '20px',
-      backgroundColor: '#164BDC',
-      color: 'white',
-      padding: '8px 16px',
-      border: 'none',
-      cursor: 'pointer'
-    }
-  }, "\u0414\u043E\u0434\u0430\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "p",
     value: copyright,
     onChange: newVal => setAttributes({

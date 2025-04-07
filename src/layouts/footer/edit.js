@@ -21,6 +21,10 @@ export default function Edit({ attributes, setAttributes }) {
     const addListItem = () => {
         setAttributes({ listItems: [...listItems, ""] });
     };
+    const removeListItem = () => {
+        setAttributes({ listItems: listItems.slice(0, -1) });
+    };
+    
 
     return (
         <>
@@ -40,6 +44,26 @@ export default function Edit({ attributes, setAttributes }) {
                         type="number"
                         min={0}
                     />
+                     <button onClick={removeListItem} style={{
+                        marginTop: '20px',
+                        backgroundColor: 'darkred',
+                        color: 'white',
+                        padding: '8px 16px',
+                        border: 'none',
+                        cursor: 'pointer'
+                    }}>
+                        Видалити колонку
+                    </button>
+                    <button onClick={addListItem} style={{
+                        marginTop: '20px',
+                        backgroundColor: '#164BDC',
+                        color: 'white',
+                        padding: '8px 16px',
+                        border: 'none',
+                        cursor: 'pointer'
+                    }}>
+                        Додати колонку
+                    </button>
                 </PanelBody>
             </InspectorControls>
 
@@ -57,7 +81,7 @@ export default function Edit({ attributes, setAttributes }) {
                     paddingRight: `${paddingRight || 0}rem`
                 }}
             >
-                <div className="footer-columns" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
                     {listItems.map((item, index) => (
                         <RichText
                             key={index}
@@ -77,16 +101,6 @@ export default function Edit({ attributes, setAttributes }) {
                     ))}
                 </div>
 
-                <button onClick={addListItem} style={{
-                    marginTop: '20px',
-                    backgroundColor: '#164BDC',
-                    color: 'white',
-                    padding: '8px 16px',
-                    border: 'none',
-                    cursor: 'pointer'
-                }}>
-                    Додати колонку
-                </button>
 
                 <RichText
                     tagName="p"

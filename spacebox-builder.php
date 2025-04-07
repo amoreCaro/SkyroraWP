@@ -17,7 +17,7 @@ function theme_allowed_blocks( $allowed_blocks, $block_editor_context ) {
         'app/button',
         'app/divider',
         'app/footer',
-        // 'app/padding-section',
+        'app/padding-section',
     );
 }
 
@@ -31,7 +31,7 @@ function register_custom_blocks() {
     register_block_type( __DIR__ . '/build/components/button');
     register_block_type( __DIR__ . '/build/components/divider');
     register_block_type( __DIR__ . '/build/layouts/footer');
-    // register_block_type( __DIR__ . '/build/layouts/padding-section');
+    register_block_type( __DIR__ . '/build/layouts/padding-section');
 
     
     wp_localize_script( 'dynamic-posts-grid-block', 'wpApiSettings', array(

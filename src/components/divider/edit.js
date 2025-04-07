@@ -19,21 +19,18 @@ const Edit = ({ attributes, setAttributes }) => {
                         value={id}
                         onChange={(value) => setAttributes({ id: value })}
                     />
-                    {/* <ColorPalette
+                    <ColorPalette
                         label={__('Color', 'custom-divider')}
                         value={color}
                         onChange={(value) => setAttributes({ color: value })}
-                    /> */}
+                    />
                 </PanelBody>
             </InspectorControls>
+            <div className='wp-block wp-divider'>
+                <div style={{ borderColor: color, borderWidth: '1px'}}>
 
-            <hr
-                id={id}
-                style={{
-                    borderColor: color,
-                    borderWidth: '1px',
-                }}
-            />
+                </div>
+            </div>
         </>
     );
 };

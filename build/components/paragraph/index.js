@@ -38,7 +38,8 @@ const ParagraphEdit = ({
     fontFamily,
     textTransform,
     paddingLeft,
-    paddingRight
+    paddingRight,
+    backgroundColor
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Paragraph Settings', 'custom-paragraph'),
@@ -62,6 +63,12 @@ const ParagraphEdit = ({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Color', 'custom-paragraph'),
     value: color,
+    onChange: newColor => setAttributes({
+      color: newColor
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background Color', 'custom-paragraph'),
+    value: backgroundColor,
     onChange: newColor => setAttributes({
       color: newColor
     })
@@ -147,7 +154,8 @@ const ParagraphEdit = ({
         textTransform,
         textAlign,
         paddingLeft: `${paddingLeft || 3}rem`,
-        paddingRight: `${paddingRight || 3}rem`
+        paddingRight: `${paddingRight || 3}rem`,
+        backgroundColor
       }
     }),
     tagName: "p",
@@ -284,7 +292,7 @@ module.exports = window["wp"]["i18n"];
   \*********************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/paragraph","title":"Custom Paragraph","category":"advanced","icon":"star-filled","description":"Paragraph block with customizable styles.","supports":{"html":false},"attributes":{"content":{"type":"string","default":"Enter your paragraph"},"textAlign":{"type":"string","default":"left"},"color":{"type":"string","default":"#0E0F17"},"fontWeight":{"type":"string","default":"400"},"fontSize":{"type":"string","default":"1rem"},"lineHeight":{"type":"string","default":"1.2"},"fontFamily":{"type":"string","default":"Bai Jamjure, sans-serif"},"textTransform":{"type":"string","default":"none"}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/paragraph","title":"Custom Paragraph","category":"advanced","icon":"star-filled","description":"Paragraph block with customizable styles.","supports":{"html":false},"attributes":{"content":{"type":"string","default":"Enter your paragraph"},"textAlign":{"type":"string","default":"left"},"color":{"type":"string","default":"#0E0F17"},"fontWeight":{"type":"string","default":"400"},"fontSize":{"type":"string","default":"1rem"},"lineHeight":{"type":"string","default":"1.2"},"fontFamily":{"type":"string","default":"Bai Jamjure, sans-serif"},"textTransform":{"type":"string","default":"none"},"backgroundColor":{"type":"string","default":"#FFFFFF"}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
 
 /***/ })
 

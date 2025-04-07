@@ -58,7 +58,7 @@ const ImageEdit = ({ attributes, setAttributes }) => {
 
             <div {...useBlockProps()}>
                 <MediaUploadCheck>
-                    <div style={imageWrapper} className="wp-image">
+                    <div style={imageWrapper} className="wp-block wp-image">
                         {imageUrl ? (
                             <>
                                 <img src={imageUrl} style={image} className="selected-image" alt="Selected" />

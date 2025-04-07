@@ -14,6 +14,7 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
         textTransform,
         paddingLeft,
         paddingRight,
+        backgroundColor,
     } = attributes;
 
     return (
@@ -33,6 +34,11 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                     <ColorPalette
                         label={__('Text Color', 'custom-paragraph')}
                         value={color}
+                        onChange={(newColor) => setAttributes({ color: newColor })}
+                    />
+                     <ColorPalette
+                        label={__('Background Color', 'custom-paragraph')}
+                        value={backgroundColor}
                         onChange={(newColor) => setAttributes({ color: newColor })}
                     />
                     <TextControl
@@ -103,6 +109,7 @@ const ParagraphEdit = ({ attributes, setAttributes }) => {
                         textAlign,
                         paddingLeft: `${paddingLeft || 3}rem`,
                         paddingRight: `${paddingRight || 3}rem`,
+                        backgroundColor
                     },
                 })}
                 tagName="p"

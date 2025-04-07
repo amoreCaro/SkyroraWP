@@ -40,6 +40,10 @@
     "textTransform": {
       "type": "string",
       "default": "none"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#FFFFFF"
     }
   },
   "editorScript": "file:./index.js",
