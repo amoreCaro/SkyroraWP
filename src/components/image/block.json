@@ -1,9 +1,10 @@
 {
   "apiVersion": 3,
-  "title": "Image Component",
   "name": "app/image",
+  "title": "Image Component",
   "category": "advanced",
   "icon": "star-filled",
+  "description": "A custom image block with padding control.",
   "keywords": ["image", "media"],
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
@@ -15,6 +16,22 @@
     "imageId": {
       "type": "number",
       "default": 0
+    },
+    "paddingLeft": {
+      "type": "number",
+      "default": 3
+    },
+    "paddingRight": {
+      "type": "number",
+      "default": 3
+    },
+    "paddingTop": {
+      "type": "number",
+      "default": 24
+    },
+    "paddingBottom": {
+      "type": "number",
+      "default": 24
     }
   },
   "supports": {

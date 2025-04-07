@@ -202,7 +202,8 @@ const HeadingEdit = ({
         paddingTop: `${paddingTop}rem`,
         paddingBottom: `${paddingBottom}rem`,
         paddingLeft: `${paddingLeft}rem`,
-        paddingRight: `${paddingRight}rem`
+        paddingRight: `${paddingRight}rem`,
+        margin: "0px" // Added margin: 0px
       }
     }),
     tagName: `h${level}`,
@@ -286,7 +287,8 @@ const save = ({
       paddingTop: `${paddingTop}rem`,
       paddingBottom: `${paddingBottom}rem`,
       paddingLeft: `${paddingLeft}rem`,
-      paddingRight: `${paddingRight}rem`
+      paddingRight: `${paddingRight}rem`,
+      margin: "0px" // Added margin: 0px
     }
   }));
 };
@@ -362,7 +364,7 @@ module.exports = window["wp"]["i18n"];
   \*******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/heading","title":"Custom Heading","category":"advanced","icon":"star-filled","description":"Heading block with customizable styles.","supports":{"html":false},"attributes":{"content":{"type":"string","default":"Enter your heading"},"level":{"type":"number","default":2},"textAlign":{"type":"string","default":"left"},"color":{"type":"string","default":"#1A1A1A"},"fontWeight":{"type":"string","default":"700"},"fontSize":{"type":"string","default":"1.625rem"},"lineHeight":{"type":"string","default":"1.2"},"fontFamily":{"type":"string","default":"Bai Jamjuree, sans-serif"},"textTransform":{"type":"string","default":"uppercase"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"paddingTop":{"type":"number","default":1.5},"paddingBottom":{"type":"number","default":1.5}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/heading","title":"Custom Heading","category":"advanced","icon":"star-filled","description":"Heading block with customizable styles.","supports":{"html":false},"attributes":{"content":{"type":"string","default":"Enter your heading"},"level":{"type":"number","default":2},"textAlign":{"type":"string","default":"left"},"color":{"type":"string","default":"#1A1A1A"},"fontWeight":{"type":"string","default":"700"},"fontSize":{"type":"string","default":"1.625rem"},"lineHeight":{"type":"string","default":"1.2"},"fontFamily":{"type":"string","default":"Bai Jamjuree, sans-serif"},"textTransform":{"type":"string","default":"uppercase"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"paddingTop":{"type":"number","default":0},"paddingBottom":{"type":"number","default":1.5}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css"}');
 
 /***/ })
 

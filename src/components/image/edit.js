@@ -12,14 +12,23 @@ import {
 } from '@wordpress/components';
 
 const ImageEdit = ({ attributes, setAttributes }) => {
-    const { imageUrl, imageId, paddingLeft, paddingRight } = attributes;
+    const {
+        imageUrl,
+        imageId,
+        paddingLeft,
+        paddingRight,
+        paddingTop,
+        paddingBottom
+    } = attributes;
 
     const imageWrapper = {
-        margin: "24px 0",
-        maxWidth: "544px",
-        width: "100%",
+        paddingTop: `${paddingTop || 24}px`,
+        paddingBottom: `${paddingBottom || 24}px`,
         paddingLeft: `${paddingLeft || 3}rem`,
         paddingRight: `${paddingRight || 3}rem`,
+        maxWidth: "544px",
+        width: "100%",
+        margin: "0",
     };
 
     const image = {
@@ -34,7 +43,7 @@ const ImageEdit = ({ attributes, setAttributes }) => {
     };
 
     const onRemoveImage = () => {
-        setAttributes({ imageUrl: '', imageId: undefined });
+        setAttributes({ imageUrl: '', imageId: 0 });
     };
 
     return (
@@ -42,16 +51,28 @@ const ImageEdit = ({ attributes, setAttributes }) => {
             <InspectorControls>
                 <PanelBody title={__('Image Settings', 'custom-image')}>
                     <TextControl
+                        label={__('Padding Top (px)', 'custom-image')}
+                        type="number"
+                        value={paddingTop}
+                        onChange={(val) => setAttributes({ paddingTop: parseInt(val) })}
+                    />
+                    <TextControl
+                        label={__('Padding Bottom (px)', 'custom-image')}
+                        type="number"
+                        value={paddingBottom}
+                        onChange={(val) => setAttributes({ paddingBottom: parseInt(val) })}
+                    />
+                    <TextControl
                         label={__('Padding Left (rem)', 'custom-image')}
                         type="number"
                         value={paddingLeft}
-                        onChange={(val) => setAttributes({ paddingLeft: val })}
+                        onChange={(val) => setAttributes({ paddingLeft: parseFloat(val) })}
                     />
                     <TextControl
                         label={__('Padding Right (rem)', 'custom-image')}
                         type="number"
                         value={paddingRight}
-                        onChange={(val) => setAttributes({ paddingRight: val })}
+                        onChange={(val) => setAttributes({ paddingRight: parseFloat(val) })}
                     />
                 </PanelBody>
             </InspectorControls>
@@ -61,7 +82,7 @@ const ImageEdit = ({ attributes, setAttributes }) => {
                     <div style={imageWrapper} className="wp-block wp-image">
                         {imageUrl ? (
                             <>
-                                <img src={imageUrl} style={image} className="selected-image" alt="Selected" />
+                                <img src={imageUrl} style={image} className="selected-image" alt={__('Selected Image', 'custom-image')} />
                                 <div className="editor-block-toolbar">
                                     <Button
                                         isLink
@@ -77,8 +98,8 @@ const ImageEdit = ({ attributes, setAttributes }) => {
                                 onSelect={onSelectImage}
                                 allowedTypes={['image']}
                                 render={({ open }) => (
-                                    <Button onClick={open} className="select-image-button">
-                                        {__('Select Image')}
+                                    <Button onClick={open} className="select-image-button" variant="primary">
+                                        {__('Select Image', 'custom-image')}
                                     </Button>
                                 )}
                             />

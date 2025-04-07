@@ -175,6 +175,7 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
             paddingBottom: `${paddingBottom}rem`,
             paddingLeft: `${paddingLeft}rem`,
             paddingRight: `${paddingRight}rem`,
+            margin: "0px" // Added margin: 0px
           },
         })}
         tagName={`h${level}`}

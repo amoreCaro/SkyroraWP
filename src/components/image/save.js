@@ -2,14 +2,22 @@ import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
     const blockProps = useBlockProps.save();
-    const { imageUrl, paddingLeft, paddingRight } = attributes;
+    const {
+        imageUrl,
+        paddingLeft,
+        paddingRight,
+        paddingTop,
+        paddingBottom
+    } = attributes;
 
     const imageWrapper = {
-        margin: "24px 0",
-        maxWidth: "544px",
-        width: "100%",
+        paddingTop: `${paddingTop || 24}px`,
+        paddingBottom: `${paddingBottom || 24}px`,
         paddingLeft: `${paddingLeft || 3}rem`,
         paddingRight: `${paddingRight || 3}rem`,
+        maxWidth: "544px",
+        width: "100%",
+        margin: "0",
     };
 
     const image = {
@@ -23,7 +31,7 @@ export default function save({ attributes }) {
         <div {...blockProps} style={imageWrapper}>
             <img
                 src={imageUrl}
-                alt="Image"
+                alt=""
                 style={image}
             />
         </div>

@@ -55,7 +55,7 @@
     },
     "paddingTop": {
       "type": "number",
-      "default": 1.5
+      "default": 0
     },
     "paddingBottom": {
       "type": "number",
