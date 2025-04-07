@@ -16,9 +16,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.css */ "./src/layouts/footer/editor.css");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -29,10 +30,12 @@ function Edit({
 }) {
   const {
     copyright,
-    listItems = []
+    listItems = [],
+    paddingLeft,
+    paddingRight
   } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
-  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     if (!copyright) {
       setAttributes({
         copyright: "© 2025 SKYRORA LIMITED"
@@ -51,7 +54,26 @@ function Edit({
       listItems: [...listItems, ""]
     });
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    title: "Padding Controls",
+    initialOpen: true
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Padding Left (rem)",
+    value: paddingLeft || 0,
+    onChange: value => setAttributes({
+      paddingLeft: Number(value)
+    }),
+    type: "number",
+    min: 0
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Padding Right (rem)",
+    value: paddingRight || 0,
+    onChange: value => setAttributes({
+      paddingRight: Number(value)
+    }),
+    type: "number",
+    min: 0
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
     style: {
       display: 'flex',
@@ -60,7 +82,9 @@ function Edit({
       alignItems: 'center',
       background: '#181B24',
       paddingTop: '30px',
-      paddingBottom: '48px'
+      paddingBottom: '48px',
+      paddingLeft: `${paddingLeft || 0}rem`,
+      paddingRight: `${paddingRight || 0}rem`
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "footer-columns",
@@ -105,13 +129,12 @@ function Edit({
       fontWeight: 400,
       fontSize: '12px',
       lineHeight: '100%',
-      letterSpacing: '0px',
       textAlign: 'center',
       textTransform: 'uppercase',
       color: "#B8BDCC",
       marginTop: '24px'
     }
-  }));
+  })));
 }
 
 /***/ }),
@@ -162,8 +185,8 @@ function Save({
       background: '#181B24',
       paddingTop: '30px',
       paddingBottom: '48px',
-      paddingLeft: `${paddingLeft}px`,
-      paddingRight: `${paddingRight}px`
+      paddingLeft: `${paddingLeft || 0}rem`,
+      paddingRight: `${paddingRight || 0}rem`
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "footer-columns",
@@ -181,27 +204,13 @@ function Save({
       fontSize: '12px',
       lineHeight: '100%',
       color: '#FFFFFF',
-      gap: '16px',
       textAlign: 'center',
       textTransform: 'uppercase'
     }
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    href: "#",
     style: copyrightStyle
   }, copyright));
 }
-
-/***/ }),
-
-/***/ "./src/layouts/footer/editor.css":
-/*!***************************************!*\
-  !*** ./src/layouts/footer/editor.css ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
 
 /***/ }),
 
@@ -235,6 +244,16 @@ module.exports = window["wp"]["blocks"];
 
 /***/ }),
 
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
+
+/***/ }),
+
 /***/ "@wordpress/element":
 /*!*********************************!*\
   !*** external ["wp","element"] ***!
@@ -251,7 +270,7 @@ module.exports = window["wp"]["element"];
   \***************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/footer","title":"Footer","category":"advanced","icon":"star-filled","description":"Footer block with customizable columns and copyright.","supports":{"html":false},"attributes":{"copyright":{"type":"string","default":"© 2025 SKYRORA LIMITED"},"paddingLeft":{"type":"number","default":0},"paddingRight":{"type":"number","default":0},"listItems":{"type":"array","default":[]}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/footer","title":"Footer","category":"advanced","icon":"star-filled","description":"Footer block with customizable columns and copyright.","supports":{"html":false},"attributes":{"copyright":{"type":"string","default":"© 2025 SKYRORA LIMITED"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"listItems":{"type":"array","default":[]}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
 
 /***/ })
 

@@ -26,8 +26,8 @@ export default function Save({ attributes }) {
                 background: '#181B24',
                 paddingTop: '30px',
                 paddingBottom: '48px',
-                paddingLeft: `${paddingLeft}px`,
-                paddingRight: `${paddingRight}px`,
+                paddingLeft: `${paddingLeft || 0}rem`,
+                paddingRight: `${paddingRight || 0}rem`,
             }}
         >
             <div className="footer-columns" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -40,7 +40,6 @@ export default function Save({ attributes }) {
                             fontSize: '12px',
                             lineHeight: '100%',
                             color: '#FFFFFF',
-                            gap: '16px',
                             textAlign: 'center',
                             textTransform: 'uppercase'
                         }}
@@ -48,11 +47,9 @@ export default function Save({ attributes }) {
                 ))}
             </div>
 
-
-            <span href="#" style={copyrightStyle}>
+            <span style={copyrightStyle}>
                 {copyright}
             </span>
-
         </div>
     );
 }
