@@ -39,7 +39,9 @@ const HeadingEdit = ({
     fontFamily,
     textTransform,
     paddingLeft,
-    paddingRight
+    paddingRight,
+    paddingTop,
+    paddingBottom
   } = attributes;
   const headingSize = hLevel => {
     switch (hLevel) {
@@ -59,11 +61,8 @@ const HeadingEdit = ({
         return '2rem';
     }
   };
-  const onChangePaddingLeft = newPadding => setAttributes({
-    paddingLeft: parseInt(newPadding || 0, 10)
-  });
-  const onChangePaddingRight = newPadding => setAttributes({
-    paddingRight: parseInt(newPadding || 0, 10)
+  const onChangePadding = (side, value) => setAttributes({
+    [side]: parseFloat(value || 0)
   });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarGroup, null, [1, 2, 3, 4, 5, 6].map(hLevel => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
     key: hLevel,
@@ -82,8 +81,8 @@ const HeadingEdit = ({
       label: `H${i + 1}`,
       value: i + 1
     })),
-    onChange: newLevel => setAttributes({
-      level: parseInt(newLevel, 10)
+    onChange: val => setAttributes({
+      level: parseInt(val, 10)
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Align', 'custom-heading'),
@@ -98,35 +97,35 @@ const HeadingEdit = ({
       label: 'Right',
       value: 'right'
     }],
-    onChange: newAlign => setAttributes({
-      textAlign: newAlign
+    onChange: val => setAttributes({
+      textAlign: val
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Color', 'custom-heading'),
     value: color,
-    onChange: newColor => setAttributes({
-      color: newColor || '#000000'
+    onChange: val => setAttributes({
+      color: val || '#000000'
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Size (rem)', 'custom-heading'),
     type: "number",
     value: fontSize.replace('rem', ''),
-    onChange: newSize => setAttributes({
-      fontSize: `${newSize}rem`
+    onChange: val => setAttributes({
+      fontSize: `${val}rem`
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Line Height', 'custom-heading'),
     type: "number",
     step: "0.1",
     value: lineHeight,
-    onChange: newHeight => setAttributes({
-      lineHeight: newHeight
+    onChange: val => setAttributes({
+      lineHeight: val
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Family', 'custom-heading'),
     value: fontFamily,
-    onChange: newFont => setAttributes({
-      fontFamily: newFont
+    onChange: val => setAttributes({
+      fontFamily: val
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Weight', 'custom-heading'),
@@ -141,8 +140,8 @@ const HeadingEdit = ({
       label: 'Bolder',
       value: '900'
     }],
-    onChange: newWeight => setAttributes({
-      fontWeight: newWeight
+    onChange: val => setAttributes({
+      fontWeight: val
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Transform', 'custom-heading'),
@@ -160,22 +159,34 @@ const HeadingEdit = ({
       label: 'Capitalize',
       value: 'capitalize'
     }],
-    onChange: newTransform => setAttributes({
-      textTransform: newTransform
+    onChange: val => setAttributes({
+      textTransform: val
     })
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Block Settings', 'custom-heading'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Settings', 'custom-heading'),
     initialOpen: true
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Top (rem)', 'custom-heading'),
+    value: paddingTop || 0,
+    onChange: val => onChangePadding('paddingTop', val),
+    type: "number",
+    min: 0
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Bottom (rem)', 'custom-heading'),
+    value: paddingBottom || 0,
+    onChange: val => onChangePadding('paddingBottom', val),
+    type: "number",
+    min: 0
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Left (rem)', 'custom-heading'),
     value: paddingLeft || 0,
-    onChange: onChangePaddingLeft,
+    onChange: val => onChangePadding('paddingLeft', val),
     type: "number",
     min: 0
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Right (rem)', 'custom-heading'),
     value: paddingRight || 0,
-    onChange: onChangePaddingRight,
+    onChange: val => onChangePadding('paddingRight', val),
     type: "number",
     min: 0
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -188,14 +199,16 @@ const HeadingEdit = ({
         fontFamily,
         textTransform,
         textAlign,
+        paddingTop: `${paddingTop}rem`,
+        paddingBottom: `${paddingBottom}rem`,
         paddingLeft: `${paddingLeft}rem`,
         paddingRight: `${paddingRight}rem`
       }
     }),
     tagName: `h${level}`,
     value: content,
-    onChange: newContent => setAttributes({
-      content: newContent
+    onChange: val => setAttributes({
+      content: val
     }),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter heading text...', 'custom-heading')
   }));
@@ -234,7 +247,9 @@ const save = ({
     fontFamily,
     textTransform,
     paddingLeft,
-    paddingRight
+    paddingRight,
+    paddingTop,
+    paddingBottom
   } = attributes;
   const headingSize = hLevel => {
     switch (hLevel) {
@@ -268,6 +283,8 @@ const save = ({
       fontFamily,
       textTransform,
       textAlign,
+      paddingTop: `${paddingTop}rem`,
+      paddingBottom: `${paddingBottom}rem`,
       paddingLeft: `${paddingLeft}rem`,
       paddingRight: `${paddingRight}rem`
     }
@@ -345,7 +362,7 @@ module.exports = window["wp"]["i18n"];
   \*******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/heading","title":"Custom Heading","category":"advanced","icon":"star-filled","description":"Heading block with customizable styles.","supports":{"html":false},"attributes":{"content":{"type":"string","default":"Enter your heading"},"level":{"type":"number","default":2},"textAlign":{"type":"string","default":"left"},"color":{"type":"string","default":"#1A1A1A"},"fontWeight":{"type":"string","default":"700"},"fontSize":{"type":"string","default":"1.625rem"},"lineHeight":{"type":"string","default":"1.2"},"fontFamily":{"type":"string","default":"Bai Jamjuree, sans-serif"},"textTransform":{"type":"string","default":"uppercase"},"paddingLeft":{"type":"number","default":48},"paddingRight":{"type":"number","default":48}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/heading","title":"Custom Heading","category":"advanced","icon":"star-filled","description":"Heading block with customizable styles.","supports":{"html":false},"attributes":{"content":{"type":"string","default":"Enter your heading"},"level":{"type":"number","default":2},"textAlign":{"type":"string","default":"left"},"color":{"type":"string","default":"#1A1A1A"},"fontWeight":{"type":"string","default":"700"},"fontSize":{"type":"string","default":"1.625rem"},"lineHeight":{"type":"string","default":"1.2"},"fontFamily":{"type":"string","default":"Bai Jamjuree, sans-serif"},"textTransform":{"type":"string","default":"uppercase"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"paddingTop":{"type":"number","default":1.5},"paddingBottom":{"type":"number","default":1.5}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css"}');
 
 /***/ })
 

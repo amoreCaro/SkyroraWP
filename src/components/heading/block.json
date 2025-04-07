@@ -47,11 +47,19 @@
     },
     "paddingLeft": {
       "type": "number",
-      "default": 48
+      "default": 3
     },
     "paddingRight": {
       "type": "number",
-      "default": 48
+      "default": 3
+    },
+    "paddingTop": {
+      "type": "number",
+      "default": 1.5
+    },
+    "paddingBottom": {
+      "type": "number",
+      "default": 1.5
     }
   },
   "editorScript": "file:./index.js",

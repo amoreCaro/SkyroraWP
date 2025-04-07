@@ -27,36 +27,27 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
     textTransform,
     paddingLeft,
     paddingRight,
+    paddingTop,
+    paddingBottom,
   } = attributes;
 
   const headingSize = (hLevel) => {
     switch (hLevel) {
-      case 1:
-        return '2.5rem';
-      case 2:
-        return '2.0rem';
-      case 3:
-        return '1.75rem';
-      case 4:
-        return '1.5rem';
-      case 5:
-        return '1.25rem';
-      case 6:
-        return '1.0rem';
-      default:
-        return '2rem';
+      case 1: return '2.5rem';
+      case 2: return '2.0rem';
+      case 3: return '1.75rem';
+      case 4: return '1.5rem';
+      case 5: return '1.25rem';
+      case 6: return '1.0rem';
+      default: return '2rem';
     }
   };
 
-  const onChangePaddingLeft = (newPadding) =>
-    setAttributes({ paddingLeft: parseInt(newPadding || 0, 10) });
-
-  const onChangePaddingRight = (newPadding) =>
-    setAttributes({ paddingRight: parseInt(newPadding || 0, 10) });
+  const onChangePadding = (side, value) =>
+    setAttributes({ [side]: parseFloat(value || 0) });
 
   return (
     <>
-      {/* Toolbar for Heading Levels */}
       <BlockControls>
         <ToolbarGroup>
           {[1, 2, 3, 4, 5, 6].map((hLevel) => (
@@ -71,7 +62,6 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
         </ToolbarGroup>
       </BlockControls>
 
-      {/* Main Controls */}
       <InspectorControls>
         <PanelBody title={__('Heading Settings', 'custom-heading')}>
           <SelectControl
@@ -81,9 +71,7 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
               label: `H${i + 1}`,
               value: i + 1,
             }))}
-            onChange={(newLevel) =>
-              setAttributes({ level: parseInt(newLevel, 10) })
-            }
+            onChange={(val) => setAttributes({ level: parseInt(val, 10) })}
           />
           <SelectControl
             label={__('Text Align', 'custom-heading')}
@@ -93,34 +81,30 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
               { label: 'Center', value: 'center' },
               { label: 'Right', value: 'right' },
             ]}
-            onChange={(newAlign) => setAttributes({ textAlign: newAlign })}
+            onChange={(val) => setAttributes({ textAlign: val })}
           />
           <ColorPalette
             label={__('Text Color', 'custom-heading')}
             value={color}
-            onChange={(newColor) =>
-              setAttributes({ color: newColor || '#000000' })
-            }
+            onChange={(val) => setAttributes({ color: val || '#000000' })}
           />
           <TextControl
             label={__('Font Size (rem)', 'custom-heading')}
             type="number"
             value={fontSize.replace('rem', '')}
-            onChange={(newSize) =>
-              setAttributes({ fontSize: `${newSize}rem` })
-            }
+            onChange={(val) => setAttributes({ fontSize: `${val}rem` })}
           />
           <TextControl
             label={__('Line Height', 'custom-heading')}
             type="number"
             step="0.1"
             value={lineHeight}
-            onChange={(newHeight) => setAttributes({ lineHeight: newHeight })}
+            onChange={(val) => setAttributes({ lineHeight: val })}
           />
           <TextControl
             label={__('Font Family', 'custom-heading')}
             value={fontFamily}
-            onChange={(newFont) => setAttributes({ fontFamily: newFont })}
+            onChange={(val) => setAttributes({ fontFamily: val })}
           />
           <SelectControl
             label={__('Font Weight', 'custom-heading')}
@@ -130,7 +114,7 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
               { label: 'Bold', value: '700' },
               { label: 'Bolder', value: '900' },
             ]}
-            onChange={(newWeight) => setAttributes({ fontWeight: newWeight })}
+            onChange={(val) => setAttributes({ fontWeight: val })}
           />
           <SelectControl
             label={__('Text Transform', 'custom-heading')}
@@ -141,32 +125,42 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
               { label: 'Lowercase', value: 'lowercase' },
               { label: 'Capitalize', value: 'capitalize' },
             ]}
-            onChange={(newTransform) =>
-              setAttributes({ textTransform: newTransform })
-            }
+            onChange={(val) => setAttributes({ textTransform: val })}
           />
         </PanelBody>
 
-        {/* Separate Padding Controls */}
-        <PanelBody title={__('Block Settings', 'custom-heading')} initialOpen={true}>
+        <PanelBody title={__('Padding Settings', 'custom-heading')} initialOpen={true}>
+          <TextControl
+            label={__('Padding Top (rem)', 'custom-heading')}
+            value={paddingTop || 0}
+            onChange={(val) => onChangePadding('paddingTop', val)}
+            type="number"
+            min={0}
+          />
+          <TextControl
+            label={__('Padding Bottom (rem)', 'custom-heading')}
+            value={paddingBottom || 0}
+            onChange={(val) => onChangePadding('paddingBottom', val)}
+            type="number"
+            min={0}
+          />
           <TextControl
             label={__('Padding Left (rem)', 'custom-heading')}
             value={paddingLeft || 0}
-            onChange={onChangePaddingLeft}
+            onChange={(val) => onChangePadding('paddingLeft', val)}
             type="number"
             min={0}
           />
           <TextControl
             label={__('Padding Right (rem)', 'custom-heading')}
             value={paddingRight || 0}
-            onChange={onChangePaddingRight}
+            onChange={(val) => onChangePadding('paddingRight', val)}
             type="number"
             min={0}
           />
         </PanelBody>
       </InspectorControls>
 
-      {/* Editable Heading */}
       <RichText
         {...useBlockProps({
           style: {
@@ -177,13 +171,15 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
             fontFamily,
             textTransform,
             textAlign,
+            paddingTop: `${paddingTop}rem`,
+            paddingBottom: `${paddingBottom}rem`,
             paddingLeft: `${paddingLeft}rem`,
             paddingRight: `${paddingRight}rem`,
           },
         })}
         tagName={`h${level}`}
         value={content}
-        onChange={(newContent) => setAttributes({ content: newContent })}
+        onChange={(val) => setAttributes({ content: val })}
         placeholder={__('Enter heading text...', 'custom-heading')}
       />
     </>
