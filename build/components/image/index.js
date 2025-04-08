@@ -46,7 +46,6 @@ const ImageEdit = ({
     margin: "0"
   };
   const image = {
-    width: "100%",
     height: "auto",
     objectFit: "cover",
     display: "block"
@@ -160,7 +159,6 @@ function save({
     paddingLeft: `${paddingLeft || 3}rem`,
     paddingRight: `${paddingRight || 3}rem`,
     maxWidth: "544px",
-    width: "100%",
     margin: "0"
   };
   const image = {

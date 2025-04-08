@@ -16,7 +16,7 @@ export default function save({ attributes }) {
         paddingLeft: `${paddingLeft || 3}rem`,
         paddingRight: `${paddingRight || 3}rem`,
         maxWidth: "544px",
-        width: "100%",
+
         margin: "0",
     };
 

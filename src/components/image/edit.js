@@ -32,7 +32,6 @@ const ImageEdit = ({ attributes, setAttributes }) => {
     };
 
     const image = {
-        width: "100%",
         height: "auto",
         objectFit: "cover",
         display: "block",
