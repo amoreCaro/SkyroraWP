@@ -31,9 +31,11 @@ export default function Save({ attributes }) {
             }}
         >
 
-            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: '20px', marginBottom: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
                 {imageItems.map((image, index) => (
-                    <img key={index} src={image} alt={`Column Image ${index + 1}`} style={{ width: '100px', height: 'auto' }} />
+                    <div style={{ maxWidth: '48px', width: '100%', height: '48px' }}>
+                        <img key={index} src={image} alt={`Column Image ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
                 ))}
             </div>
             <div className="footer-columns" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', justifyContent: 'center' }}>
@@ -52,7 +54,6 @@ export default function Save({ attributes }) {
                     />
                 ))}
             </div>
-
 
             <span style={copyrightStyle}>
                 {copyright}

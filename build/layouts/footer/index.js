@@ -174,18 +174,26 @@ function Edit({
     style: {
       display: 'flex',
       gap: '20px',
+      marginBottom: '16px',
       flexWrap: 'wrap',
       justifyContent: 'center'
     }
-  }, imageItems.map((image, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  }, imageItems.map((image, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      maxWidth: '48px',
+      width: '100%',
+      height: '48px'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     key: index,
     src: image,
     alt: `Column Image ${index + 1}`,
     style: {
-      width: '100px',
-      height: 'auto'
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover'
     }
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       display: 'flex',
       gap: '20px',
@@ -281,18 +289,26 @@ function Save({
     style: {
       display: 'flex',
       gap: '20px',
+      marginBottom: '16px',
       flexWrap: 'wrap',
       justifyContent: 'center'
     }
-  }, imageItems.map((image, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  }, imageItems.map((image, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      maxWidth: '48px',
+      width: '100%',
+      height: '48px'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     key: index,
     src: image,
     alt: `Column Image ${index + 1}`,
     style: {
-      width: '100px',
-      height: 'auto'
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover'
     }
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "footer-columns",
     style: {
       display: 'flex',
