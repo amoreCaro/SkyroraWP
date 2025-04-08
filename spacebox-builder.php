@@ -9,6 +9,7 @@ add_filter( 'allowed_block_types_all', 'theme_allowed_blocks', 10, 2 );
 
 function theme_allowed_blocks( $allowed_blocks, $block_editor_context ) {
     return array(
+        'app/spacer',
         'core/columns',
         'app/header',
         'app/heading',
@@ -18,13 +19,13 @@ function theme_allowed_blocks( $allowed_blocks, $block_editor_context ) {
         'app/divider',
         'app/footer',
         'app/padding-section',
-        'app/spacer',
     );
 }
 
 
 function register_custom_blocks() {
     // components
+    register_block_type( __DIR__ . '/build/components/spacer');
     register_block_type( __DIR__ . '/build/components/header');
     register_block_type( __DIR__ . '/build/components/heading');
     register_block_type( __DIR__ . '/build/components/paragraph');
@@ -33,7 +34,6 @@ function register_custom_blocks() {
     register_block_type( __DIR__ . '/build/components/divider');
     register_block_type( __DIR__ . '/build/layouts/footer');
     register_block_type( __DIR__ . '/build/layouts/padding-section');
-    register_block_type( __DIR__ . '/build/layouts/spacer');
     
     wp_localize_script( 'dynamic-posts-grid-block', 'wpApiSettings', array(
         'root' => esc_url( rest_url() ),

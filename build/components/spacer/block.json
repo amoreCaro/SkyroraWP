@@ -2,8 +2,8 @@
   "apiVersion": 3,
   "name": "app/spacer",
   "title": "Custom Spacer",
-  "category": "layout",
-  "icon": "align-wide",
+  "category": "advanced",
+  "icon": "star-filled",
   "description": "Customizable spacer block for vertical spacing.",
   "supports": {
     "html": false
@@ -11,11 +11,11 @@
   "attributes": {
     "height": {
       "type": "string",
-      "default": "32px"
+      "default": "48px"
     },
     "backgroundColor": {
       "type": "string",
-      "default": "#ffffff"
+      "default": "#FFFFFF"
     }
   },
   "editorScript": "file:./index.js",

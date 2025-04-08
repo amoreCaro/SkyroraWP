@@ -1,11 +1,15 @@
+import { useBlockProps } from '@wordpress/block-editor';
+
 const Save = ({ attributes }) => {
-    const { height, backgroundColor } = attributes;
+    const { backgroundColor, height } = attributes;
 
     return (
-        <div
-            className="wp-block-app-spacer"
-            style={{ height, backgroundColor }}
-        />
+        <div {...useBlockProps.save()} className="wp-block wp-spacer" style={{
+            backgroundColor: backgroundColor,
+            height: height,
+        }}>
+
+        </div>
     );
 };
 

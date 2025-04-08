@@ -1,40 +1,39 @@
-import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ColorPalette, RangeControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import {
+    PanelBody,
+    ColorPalette,
+    TextControl
+} from '@wordpress/components';
 import './editor.css';
 
 const Edit = ({ attributes, setAttributes }) => {
-    const { height, backgroundColor } = attributes;
+    const { backgroundColor, height } = attributes;
 
     return (
         <>
             <InspectorControls>
-                <PanelBody title={__('Spacer Settings', 'textdomain')} initialOpen={true}>
-                    <RangeControl
-                        label={__('Height (px)', 'textdomain')}
-                        value={parseInt(height)}
-                        onChange={(newHeight) =>
-                            setAttributes({ height: `${newHeight}px` })
-                        }
-                        min={0}
-                        max={300}
+                <PanelBody title={__('Background and Height Settings', 'custom-heading')}>
+                    <ColorPalette
+                        label={__('Background Color', 'custom-heading')}
+                        value={backgroundColor}
+                        onChange={(color) => setAttributes({ backgroundColor: color })}
                     />
-                    <div>
-                        <p>{__('Background Color', 'textdomain')}</p>
-                        <ColorPalette
-                            value={backgroundColor}
-                            onChange={(newColor) =>
-                                setAttributes({ backgroundColor: newColor })
-                            }
-                        />
-                    </div>
+                    <TextControl
+                        label={__('Height (px)', 'custom-heading')}
+                        type="number"
+                        value={height.replace('px', '')}
+                        onChange={(height) => setAttributes({ height: `${height}px` })}
+                    />
                 </PanelBody>
             </InspectorControls>
 
-            <div
-                className="wp-block-app-spacer"
-                style={{ height, backgroundColor }}
-            />
+            <div {...useBlockProps()} className="wp-block wp-spacer" style={{
+                backgroundColor: backgroundColor,
+                height: height,
+            }}>
+             
+            </div>
         </>
     );
 };
