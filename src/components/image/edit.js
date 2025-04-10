@@ -3,7 +3,8 @@ import {
     useBlockProps,
     MediaUpload,
     MediaUploadCheck,
-    InspectorControls
+    InspectorControls,
+    BlockControls
 } from '@wordpress/block-editor';
 import {
     Button,
@@ -47,6 +48,19 @@ const ImageEdit = ({ attributes, setAttributes }) => {
 
     return (
         <>
+            <BlockControls>
+                {imageUrl && (
+                    <Button
+                        variant="link"
+                        onClick={onRemoveImage}
+                        icon="no-alt"
+                        label={__('Remove Image')}
+                        className="remove-image-button"
+                        aria-label={__('Remove Image')}
+                        iconSize={20}
+                    />
+                )}
+            </BlockControls>
             <InspectorControls>
                 <PanelBody title={__('Image Settings', 'custom-image')}>
                     <TextControl
@@ -80,18 +94,7 @@ const ImageEdit = ({ attributes, setAttributes }) => {
                 <MediaUploadCheck>
                     <div style={imageWrapper} className="wp-block wp-image">
                         {imageUrl ? (
-                            <>
-                                <img src={imageUrl} style={image} className="selected-image" alt={__('Selected Image', 'custom-image')} />
-                                <div className="editor-block-toolbar">
-                                    <Button
-                                        isLink
-                                        onClick={onRemoveImage}
-                                        icon="no-alt"
-                                        label={__('Remove Image')}
-                                        className="remove-image-button"
-                                    />
-                                </div>
-                            </>
+                            <img src={imageUrl} style={image} className="selected-image" alt={__('Selected Image', 'custom-image')} />
                         ) : (
                             <MediaUpload
                                 onSelect={onSelectImage}
