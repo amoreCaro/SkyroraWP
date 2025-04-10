@@ -74,14 +74,22 @@ export default function Edit({ attributes, setAttributes }) {
                 </PanelBody>
 
                 <PanelBody title="Text Columns Controls" initialOpen={true}>
-                    <Button onClick={removeTextColumn} isDestructive>
+                    <Button
+                        onClick={removeTextColumn}
+                        isDestructive
+                        style={{ backgroundColor: '#8B0000', color: '#FFF' }} // Dark red background
+                    >
                         Видалити текстову колонку
                     </Button>
                     <Button onClick={addTextColumn}>Додати текстову колонку</Button>
                 </PanelBody>
 
                 <PanelBody title="Image Upload Controls" initialOpen={true}>
-                    <Button onClick={removeImageColumn} isDestructive>
+                    <Button
+                        onClick={removeImageColumn}
+                        isDestructive
+                        style={{ backgroundColor: '#8B0000', color: '#FFF' }} // Dark red background
+                    >
                         Видалити зображення колонку
                     </Button>
                     <Button onClick={addImageColumn}>Додати зображення колонку</Button>
@@ -94,7 +102,13 @@ export default function Edit({ attributes, setAttributes }) {
                                     allowedTypes={['image']}
                                     value={imageItems[index]}
                                     render={({ open }) => (
-                                        <Button onClick={open}>
+                                        <Button
+                                            onClick={open}
+                                            style={{
+                                                backgroundColor: '#0000FF', // Blue background
+                                                color: '#FFF' // White text
+                                            }}
+                                        >
                                             {imageItems[index] ? 'Змінити зображення' : 'Додати зображення'}
                                         </Button>
                                     )}
@@ -102,7 +116,11 @@ export default function Edit({ attributes, setAttributes }) {
                                 {imageItems[index] && (
                                     <div>
                                         <img src={imageItems[index]} alt={`Column Image ${index + 1}`} style={{ maxWidth: '100px', marginTop: '10px' }} />
-                                        <Button isDestructive onClick={() => removeImageItem(index)}>
+                                        <Button
+                                            isDestructive
+                                            onClick={() => removeImageItem(index)}
+                                            style={{ backgroundColor: '#8B0000', color: '#FFF' }} // Dark red background
+                                        >
                                             Видалити зображення
                                         </Button>
                                     </div>
