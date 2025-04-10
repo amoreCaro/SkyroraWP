@@ -1,9 +1,9 @@
 {
   "apiVersion": 3,
   "name": "app/button",
-  "title": "Custom Button",
+  "title": "Button",
   "category": "advanced",
-  "icon": "star-filled",
+  "icon": "button",
   "description": "Button block with customizable styles.",
   "supports": {
       "html": false

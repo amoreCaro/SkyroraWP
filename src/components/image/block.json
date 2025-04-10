@@ -1,9 +1,9 @@
 {
   "apiVersion": 3,
   "name": "app/image",
-  "title": "Image Component",
+  "title": "Image",
   "category": "advanced",
-  "icon": "star-filled",
+  "icon": "format-image",
   "description": "A custom image block with padding control.",
   "keywords": ["image", "media"],
   "editorScript": "file:./index.js",

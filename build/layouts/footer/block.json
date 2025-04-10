@@ -3,7 +3,7 @@
   "name": "app/footer",
   "title": "Footer",
   "category": "advanced",
-  "icon": "star-filled",
+  "icon": "smiley",
   "description": "Footer block with customizable columns and copyright.",
   "supports": {
     "html": false

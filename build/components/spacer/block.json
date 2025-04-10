@@ -1,7 +1,7 @@
 {
   "apiVersion": 3,
   "name": "app/spacer",
-  "title": "Custom Spacer",
+  "title": "Spacer",
   "category": "advanced",
   "icon": "star-filled",
   "description": "Customizable spacer block for vertical spacing.",

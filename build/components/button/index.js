@@ -263,7 +263,7 @@ module.exports = window["wp"]["i18n"];
   \******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/button","title":"Custom Button","category":"advanced","icon":"star-filled","description":"Button block with customizable styles.","supports":{"html":false},"attributes":{"content":{"type":"string","default":"Enter your heading"},"textAlign":{"type":"string","default":"center"},"color":{"type":"string","default":"#FFFFFF"},"backgroundColor":{"type":"string","default":"#FFFFFF"},"fontWeight":{"type":"string","default":"600"},"fontSize":{"type":"string","default":"14px"},"lineHeight":{"type":"string","default":"1.4"},"fontFamily":{"type":"string","default":"Bai Jamjure, sans-serif"},"textTransform":{"type":"string","default":"uppercase"}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/button","title":"Button","category":"advanced","icon":"button","description":"Button block with customizable styles.","supports":{"html":false},"attributes":{"content":{"type":"string","default":"Enter your heading"},"textAlign":{"type":"string","default":"center"},"color":{"type":"string","default":"#FFFFFF"},"backgroundColor":{"type":"string","default":"#FFFFFF"},"fontWeight":{"type":"string","default":"600"},"fontSize":{"type":"string","default":"14px"},"lineHeight":{"type":"string","default":"1.4"},"fontFamily":{"type":"string","default":"Bai Jamjure, sans-serif"},"textTransform":{"type":"string","default":"uppercase"}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
 
 /***/ })
 

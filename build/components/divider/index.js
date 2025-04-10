@@ -215,7 +215,7 @@ module.exports = window["wp"]["i18n"];
   \*******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"title":"Custom Divider","name":"app/divider","category":"design","icon":"minus","keywords":["divider","separator","line"],"editorScript":"file:./index.js","editorStyle":"file:./editor.css","attributes":{"id":{"type":"string","default":""},"color":{"type":"string","default":"#B8BDCC"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"align":{"type":"string","default":"center"}},"supports":{"html":true,"align":["left","center","right"],"customClassName":true}}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"title":"Divider","name":"app/divider","category":"design","icon":"minus","keywords":["divider","separator","line"],"editorScript":"file:./index.js","editorStyle":"file:./editor.css","attributes":{"id":{"type":"string","default":""},"color":{"type":"string","default":"#B8BDCC"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"align":{"type":"string","default":"center"}},"supports":{"html":true,"align":["left","center","right"],"customClassName":true}}');
 
 /***/ })
 

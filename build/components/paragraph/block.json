@@ -1,9 +1,9 @@
 {
   "apiVersion": 3,
   "name": "app/paragraph",
-  "title": "Custom Paragraph",
+  "title": "Paragraph",
   "category": "advanced",
-  "icon": "star-filled",
+  "icon": "editor-paragraph",
   "description": "Paragraph block with customizable styles.",
   "supports": {
     "html": false

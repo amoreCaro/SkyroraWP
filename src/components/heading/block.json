@@ -1,9 +1,9 @@
 {
   "apiVersion": 3,
   "name": "app/heading",
-  "title": "Custom Heading",
+  "title": "Heading",
   "category": "advanced",
-  "icon": "star-filled",
+  "icon": "heading",
   "description": "Heading block with customizable styles.",
   "supports": {
     "html": false

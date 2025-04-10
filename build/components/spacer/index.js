@@ -178,7 +178,7 @@ module.exports = window["wp"]["i18n"];
   \******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/spacer","title":"Custom Spacer","category":"advanced","icon":"star-filled","description":"Customizable spacer block for vertical spacing.","supports":{"html":false},"attributes":{"height":{"type":"string","default":"48px"},"backgroundColor":{"type":"string","default":"#FFFFFF"}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/spacer","title":"Spacer","category":"advanced","icon":"star-filled","description":"Customizable spacer block for vertical spacing.","supports":{"html":false},"attributes":{"height":{"type":"string","default":"48px"},"backgroundColor":{"type":"string","default":"#FFFFFF"}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css"}');
 
 /***/ })
 

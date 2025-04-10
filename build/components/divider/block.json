@@ -1,6 +1,6 @@
 {
   "apiVersion": 3,
-  "title": "Custom Divider",
+  "title": "Divider",
   "name": "app/divider",
   "category": "design",
   "icon": "minus",
