@@ -25,8 +25,8 @@ const save = ({ attributes }) => {
                     fontFamily,
                     textTransform,
                     textAlign,
-                    paddingLeft: `${paddingLeft || 48}px`,
-                    paddingRight: `${paddingRight || 48}px`,
+                    paddingLeft: `${paddingLeft || 3}rem`,
+                    paddingRight: `${paddingRight || 3}rem`,
                 }}
                 tagName="p"
                 value={content}
