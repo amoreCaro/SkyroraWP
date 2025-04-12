@@ -135,6 +135,18 @@ function Edit({
     });
   };
 
+  // Оновлення елемента списку через редагування
+  const editTextColumn = index => {
+    const newText = prompt("Редагувати текст:", listItems[index]);
+    if (newText !== null) {
+      const updatedItems = [...listItems];
+      updatedItems[index] = newText;
+      setAttributes({
+        listItems: updatedItems
+      });
+    }
+  };
+
   // Додавання нової колонки для зображень
   const addImageColumn = () => {
     setAttributes({
@@ -210,7 +222,12 @@ function Edit({
       marginRight: '12px',
       color: '#000'
     }
-  }, "\u0415\u043B\u0435\u043C\u0435\u043D\u0442 \u043D\u043E\u043C\u0435\u0440 ", index + 1), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+  }, "\u0415\u043B\u0435\u043C\u0435\u043D\u0442 \u043D\u043E\u043C\u0435\u0440 ", index + 1), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      display: 'flex',
+      gap: '10px'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     onClick: () => removeTextColumn(index),
     style: {
       background: 'none',
@@ -225,7 +242,22 @@ function Edit({
       color: '#8B0000',
       fontSize: '18px'
     }
-  })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    onClick: () => editTextColumn(index),
+    style: {
+      background: 'none',
+      border: 'none',
+      color: '#000',
+      cursor: 'pointer'
+    },
+    "aria-label": `Редагувати елемент номер ${index + 1}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+    icon: "edit",
+    style: {
+      color: '#0066CC',
+      fontSize: '18px'
+    }
+  }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: addTextColumn,
     style: {
       backgroundColor: '#181B24',
@@ -245,7 +277,7 @@ function Edit({
     style: {
       backgroundColor: '#8B0000',
       color: '#FFF'
-    } // Dark red background
+    }
   }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: addImageColumn
   }, "\u0414\u043E\u0434\u0430\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, imageItems.map((_, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -263,8 +295,7 @@ function Edit({
       onClick: open,
       style: {
         backgroundColor: '#0000FF',
-        // Blue background
-        color: '#FFF' // White text
+        color: '#FFF'
       }
     }, imageItems[index] ? 'Змінити зображення' : 'Додати зображення')
   }), imageItems[index] && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {

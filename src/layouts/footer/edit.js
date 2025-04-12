@@ -33,6 +33,16 @@ export default function Edit({ attributes, setAttributes }) {
         setAttributes({ listItems: newItems });
     };
 
+    // Оновлення елемента списку через редагування
+    const editTextColumn = (index) => {
+        const newText = prompt("Редагувати текст:", listItems[index]);
+        if (newText !== null) {
+            const updatedItems = [...listItems];
+            updatedItems[index] = newText;
+            setAttributes({ listItems: updatedItems });
+        }
+    };
+
     // Додавання нової колонки для зображень
     const addImageColumn = () => {
         setAttributes({ imageItems: [...imageItems, ""] });
@@ -95,18 +105,32 @@ export default function Edit({ attributes, setAttributes }) {
                                 <span style={{ marginRight: '12px', color: '#000' }}>
                                     Елемент номер {index + 1}
                                 </span>
-                                <button
-                                    onClick={() => removeTextColumn(index)}
-                                    style={{
-                                        background: 'none',
-                                        border: 'none',
-                                        color: '#000',
-                                        cursor: 'pointer',
-                                    }}
-                                    aria-label={`Видалити елемент номер ${index + 1}`}
-                                >
-                                    <Icon icon={trash} style={{ color: '#8B0000', fontSize: '18px' }} />
-                                </button>
+                                <div style={{ display: 'flex', gap: '10px' }}>
+                                    <button
+                                        onClick={() => removeTextColumn(index)}
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            color: '#000',
+                                            cursor: 'pointer',
+                                        }}
+                                        aria-label={`Видалити елемент номер ${index + 1}`}
+                                    >
+                                        <Icon icon={trash} style={{ color: '#8B0000', fontSize: '18px' }} />
+                                    </button>
+                                    <button
+                                        onClick={() => editTextColumn(index)}
+                                        style={{
+                                            background: 'none',
+                                            border: 'none',
+                                            color: '#000',
+                                            cursor: 'pointer',
+                                        }}
+                                        aria-label={`Редагувати елемент номер ${index + 1}`}
+                                    >
+                                        <Icon icon="edit" style={{ color: '#0066CC', fontSize: '18px' }} />
+                                    </button>
+                                </div>
                             </div>
                         ))}
 
@@ -116,7 +140,6 @@ export default function Edit({ attributes, setAttributes }) {
                         </Button>
                     </div>
                 </PanelBody>
-
 
                 <PanelBody title="Image Upload Controls" initialOpen={true}>
                     <Button
