@@ -27,7 +27,7 @@ const ImageEdit = ({ attributes, setAttributes }) => {
         paddingBottom: `${paddingBottom}px`,
         paddingLeft: `${paddingLeft}px`,
         paddingRight: `${paddingRight}px`,
-        width: "100%",
+        width: "auto",
         margin: "0",
     };
 
@@ -35,6 +35,7 @@ const ImageEdit = ({ attributes, setAttributes }) => {
         height: "auto",
         objectFit: "cover",
         display: "block",
+        width: "auto",
     };
 
     const onSelectImage = (media) => {

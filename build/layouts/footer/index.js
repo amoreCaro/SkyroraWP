@@ -136,15 +136,8 @@ function Edit({
   };
 
   // Оновлення елемента списку через редагування
-  const editTextColumn = index => {
-    const newText = prompt("Редагувати текст:", listItems[index]);
-    if (newText !== null) {
-      const updatedItems = [...listItems];
-      updatedItems[index] = newText;
-      setAttributes({
-        listItems: updatedItems
-      });
-    }
+  const handleEditTextColumn = (value, index) => {
+    updateListItem(value, index);
   };
 
   // Додавання нової колонки для зображень
@@ -227,23 +220,8 @@ function Edit({
       display: 'flex',
       gap: '10px'
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    onClick: () => removeTextColumn(index),
-    style: {
-      background: 'none',
-      border: 'none',
-      color: '#000',
-      cursor: 'pointer'
-    },
-    "aria-label": `Видалити елемент номер ${index + 1}`
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"],
-    style: {
-      color: '#8B0000',
-      fontSize: '18px'
-    }
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    onClick: () => editTextColumn(index),
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    onClick: () => handleEditTextColumn(column, index),
     style: {
       background: 'none',
       border: 'none',
@@ -255,6 +233,23 @@ function Edit({
     icon: "edit",
     style: {
       color: '#0066CC',
+      fontSize: '18px'
+    }
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    onClick: () => removeTextColumn(index),
+    style: {
+      background: 'none',
+      border: 'none',
+      color: '#FF5C5C',
+      cursor: 'pointer',
+      borderRadius: '6px',
+      padding: '5px'
+    },
+    "aria-label": `Видалити елемент номер ${index + 1}`
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"],
+    style: {
+      color: '#FF5C5C',
       fontSize: '18px'
     }
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
@@ -275,8 +270,10 @@ function Edit({
     onClick: removeImageColumn,
     isDestructive: true,
     style: {
-      backgroundColor: '#8B0000',
-      color: '#FFF'
+      backgroundColor: '#FF5C5C',
+      color: '#FFF',
+      borderRadius: '6px',
+      padding: '5px'
     }
   }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: addImageColumn
@@ -294,8 +291,10 @@ function Edit({
     }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
       onClick: open,
       style: {
-        backgroundColor: '#0000FF',
-        color: '#FFF'
+        backgroundColor: '#0066CC',
+        color: '#FFF',
+        borderRadius: '6px',
+        padding: '8px'
       }
     }, imageItems[index] ? 'Змінити зображення' : 'Додати зображення')
   }), imageItems[index] && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
@@ -309,9 +308,11 @@ function Edit({
     isDestructive: true,
     onClick: () => removeImageItem(index),
     style: {
-      backgroundColor: '#8B0000',
-      color: '#FFF'
-    } // Dark red background
+      backgroundColor: '#FF5C5C',
+      color: '#FFF',
+      borderRadius: '6px',
+      padding: '5px'
+    }
   }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F"))))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
     style: {
@@ -382,7 +383,7 @@ function Edit({
       lineHeight: '100%',
       textAlign: 'center',
       textTransform: 'uppercase',
-      color: "#B8BDCC",
+      color: "#FFF",
       marginTop: '24px'
     }
   })));

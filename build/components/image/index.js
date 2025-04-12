@@ -41,13 +41,14 @@ const ImageEdit = ({
     paddingBottom: `${paddingBottom}px`,
     paddingLeft: `${paddingLeft}px`,
     paddingRight: `${paddingRight}px`,
-    width: "100%",
+    width: "auto",
     margin: "0"
   };
   const image = {
     height: "auto",
     objectFit: "cover",
-    display: "block"
+    display: "block",
+    width: "auto"
   };
   const onSelectImage = media => {
     setAttributes({
