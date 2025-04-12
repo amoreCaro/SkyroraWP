@@ -3,6 +3,7 @@ import { PanelBody, TextControl, Button } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 import { plus, trash } from '@wordpress/icons';
 import { Icon } from '@wordpress/components';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 export default function Edit({ attributes, setAttributes }) {
     const { copyright, listItems = [], imageItems = [], paddingLeft, paddingRight } = attributes;
@@ -14,48 +15,48 @@ export default function Edit({ attributes, setAttributes }) {
         }
     }, []);
 
-    // Оновлення елемента списку
+    // Update list item
     const updateListItem = (value, index) => {
         const newItems = [...listItems];
         newItems[index] = value;
         setAttributes({ listItems: newItems });
     };
 
-    // Додавання нової колонки для тексту
+    // Add a new text column
     const addTextColumn = () => {
         setAttributes({ listItems: [...listItems, ""] });
     };
 
-    // Видалення колонки тексту по індексу
+    // Remove a text column by index
     const removeTextColumn = (index) => {
         const newItems = [...listItems];
         newItems.splice(index, 1);  // Correct way to remove an item by index
         setAttributes({ listItems: newItems });
     };
 
-    // Оновлення елемента списку через редагування
+    // Edit a text column
     const handleEditTextColumn = (value, index) => {
         updateListItem(value, index);
     };
 
-    // Додавання нової колонки для зображень
+    // Add a new image column
     const addImageColumn = () => {
         setAttributes({ imageItems: [...imageItems, ""] });
     };
 
-    // Видалення останньої колонки для зображень
+    // Remove last image column
     const removeImageColumn = () => {
         setAttributes({ imageItems: imageItems.slice(0, -1) });
     };
 
-    // Додавання зображення до колонки
+    // Add image to a column
     const addImageItem = (media, index) => {
         const newImageItems = [...imageItems];
         newImageItems[index] = media.url;
         setAttributes({ imageItems: newImageItems });
     };
 
-    // Видалення зображення з колонки
+    // Remove image from a column
     const removeImageItem = (index) => {
         const newImageItems = [...imageItems];
         newImageItems[index] = "";
@@ -83,59 +84,89 @@ export default function Edit({ attributes, setAttributes }) {
                 </PanelBody>
 
                 <PanelBody title="Text Columns Controls" initialOpen={true}>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                            {listItems.map((column, index) => (
+                    <DragDropContext
+                        onDragEnd={(result) => {
+                            const { source, destination } = result;
+                            if (!destination) return;
+
+                            const reorderedItems = Array.from(listItems);
+                            const [movedItem] = reorderedItems.splice(source.index, 1);
+                            reorderedItems.splice(destination.index, 0, movedItem);
+
+                            setAttributes({ listItems: reorderedItems }); // Correct setter for updating listItems
+                        }}
+                    >
+                        <Droppable droppableId="columns-list">
+                            {(provided) => (
                                 <div
-                                    key={index}
-                                    style={{
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'space-between',
-                                        marginBottom: '8px',
-                                        padding: '8px',
-                                        border: '1px solid #ccc',
-                                        borderRadius: '6px',
-                                    }}
+                                    ref={provided.innerRef}
+                                    {...provided.droppableProps}
+                                    style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
                                 >
-                                    <span style={{ marginRight: '12px', color: '#000' }}>
-                                        Елемент номер {index + 1}
-                                    </span>
-                                    <div style={{ display: 'flex', gap: '10px' }}>
-                                        <Button
-                                            onClick={() => handleEditTextColumn(column, index)}
-                                            style={{
-                                                background: 'none',
-                                                border: 'none',
-                                                color: '#000',
-                                                cursor: 'pointer',
-                                            }}
-                                            aria-label={`Редагувати елемент номер ${index + 1}`}
-                                        >
-                                            <Icon icon="edit" style={{ color: '#0066CC', fontSize: '18px' }} />
-                                        </Button>
-                                        <Button
-                                            onClick={() => removeTextColumn(index)}
-                                            style={{
-                                                background: 'none',
-                                                border: 'none',
-                                                color: '#FF5C5C',
-                                                cursor: 'pointer',
-                                                borderRadius: '6px',
-                                                padding: '5px',
-                                            }}
-                                            aria-label={`Видалити елемент номер ${index + 1}`}
-                                        >
-                                            <Icon icon={trash} style={{ color: '#FF5C5C', fontSize: '18px' }} />
-                                        </Button>
-                                    </div>
+                                    {listItems.map((column, index) => (
+                                        <Draggable key={index} draggableId={`item-${index}`} index={index}>
+                                            {(provided) => (
+                                                <div
+                                                    ref={provided.innerRef}
+                                                    {...provided.draggableProps}
+                                                    {...provided.dragHandleProps}
+                                                    style={{
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'space-between',
+                                                        marginBottom: '8px',
+                                                        padding: '8px',
+                                                        border: '1px solid #ccc',
+                                                        borderRadius: '6px',
+                                                        backgroundColor: '#fff',
+                                                        ...provided.draggableProps.style,
+                                                    }}
+                                                >
+                                                    <span style={{ marginRight: '12px', color: '#000' }}>
+                                                        Елемент номер {index + 1}
+                                                    </span>
+                                                    <div style={{ display: 'flex', gap: '10px' }}>
+                                                        <Button
+                                                            onClick={() => handleEditTextColumn(column, index)}
+                                                            style={{
+                                                                background: 'none',
+                                                                border: 'none',
+                                                                color: '#000',
+                                                                cursor: 'pointer',
+                                                            }}
+                                                            aria-label={`Редагувати елемент номер ${index + 1}`}
+                                                        >
+                                                            <Icon icon="edit" style={{ color: '#0066CC', fontSize: '18px' }} />
+                                                        </Button>
+                                                        <Button
+                                                            onClick={() => removeTextColumn(index)}
+                                                            style={{
+                                                                background: 'none',
+                                                                border: 'none',
+                                                                color: '#FF5C5C',
+                                                                cursor: 'pointer',
+                                                                borderRadius: '6px',
+                                                                padding: '5px',
+                                                            }}
+                                                            aria-label={`Видалити елемент номер ${index + 1}`}
+                                                        >
+                                                            <Icon icon={trash} style={{ color: '#FF5C5C', fontSize: '18px' }} />
+                                                        </Button>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </Draggable>
+                                    ))}
+                                    {provided.placeholder}
                                 </div>
-                            ))}
-                            
-                        <Button onClick={addTextColumn} style={{ backgroundColor: '#181B24', color: '#FFF' }}>
-                            <Icon icon={plus} style={{ marginRight: '8px' }} />
-                            Додати текстову колонку
-                        </Button>
-                    </div>
+                            )}
+                        </Droppable>
+                    </DragDropContext>
+
+                    <Button onClick={addTextColumn} style={{ backgroundColor: '#181B24', color: '#FFF', marginTop: '10px' }}>
+                        <Icon icon={plus} style={{ marginRight: '8px' }} />
+                        Додати текстову колонку
+                    </Button>
                 </PanelBody>
 
                 <PanelBody title="Image Upload Controls" initialOpen={true}>
