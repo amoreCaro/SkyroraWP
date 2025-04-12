@@ -23,11 +23,10 @@ const ImageEdit = ({ attributes, setAttributes }) => {
     } = attributes;
 
     const imageWrapper = {
-        paddingTop: `${paddingTop || 24}px`,
-        paddingBottom: `${paddingBottom || 24}px`,
-        paddingLeft: `${paddingLeft || 3}rem`,
-        paddingRight: `${paddingRight || 3}rem`,
-        maxWidth: "544px",
+        paddingTop: `${paddingTop}px`,
+        paddingBottom: `${paddingBottom}px`,
+        paddingLeft: `${paddingLeft}px`,
+        paddingRight: `${paddingRight}px`,
         width: "100%",
         margin: "0",
     };
@@ -76,13 +75,13 @@ const ImageEdit = ({ attributes, setAttributes }) => {
                         onChange={(val) => setAttributes({ paddingBottom: parseInt(val) })}
                     />
                     <TextControl
-                        label={__('Padding Left (rem)', 'custom-image')}
+                        label={__('Padding Left (px)', 'custom-image')}
                         type="number"
                         value={paddingLeft}
                         onChange={(val) => setAttributes({ paddingLeft: parseFloat(val) })}
                     />
                     <TextControl
-                        label={__('Padding Right (rem)', 'custom-image')}
+                        label={__('Padding Right (px)', 'custom-image')}
                         type="number"
                         value={paddingRight}
                         onChange={(val) => setAttributes({ paddingRight: parseFloat(val) })}

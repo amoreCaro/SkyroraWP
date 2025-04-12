@@ -131,29 +131,29 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
 
         <PanelBody title={__('Padding Settings', 'custom-heading')} initialOpen={true}>
           <TextControl
-            label={__('Padding Top (rem)', 'custom-heading')}
-            value={paddingTop || 0}
+            label={__('Padding Top (px)', 'custom-heading')}
+            value={paddingTop}
             onChange={(val) => onChangePadding('paddingTop', val)}
             type="number"
             min={0}
           />
           <TextControl
-            label={__('Padding Bottom (rem)', 'custom-heading')}
-            value={paddingBottom || 0}
+            label={__('Padding Bottom (px)', 'custom-heading')}
+            value={paddingBottom}
             onChange={(val) => onChangePadding('paddingBottom', val)}
             type="number"
             min={0}
           />
           <TextControl
-            label={__('Padding Left (rem)', 'custom-heading')}
-            value={paddingLeft || 0}
+            label={__('Padding Left (px)', 'custom-heading')}
+            value={paddingLeft}
             onChange={(val) => onChangePadding('paddingLeft', val)}
             type="number"
             min={0}
           />
           <TextControl
-            label={__('Padding Right (rem)', 'custom-heading')}
-            value={paddingRight || 0}
+            label={__('Padding Right (px)', 'custom-heading')}
+            value={paddingRight}
             onChange={(val) => onChangePadding('paddingRight', val)}
             type="number"
             min={0}
@@ -171,11 +171,11 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
             fontFamily,
             textTransform,
             textAlign,
-            paddingTop: `${paddingTop}rem`,
-            paddingBottom: `${paddingBottom}rem`,
-            paddingLeft: `${paddingLeft}rem`,
-            paddingRight: `${paddingRight}rem`,
-            margin: "0px" // Added margin: 0px
+            paddingTop: `${paddingTop}px`,
+            paddingBottom: `${paddingBottom}px`,
+            paddingLeft: `${paddingLeft}px`,
+            paddingRight: `${paddingRight}px`,
+            margin: "0px"
           },
         })}
         tagName={`h${level}`}

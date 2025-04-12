@@ -25,13 +25,13 @@ const Edit = ({ attributes, setAttributes }) => {
                         onChange={(value) => setAttributes({ color: value })}
                     />
                     <TextControl
-                        label={__('Padding Left (rem)', 'custom-divider')}
+                        label={__('Padding Left (px)', 'custom-divider')}
                         type="number"
                         value={paddingLeft}
                         onChange={(val) => setAttributes({ paddingLeft: parseFloat(val) })}
                     />
                     <TextControl
-                        label={__('Padding Right (rem)', 'custom-divider')}
+                        label={__('Padding Right (px)', 'custom-divider')}
                         type="number"
                         value={paddingRight}
                         onChange={(val) => setAttributes({ paddingRight: parseFloat(val) })}
@@ -42,8 +42,8 @@ const Edit = ({ attributes, setAttributes }) => {
             <div {...useBlockProps()} className="wp-block wp-divider" style={{
                 paddingTop: '16px',
                 paddingBottom: '16px',
-                paddingLeft: `${paddingLeft}rem`,
-                paddingRight: `${paddingRight}rem`
+                paddingLeft: `${paddingLeft}px`,
+                paddingRight: `${paddingRight}px`
             }}>
                 <div
                     className="divider-line"

@@ -35,7 +35,7 @@
     },
     "fontFamily": {
       "type": "string",
-      "default": "Bai Jamjure, sans-serif"
+      "default": "Bai Jamjuree, sans-serif"
     },
     "textTransform": {
       "type": "string",
@@ -44,6 +44,22 @@
     "backgroundColor": {
       "type": "string",
       "default": "#FFFFFF"
+    },
+    "paddingLeft": {
+      "type": "number",
+      "default": 48
+    },
+    "paddingRight": {
+      "type": "number",
+      "default": 48
+    },
+    "paddingTop": {
+      "type": "number",
+      "default": 0
+    },
+    "paddingBottom": {
+      "type": "number",
+      "default": 16
     }
   },
   "editorScript": "file:./index.js",

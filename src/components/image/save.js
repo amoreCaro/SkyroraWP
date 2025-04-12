@@ -11,12 +11,10 @@ export default function save({ attributes }) {
     } = attributes;
 
     const imageWrapper = {
-        paddingTop: `${paddingTop || 24}px`,
-        paddingBottom: `${paddingBottom || 24}px`,
-        paddingLeft: `${paddingLeft || 3}rem`,
-        paddingRight: `${paddingRight || 3}rem`,
-        // maxWidth: "544px",
-
+        paddingTop: `${paddingTop}px`,
+        paddingBottom: `${paddingBottom}px`,
+        paddingLeft: `${paddingLeft}px`,
+        paddingRight: `${paddingRight}px`,
         margin: "0",
     };
 

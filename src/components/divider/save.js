@@ -2,15 +2,15 @@
 import { useBlockProps } from '@wordpress/block-editor';
 
 const Save = ({ attributes }) => {
-    const { id, align, style, color, paddingLeft = 3, paddingRight = 3 } = attributes;
+    const { id, align, style, color, paddingLeft, paddingRight } = attributes;
 
     return (
         <div
             style={{
                 marginTop: '16px',
                 marginBottom: '16px',
-                paddingLeft: `${paddingLeft}rem`,
-                paddingRight: `${paddingRight}rem`,
+                paddingLeft: `${paddingLeft}px`,
+                paddingRight: `${paddingRight}px`,
             }}
         >
             <hr

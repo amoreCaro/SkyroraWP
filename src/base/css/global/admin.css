@@ -13,6 +13,13 @@ padding: 0px !important;
 .block-editor-iframe__body {
   background: #181b24;
 }
+html :where(.editor-styles-wrapper) {
+  background: black !important;
+  color: initial;
+  font-family: serif;
+  font-size: medium;
+  line-height: normal;
+}
 .editor-visual-editor__post-title-wrapper.edit-post-visual-editor__post-title-wrapper {
   padding: 20px;
   background: white;

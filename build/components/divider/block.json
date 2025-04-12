@@ -22,11 +22,11 @@
     },
     "paddingLeft": {
       "type": "number",
-      "default": 3
+      "default": 48
     },
     "paddingRight": {
       "type": "number",
-      "default": 3
+      "default": 48
     },
     "align": {
       "type": "string",
