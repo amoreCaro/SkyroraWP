@@ -1,6 +1,8 @@
 import { useBlockProps, RichText, MediaUpload, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextControl, Button } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
+import { plus, trash } from '@wordpress/icons';
+import { Icon } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
     const { copyright, listItems = [], imageItems = [], paddingLeft, paddingRight } = attributes;
@@ -24,9 +26,11 @@ export default function Edit({ attributes, setAttributes }) {
         setAttributes({ listItems: [...listItems, ""] });
     };
 
-    // Видалення останньої колонки для тексту
-    const removeTextColumn = () => {
-        setAttributes({ listItems: listItems.slice(0, -1) });
+    // Видалення колонки тексту по індексу
+    const removeTextColumn = (index) => {
+        const newItems = [...listItems];
+        newItems.splice(index, 1);  // Correct way to remove an item by index
+        setAttributes({ listItems: newItems });
     };
 
     // Додавання нової колонки для зображень
@@ -59,14 +63,14 @@ export default function Edit({ attributes, setAttributes }) {
                 <PanelBody title="Padding Controls" initialOpen={true}>
                     <TextControl
                         label="Padding Left (rem)"
-                        value={paddingLeft || 0}
+                        value={paddingLeft}
                         onChange={(value) => setAttributes({ paddingLeft: Number(value) })}
                         type="number"
                         min={0}
                     />
                     <TextControl
                         label="Padding Right (rem)"
-                        value={paddingRight || 0}
+                        value={paddingRight}
                         onChange={(value) => setAttributes({ paddingRight: Number(value) })}
                         type="number"
                         min={0}
@@ -74,21 +78,51 @@ export default function Edit({ attributes, setAttributes }) {
                 </PanelBody>
 
                 <PanelBody title="Text Columns Controls" initialOpen={true}>
-                    <Button
-                        onClick={removeTextColumn}
-                        isDestructive
-                        style={{ backgroundColor: '#8B0000', color: '#FFF' }} // Dark red background
-                    >
-                        Видалити текстову колонку
-                    </Button>
-                    <Button onClick={addTextColumn}>Додати текстову колонку</Button>
+                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                        {listItems.map((column, index) => (
+                            <div
+                                key={index}
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    marginBottom: '8px',
+                                    padding: '8px',
+                                    border: '1px solid #ccc',
+                                    borderRadius: '6px',
+                                }}
+                            >
+                                <span style={{ marginRight: '12px', color: '#000' }}>
+                                    Елемент номер {index + 1}
+                                </span>
+                                <button
+                                    onClick={() => removeTextColumn(index)}
+                                    style={{
+                                        background: 'none',
+                                        border: 'none',
+                                        color: '#000',
+                                        cursor: 'pointer',
+                                    }}
+                                    aria-label={`Видалити елемент номер ${index + 1}`}
+                                >
+                                    <Icon icon={trash} style={{ color: '#8B0000', fontSize: '18px' }} />
+                                </button>
+                            </div>
+                        ))}
+
+                        <Button onClick={addTextColumn} style={{ backgroundColor: '#181B24', color: '#FFF' }}>
+                            <Icon icon={plus} style={{ marginRight: '8px' }} />
+                            Додати текстову колонку
+                        </Button>
+                    </div>
                 </PanelBody>
+
 
                 <PanelBody title="Image Upload Controls" initialOpen={true}>
                     <Button
                         onClick={removeImageColumn}
                         isDestructive
-                        style={{ backgroundColor: '#8B0000', color: '#FFF' }} // Dark red background
+                        style={{ backgroundColor: '#8B0000', color: '#FFF' }} 
                     >
                         Видалити зображення колонку
                     </Button>
@@ -105,8 +139,8 @@ export default function Edit({ attributes, setAttributes }) {
                                         <Button
                                             onClick={open}
                                             style={{
-                                                backgroundColor: '#0000FF', // Blue background
-                                                color: '#FFF' // White text
+                                                backgroundColor: '#0000FF', 
+                                                color: '#FFF' 
                                             }}
                                         >
                                             {imageItems[index] ? 'Змінити зображення' : 'Додати зображення'}
