@@ -1,6 +1,59 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@wordpress/icons/build-module/library/edit.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/edit.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _pencil__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pencil */ "./node_modules/@wordpress/icons/build-module/library/pencil.js");
+/**
+ * Internal dependencies
+ */
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_pencil__WEBPACK_IMPORTED_MODULE_0__["default"]);
+//# sourceMappingURL=edit.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/pencil.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/pencil.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/**
+ * WordPress dependencies
+ */
+
+
+const pencil = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__.SVG, {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24",
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__.Path, {
+    d: "m19 7-3-3-8.5 8.5-1 4 4-1L19 7Zm-7 11.5H5V20h7v-1.5Z"
+  })
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (pencil);
+//# sourceMappingURL=pencil.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@wordpress/icons/build-module/library/plus.js":
 /*!********************************************************************!*\
   !*** ./node_modules/@wordpress/icons/build-module/library/plus.js ***!
@@ -84,8 +137,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/trash.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/edit.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/trash.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus.js");
 /* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
 
 
@@ -159,6 +213,13 @@ function Edit({
       imageItems: newImageItems
     });
   };
+  const iconButtonStyle = {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    padding: '5px',
+    borderRadius: '6px'
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Padding Controls",
     initialOpen: true
@@ -230,7 +291,7 @@ function Edit({
       color: '#000',
       flex: 1
     }
-  }, listItems[index]?.trim() || `Елемент номер ${index + 1}`), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, column?.trim() || `Елемент номер ${index + 1}`), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       display: 'flex',
       gap: '10px'
@@ -238,33 +299,26 @@ function Edit({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: () => handleEditTextColumn(column, index),
     style: {
-      background: 'none',
-      border: 'none',
-      color: '#000',
-      cursor: 'pointer'
+      ...iconButtonStyle,
+      color: '#0066CC'
     },
-    "aria-label": `Редагувати елемент номер ${index + 1}`
+    "aria-label": `Редагувати елемент ${index + 1}`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-    icon: "edit",
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
     style: {
-      color: '#0066CC',
       fontSize: '18px'
     }
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: () => removeTextColumn(index),
     style: {
-      background: 'none',
-      border: 'none',
-      color: '#FF5C5C',
-      cursor: 'pointer',
-      borderRadius: '6px',
-      padding: '5px'
+      ...iconButtonStyle,
+      backgroundColor: '#FF5C5C',
+      color: '#FFF'
     },
-    "aria-label": `Видалити елемент номер ${index + 1}`
+    "aria-label": `Видалити елемент ${index + 1}`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
     style: {
-      color: '#FF5C5C',
       fontSize: '18px'
     }
   })))))), provided.placeholder))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
@@ -275,7 +329,7 @@ function Edit({
       marginTop: '10px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
     style: {
       marginRight: '8px'
     }
@@ -289,10 +343,18 @@ function Edit({
       backgroundColor: '#FF5C5C',
       color: '#FFF',
       borderRadius: '6px',
-      padding: '5px'
+      padding: '5px',
+      marginBottom: '10px'
     }
   }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-    onClick: addImageColumn
+    onClick: addImageColumn,
+    style: {
+      backgroundColor: '#181B24',
+      color: '#FFF',
+      borderRadius: '6px',
+      padding: '5px',
+      marginBottom: '10px'
+    }
   }, "\u0414\u043E\u0434\u0430\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, imageItems.map((_, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
     style: {
@@ -327,7 +389,8 @@ function Edit({
       backgroundColor: '#FF5C5C',
       color: '#FFF',
       borderRadius: '6px',
-      padding: '5px'
+      padding: '5px',
+      marginTop: '5px'
     }
   }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F"))))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,

@@ -1,7 +1,7 @@
 import { useBlockProps, RichText, MediaUpload, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, TextControl, Button } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
-import { plus, trash } from '@wordpress/icons';
+import { plus, trash, edit } from '@wordpress/icons';
 import { Icon } from '@wordpress/components';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
@@ -53,6 +53,14 @@ export default function Edit({ attributes, setAttributes }) {
         const newImageItems = [...imageItems];
         newImageItems[index] = "";
         setAttributes({ imageItems: newImageItems });
+    };
+
+    const iconButtonStyle = {
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        padding: '5px',
+        borderRadius: '6px'
     };
 
     return (
@@ -115,34 +123,22 @@ export default function Edit({ attributes, setAttributes }) {
                                                     }}
                                                 >
                                                     <span style={{ marginRight: '12px', color: '#000', flex: 1 }}>
-                                                        {listItems[index]?.trim() || `Елемент номер ${index + 1}`}
+                                                        {column?.trim() || `Елемент номер ${index + 1}`}
                                                     </span>
                                                     <div style={{ display: 'flex', gap: '10px' }}>
                                                         <Button
                                                             onClick={() => handleEditTextColumn(column, index)}
-                                                            style={{
-                                                                background: 'none',
-                                                                border: 'none',
-                                                                color: '#000',
-                                                                cursor: 'pointer',
-                                                            }}
-                                                            aria-label={`Редагувати елемент номер ${index + 1}`}
+                                                            style={{ ...iconButtonStyle, color: '#0066CC' }}
+                                                            aria-label={`Редагувати елемент ${index + 1}`}
                                                         >
-                                                            <Icon icon="edit" style={{ color: '#0066CC', fontSize: '18px' }} />
+                                                            <Icon icon={edit} style={{ fontSize: '18px' }} />
                                                         </Button>
                                                         <Button
                                                             onClick={() => removeTextColumn(index)}
-                                                            style={{
-                                                                background: 'none',
-                                                                border: 'none',
-                                                                color: '#FF5C5C',
-                                                                cursor: 'pointer',
-                                                                borderRadius: '6px',
-                                                                padding: '5px',
-                                                            }}
-                                                            aria-label={`Видалити елемент номер ${index + 1}`}
+                                                            style={{ ...iconButtonStyle, backgroundColor: '#FF5C5C', color: '#FFF' }}
+                                                            aria-label={`Видалити елемент ${index + 1}`}
                                                         >
-                                                            <Icon icon={trash} style={{ color: '#FF5C5C', fontSize: '18px' }} />
+                                                            <Icon icon={trash} style={{ fontSize: '18px' }} />
                                                         </Button>
                                                     </div>
                                                 </div>
@@ -165,16 +161,16 @@ export default function Edit({ attributes, setAttributes }) {
                     <Button
                         onClick={removeImageColumn}
                         isDestructive
-                        style={{
-                            backgroundColor: '#FF5C5C',
-                            color: '#FFF',
-                            borderRadius: '6px',
-                            padding: '5px',
-                        }}
+                        style={{ backgroundColor: '#FF5C5C', color: '#FFF', borderRadius: '6px', padding: '5px', marginBottom: '10px' }}
                     >
                         Видалити зображення колонку
                     </Button>
-                    <Button onClick={addImageColumn}>Додати зображення колонку</Button>
+                    <Button
+                        onClick={addImageColumn}
+                        style={{ backgroundColor: '#181B24', color: '#FFF', borderRadius: '6px', padding: '5px', marginBottom: '10px' }}
+                    >
+                        Додати зображення колонку
+                    </Button>
 
                     <div>
                         {imageItems.map((_, index) => (
@@ -186,12 +182,7 @@ export default function Edit({ attributes, setAttributes }) {
                                     render={({ open }) => (
                                         <Button
                                             onClick={open}
-                                            style={{
-                                                backgroundColor: '#0066CC',
-                                                color: '#FFF',
-                                                borderRadius: '6px',
-                                                padding: '8px'
-                                            }}
+                                            style={{ backgroundColor: '#0066CC', color: '#FFF', borderRadius: '6px', padding: '8px' }}
                                         >
                                             {imageItems[index] ? 'Змінити зображення' : 'Додати зображення'}
                                         </Button>
@@ -203,12 +194,7 @@ export default function Edit({ attributes, setAttributes }) {
                                         <Button
                                             isDestructive
                                             onClick={() => removeImageItem(index)}
-                                            style={{
-                                                backgroundColor: '#FF5C5C',
-                                                color: '#FFF',
-                                                borderRadius: '6px',
-                                                padding: '5px',
-                                            }}
+                                            style={{ backgroundColor: '#FF5C5C', color: '#FFF', borderRadius: '6px', padding: '5px', marginTop: '5px' }}
                                         >
                                             Видалити зображення
                                         </Button>
