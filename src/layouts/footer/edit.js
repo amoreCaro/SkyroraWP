@@ -15,48 +15,40 @@ export default function Edit({ attributes, setAttributes }) {
         }
     }, []);
 
-    // Update list item
     const updateListItem = (value, index) => {
         const newItems = [...listItems];
         newItems[index] = value;
         setAttributes({ listItems: newItems });
     };
 
-    // Add a new text column
     const addTextColumn = () => {
         setAttributes({ listItems: [...listItems, ""] });
     };
 
-    // Remove a text column by index
     const removeTextColumn = (index) => {
         const newItems = [...listItems];
-        newItems.splice(index, 1);  // Correct way to remove an item by index
+        newItems.splice(index, 1);
         setAttributes({ listItems: newItems });
     };
 
-    // Edit a text column
     const handleEditTextColumn = (value, index) => {
         updateListItem(value, index);
     };
 
-    // Add a new image column
     const addImageColumn = () => {
         setAttributes({ imageItems: [...imageItems, ""] });
     };
 
-    // Remove last image column
     const removeImageColumn = () => {
         setAttributes({ imageItems: imageItems.slice(0, -1) });
     };
 
-    // Add image to a column
     const addImageItem = (media, index) => {
         const newImageItems = [...imageItems];
         newImageItems[index] = media.url;
         setAttributes({ imageItems: newImageItems });
     };
 
-    // Remove image from a column
     const removeImageItem = (index) => {
         const newImageItems = [...imageItems];
         newImageItems[index] = "";
@@ -93,7 +85,7 @@ export default function Edit({ attributes, setAttributes }) {
                             const [movedItem] = reorderedItems.splice(source.index, 1);
                             reorderedItems.splice(destination.index, 0, movedItem);
 
-                            setAttributes({ listItems: reorderedItems }); // Correct setter for updating listItems
+                            setAttributes({ listItems: reorderedItems });
                         }}
                     >
                         <Droppable droppableId="columns-list">
@@ -122,8 +114,8 @@ export default function Edit({ attributes, setAttributes }) {
                                                         ...provided.draggableProps.style,
                                                     }}
                                                 >
-                                                    <span style={{ marginRight: '12px', color: '#000' }}>
-                                                        Елемент номер {index + 1}
+                                                    <span style={{ marginRight: '12px', color: '#000', flex: 1 }}>
+                                                        {listItems[index]?.trim() || `Елемент номер ${index + 1}`}
                                                     </span>
                                                     <div style={{ display: 'flex', gap: '10px' }}>
                                                         <Button
@@ -244,8 +236,8 @@ export default function Edit({ attributes, setAttributes }) {
             >
                 <div style={{ display: 'flex', gap: '20px', marginBottom: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
                     {imageItems.map((image, index) => (
-                        <div style={{ maxWidth: '48px', width: '100%', height: '48px' }}>
-                            <img key={index} src={image} alt={`Column Image ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        <div key={index} style={{ maxWidth: '48px', width: '100%', height: '48px' }}>
+                            <img src={image} alt={`Column Image ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         </div>
                     ))}
                 </div>

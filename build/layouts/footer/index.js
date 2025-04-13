@@ -113,8 +113,6 @@ function Edit({
       });
     }
   }, []);
-
-  // Update list item
   const updateListItem = (value, index) => {
     const newItems = [...listItems];
     newItems[index] = value;
@@ -122,43 +120,31 @@ function Edit({
       listItems: newItems
     });
   };
-
-  // Add a new text column
   const addTextColumn = () => {
     setAttributes({
       listItems: [...listItems, ""]
     });
   };
-
-  // Remove a text column by index
   const removeTextColumn = index => {
     const newItems = [...listItems];
-    newItems.splice(index, 1); // Correct way to remove an item by index
+    newItems.splice(index, 1);
     setAttributes({
       listItems: newItems
     });
   };
-
-  // Edit a text column
   const handleEditTextColumn = (value, index) => {
     updateListItem(value, index);
   };
-
-  // Add a new image column
   const addImageColumn = () => {
     setAttributes({
       imageItems: [...imageItems, ""]
     });
   };
-
-  // Remove last image column
   const removeImageColumn = () => {
     setAttributes({
       imageItems: imageItems.slice(0, -1)
     });
   };
-
-  // Add image to a column
   const addImageItem = (media, index) => {
     const newImageItems = [...imageItems];
     newImageItems[index] = media.url;
@@ -166,8 +152,6 @@ function Edit({
       imageItems: newImageItems
     });
   };
-
-  // Remove image from a column
   const removeImageItem = index => {
     const newImageItems = [...imageItems];
     newImageItems[index] = "";
@@ -209,7 +193,7 @@ function Edit({
       reorderedItems.splice(destination.index, 0, movedItem);
       setAttributes({
         listItems: reorderedItems
-      }); // Correct setter for updating listItems
+      });
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.Droppable, {
     droppableId: "columns-list"
@@ -243,9 +227,10 @@ function Edit({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     style: {
       marginRight: '12px',
-      color: '#000'
+      color: '#000',
+      flex: 1
     }
-  }, "\u0415\u043B\u0435\u043C\u0435\u043D\u0442 \u043D\u043E\u043C\u0435\u0440 ", index + 1), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, listItems[index]?.trim() || `Елемент номер ${index + 1}`), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       display: 'flex',
       gap: '10px'
@@ -366,13 +351,13 @@ function Edit({
       justifyContent: 'center'
     }
   }, imageItems.map((image, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: index,
     style: {
       maxWidth: '48px',
       width: '100%',
       height: '48px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    key: index,
     src: image,
     alt: `Column Image ${index + 1}`,
     style: {
