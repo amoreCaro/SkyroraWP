@@ -137,11 +137,273 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/edit.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/trash.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/trash.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/edit.js");
 /* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
 
+// import {
+//     useBlockProps,
+//     RichText,
+//     MediaUpload,
+//     InspectorControls,
+// } from '@wordpress/block-editor';
+// import {
+//     PanelBody,
+//     TextControl,
+//     Button,
+//     Dropdown,
+//     Icon,
+// } from '@wordpress/components';
+// import { useState, useEffect } from '@wordpress/element';
+// import { plus, trash, edit } from '@wordpress/icons';
+// import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+
+// export default function Edit({ attributes, setAttributes }) {
+//     const { copyright, listItems = [], imageItems = [], paddingLeft, paddingRight } = attributes;
+//     const blockProps = useBlockProps();
+
+//     useEffect(() => {
+//         if (!copyright) {
+//             setAttributes({ copyright: "© 2025 SKYRORA LIMITED" });
+//         }
+//     }, []);
+
+//     const updateListItem = (value, index) => {
+//         const newItems = [...listItems];
+//         newItems[index] = value;
+//         setAttributes({ listItems: newItems });
+//     };
+
+//     const addTextColumn = () => setAttributes({ listItems: [...listItems, ""] });
+
+//     const removeTextColumn = (index) => {
+//         const newItems = [...listItems];
+//         newItems.splice(index, 1);
+//         setAttributes({ listItems: newItems });
+//     };
+
+//     const handleEditTextColumn = (value, index) => updateListItem(value, index);
+
+//     const addImageColumn = () => setAttributes({ imageItems: [...imageItems, ""] });
+
+//     const removeImageColumn = () => setAttributes({ imageItems: imageItems.slice(0, -1) });
+
+//     const addImageItem = (media, index) => {
+//         const newImageItems = [...imageItems];
+//         newImageItems[index] = media.url;
+//         setAttributes({ imageItems: newImageItems });
+//     };
+
+//     const removeImageItem = (index) => {
+//         const newImageItems = [...imageItems];
+//         newImageItems[index] = "";
+//         setAttributes({ imageItems: newImageItems });
+//     };
+
+//     const iconButtonStyle = {
+//         background: 'none',
+//         border: 'none',
+//         cursor: 'pointer',
+//         padding: '5px',
+//         borderRadius: '6px'
+//     };
+
+//     return (
+//         <>
+//             {/* InspectorControls залишено без змін */}
+//             <InspectorControls>
+//                 <PanelBody title="Padding Controls" initialOpen={true}>
+//                     <TextControl
+//                         label="Padding Left (rem)"
+//                         value={paddingLeft}
+//                         onChange={(value) => setAttributes({ paddingLeft: Number(value) })}
+//                         type="number"
+//                         min={0}
+//                     />
+//                     <TextControl
+//                         label="Padding Right (rem)"
+//                         value={paddingRight}
+//                         onChange={(value) => setAttributes({ paddingRight: Number(value) })}
+//                         type="number"
+//                         min={0}
+//                     />
+//                 </PanelBody>
+
+//                 <PanelBody title="Text Columns Controls" initialOpen={true}>
+//                     <DragDropContext
+//                         onDragEnd={(result) => {
+//                             const { source, destination } = result;
+//                             if (!destination) return;
+//                             const reorderedItems = Array.from(listItems);
+//                             const [movedItem] = reorderedItems.splice(source.index, 1);
+//                             reorderedItems.splice(destination.index, 0, movedItem);
+//                             setAttributes({ listItems: reorderedItems });
+//                         }}
+//                     >
+//                         <Droppable droppableId="columns-list">
+//                             {(provided) => (
+//                                 <div ref={provided.innerRef} {...provided.droppableProps}>
+//                                     {listItems.map((column, index) => (
+//                                         <Draggable key={index} draggableId={`item-${index}`} index={index}>
+//                                             {(provided) => (
+//                                                 <div
+//                                                     ref={provided.innerRef}
+//                                                     {...provided.draggableProps}
+//                                                     {...provided.dragHandleProps}
+//                                                     style={{
+//                                                         display: 'flex',
+//                                                         alignItems: 'center',
+//                                                         justifyContent: 'space-between',
+//                                                         marginBottom: '8px',
+//                                                         padding: '8px',
+//                                                         border: '1px solid #ccc',
+//                                                         borderRadius: '6px',
+//                                                         backgroundColor: '#fff',
+//                                                         ...provided.draggableProps.style,
+//                                                     }}
+//                                                 >
+//                                                     <span style={{ flex: 1 }}>{column?.trim() || `Елемент номер ${index + 1}`}</span>
+//                                                     <div style={{ display: 'flex', gap: '10px' }}>
+//                                                         <Button
+//                                                             onClick={() => handleEditTextColumn(column, index)}
+//                                                             style={{ ...iconButtonStyle, color: '#0066CC' }}
+//                                                         >
+//                                                             <Icon icon={edit} />
+//                                                         </Button>
+//                                                         <Button
+//                                                             onClick={() => removeTextColumn(index)}
+//                                                             style={{ ...iconButtonStyle, backgroundColor: '#FF5C5C', color: '#FFF' }}
+//                                                         >
+//                                                             <Icon icon={trash} />
+//                                                         </Button>
+//                                                     </div>
+//                                                 </div>
+//                                             )}
+//                                         </Draggable>
+//                                     ))}
+//                                     {provided.placeholder}
+//                                 </div>
+//                             )}
+//                         </Droppable>
+//                     </DragDropContext>
+//                     <Button onClick={addTextColumn} style={{ backgroundColor: '#181B24', color: '#FFF', marginTop: '10px' }}>
+//                         <Icon icon={plus} style={{ marginRight: '8px' }} />
+//                         Додати текстову колонку
+//                     </Button>
+//                 </PanelBody>
+
+//                 <PanelBody title="Image Upload Controls" initialOpen={true}>
+//                     {imageItems.map((item, index) => (
+//                         <div
+//                             key={index}
+//                             style={{
+//                                 border: '1px solid #ccc',
+//                                 borderRadius: '6px',
+//                                 padding: '12px',
+//                                 marginBottom: '12px',
+//                                 background: '#fff',
+//                             }}
+//                         >
+//                             {item && (
+//                                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+//                                     <img
+//                                         src={item}
+//                                         alt={`Image ${index + 1}`}
+//                                         style={{ maxWidth: '100px', borderRadius: '6px' }}
+//                                     />
+//                                     <Dropdown
+//                                         renderToggle={({ isOpen, onToggle }) => (
+//                                             <Button onClick={onToggle} style={{ ...iconButtonStyle, color: '#0066CC' }}>
+//                                                 <Icon icon={edit} />
+//                                             </Button>
+//                                         )}
+//                                         renderContent={() => (
+//                                             <div style={{ padding: '10px', background: '#f9f9f9', borderRadius: '6px' }}>
+//                                                 <MediaUpload
+//                                                     onSelect={(media) => addImageItem(media, index)}
+//                                                     allowedTypes={['image']}
+//                                                     render={({ open }) => (
+//                                                         <Button onClick={open} isSecondary style={{ marginBottom: '8px' }}>
+//                                                             Змінити зображення
+//                                                         </Button>
+//                                                     )}
+//                                                 />
+//                                                 <img
+//                                                     src={item}
+//                                                     alt={`Image Preview ${index + 1}`}
+//                                                     style={{ width: '100px', borderRadius: '6px', display: 'block' }}
+//                                                 />
+//                                             </div>
+//                                         )}
+//                                     />
+//                                     <Button
+//                                         isDestructive
+//                                         onClick={() => removeImageItem(index)}
+//                                         style={{ ...iconButtonStyle, backgroundColor: '#FF5C5C', color: '#FFF' }}
+//                                     >
+//                                         <Icon icon={trash} />
+//                                     </Button>
+//                                 </div>
+//                             )}
+//                             {!item && (
+//                                 <MediaUpload
+//                                     onSelect={(media) => addImageItem(media, index)}
+//                                     allowedTypes={['image']}
+//                                     render={({ open }) => (
+//                                         <Button onClick={open} style={{ backgroundColor: '#0066CC', color: '#FFF' }}>
+//                                             Додати зображення
+//                                         </Button>
+//                                     )}
+//                                 />
+//                             )}
+//                         </div>
+//                     ))}
+
+//                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
+//                         <Button
+//                             onClick={addImageColumn}
+//                             style={{ backgroundColor: '#181B24', color: '#FFF', borderRadius: '8px', padding: '8px 16px' }}
+//                         >
+//                             <Icon icon={plus} style={{ marginRight: '8px' }} />
+//                             Додати колонку з зображенням
+//                         </Button>
+//                         <Button
+//                             onClick={removeImageColumn}
+//                             style={{ backgroundColor: '#181B24', color: '#FFF', borderRadius: '8px', padding: '8px 16px' }}
+//                         >
+//                             Видалити колонку з картинкою
+//                         </Button>
+//                     </div>
+//                 </PanelBody>
+//             </InspectorControls>
+
+//             {/* Вивід блоку */}
+//             <div
+//                 {...blockProps}
+//                 style={{
+//                     display: 'flex',
+//                     flexDirection: 'column',
+//                     justifyContent: 'center',
+//                     alignItems: 'center',
+//                     background: '#181B24',
+//                     paddingTop: '30px',
+//                     paddingBottom: '48px',
+//                     paddingLeft: `${paddingLeft || 0}rem`,
+//                     paddingRight: `${paddingRight || 0}rem`,
+//                 }}
+//             >
+//                 <div style={{ display: 'flex', gap: '20px', marginBottom: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+//                     {imageItems.map((image, index) => (
+//                         <div key={index} style={{ maxWidth: '48px', width: '100%', height: '48px' }}>
+//                             <img src={image} alt={`Column Image ${index + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+//                         </div>
+//                     ))}
+//                 </div>
+//             </div>
+//         </>
+//     );
+// }
 
 
 
@@ -163,7 +425,7 @@ function Edit({
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     if (!copyright) {
       setAttributes({
-        copyright: "© 2025 SKYRORA LIMITED"
+        copyright: '© 2025 SKYRORA LIMITED'
       });
     }
   }, []);
@@ -174,11 +436,9 @@ function Edit({
       listItems: newItems
     });
   };
-  const addTextColumn = () => {
-    setAttributes({
-      listItems: [...listItems, ""]
-    });
-  };
+  const addTextColumn = () => setAttributes({
+    listItems: [...listItems, '']
+  });
   const removeTextColumn = index => {
     const newItems = [...listItems];
     newItems.splice(index, 1);
@@ -186,19 +446,13 @@ function Edit({
       listItems: newItems
     });
   };
-  const handleEditTextColumn = (value, index) => {
-    updateListItem(value, index);
-  };
-  const addImageColumn = () => {
-    setAttributes({
-      imageItems: [...imageItems, ""]
-    });
-  };
-  const removeImageColumn = () => {
-    setAttributes({
-      imageItems: imageItems.slice(0, -1)
-    });
-  };
+  const handleEditTextColumn = (value, index) => updateListItem(value, index);
+  const addImageColumn = () => setAttributes({
+    imageItems: [...imageItems, '']
+  });
+  const removeImageColumn = () => setAttributes({
+    imageItems: imageItems.slice(0, -1)
+  });
   const addImageItem = (media, index) => {
     const newImageItems = [...imageItems];
     newImageItems[index] = media.url;
@@ -208,7 +462,7 @@ function Edit({
   };
   const removeImageItem = index => {
     const newImageItems = [...imageItems];
-    newImageItems[index] = "";
+    newImageItems[index] = '';
     setAttributes({
       imageItems: newImageItems
     });
@@ -260,12 +514,7 @@ function Edit({
     droppableId: "columns-list"
   }, provided => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ref: provided.innerRef,
-    ...provided.droppableProps,
-    style: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center'
-    }
+    ...provided.droppableProps
   }, listItems.map((column, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.Draggable, {
     key: index,
     draggableId: `item-${index}`,
@@ -285,43 +534,25 @@ function Edit({
       backgroundColor: '#fff',
       ...provided.draggableProps.style
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    tagName: "div",
+    value: column,
+    onChange: value => handleEditTextColumn(value, index),
+    placeholder: `Елемент номер ${index + 1}`,
     style: {
-      marginRight: '12px',
-      color: '#000',
-      flex: 1
+      flex: 1,
+      marginRight: '10px'
     }
-  }, column?.trim() || `Елемент номер ${index + 1}`), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      display: 'flex',
-      gap: '10px'
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-    onClick: () => handleEditTextColumn(column, index),
-    style: {
-      ...iconButtonStyle,
-      color: '#0066CC'
-    },
-    "aria-label": `Редагувати елемент ${index + 1}`
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
-    style: {
-      fontSize: '18px'
-    }
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: () => removeTextColumn(index),
     style: {
       ...iconButtonStyle,
       backgroundColor: '#FF5C5C',
       color: '#FFF'
-    },
-    "aria-label": `Видалити елемент ${index + 1}`
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
-    style: {
-      fontSize: '18px'
     }
-  })))))), provided.placeholder))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }))))), provided.placeholder))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: addTextColumn,
     style: {
       backgroundColor: '#181B24',
@@ -329,70 +560,126 @@ function Edit({
       marginTop: '10px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
     style: {
       marginRight: '8px'
     }
   }), "\u0414\u043E\u0434\u0430\u0442\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u0443 \u043A\u043E\u043B\u043E\u043D\u043A\u0443")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Image Upload Controls",
     initialOpen: true
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-    onClick: removeImageColumn,
-    isDestructive: true,
-    style: {
-      backgroundColor: '#FF5C5C',
-      color: '#FFF',
-      borderRadius: '6px',
-      padding: '5px',
-      marginBottom: '10px'
-    }
-  }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-    onClick: addImageColumn,
-    style: {
-      backgroundColor: '#181B24',
-      color: '#FFF',
-      borderRadius: '6px',
-      padding: '5px',
-      marginBottom: '10px'
-    }
-  }, "\u0414\u043E\u0434\u0430\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F \u043A\u043E\u043B\u043E\u043D\u043A\u0443"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, imageItems.map((_, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, imageItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
     style: {
-      marginBottom: '10px'
+      border: '1px solid #ccc',
+      borderRadius: '6px',
+      padding: '12px',
+      marginBottom: '12px',
+      background: '#fff'
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+  }, item && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: item,
+    alt: `Image ${index + 1}`,
+    style: {
+      maxWidth: '100px',
+      borderRadius: '6px'
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
+    renderToggle: ({
+      isOpen,
+      onToggle
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+      onClick: onToggle,
+      style: {
+        ...iconButtonStyle,
+        color: '#0066CC'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"]
+    })),
+    renderContent: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        padding: '10px',
+        background: '#f9f9f9',
+        borderRadius: '6px'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+      onSelect: media => addImageItem(media, index),
+      allowedTypes: ['image'],
+      render: ({
+        open
+      }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+        onClick: open,
+        isSecondary: true,
+        style: {
+          marginBottom: '8px'
+        }
+      }, "\u0417\u043C\u0456\u043D\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F")
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: item,
+      alt: `Image Preview ${index + 1}`,
+      style: {
+        width: '100px',
+        borderRadius: '6px',
+        display: 'block'
+      }
+    }))
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    isDestructive: true,
+    onClick: () => removeImageItem(index),
+    style: {
+      ...iconButtonStyle,
+      backgroundColor: '#FF5C5C',
+      color: '#FFF'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }))), !item && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
     onSelect: media => addImageItem(media, index),
     allowedTypes: ['image'],
-    value: imageItems[index],
     render: ({
       open
     }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
       onClick: open,
       style: {
         backgroundColor: '#0066CC',
-        color: '#FFF',
-        borderRadius: '6px',
-        padding: '8px'
+        color: '#FFF'
       }
-    }, imageItems[index] ? 'Змінити зображення' : 'Додати зображення')
-  }), imageItems[index] && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: imageItems[index],
-    alt: `Column Image ${index + 1}`,
+    }, "\u0414\u043E\u0434\u0430\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F")
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
-      maxWidth: '100px',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '10px',
       marginTop: '10px'
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-    isDestructive: true,
-    onClick: () => removeImageItem(index),
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    onClick: addImageColumn,
     style: {
-      backgroundColor: '#FF5C5C',
+      backgroundColor: '#181B24',
       color: '#FFF',
-      borderRadius: '6px',
-      padding: '5px',
-      marginTop: '5px'
+      borderRadius: '8px',
+      padding: '8px 16px'
     }
-  }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F"))))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
+    style: {
+      marginRight: '8px'
+    }
+  }), "\u0414\u043E\u0434\u0430\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443 \u0437 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F\u043C"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    onClick: removeImageColumn,
+    style: {
+      backgroundColor: '#181B24',
+      color: '#FFF',
+      borderRadius: '8px',
+      padding: '8px 16px'
+    }
+  }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443 \u0437 \u043A\u0430\u0440\u0442\u0438\u043D\u043A\u043E\u044E")))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
     style: {
       display: 'flex',
@@ -431,39 +718,31 @@ function Edit({
   })))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       display: 'flex',
-      gap: '20px',
+      justifyContent: 'center',
+      gap: '30px',
       flexWrap: 'wrap',
-      justifyContent: 'center'
+      marginBottom: '18px'
     }
-  }, listItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, listItems.map((text, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     key: index,
     tagName: "div",
-    value: item,
+    value: text,
     onChange: value => updateListItem(value, index),
-    placeholder: `Column ${index + 1}`,
+    placeholder: `Елемент ${index + 1}`,
     style: {
-      fontSize: '12px',
-      lineHeight: '100%',
-      color: '#FFFFFF',
-      gap: '16px',
-      textAlign: 'center',
-      textTransform: 'uppercase'
+      color: '#fff',
+      textAlign: 'center'
     }
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-    tagName: "p",
+    tagName: "div",
     value: copyright,
-    onChange: newVal => setAttributes({
-      copyright: newVal
+    onChange: value => setAttributes({
+      copyright: value
     }),
-    placeholder: "Enter copyright text",
     style: {
-      fontWeight: 400,
+      color: '#A39FA9',
       fontSize: '12px',
-      lineHeight: '100%',
-      textAlign: 'center',
-      textTransform: 'uppercase',
-      color: "#FFF",
-      marginTop: '24px'
+      textAlign: 'center'
     }
   })));
 }
