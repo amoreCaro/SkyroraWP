@@ -308,15 +308,41 @@ function Edit({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\u0414\u043E\u0434\u0430\u0442\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u0443 \u043A\u043E\u043B\u043E\u043D\u043A\u0443"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Image Upload Controls",
     initialOpen: true
-  }, imageItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    key: index,
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.DragDropContext, {
+    onDragEnd: result => {
+      const {
+        source,
+        destination
+      } = result;
+      if (!destination) return;
+      const reorderedItems = Array.from(imageItems);
+      const [movedItem] = reorderedItems.splice(source.index, 1);
+      reorderedItems.splice(destination.index, 0, movedItem);
+      setAttributes({
+        imageItems: reorderedItems
+      });
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.Droppable, {
+    droppableId: "image-list"
+  }, provided => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ref: provided.innerRef,
+    ...provided.droppableProps
+  }, imageItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.Draggable, {
+    key: `image-${index}`,
+    draggableId: `image-${index}`,
+    index: index
+  }, provided => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ref: provided.innerRef,
+    ...provided.draggableProps,
+    ...provided.dragHandleProps,
     style: {
       borderRadius: '12px',
       padding: '12px',
       marginBottom: '16px',
       background: '#FFFFFF',
       boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
-      transition: 'box-shadow 0.3s ease'
+      transition: 'box-shadow 0.3s ease',
+      ...provided.draggableProps.style
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
     renderToggle: ({
@@ -415,7 +441,7 @@ function Edit({
         marginRight: '6px'
       }
     }), "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438"))
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })))), provided.placeholder))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       marginTop: '16px',
       display: 'flex',
