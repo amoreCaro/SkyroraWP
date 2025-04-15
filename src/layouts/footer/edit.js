@@ -176,7 +176,9 @@ export default function Edit({ attributes, setAttributes }) {
                         }}
                     >
                         <Icon icon={plus} style={{ marginRight: '8px' }} />
-                        Додати текстову колонку
+                        <span>
+                            Додати текстову колонку
+                        </span>
                     </Button>
                 </PanelBody>
 
@@ -196,18 +198,10 @@ export default function Edit({ attributes, setAttributes }) {
                                 <div
                                     style={{
                                         display: 'flex',
-                                        justifyContent: 'space-between',
-                                        alignItems: 'center',
+                                        justifyContent: 'flex-end',
                                     }}
                                 >
-                                    <img
-                                        src={item}
-                                        alt={`Image ${index + 1}`}
-                                        style={{
-                                            maxWidth: '100px',
-                                            borderRadius: '6px',
-                                        }}
-                                    />
+
                                     <Dropdown
                                         renderToggle={({ isOpen, onToggle }) => (
                                             <Button
@@ -237,10 +231,14 @@ export default function Edit({ attributes, setAttributes }) {
                                                     render={({ open }) => (
                                                         <Button
                                                             onClick={open}
-                                                            isSecondary
-                                                            style={{ marginBottom: '8px' }}
+                                                            style={{
+                                                                marginBottom: '8px', maxWidth: '100%', width: '100%', height: '48px',
+                                                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                                            }}
                                                         >
-                                                            Змінити зображення
+                                                            <span>
+                                                                Змінити зображення
+                                                            </span>
                                                         </Button>
                                                     )}
                                                 />
@@ -248,7 +246,9 @@ export default function Edit({ attributes, setAttributes }) {
                                                     src={item}
                                                     alt={`Image Preview ${index + 1}`}
                                                     style={{
-                                                        width: '100px',
+                                                        maxWidth: '100%',
+                                                        width: '100%',
+                                                        height: 'auto',
                                                         borderRadius: '6px',
                                                         display: 'block',
                                                     }}
@@ -257,10 +257,9 @@ export default function Edit({ attributes, setAttributes }) {
                                         )}
                                     />
                                     <Button
-                                        onClick={() => removeTextColumn(index)}
+                                        onClick={() => removeImageColumn(index)}
                                         style={{
                                             ...iconButtonStyle,
-
                                             color: '#000',
                                         }}
                                     >
@@ -280,7 +279,9 @@ export default function Edit({ attributes, setAttributes }) {
                                                 color: '#FFF',
                                             }}
                                         >
-                                            Додати зображення
+                                            <span>
+                                                Додати зображення
+                                            </span>
                                         </Button>
                                     )}
                                 />
@@ -301,23 +302,25 @@ export default function Edit({ attributes, setAttributes }) {
                             style={{
                                 backgroundColor: '#181B24',
                                 color: '#FFF',
-                                borderRadius: '8px',
-                                padding: '8px 16px',
+                                width: '100%',
                             }}
                         >
                             <Icon icon={plus} style={{ marginRight: '8px' }} />
-                            Додати колонку з зображенням
+                            <span>
+                                Додати колонку з зображенням
+                            </span>
                         </Button>
                         <Button
                             onClick={removeImageColumn}
                             style={{
                                 backgroundColor: '#181B24',
                                 color: '#FFF',
-                                borderRadius: '8px',
-                                padding: '8px 16px',
+                                width: '100%',
                             }}
                         >
-                            Видалити колонку з картинкою
+                            <span>
+                                Видалити колонку з картинкою
+                            </span>
                         </Button>
                     </div>
                 </PanelBody>

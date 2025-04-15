@@ -298,7 +298,7 @@ function Edit({
     style: {
       marginRight: '8px'
     }
-  }), "\u0414\u043E\u0434\u0430\u0442\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u0443 \u043A\u043E\u043B\u043E\u043D\u043A\u0443")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\u0414\u043E\u0434\u0430\u0442\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u0443 \u043A\u043E\u043B\u043E\u043D\u043A\u0443"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Image Upload Controls",
     initialOpen: true
   }, imageItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -313,17 +313,9 @@ function Edit({
   }, item ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center'
+      justifyContent: 'flex-end'
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: item,
-    alt: `Image ${index + 1}`,
-    style: {
-      maxWidth: '100px',
-      borderRadius: '6px'
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
     renderToggle: ({
       isOpen,
       onToggle
@@ -349,22 +341,29 @@ function Edit({
         open
       }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
         onClick: open,
-        isSecondary: true,
         style: {
-          marginBottom: '8px'
+          marginBottom: '8px',
+          maxWidth: '100%',
+          width: '100%',
+          height: '48px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
         }
-      }, "\u0417\u043C\u0456\u043D\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F")
+      }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\u0417\u043C\u0456\u043D\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F"))
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       src: item,
       alt: `Image Preview ${index + 1}`,
       style: {
-        width: '100px',
+        maxWidth: '100%',
+        width: '100%',
+        height: 'auto',
         borderRadius: '6px',
         display: 'block'
       }
     }))
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-    onClick: () => removeTextColumn(index),
+    onClick: () => removeImageColumn(index),
     style: {
       ...iconButtonStyle,
       color: '#000'
@@ -382,7 +381,7 @@ function Edit({
         backgroundColor: '#0066CC',
         color: '#FFF'
       }
-    }, "\u0414\u043E\u0434\u0430\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F")
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\u0414\u043E\u0434\u0430\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F"))
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       display: 'flex',
@@ -395,23 +394,21 @@ function Edit({
     style: {
       backgroundColor: '#181B24',
       color: '#FFF',
-      borderRadius: '8px',
-      padding: '8px 16px'
+      width: '100%'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
     style: {
       marginRight: '8px'
     }
-  }), "\u0414\u043E\u0434\u0430\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443 \u0437 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F\u043C"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\u0414\u043E\u0434\u0430\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443 \u0437 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F\u043C")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: removeImageColumn,
     style: {
       backgroundColor: '#181B24',
       color: '#FFF',
-      borderRadius: '8px',
-      padding: '8px 16px'
+      width: '100%'
     }
-  }, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443 \u0437 \u043A\u0430\u0440\u0442\u0438\u043D\u043A\u043E\u044E")))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443 \u0437 \u043A\u0430\u0440\u0442\u0438\u043D\u043A\u043E\u044E"))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
     style: {
       display: 'flex',
