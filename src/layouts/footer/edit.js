@@ -67,14 +67,6 @@ export default function Edit({ attributes, setAttributes }) {
         setAttributes({ imageItems: newItems });
     };
 
-    const iconButtonStyle = {
-        background: 'none',
-        border: 'none',
-        cursor: 'pointer',
-        padding: '5px',
-        borderRadius: '6px',
-    };
-
     return (
         <>
             <InspectorControls>
@@ -112,7 +104,10 @@ export default function Edit({ attributes, setAttributes }) {
                     >
                         <Droppable droppableId="columns-list">
                             {(provided) => (
-                                <div ref={provided.innerRef} {...provided.droppableProps}>
+                                <div
+                                    ref={provided.innerRef}
+                                    {...provided.droppableProps}
+                                >
                                     {listItems.map((column, index) => (
                                         <Draggable
                                             key={`item-${index}`}
@@ -127,11 +122,14 @@ export default function Edit({ attributes, setAttributes }) {
                                                     style={{
                                                         display: 'flex',
                                                         flexDirection: 'column',
+                                                        justifyContent: 'center',
                                                         marginBottom: '12px',
-                                                        borderRadius: '10px',
+                                                        borderRadius: '8px',
                                                         backgroundColor: '#fff',
-                                                        padding: '12px',
-                                                        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
+                                                        padding: '12px 24px',
+                                                        height: '48px',
+                                                        border: '1px solid #1e1e1e',
+                                                        width: '100%',
                                                         ...provided.draggableProps.style,
                                                     }}
                                                 >
@@ -140,17 +138,18 @@ export default function Edit({ attributes, setAttributes }) {
                                                             <Button
                                                                 onClick={onToggle}
                                                                 style={{
-                                                                    padding: '8px 12px',
-                                                                    backgroundColor: '#F0F0F5',
+                                                                    all: 'unset',
+                                                                    padding: '12px 16px',
+                                                                    backgroundColor: 'transparent',
                                                                     borderRadius: '8px',
+                                                                    border: 'none',
                                                                     color: '#181B24',
-                                                                    fontSize: '14px',
-                                                                    fontWeight: '500',
-                                                                    width: '100%',
+                                                                    fontSize: '16px',
+                                                                    fontWeight: '600',
+                                                                    width: '100%', // Ensure button spans the entire width
                                                                     display: 'flex',
                                                                     justifyContent: 'space-between',
                                                                     alignItems: 'center',
-                                                                    marginBottom: '10px',
                                                                 }}
                                                             >
                                                                 <span>{column ? `Колонка ${index + 1}` : 'Нова колонка'}</span>
@@ -160,40 +159,39 @@ export default function Edit({ attributes, setAttributes }) {
                                                         renderContent={() => (
                                                             <div
                                                                 style={{
-                                                                    padding: '16px',
+                                                                    padding: '20px',
                                                                     background: '#fff',
                                                                     width: '280px',
-                                                                    boxShadow: '0 6px 18px rgba(0,0,0,0.08)',
-                                                                    borderRadius: '10px',
+                                                                    boxShadow: '0 6px 18px rgba(0, 0, 0, 0.08)',
+                                                                    borderRadius: '8px',
                                                                 }}
                                                             >
                                                                 <RichText
                                                                     tagName="div"
                                                                     value={column}
-                                                                    onChange={(value) =>
-                                                                        handleEditTextColumn(value, index)
-                                                                    }
+                                                                    onChange={(value) => handleEditTextColumn(value, index)}
                                                                     placeholder={`Елемент номер ${index + 1}`}
                                                                     style={{
-                                                                        padding: '8px 12px',
+                                                                        padding: '10px 14px',
                                                                         border: '1px solid #ccc',
                                                                         borderRadius: '8px',
-                                                                        marginBottom: '16px',
+                                                                        marginBottom: '12px',
+                                                                        width: '100%', 
                                                                     }}
                                                                 />
                                                                 <Button
                                                                     onClick={() => removeTextColumn(index)}
                                                                     style={{
-                                                                        padding: '8px 16px',
+                                                                        padding: '12px 20px',
                                                                         backgroundColor: '#FFE4E6',
                                                                         color: '#B91C1C',
-                                                                        borderRadius: '12px',
-                                                                        fontSize: '14px',
+                                                                        borderRadius: '8px',
+                                                                        fontSize: '16px',
                                                                         fontWeight: '500',
-                                                                        width: '100%',
+                                                                        width: '100%', 
                                                                     }}
                                                                 >
-                                                                    <Icon icon={close} style={{ marginRight: '6px' }} />
+                                                                    <Icon icon={close} style={{ marginRight: '8px' }} />
                                                                     Видалити
                                                                 </Button>
                                                             </div>
@@ -212,11 +210,11 @@ export default function Edit({ attributes, setAttributes }) {
                     <Button
                         onClick={addTextColumn}
                         style={{
-                            backgroundColor: '#000',
+                            backgroundColor: '#1e1e1e',
                             color: '#fff',
                             width: '100%',
                             height: '44px',
-                            borderRadius: '12px',
+                            borderRadius: '8px',
                             fontWeight: '600',
                             fontSize: '16px',
                             display: 'flex',
@@ -227,16 +225,13 @@ export default function Edit({ attributes, setAttributes }) {
                         <Icon icon={plus} style={{ marginRight: '8px' }} />
                         <span>Додати колонку</span>
                     </Button>
-
                 </PanelBody>
-
 
                 <PanelBody title="Image Upload Controls" initialOpen={true}>
                     <DragDropContext
                         onDragEnd={(result) => {
                             const { source, destination } = result;
                             if (!destination) return;
-
                             const reorderedItems = Array.from(imageItems);
                             const [movedItem] = reorderedItems.splice(source.index, 1);
                             reorderedItems.splice(destination.index, 0, movedItem);
@@ -258,12 +253,17 @@ export default function Edit({ attributes, setAttributes }) {
                                                     {...provided.draggableProps}
                                                     {...provided.dragHandleProps}
                                                     style={{
-                                                        borderRadius: '12px',
-                                                        padding: '12px',
-                                                        marginBottom: '16px',
-                                                        background: '#FFFFFF',
-                                                        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
-                                                        transition: 'box-shadow 0.3s ease',
+                                                        display: 'flex',
+                                                        flexDirection: 'column',
+                                                        justifyContent: 'center',
+                                                        marginBottom: '12px',
+                                                        borderRadius: '8px',
+                                                        backgroundColor: '#fff',
+                                                        padding: '12px 24px',
+                                                        height: '48px',
+                                                        border: '1px solid #1e1e1e',
+                                                        width: '100%',
+                                                        fontWeight: '600',
                                                         ...provided.draggableProps.style,
                                                     }}
                                                 >
@@ -273,12 +273,12 @@ export default function Edit({ attributes, setAttributes }) {
                                                                 onClick={onToggle}
                                                                 style={{
                                                                     padding: '8px 12px',
-                                                                    backgroundColor: '#F0F0F5',
+                                                                    backgroundColor: 'transparent',
                                                                     borderRadius: '8px',
                                                                     color: '#181B24',
                                                                     fontSize: '14px',
                                                                     fontWeight: '500',
-                                                                    width: '100%',
+                                                                    width: '100%', // Ensure button spans the entire width
                                                                     display: 'flex',
                                                                     justifyContent: 'space-between',
                                                                     alignItems: 'center',
@@ -294,7 +294,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                     padding: '16px',
                                                                     background: '#fff',
                                                                     width: '280px',
-                                                                    boxShadow: '0 6px 18px rgba(0,0,0,0.08)',
+                                                                    boxShadow: '0 6px 18px rgba(0, 0, 0, 0.08)',
                                                                     borderRadius: '10px',
                                                                 }}
                                                             >
@@ -303,7 +303,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                         src={item}
                                                                         alt={`Image Preview ${index + 1}`}
                                                                         style={{
-                                                                            width: '100%',
+                                                                            width: '100%', // Ensure image takes full width
                                                                             height: 'auto',
                                                                             borderRadius: '10px',
                                                                             objectFit: 'cover',
@@ -313,7 +313,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                 ) : (
                                                                     <div
                                                                         style={{
-                                                                            width: '100%',
+                                                                            width: '100%', // Ensure placeholder spans full width
                                                                             height: '200px',
                                                                             border: '2px dashed #D1D5DB',
                                                                             borderRadius: '12px',
@@ -342,7 +342,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                                 color: '#fff',
                                                                                 width: '100%',
                                                                                 height: '44px',
-                                                                                borderRadius: '12px',
+                                                                                borderRadius: '8px',
                                                                                 fontWeight: '500',
                                                                                 marginBottom: '8px',
                                                                             }}
@@ -355,13 +355,13 @@ export default function Edit({ attributes, setAttributes }) {
                                                                 <Button
                                                                     onClick={() => removeImageColumn(index)}
                                                                     style={{
-                                                                        padding: '8px 16px',
+                                                                        padding: '12px 20px',
                                                                         backgroundColor: '#FFE4E6',
                                                                         color: '#B91C1C',
-                                                                        borderRadius: '12px',
-                                                                        fontSize: '14px',
+                                                                        borderRadius: '8px',
+                                                                        fontSize: '16px',
                                                                         fontWeight: '500',
-                                                                        width: '100%',
+                                                                        width: '100%', 
                                                                     }}
                                                                 >
                                                                     <Icon icon={close} style={{ marginRight: '6px' }} />
@@ -384,16 +384,16 @@ export default function Edit({ attributes, setAttributes }) {
                         <Button
                             onClick={addImageColumn}
                             style={{
-                                backgroundColor: '#000',
+                                backgroundColor: '#1e1e1e',
                                 color: '#fff',
-                                width: '100%',
+                                width: '100%', // Ensure the button spans the entire width
                                 height: '44px',
-                                borderRadius: '12px',
+                                borderRadius: '8px',
                                 fontWeight: '600',
                                 fontSize: '16px',
                                 display: 'flex',
                                 alignItems: 'center',
-                                justifyContent: 'center'
+                                justifyContent: 'center',
                             }}
                         >
                             <Icon icon={plus} style={{ marginRight: '8px' }} />

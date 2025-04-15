@@ -205,13 +205,6 @@ function Edit({
       imageItems: newItems
     });
   };
-  const iconButtonStyle = {
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    padding: '5px',
-    borderRadius: '6px'
-  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Padding Controls",
     initialOpen: true
@@ -264,11 +257,14 @@ function Edit({
     style: {
       display: 'flex',
       flexDirection: 'column',
+      justifyContent: 'center',
       marginBottom: '12px',
-      borderRadius: '10px',
+      borderRadius: '8px',
       backgroundColor: '#fff',
-      padding: '12px',
-      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
+      padding: '12px 24px',
+      height: '48px',
+      border: '1px solid #1e1e1e',
+      width: '100%',
       ...provided.draggableProps.style
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
@@ -277,28 +273,30 @@ function Edit({
     }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
       onClick: onToggle,
       style: {
-        padding: '8px 12px',
-        backgroundColor: '#F0F0F5',
+        all: 'unset',
+        padding: '12px 16px',
+        backgroundColor: 'transparent',
         borderRadius: '8px',
+        border: 'none',
         color: '#181B24',
-        fontSize: '14px',
-        fontWeight: '500',
+        fontSize: '16px',
+        fontWeight: '600',
         width: '100%',
+        // Ensure button spans the entire width
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: '10px'
+        alignItems: 'center'
       }
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, column ? `Колонка ${index + 1}` : 'Нова колонка'), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
       icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"]
     })),
     renderContent: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       style: {
-        padding: '16px',
+        padding: '20px',
         background: '#fff',
         width: '280px',
-        boxShadow: '0 6px 18px rgba(0,0,0,0.08)',
-        borderRadius: '10px'
+        boxShadow: '0 6px 18px rgba(0, 0, 0, 0.08)',
+        borderRadius: '8px'
       }
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
       tagName: "div",
@@ -306,36 +304,37 @@ function Edit({
       onChange: value => handleEditTextColumn(value, index),
       placeholder: `Елемент номер ${index + 1}`,
       style: {
-        padding: '8px 12px',
+        padding: '10px 14px',
         border: '1px solid #ccc',
         borderRadius: '8px',
-        marginBottom: '16px'
+        marginBottom: '12px',
+        width: '100%'
       }
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
       onClick: () => removeTextColumn(index),
       style: {
-        padding: '8px 16px',
+        padding: '12px 20px',
         backgroundColor: '#FFE4E6',
         color: '#B91C1C',
-        borderRadius: '12px',
-        fontSize: '14px',
+        borderRadius: '8px',
+        fontSize: '16px',
         fontWeight: '500',
         width: '100%'
       }
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
       icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
       style: {
-        marginRight: '6px'
+        marginRight: '8px'
       }
     }), "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438"))
   })))), provided.placeholder))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: addTextColumn,
     style: {
-      backgroundColor: '#000',
+      backgroundColor: '#1e1e1e',
       color: '#fff',
       width: '100%',
       height: '44px',
-      borderRadius: '12px',
+      borderRadius: '8px',
       fontWeight: '600',
       fontSize: '16px',
       display: 'flex',
@@ -378,12 +377,17 @@ function Edit({
     ...provided.draggableProps,
     ...provided.dragHandleProps,
     style: {
-      borderRadius: '12px',
-      padding: '12px',
-      marginBottom: '16px',
-      background: '#FFFFFF',
-      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
-      transition: 'box-shadow 0.3s ease',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      marginBottom: '12px',
+      borderRadius: '8px',
+      backgroundColor: '#fff',
+      padding: '12px 24px',
+      height: '48px',
+      border: '1px solid #1e1e1e',
+      width: '100%',
+      fontWeight: '600',
       ...provided.draggableProps.style
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
@@ -393,12 +397,13 @@ function Edit({
       onClick: onToggle,
       style: {
         padding: '8px 12px',
-        backgroundColor: '#F0F0F5',
+        backgroundColor: 'transparent',
         borderRadius: '8px',
         color: '#181B24',
         fontSize: '14px',
         fontWeight: '500',
         width: '100%',
+        // Ensure button spans the entire width
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center'
@@ -411,7 +416,7 @@ function Edit({
         padding: '16px',
         background: '#fff',
         width: '280px',
-        boxShadow: '0 6px 18px rgba(0,0,0,0.08)',
+        boxShadow: '0 6px 18px rgba(0, 0, 0, 0.08)',
         borderRadius: '10px'
       }
     }, item ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
@@ -419,6 +424,7 @@ function Edit({
       alt: `Image Preview ${index + 1}`,
       style: {
         width: '100%',
+        // Ensure image takes full width
         height: 'auto',
         borderRadius: '10px',
         objectFit: 'cover',
@@ -427,6 +433,7 @@ function Edit({
     }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       style: {
         width: '100%',
+        // Ensure placeholder spans full width
         height: '200px',
         border: '2px dashed #D1D5DB',
         borderRadius: '12px',
@@ -461,7 +468,7 @@ function Edit({
           color: '#fff',
           width: '100%',
           height: '44px',
-          borderRadius: '12px',
+          borderRadius: '8px',
           fontWeight: '500',
           marginBottom: '8px'
         }
@@ -469,11 +476,11 @@ function Edit({
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
       onClick: () => removeImageColumn(index),
       style: {
-        padding: '8px 16px',
+        padding: '12px 20px',
         backgroundColor: '#FFE4E6',
         color: '#B91C1C',
-        borderRadius: '12px',
-        fontSize: '14px',
+        borderRadius: '8px',
+        fontSize: '16px',
         fontWeight: '500',
         width: '100%'
       }
@@ -493,11 +500,12 @@ function Edit({
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: addImageColumn,
     style: {
-      backgroundColor: '#000',
+      backgroundColor: '#1e1e1e',
       color: '#fff',
       width: '100%',
+      // Ensure the button spans the entire width
       height: '44px',
-      borderRadius: '12px',
+      borderRadius: '8px',
       fontWeight: '600',
       fontSize: '16px',
       display: 'flex',
