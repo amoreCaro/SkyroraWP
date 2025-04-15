@@ -163,9 +163,13 @@ export default function Edit({ attributes, setAttributes }) {
                     <Button
                         onClick={addTextColumn}
                         style={{
-                            backgroundColor: '#181B24',
-                            color: '#FFF',
-                            marginTop: '10px',
+                            backgroundColor: '#000',
+                            color: '#fff',
+                            width: '100%',
+                            height: '44px',
+                            borderRadius: '12px',
+                            fontWeight: '600',
+                            fontSize: '15px',
                         }}
                     >
                         <Icon icon={plus} style={{ marginRight: '8px' }} />
@@ -257,11 +261,11 @@ export default function Edit({ attributes, setAttributes }) {
                                                 <Button
                                                     onClick={open}
                                                     style={{
-                                                        backgroundColor: '#7D0AF2',
+                                                        backgroundColor: '#000',
                                                         color: '#fff',
                                                         width: '100%',
                                                         height: '44px',
-                                                        borderRadius: '6px',
+                                                        borderRadius: '12px',
                                                         fontWeight: '500',
                                                         marginBottom: '8px',
                                                     }}
@@ -277,7 +281,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                 padding: '8px 16px',
                                                 backgroundColor: '#FFE4E6',
                                                 color: '#B91C1C',
-                                                borderRadius: '8px',
+                                                borderRadius: '12px',
                                                 fontSize: '14px',
                                                 fontWeight: '500',
                                                 width: '100%',
@@ -292,15 +296,15 @@ export default function Edit({ attributes, setAttributes }) {
                         </div>
                     ))}
 
-                    <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         <Button
                             onClick={addImageColumn}
                             style={{
-                                backgroundColor: '#7D0AF2',
+                                backgroundColor: '#000',
                                 color: '#fff',
                                 width: '100%',
                                 height: '44px',
-                                borderRadius: '10px',
+                                borderRadius: '12px',
                                 fontWeight: '600',
                                 fontSize: '15px',
                             }}

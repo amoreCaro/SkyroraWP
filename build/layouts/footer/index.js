@@ -292,9 +292,13 @@ function Edit({
   }))))), provided.placeholder))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: addTextColumn,
     style: {
-      backgroundColor: '#181B24',
-      color: '#FFF',
-      marginTop: '10px'
+      backgroundColor: '#000',
+      color: '#fff',
+      width: '100%',
+      height: '44px',
+      borderRadius: '12px',
+      fontWeight: '600',
+      fontSize: '15px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
@@ -385,11 +389,11 @@ function Edit({
       }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
         onClick: open,
         style: {
-          backgroundColor: '#7D0AF2',
+          backgroundColor: '#000',
           color: '#fff',
           width: '100%',
           height: '44px',
-          borderRadius: '6px',
+          borderRadius: '12px',
           fontWeight: '500',
           marginBottom: '8px'
         }
@@ -400,7 +404,7 @@ function Edit({
         padding: '8px 16px',
         backgroundColor: '#FFE4E6',
         color: '#B91C1C',
-        borderRadius: '8px',
+        borderRadius: '12px',
         fontSize: '14px',
         fontWeight: '500',
         width: '100%'
@@ -416,16 +420,16 @@ function Edit({
       marginTop: '16px',
       display: 'flex',
       flexDirection: 'column',
-      gap: '10px'
+      gap: '8px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: addImageColumn,
     style: {
-      backgroundColor: '#7D0AF2',
+      backgroundColor: '#000',
       color: '#fff',
       width: '100%',
       height: '44px',
-      borderRadius: '10px',
+      borderRadius: '12px',
       fontWeight: '600',
       fontSize: '15px'
     }
