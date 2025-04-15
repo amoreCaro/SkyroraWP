@@ -48,11 +48,7 @@ export default function Edit({ attributes, setAttributes }) {
 
     const handleEditTextColumn = (value, index) => updateListItem(value, index);
 
-    const addImageColumn = () =>
-        setAttributes({ imageItems: [...imageItems, ''] });
-
-    const removeImageColumn = () =>
-        setAttributes({ imageItems: imageItems.slice(0, -1) });
+    const addImageColumn = () => setAttributes({ imageItems: [...imageItems, ''] });
 
     const addImageItem = (media, index) => {
         const newImageItems = [...imageItems];
@@ -64,6 +60,11 @@ export default function Edit({ attributes, setAttributes }) {
         const newImageItems = [...imageItems];
         newImageItems[index] = '';
         setAttributes({ imageItems: newImageItems });
+    };
+
+    const removeImageColumn = (indexToRemove) => {
+        const newItems = imageItems.filter((_, index) => index !== indexToRemove);
+        setAttributes({ imageItems: newItems });
     };
 
     const iconButtonStyle = {
@@ -111,10 +112,7 @@ export default function Edit({ attributes, setAttributes }) {
                     >
                         <Droppable droppableId="columns-list">
                             {(provided) => (
-                                <div
-                                    ref={provided.innerRef}
-                                    {...provided.droppableProps}
-                                >
+                                <div ref={provided.innerRef} {...provided.droppableProps}>
                                     {listItems.map((column, index) => (
                                         <Draggable
                                             key={`item-${index}`}
@@ -149,14 +147,9 @@ export default function Edit({ attributes, setAttributes }) {
                                                     />
                                                     <Button
                                                         onClick={() => removeTextColumn(index)}
-                                                        style={{
-                                                            ...iconButtonStyle,
-
-                                                            color: '#000',
-                                                        }}
+                                                        style={{ ...iconButtonStyle, color: '#000' }}
                                                     >
                                                         <Icon icon={close} />
-
                                                     </Button>
                                                 </div>
                                             )}
@@ -176,9 +169,7 @@ export default function Edit({ attributes, setAttributes }) {
                         }}
                     >
                         <Icon icon={plus} style={{ marginRight: '8px' }} />
-                        <span>
-                            Додати текстову колонку
-                        </span>
+                        <span>Додати текстову колонку</span>
                     </Button>
                 </PanelBody>
 
@@ -187,140 +178,135 @@ export default function Edit({ attributes, setAttributes }) {
                         <div
                             key={index}
                             style={{
-                                border: '1px solid #ccc',
-                                borderRadius: '6px',
+                                borderRadius: '12px',
                                 padding: '12px',
-                                marginBottom: '12px',
-                                background: '#fff',
+                                marginBottom: '16px',
+                                background: '#FFFFFF',
+                                boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
+                                transition: 'box-shadow 0.3s ease',
                             }}
                         >
-                            {item ? (
-                                <div
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'flex-end',
-                                    }}
-                                >
-
-                                    <Dropdown
-                                        renderToggle={({ isOpen, onToggle }) => (
-                                            <Button
-                                                onClick={onToggle}
-                                                style={{
-                                                    ...iconButtonStyle,
-                                                    color: '#181B24',
-                                                }}
-                                            >
-                                                <Icon icon={edit} />
-                                            </Button>
-                                        )}
-                                        renderContent={() => (
-                                            <div
-                                                style={{
-                                                    padding: '10px',
-                                                    background: '#f9f9f9',
-                                                    width: '280px',
-
-                                                }}
-                                            >
-                                                <MediaUpload
-                                                    onSelect={(media) =>
-                                                        addImageItem(media, index)
-                                                    }
-                                                    allowedTypes={['image']}
-                                                    render={({ open }) => (
-                                                        <Button
-                                                            onClick={open}
-                                                            style={{
-                                                                marginBottom: '8px', maxWidth: '100%', width: '100%', height: '48px',
-                                                                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                                            }}
-                                                        >
-                                                            <span>
-                                                                Змінити зображення
-                                                            </span>
-                                                        </Button>
-                                                    )}
-                                                />
-                                                <img
-                                                    src={item}
-                                                    alt={`Image Preview ${index + 1}`}
-                                                    style={{
-                                                        maxWidth: '100%',
-                                                        width: '100%',
-                                                        height: 'auto',
-                                                        borderRadius: '6px',
-                                                        display: 'block',
-                                                    }}
-                                                />
-                                            </div>
-                                        )}
-                                    />
+                            <Dropdown
+                                renderToggle={({ onToggle }) => (
                                     <Button
-                                        onClick={() => removeImageColumn(index)}
+                                        onClick={onToggle}
                                         style={{
-                                            ...iconButtonStyle,
-                                            color: '#000',
+                                            padding: '8px 12px',
+                                            backgroundColor: '#F0F0F5',
+                                            borderRadius: '8px',
+                                            color: '#181B24',
+                                            fontSize: '14px',
+                                            fontWeight: '500',
+                                            width: '100%',
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            alignItems: 'center',
                                         }}
                                     >
-                                        <Icon icon={close} />
-
+                                        <span>{item ? 'Редагувати зображення' : 'Додати зображення'}</span>
+                                        <Icon icon={edit} />
                                     </Button>
-                                </div>
-                            ) : (
-                                <MediaUpload
-                                    onSelect={(media) => addImageItem(media, index)}
-                                    allowedTypes={['image']}
-                                    render={({ open }) => (
+                                )}
+                                renderContent={() => (
+                                    <div
+                                        style={{
+                                            padding: '16px',
+                                            background: '#fff',
+                                            width: '280px',
+                                            boxShadow: '0 6px 18px rgba(0,0,0,0.08)',
+                                            borderRadius: '10px',
+                                        }}
+                                    >
+                                        {item ? (
+                                            <img
+                                                src={item}
+                                                alt={`Image Preview ${index + 1}`}
+                                                style={{
+                                                    width: '100%',
+                                                    height: 'auto',
+                                                    borderRadius: '10px',
+                                                    objectFit: 'cover',
+                                                    marginBottom: '16px',
+                                                }}
+                                            />
+                                        ) : (
+                                            <div
+                                                style={{
+                                                    width: '100%',
+                                                    height: '200px',
+                                                    border: '2px dashed #D1D5DB',
+                                                    borderRadius: '12px',
+                                                    background: '#F9FAFB',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    color: '#6B7280',
+                                                    marginBottom: '16px',
+                                                }}
+                                            >
+                                                <Icon icon={plus} style={{ fontSize: '28px', marginBottom: '8px' }} />
+                                                <span style={{ fontSize: '15px', fontWeight: '500' }}>Завантажити зображення</span>
+                                            </div>
+                                        )}
+
+                                        <MediaUpload
+                                            onSelect={(media) => addImageItem(media, index)}
+                                            allowedTypes={['image']}
+                                            render={({ open }) => (
+                                                <Button
+                                                    onClick={open}
+                                                    style={{
+                                                        backgroundColor: '#7D0AF2',
+                                                        color: '#fff',
+                                                        width: '100%',
+                                                        height: '44px',
+                                                        borderRadius: '6px',
+                                                        fontWeight: '500',
+                                                        marginBottom: '8px',
+                                                    }}
+                                                >
+                                                    {item ? 'Змінити зображення' : 'Завантажити зображення'}
+                                                </Button>
+                                            )}
+                                        />
+
                                         <Button
-                                            onClick={open}
+                                            onClick={() => removeImageColumn(index)}
                                             style={{
-                                                backgroundColor: '#0066CC',
-                                                color: '#FFF',
+                                                padding: '8px 16px',
+                                                backgroundColor: '#FFE4E6',
+                                                color: '#B91C1C',
+                                                borderRadius: '8px',
+                                                fontSize: '14px',
+                                                fontWeight: '500',
+                                                width: '100%',
                                             }}
                                         >
-                                            <span>
-                                                Додати зображення
-                                            </span>
+                                            <Icon icon={close} style={{ marginRight: '6px' }} />
+                                            Видалити
                                         </Button>
-                                    )}
-                                />
-                            )}
+                                    </div>
+                                )}
+                            />
                         </div>
                     ))}
 
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '10px',
-                            marginTop: '10px',
-                        }}
-                    >
+                    <div style={{ marginTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                         <Button
                             onClick={addImageColumn}
                             style={{
-                                backgroundColor: '#181B24',
-                                color: '#FFF',
+                                backgroundColor: '#7D0AF2',
+                                color: '#fff',
                                 width: '100%',
+                                height: '44px',
+                                borderRadius: '10px',
+                                fontWeight: '600',
+                                fontSize: '15px',
                             }}
                         >
                             <Icon icon={plus} style={{ marginRight: '8px' }} />
-                            <span>
-                                Додати колонку з зображенням
-                            </span>
-                        </Button>
-                        <Button
-                            onClick={removeImageColumn}
-                            style={{
-                                backgroundColor: '#181B24',
-                                color: '#FFF',
-                                width: '100%',
-                            }}
-                        >
-                            <span>
-                                Видалити колонку з картинкою
-                            </span>
+                            Додати зображення
                         </Button>
                     </div>
                 </PanelBody>
@@ -340,7 +326,6 @@ export default function Edit({ attributes, setAttributes }) {
                     paddingRight: `${paddingRight || 0}rem`,
                 }}
             >
-
                 <div
                     style={{
                         display: 'flex',
@@ -372,36 +357,26 @@ export default function Edit({ attributes, setAttributes }) {
                     ))}
                 </div>
 
-                {/* Текстові елементи */}
                 <div
                     style={{
                         display: 'flex',
                         justifyContent: 'center',
                         gap: '30px',
                         flexWrap: 'wrap',
-                        marginBottom: '18px',
+                        color: '#FFFFFF',
+                        fontSize: '15px',
+                        fontWeight: '500',
+                        textAlign: 'center',
                     }}
                 >
-                    {listItems.map((text, index) => (
-                        <RichText
-                            key={index}
-                            tagName="div"
-                            value={text}
-                            onChange={(value) => updateListItem(value, index)}
-                            placeholder={`Елемент ${index + 1}`}
-                            style={{ color: '#FBFBFB' }}
-                        />
+                    {listItems.map((item, index) => (
+                        <div key={index}>{item}</div>
                     ))}
                 </div>
 
-                {/* Copyright */}
-                <RichText
-                    tagName="div"
-                    value={copyright}
-                    onChange={(value) => setAttributes({ copyright: value })}
-                    placeholder="© 2025 SKYRORA LIMITED"
-                    style={{ color: '#A39FA9', fontSize: '12px' }}
-                />
+                <div style={{ marginTop: '30px', color: '#6B7280', fontSize: '13px' }}>
+                    {copyright}
+                </div>
             </div>
         </>
     );

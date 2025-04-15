@@ -185,9 +185,6 @@ function Edit({
   const addImageColumn = () => setAttributes({
     imageItems: [...imageItems, '']
   });
-  const removeImageColumn = () => setAttributes({
-    imageItems: imageItems.slice(0, -1)
-  });
   const addImageItem = (media, index) => {
     const newImageItems = [...imageItems];
     newImageItems[index] = media.url;
@@ -200,6 +197,12 @@ function Edit({
     newImageItems[index] = '';
     setAttributes({
       imageItems: newImageItems
+    });
+  };
+  const removeImageColumn = indexToRemove => {
+    const newItems = imageItems.filter((_, index) => index !== indexToRemove);
+    setAttributes({
+      imageItems: newItems
     });
   };
   const iconButtonStyle = {
@@ -304,37 +307,77 @@ function Edit({
   }, imageItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: index,
     style: {
-      border: '1px solid #ccc',
-      borderRadius: '6px',
+      borderRadius: '12px',
       padding: '12px',
-      marginBottom: '12px',
-      background: '#fff'
-    }
-  }, item ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    style: {
-      display: 'flex',
-      justifyContent: 'flex-end'
+      marginBottom: '16px',
+      background: '#FFFFFF',
+      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
+      transition: 'box-shadow 0.3s ease'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
     renderToggle: ({
-      isOpen,
       onToggle
     }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
       onClick: onToggle,
       style: {
-        ...iconButtonStyle,
-        color: '#181B24'
+        padding: '8px 12px',
+        backgroundColor: '#F0F0F5',
+        borderRadius: '8px',
+        color: '#181B24',
+        fontSize: '14px',
+        fontWeight: '500',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
       }
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, item ? 'Редагувати зображення' : 'Додати зображення'), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
       icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"]
     })),
     renderContent: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       style: {
-        padding: '10px',
-        background: '#f9f9f9',
-        width: '280px'
+        padding: '16px',
+        background: '#fff',
+        width: '280px',
+        boxShadow: '0 6px 18px rgba(0,0,0,0.08)',
+        borderRadius: '10px'
       }
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+    }, item ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+      src: item,
+      alt: `Image Preview ${index + 1}`,
+      style: {
+        width: '100%',
+        height: 'auto',
+        borderRadius: '10px',
+        objectFit: 'cover',
+        marginBottom: '16px'
+      }
+    }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        width: '100%',
+        height: '200px',
+        border: '2px dashed #D1D5DB',
+        borderRadius: '12px',
+        background: '#F9FAFB',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#6B7280',
+        marginBottom: '16px'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
+      style: {
+        fontSize: '28px',
+        marginBottom: '8px'
+      }
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+      style: {
+        fontSize: '15px',
+        fontWeight: '500'
+      }
+    }, "\u0417\u0430\u0432\u0430\u043D\u0442\u0430\u0436\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
       onSelect: media => addImageItem(media, index),
       allowedTypes: ['image'],
       render: ({
@@ -342,73 +385,56 @@ function Edit({
       }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
         onClick: open,
         style: {
-          marginBottom: '8px',
-          maxWidth: '100%',
+          backgroundColor: '#7D0AF2',
+          color: '#fff',
           width: '100%',
-          height: '48px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
+          height: '44px',
+          borderRadius: '6px',
+          fontWeight: '500',
+          marginBottom: '8px'
         }
-      }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\u0417\u043C\u0456\u043D\u0438\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F"))
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: item,
-      alt: `Image Preview ${index + 1}`,
+      }, item ? 'Змінити зображення' : 'Завантажити зображення')
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+      onClick: () => removeImageColumn(index),
       style: {
-        maxWidth: '100%',
-        width: '100%',
-        height: 'auto',
-        borderRadius: '6px',
-        display: 'block'
+        padding: '8px 16px',
+        backgroundColor: '#FFE4E6',
+        color: '#B91C1C',
+        borderRadius: '8px',
+        fontSize: '14px',
+        fontWeight: '500',
+        width: '100%'
       }
-    }))
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-    onClick: () => removeImageColumn(index),
-    style: {
-      ...iconButtonStyle,
-      color: '#000'
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }))) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
-    onSelect: media => addImageItem(media, index),
-    allowedTypes: ['image'],
-    render: ({
-      open
-    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-      onClick: open,
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
       style: {
-        backgroundColor: '#0066CC',
-        color: '#FFF'
+        marginRight: '6px'
       }
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\u0414\u043E\u0434\u0430\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F"))
+    }), "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438"))
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
+      marginTop: '16px',
       display: 'flex',
       flexDirection: 'column',
-      gap: '10px',
-      marginTop: '10px'
+      gap: '10px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: addImageColumn,
     style: {
-      backgroundColor: '#181B24',
-      color: '#FFF',
-      width: '100%'
+      backgroundColor: '#7D0AF2',
+      color: '#fff',
+      width: '100%',
+      height: '44px',
+      borderRadius: '10px',
+      fontWeight: '600',
+      fontSize: '15px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
     style: {
       marginRight: '8px'
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\u0414\u043E\u0434\u0430\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443 \u0437 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F\u043C")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-    onClick: removeImageColumn,
-    style: {
-      backgroundColor: '#181B24',
-      color: '#FFF',
-      width: '100%'
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443 \u0437 \u043A\u0430\u0440\u0442\u0438\u043D\u043A\u043E\u044E"))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), "\u0414\u043E\u0434\u0430\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F")))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
     style: {
       display: 'flex',
@@ -450,29 +476,20 @@ function Edit({
       justifyContent: 'center',
       gap: '30px',
       flexWrap: 'wrap',
-      marginBottom: '18px'
+      color: '#FFFFFF',
+      fontSize: '15px',
+      fontWeight: '500',
+      textAlign: 'center'
     }
-  }, listItems.map((text, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-    key: index,
-    tagName: "div",
-    value: text,
-    onChange: value => updateListItem(value, index),
-    placeholder: `Елемент ${index + 1}`,
+  }, listItems.map((item, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: index
+  }, item))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
-      color: '#FBFBFB'
+      marginTop: '30px',
+      color: '#6B7280',
+      fontSize: '13px'
     }
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-    tagName: "div",
-    value: copyright,
-    onChange: value => setAttributes({
-      copyright: value
-    }),
-    placeholder: "\xA9 2025 SKYRORA LIMITED",
-    style: {
-      color: '#A39FA9',
-      fontSize: '12px'
-    }
-  })));
+  }, copyright)));
 }
 
 /***/ }),
