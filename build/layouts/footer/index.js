@@ -135,9 +135,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/close.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus.js");
-/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/edit.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/edit.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/close.js");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/plus.js");
 /* harmony import */ var react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-beautiful-dnd */ "./node_modules/react-beautiful-dnd/dist/react-beautiful-dnd.esm.js");
 
 
@@ -263,33 +263,72 @@ function Edit({
     ...provided.dragHandleProps,
     style: {
       display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      marginBottom: '8px',
-      padding: '8px',
-      border: '1px solid #ccc',
-      borderRadius: '6px',
+      flexDirection: 'column',
+      marginBottom: '12px',
+      borderRadius: '10px',
       backgroundColor: '#fff',
+      padding: '12px',
+      boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
       ...provided.draggableProps.style
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-    tagName: "div",
-    value: column,
-    onChange: value => handleEditTextColumn(value, index),
-    placeholder: `Елемент номер ${index + 1}`,
-    style: {
-      flex: 1,
-      marginRight: '10px'
-    }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-    onClick: () => removeTextColumn(index),
-    style: {
-      ...iconButtonStyle,
-      color: '#000'
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"]
-  }))))), provided.placeholder))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dropdown, {
+    renderToggle: ({
+      onToggle
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+      onClick: onToggle,
+      style: {
+        padding: '8px 12px',
+        backgroundColor: '#F0F0F5',
+        borderRadius: '8px',
+        color: '#181B24',
+        fontSize: '14px',
+        fontWeight: '500',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '10px'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, column ? `Колонка ${index + 1}` : 'Нова колонка'), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"]
+    })),
+    renderContent: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        padding: '16px',
+        background: '#fff',
+        width: '280px',
+        boxShadow: '0 6px 18px rgba(0,0,0,0.08)',
+        borderRadius: '10px'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+      tagName: "div",
+      value: column,
+      onChange: value => handleEditTextColumn(value, index),
+      placeholder: `Елемент номер ${index + 1}`,
+      style: {
+        padding: '8px 12px',
+        border: '1px solid #ccc',
+        borderRadius: '8px',
+        marginBottom: '16px'
+      }
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+      onClick: () => removeTextColumn(index),
+      style: {
+        padding: '8px 16px',
+        backgroundColor: '#FFE4E6',
+        color: '#B91C1C',
+        borderRadius: '12px',
+        fontSize: '14px',
+        fontWeight: '500',
+        width: '100%'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
+      style: {
+        marginRight: '6px'
+      }
+    }), "\u0412\u0438\u0434\u0430\u043B\u0438\u0442\u0438"))
+  })))), provided.placeholder))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     onClick: addTextColumn,
     style: {
       backgroundColor: '#000',
@@ -301,7 +340,7 @@ function Edit({
       fontSize: '15px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
     style: {
       marginRight: '8px'
     }
@@ -362,7 +401,7 @@ function Edit({
         alignItems: 'center'
       }
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, item ? 'Редагувати зображення' : 'Додати зображення'), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"]
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"]
     })),
     renderContent: () => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       style: {
@@ -397,7 +436,7 @@ function Edit({
         marginBottom: '16px'
       }
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
       style: {
         fontSize: '28px',
         marginBottom: '8px'
@@ -436,7 +475,7 @@ function Edit({
         width: '100%'
       }
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_5__["default"],
+      icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
       style: {
         marginRight: '6px'
       }
@@ -460,7 +499,7 @@ function Edit({
       fontSize: '15px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
-    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
+    icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
     style: {
       marginRight: '8px'
     }

@@ -126,31 +126,79 @@ export default function Edit({ attributes, setAttributes }) {
                                                     {...provided.dragHandleProps}
                                                     style={{
                                                         display: 'flex',
-                                                        alignItems: 'center',
-                                                        justifyContent: 'space-between',
-                                                        marginBottom: '8px',
-                                                        padding: '8px',
-                                                        border: '1px solid #ccc',
-                                                        borderRadius: '6px',
+                                                        flexDirection: 'column',
+                                                        marginBottom: '12px',
+                                                        borderRadius: '10px',
                                                         backgroundColor: '#fff',
+                                                        padding: '12px',
+                                                        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.05)',
                                                         ...provided.draggableProps.style,
                                                     }}
                                                 >
-                                                    <RichText
-                                                        tagName="div"
-                                                        value={column}
-                                                        onChange={(value) =>
-                                                            handleEditTextColumn(value, index)
-                                                        }
-                                                        placeholder={`Елемент номер ${index + 1}`}
-                                                        style={{ flex: 1, marginRight: '10px' }}
+                                                    <Dropdown
+                                                        renderToggle={({ onToggle }) => (
+                                                            <Button
+                                                                onClick={onToggle}
+                                                                style={{
+                                                                    padding: '8px 12px',
+                                                                    backgroundColor: '#F0F0F5',
+                                                                    borderRadius: '8px',
+                                                                    color: '#181B24',
+                                                                    fontSize: '14px',
+                                                                    fontWeight: '500',
+                                                                    width: '100%',
+                                                                    display: 'flex',
+                                                                    justifyContent: 'space-between',
+                                                                    alignItems: 'center',
+                                                                    marginBottom: '10px',
+                                                                }}
+                                                            >
+                                                                <span>{column ? `Колонка ${index + 1}` : 'Нова колонка'}</span>
+                                                                <Icon icon={edit} />
+                                                            </Button>
+                                                        )}
+                                                        renderContent={() => (
+                                                            <div
+                                                                style={{
+                                                                    padding: '16px',
+                                                                    background: '#fff',
+                                                                    width: '280px',
+                                                                    boxShadow: '0 6px 18px rgba(0,0,0,0.08)',
+                                                                    borderRadius: '10px',
+                                                                }}
+                                                            >
+                                                                <RichText
+                                                                    tagName="div"
+                                                                    value={column}
+                                                                    onChange={(value) =>
+                                                                        handleEditTextColumn(value, index)
+                                                                    }
+                                                                    placeholder={`Елемент номер ${index + 1}`}
+                                                                    style={{
+                                                                        padding: '8px 12px',
+                                                                        border: '1px solid #ccc',
+                                                                        borderRadius: '8px',
+                                                                        marginBottom: '16px',
+                                                                    }}
+                                                                />
+                                                                <Button
+                                                                    onClick={() => removeTextColumn(index)}
+                                                                    style={{
+                                                                        padding: '8px 16px',
+                                                                        backgroundColor: '#FFE4E6',
+                                                                        color: '#B91C1C',
+                                                                        borderRadius: '12px',
+                                                                        fontSize: '14px',
+                                                                        fontWeight: '500',
+                                                                        width: '100%',
+                                                                    }}
+                                                                >
+                                                                    <Icon icon={close} style={{ marginRight: '6px' }} />
+                                                                    Видалити
+                                                                </Button>
+                                                            </div>
+                                                        )}
                                                     />
-                                                    <Button
-                                                        onClick={() => removeTextColumn(index)}
-                                                        style={{ ...iconButtonStyle, color: '#000' }}
-                                                    >
-                                                        <Icon icon={close} />
-                                                    </Button>
                                                 </div>
                                             )}
                                         </Draggable>
@@ -160,6 +208,7 @@ export default function Edit({ attributes, setAttributes }) {
                             )}
                         </Droppable>
                     </DragDropContext>
+
                     <Button
                         onClick={addTextColumn}
                         style={{
@@ -176,6 +225,7 @@ export default function Edit({ attributes, setAttributes }) {
                         <span>Додати текстову колонку</span>
                     </Button>
                 </PanelBody>
+
 
                 <PanelBody title="Image Upload Controls" initialOpen={true}>
                     <DragDropContext
