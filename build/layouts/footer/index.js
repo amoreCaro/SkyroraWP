@@ -337,14 +337,17 @@ function Edit({
       height: '44px',
       borderRadius: '12px',
       fontWeight: '600',
-      fontSize: '15px'
+      fontSize: '16px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
     style: {
       marginRight: '8px'
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\u0414\u043E\u0434\u0430\u0442\u0438 \u0442\u0435\u043A\u0441\u0442\u043E\u0432\u0443 \u043A\u043E\u043B\u043E\u043D\u043A\u0443"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "\u0414\u043E\u0434\u0430\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Image Upload Controls",
     initialOpen: true
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_beautiful_dnd__WEBPACK_IMPORTED_MODULE_4__.DragDropContext, {
@@ -496,14 +499,17 @@ function Edit({
       height: '44px',
       borderRadius: '12px',
       fontWeight: '600',
-      fontSize: '15px'
+      fontSize: '16px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
     icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"],
     style: {
       marginRight: '8px'
     }
-  }), "\u0414\u043E\u0434\u0430\u0442\u0438 \u0437\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u043D\u044F")))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), "\u0414\u043E\u0434\u0430\u0442\u0438 \u043A\u043E\u043B\u043E\u043D\u043A\u0443")))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps,
     style: {
       display: 'flex',

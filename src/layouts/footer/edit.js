@@ -218,12 +218,16 @@ export default function Edit({ attributes, setAttributes }) {
                             height: '44px',
                             borderRadius: '12px',
                             fontWeight: '600',
-                            fontSize: '15px',
+                            fontSize: '16px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
                         }}
                     >
                         <Icon icon={plus} style={{ marginRight: '8px' }} />
-                        <span>Додати текстову колонку</span>
+                        <span>Додати колонку</span>
                     </Button>
+
                 </PanelBody>
 
 
@@ -386,11 +390,14 @@ export default function Edit({ attributes, setAttributes }) {
                                 height: '44px',
                                 borderRadius: '12px',
                                 fontWeight: '600',
-                                fontSize: '15px',
+                                fontSize: '16px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
                             }}
                         >
                             <Icon icon={plus} style={{ marginRight: '8px' }} />
-                            Додати зображення
+                            Додати колонку
                         </Button>
                     </div>
                 </PanelBody>
