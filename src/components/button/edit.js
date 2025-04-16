@@ -13,7 +13,8 @@ export default function Edit({ attributes, setAttributes }) {
 		lineHeight,
 		fontFamily,
 		textTransform,
-		paddingX,
+		paddingLeft,
+		paddingRight,
 		paddingTop,
 		paddingBottom
 	} = attributes;
@@ -22,10 +23,14 @@ export default function Edit({ attributes, setAttributes }) {
 		display: 'flex',
 		justifyContent: 'flex-start',
 		textAlign,
-		paddingTop,
-		paddingBottom,
-		paddingLeft: paddingX,
-		paddingRight: paddingX
+		paddingTop: `${paddingTop}px`,
+		paddingBottom: `${paddingBottom}px`,
+		paddingLeft: `${paddingLeft}px`,
+		paddingRight: `${paddingRight}px`
+	};
+
+	const onChangePadding = (side, value) => {
+		setAttributes({ [side]: parseFloat(value || 0) });
 	};
 
 	return (
@@ -43,19 +48,24 @@ export default function Edit({ attributes, setAttributes }) {
 						onChange={(value) => setAttributes({ lineHeight: value })}
 					/>
 					<TextControl
-						label={__('Padding X (left & right)', 'app')}
-						value={paddingX}
-						onChange={(value) => setAttributes({ paddingX: value })}
-					/>
-					<TextControl
-						label={__('Padding Top', 'app')}
+						label={__('Padding Top (px)', 'app')}
 						value={paddingTop}
-						onChange={(value) => setAttributes({ paddingTop: value })}
+						onChange={(val) => onChangePadding('paddingTop', val)}
 					/>
 					<TextControl
-						label={__('Padding Bottom', 'app')}
+						label={__('Padding Bottom (px)', 'app')}
 						value={paddingBottom}
-						onChange={(value) => setAttributes({ paddingBottom: value })}
+						onChange={(val) => onChangePadding('paddingBottom', val)}
+					/>
+					<TextControl
+						label={__('Padding Left (px)', 'app')}
+						value={paddingLeft}
+						onChange={(val) => onChangePadding('paddingLeft', val)}
+					/>
+					<TextControl
+						label={__('Padding Right (px)', 'app')}
+						value={paddingRight}
+						onChange={(val) => onChangePadding('paddingRight', val)}
 					/>
 					<SelectControl
 						label={__('Font Weight', 'app')}
@@ -92,7 +102,23 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 
-			<div {...useBlockProps({ style: blockStyle })}>
+			{/* Responsive padding via media query */}
+			<style
+				dangerouslySetInnerHTML={{
+					__html: `
+						@media (max-width: 768px) {
+							.wp-button {
+								padding-left: 12px !important;
+								padding-right: 12px !important;
+								padding-top: 16px !important;
+								padding-bottom: 16px !important;
+							}
+						}
+					`,
+				}}
+			/>
+
+			<div {...useBlockProps({ className: 'wp-button', style: blockStyle })}>
 				<button
 					style={{
 						color,
