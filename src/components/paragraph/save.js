@@ -34,10 +34,6 @@ const save = ({ attributes }) => {
       <style dangerouslySetInnerHTML={{
         __html: `
       @media (max-width: 768px) {
-        .wp-heading {
-          padding-left: 12px !important;
-          padding-right: 12px !important;
-        }
         .wp-paragraph {
           padding-left: 12px !important;
           padding-right: 12px !important;
@@ -50,7 +46,7 @@ const save = ({ attributes }) => {
         <RichText.Content
           tagName={level ? `h${level}` : 'p'}
           value={content}
-          className={level ? 'wp-heading' : 'wp-paragraph'}
+          className={'wp-paragraph'}
           style={{
             color,
             fontWeight,
