@@ -26,12 +26,24 @@ export default function save({ attributes }) {
     };
 
     return (
-        <div {...blockProps} style={imageWrapper}>
-            <img
-                src={imageUrl}
-                alt=""
-                style={image}
-            />
-        </div>
+        <>
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                @media (max-width: 768px) {
+                    .wp-image-wrapper {
+                        padding-left: 12px !important;
+                        padding-right: 12px !important;
+                    }
+                }
+            `}} />
+            
+            <div {...blockProps} className="wp-image-wrapper" style={imageWrapper}>
+                <img
+                    src={imageUrl}
+                    alt=""
+                    style={image}
+                />
+            </div>
+        </>
     );
 }

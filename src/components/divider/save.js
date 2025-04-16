@@ -1,29 +1,41 @@
-// Save.js
 import { useBlockProps } from '@wordpress/block-editor';
 
 const Save = ({ attributes }) => {
     const { id, align, style, color, paddingLeft, paddingRight } = attributes;
 
     return (
-        <div
-            style={{
-                marginTop: '16px',
-                marginBottom: '16px',
-                paddingLeft: `${paddingLeft}px`,
-                paddingRight: `${paddingRight}px`,
-            }}
-        >
-            <hr
-                {...useBlockProps.save()}
-                id={id}
+        <>
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                    @media (max-width: 768px) {
+                        .wp-wrapper {
+                            padding-left: 12px !important;
+                            padding-right: 12px !important;
+                        }
+                    }
+                `
+            }} />
+            <div
+                className="wp-wrapper"
                 style={{
-                    textAlign: align,
-                    borderStyle: style,
-                    borderColor: color,
-                    borderWidth: '1px',
+                    marginTop: '16px',
+                    marginBottom: '16px',
+                    paddingLeft: `${paddingLeft}px`,
+                    paddingRight: `${paddingRight}px`,
                 }}
-            />
-        </div>
+            >
+                <hr
+                    {...useBlockProps.save()}
+                    id={id}
+                    style={{
+                        textAlign: align,
+                        borderStyle: style,
+                        borderColor: color,
+                        borderWidth: '1px',
+                    }}
+                />
+            </div>
+        </>
     );
 };
 
