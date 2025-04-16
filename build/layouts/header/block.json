@@ -14,10 +14,40 @@
       "default": ""
     },
     "text1": {
-      "type": "string"
+      "type": "string",
+      "default": {
+        "content": "Enter your paragraph",
+        "textAlign": "left",
+        "color": "#fff",
+        "fontWeight": "400",
+        "fontSize": "1rem",
+        "lineHeight": "1.2",
+        "fontFamily": "Bai Jamjuree, sans-serif",
+        "textTransform": "none",
+        "backgroundColor": "#FFFFFF",
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
+        "paddingBottom": 0
+      }
     },
     "text2": {
-      "type": "string"
+      "type": "string",
+      "default": {
+        "content": "Enter your paragraph",
+        "textAlign": "left",
+        "color": "#fff",
+        "fontWeight": "400",
+        "fontSize": "1rem",
+        "lineHeight": "1.2",
+        "fontFamily": "Bai Jamjuree, sans-serif",
+        "textTransform": "none",
+        "backgroundColor": "#FFFFFF",
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
+        "paddingBottom": 0
+      }
     }
   },
   "editorScript": "file:./index.js",

@@ -5,11 +5,11 @@ import {
     MediaUpload,
     MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { PanelBody, Button, TextControl } from '@wordpress/components';
+import { PanelBody, Button, TextControl, SelectControl, ColorPalette } from '@wordpress/components';
 import './editor.css';
 
 export default function Edit({ attributes, setAttributes }) {
-    const { id, imgUrl, text1, text2, paddingLeft, paddingRight } = attributes;
+    const { id, imgUrl, text1, text2, paddingLeft, paddingRight, fontFamily, fontSize, lineHeight, color, textTransform, fontWeight } = attributes;
     const blockProps = useBlockProps();
 
     const isEditable = attributes.isEditable !== false;
@@ -33,13 +33,11 @@ export default function Edit({ attributes, setAttributes }) {
     };
 
     const onChangePaddingLeft = (value) => {
-        // Ensure the value is a valid number before updating the attribute
         const paddingValue = value ? parseInt(value) : 0;
         setAttributes({ paddingLeft: paddingValue });
     };
 
     const onChangePaddingRight = (value) => {
-        // Ensure the value is a valid number before updating the attribute
         const paddingValue = value ? parseInt(value) : 0;
         setAttributes({ paddingRight: paddingValue });
     };
@@ -47,8 +45,52 @@ export default function Edit({ attributes, setAttributes }) {
     return (
         <>
             <InspectorControls>
-                <PanelBody title="Block Settings" initialOpen={true}>
-                    {/* Fields for changing padding with TextControl */}
+                <PanelBody title="Text Settings" initialOpen={true}>
+                    <TextControl
+                        label="Font Family"
+                        value={fontFamily}
+                        onChange={(value) => setAttributes({ fontFamily: value })}
+                    />
+                    <TextControl
+                        label="Font Size (px)"
+                        type="number"
+                        value={fontSize}
+                        onChange={(value) => setAttributes({ fontSize: value })}
+                    />
+                    <TextControl
+                        label="Line Height"
+                        type="number"
+                        value={lineHeight}
+                        onChange={(value) => setAttributes({ lineHeight: value })}
+                    />
+                    <ColorPalette
+                        label="Text Color"
+                        value={color}
+                        onChange={(value) => setAttributes({ color: value })}
+                    />
+                    <SelectControl
+                        label="Font Weight"
+                        value={fontWeight}
+                        options={[
+                            { label: 'Normal', value: '400' },
+                            { label: 'Bold', value: '700' },
+                            { label: 'Bolder', value: '900' },
+                        ]}
+                        onChange={(value) => setAttributes({ fontWeight: value })}
+                    />
+                    <SelectControl
+                        label="Text Transform"
+                        value={textTransform}
+                        options={[
+                            { label: 'None', value: 'none' },
+                            { label: 'Uppercase', value: 'uppercase' },
+                            { label: 'Lowercase', value: 'lowercase' },
+                            { label: 'Capitalize', value: 'capitalize' },
+                        ]}
+                        onChange={(value) => setAttributes({ textTransform: value })}
+                    />
+                </PanelBody>
+                <PanelBody title="Padding Settings" initialOpen={true}>
                     <TextControl
                         label="Padding Left (px)"
                         value={paddingLeft}
@@ -74,8 +116,8 @@ export default function Edit({ attributes, setAttributes }) {
                         background: '#181b24',
                         paddingLeft: `${paddingLeft}px`,  
                         paddingRight: `${paddingRight}px`,  
-                        paddingTop:'20px',
-                        paddingBottom:'32px'
+                        paddingTop: '20px',
+                        paddingBottom: '32px',
                     }}
                 >
                     {/* logo */}
@@ -124,7 +166,15 @@ export default function Edit({ attributes, setAttributes }) {
                                 placeholder="Enter the first text..."
                                 value={text1}
                                 onChange={onChangeText1}
-                                style={{ margin: '0px 0px 8px 0px', color: '#FFFFFF' }}
+                                style={{
+                                    margin: '0px 0px 8px 0px',
+                                    color: color,
+                                    fontFamily: fontFamily,
+                                    fontSize: fontSize ? `${fontSize}px` : '16px',
+                                    lineHeight: lineHeight ? `${lineHeight}px` : '20px',
+                                    fontWeight: fontWeight,
+                                    textTransform: textTransform,
+                                }}
                                 disabled={!isEditable}
                             />
                             <RichText
@@ -132,7 +182,15 @@ export default function Edit({ attributes, setAttributes }) {
                                 placeholder="Enter the second text..."
                                 value={text2}
                                 onChange={onChangeText2}
-                                style={{ margin: '0px', color: '#FFFFFF' }}
+                                style={{
+                                    margin: '0px',
+                                    color: color,
+                                    fontFamily: fontFamily,
+                                    fontSize: fontSize ? `${fontSize}px` : '16px',
+                                    lineHeight: lineHeight ? `${lineHeight}px` : '20px',
+                                    fontWeight: fontWeight,
+                                    textTransform: textTransform,
+                                }}
                                 disabled={!isEditable}
                             />
                         </div>

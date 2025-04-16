@@ -1,26 +1,56 @@
 {
-    "apiVersion": 3,
-    "title": "Header",
-    "description": "",
-    "name": "app/header",
-    "category": "advanced",
-    "icon": "smiley",
-    "keywords": [
-      "layouts"
-    ],
-    "attributes": {
-      "imgUrl": {
-        "type": "string",
-        "default": ""
-      },
-      "text1": {
-        "type": "string"
-      },
-      "text2": {
-        "type": "string"
+  "apiVersion": 3,
+  "title": "Header",
+  "description": "",
+  "name": "app/header",
+  "category": "advanced",
+  "icon": "smiley",
+  "keywords": [
+    "layouts"
+  ],
+  "attributes": {
+    "imgUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "text1": {
+      "type": "string",
+      "default": {
+        "content": "Enter your paragraph",
+        "textAlign": "left",
+        "color": "#fff",
+        "fontWeight": "400",
+        "fontSize": "1rem",
+        "lineHeight": "1.2",
+        "fontFamily": "Bai Jamjuree, sans-serif",
+        "textTransform": "none",
+        "backgroundColor": "#FFFFFF",
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
+        "paddingBottom": 0
       }
     },
-    "editorScript": "file:./index.js",
-    "editorStyle": "file:./index.css",
-    "style": "file:./style.css"
-  }
+    "text2": {
+      "type": "string",
+      "default": {
+        "content": "Enter your paragraph",
+        "textAlign": "left",
+        "color": "#fff",
+        "fontWeight": "400",
+        "fontSize": "1rem",
+        "lineHeight": "1.2",
+        "fontFamily": "Bai Jamjuree, sans-serif",
+        "textTransform": "none",
+        "backgroundColor": "#FFFFFF",
+        "paddingLeft": 0,
+        "paddingRight": 0,
+        "paddingTop": 0,
+        "paddingBottom": 0
+      }
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style.css"
+}

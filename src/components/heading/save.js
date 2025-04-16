@@ -30,26 +30,40 @@ const save = ({ attributes }) => {
   };
 
   return (
-    <div {...useBlockProps.save()} className="wp-heading">
-      <RichText.Content
-        tagName={`h${level}`}
-        value={content}
-        style={{
-          color,
-          fontWeight,
-          fontSize: headingSize(level),
-          lineHeight,
-          fontFamily,
-          textTransform,
-          textAlign,
-          paddingTop: `${paddingTop}px`,
-          paddingBottom: `${paddingBottom}px`,
-          paddingLeft: `${paddingLeft}px`,
-          paddingRight: `${paddingRight}px`,
-          margin: "0px",
-        }}
-      />
-    </div>
+    <>
+      <style dangerouslySetInnerHTML={{
+        __html: `
+      @media (max-width: 768px) {
+        .wp-heading {
+          padding-left: 12px !important;
+          padding-right: 12px !important;
+        }
+      }
+    `
+      }} />
+
+      <div {...useBlockProps.save()}>
+        <RichText.Content
+          tagName={`h${level}`}
+          value={content}
+          className="wp-heading"
+          style={{
+            color,
+            fontWeight,
+            fontSize: headingSize(level),
+            lineHeight,
+            fontFamily,
+            textTransform,
+            textAlign,
+            paddingTop: `${paddingTop}px`,
+            paddingBottom: `${paddingBottom}px`,
+            paddingLeft: `${paddingLeft}px`,
+            paddingRight: `${paddingRight}px`,
+            margin: "0px",
+          }}
+        />
+      </div>
+    </>
   );
 };
 
