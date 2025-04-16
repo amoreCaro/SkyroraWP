@@ -3,25 +3,43 @@ import { useBlockProps, RichText, InspectorControls } from '@wordpress/block-edi
 import { PanelBody, ColorPalette, SelectControl, TextControl } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
-    const { content, textAlign, color, backgroundColor, fontWeight, fontSize, lineHeight, fontFamily, textTransform } = attributes;
+    const {
+        content,
+        // You can optionally remove textAlign if you want to force left alignment,
+        // or leave it for future customization.
+        textAlign,
+        color,
+        backgroundColor,
+        fontWeight,
+        fontSize,
+        lineHeight,
+        fontFamily,
+        textTransform
+    } = attributes;
+
+    // Define the container style to force left alignment using flexbox.
+    const containerStyle = {
+        display: 'flex',
+        justifyContent: 'flex-start'
+    };
 
     return (
         <>
             <InspectorControls>
-                <PanelBody title={ __('Button Settings', 'app') }>
+                <PanelBody title={__('Button Settings', 'app')}>
                     <TextControl
-                        label={ __('Font Size', 'app') }
-                        value={ fontSize }
+                        label={__('Font Size', 'app')}
+                        value={fontSize}
                         onChange={(value) => setAttributes({ fontSize: value })}
                     />
                     <TextControl
-                        label={ __('Line Height', 'app') }
-                        value={ lineHeight }
+                        label={__('Line Height', 'app')}
+                        value={lineHeight}
                         onChange={(value) => setAttributes({ lineHeight: value })}
                     />
                     <SelectControl
-                        label={ __('Font Weight', 'app') }
-                        value={ fontWeight }
+                        label={__('Font Weight', 'app')}
+                        value={fontWeight}
                         options={[
                             { label: 'Normal', value: '400' },
                             { label: 'Medium', value: '500' },
@@ -31,8 +49,8 @@ export default function Edit({ attributes, setAttributes }) {
                         onChange={(value) => setAttributes({ fontWeight: value })}
                     />
                     <SelectControl
-                        label={ __('Text Transform', 'app') }
-                        value={ textTransform }
+                        label={__('Text Transform', 'app')}
+                        value={textTransform}
                         options={[
                             { label: 'None', value: 'none' },
                             { label: 'Uppercase', value: 'uppercase' },
@@ -42,40 +60,47 @@ export default function Edit({ attributes, setAttributes }) {
                         onChange={(value) => setAttributes({ textTransform: value })}
                     />
                     <ColorPalette
-                        label={ __('Text Color', 'app') }
-                        value={ color }
+                        label={__('Text Color', 'app')}
+                        value={color}
                         onChange={(value) => setAttributes({ color: value })}
                     />
                     <ColorPalette
-                        label={ __('Background Color', 'app') }
-                        value={ backgroundColor }
+                        label={__('Background Color', 'app')}
+                        value={backgroundColor}
                         onChange={(value) => setAttributes({ backgroundColor: value })}
                     />
                 </PanelBody>
             </InspectorControls>
-            <div {...useBlockProps({
-                style: {
-                    color,
-                    backgroundColor,
-                    fontWeight,
-                    fontSize,
-                    lineHeight,
-                    fontFamily,
-                    textTransform,
-                    textAlign
-                }
-            })}>
-                <RichText
-                    tagName="button"
-                    value={ content }
-                    onChange={(value) => setAttributes({ content: value })}
-                    placeholder={ __('Enter your button text', 'app') }
+            <div
+                {...useBlockProps({
+                    // Combine the custom container style with potential inherited styles.
+                    style: { ...containerStyle, textAlign }
+                })}
+            >
+                <button
                     style={{
-
+                        color,
+                        backgroundColor,
+                        fontWeight,
+                        fontSize,
+                        lineHeight,
+                        fontFamily,
+                        textTransform,
                         border: 'none',
                         cursor: 'pointer',
+                        display: 'inline-block',
+                        maxWidth: '256px',
+                        width: '100%',
+                        height: '56px',
                     }}
-                />
+                >
+                    <RichText
+                        tagName="span"
+                        value={content}
+                        onChange={(value) => setAttributes({ content: value })}
+                        placeholder={__('Enter your button text', 'app')}
+                    />
+                </button>
             </div>
         </>
     );
