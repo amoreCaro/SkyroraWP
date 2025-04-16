@@ -30,8 +30,6 @@ function Edit({
 }) {
   const {
     content,
-    // You can optionally remove textAlign if you want to force left alignment,
-    // or leave it for future customization.
     textAlign,
     color,
     backgroundColor,
@@ -39,13 +37,19 @@ function Edit({
     fontSize,
     lineHeight,
     fontFamily,
-    textTransform
+    textTransform,
+    paddingX,
+    paddingTop,
+    paddingBottom
   } = attributes;
-
-  // Define the container style to force left alignment using flexbox.
-  const containerStyle = {
+  const blockStyle = {
     display: 'flex',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    textAlign,
+    paddingTop,
+    paddingBottom,
+    paddingLeft: paddingX,
+    paddingRight: paddingX
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Settings', 'app')
@@ -60,6 +64,24 @@ function Edit({
     value: lineHeight,
     onChange: value => setAttributes({
       lineHeight: value
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding X (left & right)', 'app'),
+    value: paddingX,
+    onChange: value => setAttributes({
+      paddingX: value
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Top', 'app'),
+    value: paddingTop,
+    onChange: value => setAttributes({
+      paddingTop: value
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Bottom', 'app'),
+    value: paddingBottom,
+    onChange: value => setAttributes({
+      paddingBottom: value
     })
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Weight', 'app'),
@@ -113,11 +135,7 @@ function Edit({
     })
   }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
-      // Combine the custom container style with potential inherited styles.
-      style: {
-        ...containerStyle,
-        textAlign
-      }
+      style: blockStyle
     })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     style: {
@@ -175,25 +193,31 @@ const save = ({
     fontSize,
     lineHeight,
     fontFamily,
-    textTransform
+    textTransform,
+    paddingX,
+    paddingTop,
+    paddingBottom
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
-                @media (max-width: 768px) {
-                    .wp-button-container {
-                        margin-left: 12px !important; 
-                    }
-                }
-            `
+					@media (max-width: 768px) {
+						.wp-button-container {
+							margin-left: 12px !important; 
+						}
+					}
+				`
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
       className: "wp-button-container",
       style: {
-        marginBottom: '20px',
         marginTop: '20px',
-        marginLeft: '48px'
+        marginBottom: '20px',
+        paddingTop,
+        paddingBottom,
+        paddingLeft: paddingX,
+        paddingRight: paddingX
       }
     })
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
@@ -290,7 +314,7 @@ module.exports = window["wp"]["i18n"];
   \******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/button","title":"Button","category":"advanced","icon":"button","description":"Button block with customizable styles.","supports":{"html":false},"attributes":{"content":{"type":"string","default":"Enter your heading"},"textAlign":{"type":"string","default":"center"},"color":{"type":"string","default":"#FFFFFF"},"backgroundColor":{"type":"string","default":"#164BDC"},"fontWeight":{"type":"string","default":"600"},"fontSize":{"type":"string","default":"14px"},"lineHeight":{"type":"string","default":"1.4"},"fontFamily":{"type":"string","default":"Bai Jamjure, sans-serif"},"textTransform":{"type":"string","default":"uppercase"}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/button","title":"Button","category":"advanced","icon":"button","description":"Button block with customizable styles.","supports":{"html":false},"attributes":{"content":{"type":"string","default":"Enter your heading"},"textAlign":{"type":"string","default":"center"},"color":{"type":"string","default":"#FFFFFF"},"backgroundColor":{"type":"string","default":"#164BDC"},"fontWeight":{"type":"string","default":"600"},"fontSize":{"type":"string","default":"14px"},"lineHeight":{"type":"string","default":"1.4"},"fontFamily":{"type":"string","default":"Bai Jamjure, sans-serif"},"textTransform":{"type":"string","default":"uppercase"},"paddingX":{"type":"string","default":"48px"},"paddingTop":{"type":"string","default":"20px"},"paddingBottom":{"type":"string","default":"20px"}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
 
 /***/ })
 

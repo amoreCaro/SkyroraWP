@@ -6,45 +6,57 @@
   "icon": "button",
   "description": "Button block with customizable styles.",
   "supports": {
-      "html": false
+    "html": false
   },
   "attributes": {
-      "content": {
-          "type": "string",
-          "default": "Enter your heading"
-      },
-      "textAlign": {
-          "type": "string",
-          "default": "center"
-      },
-      "color": {
-          "type": "string",
-          "default": "#FFFFFF"
-      },
-      "backgroundColor": {
-          "type": "string",
-          "default": "#164BDC"
-      },
-      "fontWeight": {
-          "type": "string",
-          "default": "600"
-      },
-      "fontSize": {
-          "type": "string",
-          "default": "14px"
-      },
-      "lineHeight": {
-          "type": "string",
-          "default": "1.4"
-      },
-      "fontFamily": {
-          "type": "string",
-          "default": "Bai Jamjure, sans-serif"
-      },
-      "textTransform": {
-          "type": "string",
-          "default": "uppercase"
-      }
+    "content": {
+      "type": "string",
+      "default": "Enter your heading"
+    },
+    "textAlign": {
+      "type": "string",
+      "default": "center"
+    },
+    "color": {
+      "type": "string",
+      "default": "#FFFFFF"
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#164BDC"
+    },
+    "fontWeight": {
+      "type": "string",
+      "default": "600"
+    },
+    "fontSize": {
+      "type": "string",
+      "default": "14px"
+    },
+    "lineHeight": {
+      "type": "string",
+      "default": "1.4"
+    },
+    "fontFamily": {
+      "type": "string",
+      "default": "Bai Jamjure, sans-serif"
+    },
+    "textTransform": {
+      "type": "string",
+      "default": "uppercase"
+    },
+    "paddingX": {
+      "type": "string",
+      "default": "48px"
+    },
+    "paddingTop": {
+      "type": "string",
+      "default": "20px"
+    },
+    "paddingBottom": {
+      "type": "string",
+      "default": "20px"
+    }
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",

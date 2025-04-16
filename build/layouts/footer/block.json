@@ -28,6 +28,10 @@
     "imageItems": {
       "type": "array",
       "default": []
+    },
+    "imageLinks": {
+      "type": "array",
+      "default": []
     }
   },
   "editorScript": "file:./index.js",

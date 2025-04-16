@@ -44,6 +44,18 @@
     "textTransform": {
       "type": "string",
       "default": "uppercase"
+    },
+    "paddingX": {
+      "type": "string",
+      "default": "48px"
+    },
+    "paddingTop": {
+      "type": "string",
+      "default": "20px"
+    },
+    "paddingBottom": {
+      "type": "string",
+      "default": "20px"
     }
   },
   "editorScript": "file:./index.js",

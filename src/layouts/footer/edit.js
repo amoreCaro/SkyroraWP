@@ -15,6 +15,7 @@ import { useState, useEffect } from '@wordpress/element';
 import { plus, trash, edit, close } from '@wordpress/icons';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
+
 export default function Edit({ attributes, setAttributes }) {
     const {
         copyright,
@@ -66,7 +67,7 @@ export default function Edit({ attributes, setAttributes }) {
         const newItems = imageItems.filter((_, index) => index !== indexToRemove);
         setAttributes({ imageItems: newItems });
     };
-
+    
     return (
         <>
             <InspectorControls>
@@ -90,7 +91,6 @@ export default function Edit({ attributes, setAttributes }) {
                         min={0}
                     />
                 </PanelBody>
-
                 <PanelBody title="Image Upload Controls" initialOpen={true}>
                     <DragDropContext
                         onDragEnd={(result) => {
@@ -167,7 +167,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                 {item ? (
                                                                     <div
                                                                         style={{
-                                                                            background: '#dedede', 
+                                                                            background: '#dedede',
                                                                             padding: '12px',
                                                                             borderRadius: '2px',
                                                                             display: 'flex',
@@ -207,7 +207,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                         <span style={{ fontSize: '15px', fontWeight: '500' }}>Завантажити зображення</span>
                                                                     </div>
                                                                 )}
-                                                        
+
                                                                 <MediaUpload
                                                                     onSelect={(media) => addImageItem(media, index)}
                                                                     allowedTypes={['image']}
@@ -228,7 +228,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                         </Button>
                                                                     )}
                                                                 />
-                                                        
+
                                                                 <Button
                                                                     onClick={() => removeImageColumn(index)}
                                                                     style={{
@@ -246,7 +246,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                 </Button>
                                                             </div>
                                                         )}
-                                                        
+
                                                     />
                                                 </div>
                                             )}
