@@ -248,7 +248,13 @@ function Save({
     text1,
     text2,
     paddingLeft,
-    paddingRight
+    paddingRight,
+    fontFamily,
+    fontSize,
+    lineHeight,
+    color,
+    fontWeight,
+    textTransform
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -295,16 +301,24 @@ function Save({
     value: text1,
     style: {
       margin: '0px 0px 8px 0px',
-      color: '#FFFFFF',
-      fontFamily: 'Bai Jamjuree, sans-serif'
+      color: color,
+      fontFamily: fontFamily,
+      fontSize: `${fontSize}px`,
+      lineHeight: `${lineHeight}px`,
+      fontWeight: fontWeight,
+      textTransform: textTransform
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     tagName: "p",
     value: text2,
     style: {
       margin: '0px',
-      color: '#FFFFFF',
-      fontFamily: 'Bai Jamjuree, sans-serif'
+      color: color,
+      fontFamily: fontFamily,
+      fontSize: `${fontSize}px`,
+      lineHeight: `${lineHeight}px`,
+      fontWeight: fontWeight,
+      textTransform: textTransform
     }
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {

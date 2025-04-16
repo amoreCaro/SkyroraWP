@@ -1,7 +1,7 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function Save({ attributes }) {
-    const { id, imgUrl, text1, text2, paddingLeft, paddingRight } = attributes;
+    const { id, imgUrl, text1, text2, paddingLeft, paddingRight, fontFamily, fontSize, lineHeight, color, fontWeight, textTransform } = attributes;
     const blockProps = useBlockProps.save();
 
     return (
@@ -19,6 +19,7 @@ export default function Save({ attributes }) {
                 paddingBottom: '32px',
             }}
         >
+
             <div>
                 <div style={{ maxWidth: '114px', height: '60px', width: '100%' }}>
                     {imgUrl ? (
@@ -37,6 +38,8 @@ export default function Save({ attributes }) {
                     )}
                 </div>
             </div>
+
+
             <div style={{ position: 'relative' }}>
                 <div
                     style={{
@@ -51,8 +54,12 @@ export default function Save({ attributes }) {
                         value={text1}
                         style={{
                             margin: '0px 0px 8px 0px',
-                            color: '#FFFFFF',
-                            fontFamily: 'Bai Jamjuree, sans-serif',
+                            color: color,
+                            fontFamily: fontFamily,
+                            fontSize: `${fontSize}px`,
+                            lineHeight: `${lineHeight}px`,
+                            fontWeight: fontWeight,
+                            textTransform: textTransform,
                         }}
                     />
                     <RichText.Content
@@ -60,11 +67,17 @@ export default function Save({ attributes }) {
                         value={text2}
                         style={{
                             margin: '0px',
-                            color: '#FFFFFF',
-                            fontFamily: 'Bai Jamjuree, sans-serif',
+                            color: color,
+                            fontFamily: fontFamily,
+                            fontSize: `${fontSize}px`,
+                            lineHeight: `${lineHeight}px`,
+                            fontWeight: fontWeight,
+                            textTransform: textTransform,
                         }}
                     />
                 </div>
+
+
                 <div
                     style={{
                         position: 'absolute',
