@@ -46,6 +46,24 @@ const ParagraphEdit = ({
   const onChangePadding = (side, value) => setAttributes({
     [side]: parseFloat(value)
   });
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
+    className: 'custom-paragraph',
+    style: {
+      color,
+      backgroundColor,
+      fontWeight,
+      fontSize,
+      lineHeight,
+      fontFamily,
+      textTransform,
+      textAlign,
+      paddingTop: `${paddingTop}px`,
+      paddingBottom: `${paddingBottom}px`,
+      paddingLeft: `${paddingLeft}px`,
+      paddingRight: `${paddingRight}px`,
+      margin: '0px'
+    }
+  });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Settings', 'custom-paragraph')
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
@@ -159,24 +177,21 @@ const ParagraphEdit = ({
     onChange: val => onChangePadding('paddingRight', val),
     type: "number",
     min: 0
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
-      style: {
-        color,
-        backgroundColor,
-        fontWeight,
-        fontSize,
-        lineHeight,
-        fontFamily,
-        textTransform,
-        textAlign,
-        paddingTop: `${paddingTop}px`,
-        paddingBottom: `${paddingBottom}px`,
-        paddingLeft: `${paddingLeft}px`,
-        paddingRight: `${paddingRight}px`,
-        margin: '0px'
-      }
-    }),
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    dangerouslySetInnerHTML: {
+      __html: `
+						@media (max-width: 768px) {
+							.custom-paragraph {
+								padding-left: 12px !important;
+								padding-right: 12px !important;
+								padding-top: 8px !important;
+								padding-bottom: 8px !important;
+							}
+						}
+					`
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    ...blockProps,
     tagName: "p",
     value: content,
     onChange: val => setAttributes({
