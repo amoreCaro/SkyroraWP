@@ -43,6 +43,8 @@ const HeadingEdit = ({
     paddingTop,
     paddingBottom
   } = attributes;
+
+  // Функція для встановлення розміру заголовка залежно від рівня
   const headingSize = hLevel => {
     switch (hLevel) {
       case 1:
@@ -63,6 +65,25 @@ const HeadingEdit = ({
   };
   const onChangePadding = (side, value) => setAttributes({
     [side]: parseFloat(value || 0)
+  });
+
+  // Додаємо додатковий клас для адаптивного стилю
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
+    className: 'custom-heading',
+    style: {
+      color,
+      fontWeight,
+      fontSize: headingSize(level),
+      lineHeight,
+      fontFamily,
+      textTransform,
+      textAlign,
+      paddingTop: `${paddingTop}px`,
+      paddingBottom: `${paddingBottom}px`,
+      paddingLeft: `${paddingLeft}px`,
+      paddingRight: `${paddingRight}px`,
+      margin: '0px'
+    }
   });
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarGroup, null, [1, 2, 3, 4, 5, 6].map(hLevel => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
     key: hLevel,
@@ -189,23 +210,21 @@ const HeadingEdit = ({
     onChange: val => onChangePadding('paddingRight', val),
     type: "number",
     min: 0
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
-      style: {
-        color,
-        fontWeight,
-        fontSize: headingSize(level),
-        lineHeight,
-        fontFamily,
-        textTransform,
-        textAlign,
-        paddingTop: `${paddingTop}px`,
-        paddingBottom: `${paddingBottom}px`,
-        paddingLeft: `${paddingLeft}px`,
-        paddingRight: `${paddingRight}px`,
-        margin: "0px"
-      }
-    }),
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    dangerouslySetInnerHTML: {
+      __html: `
+						@media (max-width: 768px) {
+							.custom-heading {
+								padding-left: 12px !important;
+								padding-right: 12px !important;
+								padding-top: 8px !important;
+								padding-bottom: 8px !important;
+							}
+						}
+					`
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    ...blockProps,
     tagName: `h${level}`,
     value: content,
     onChange: val => setAttributes({
