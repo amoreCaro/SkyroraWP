@@ -49,12 +49,20 @@ export default function Save({ attributes }) {
                     <RichText.Content
                         tagName="p"
                         value={text1}
-                        style={{ margin: '0px 0px 8px 0px', color: '#FFFFFF' }}
+                        style={{
+                            margin: '0px 0px 8px 0px',
+                            color: '#FFFFFF',
+                            fontFamily: 'Bai Jamjuree, sans-serif',
+                        }}
                     />
                     <RichText.Content
                         tagName="p"
                         value={text2}
-                        style={{ margin: '0px', color: '#FFFFFF' }}
+                        style={{
+                            margin: '0px',
+                            color: '#FFFFFF',
+                            fontFamily: 'Bai Jamjuree, sans-serif',
+                        }}
                     />
                 </div>
                 <div

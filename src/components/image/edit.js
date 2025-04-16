@@ -35,7 +35,7 @@ const ImageEdit = ({ attributes, setAttributes }) => {
         height: "auto",
         objectFit: "cover",
         display: "block",
-        width: "auto",
+        width: "100%",
     };
 
     const onSelectImage = (media) => {

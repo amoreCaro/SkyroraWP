@@ -1,6 +1,6 @@
 body.admin-bar {
   background: #181b24 !important;
-padding: 0px !important;
+  padding: 0px !important;
 }
 
 .wp-block-post-content.wp-block-post-content {
@@ -14,24 +14,30 @@ padding: 0px !important;
   background: #181b24;
 }
 html :where(.editor-styles-wrapper) {
-  background: black !important;
+  background: #181b24 !important;
   color: initial;
   font-family: serif;
   font-size: medium;
   line-height: normal;
+}
+.editor-styles-wrapper.block-editor-writing-flow {
+  margin: 0;
+  padding: 0;
+  background: #181b24 !important;
 }
 .editor-visual-editor__post-title-wrapper.edit-post-visual-editor__post-title-wrapper {
   padding: 20px;
   background: white;
   margin: 0px !important;
 }
-.editor-visual-editor__post-title-wrapper.edit-post-visual-editor__post-title-wrapper h1 {
+.editor-visual-editor__post-title-wrapper.edit-post-visual-editor__post-title-wrapper
+  h1 {
   border: 1px solid lightgray;
   padding: 15px;
   font-size: 18px;
 }
 
- .wp-block {
+.wp-block {
   /* padding-top: 24px;
   padding-bottom: 24px; */
   background: white;

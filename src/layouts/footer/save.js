@@ -4,16 +4,7 @@ export default function Save({ attributes }) {
     const { copyright, paddingLeft, paddingRight, listItems = [], imageItems = [] } = attributes;
     const blockProps = useBlockProps.save();
 
-    const copyrightStyle = {
-        fontFamily: 'Bai Jamjuree',
-        fontWeight: 400,
-        fontSize: '12px',
-        lineHeight: '100%',
-        textAlign: 'center',
-        textTransform: 'uppercase',
-        color: "#B8BDCC",
-        marginTop: '24px'
-    };
+
 
     return (
         <div
@@ -49,13 +40,23 @@ export default function Save({ attributes }) {
                             lineHeight: '100%',
                             color: '#FFFFFF',
                             textAlign: 'center',
-                            textTransform: 'uppercase'
+                            textTransform: 'uppercase',                           
+                            fontFamily: 'Bai Jamjuree, sans-serif',
                         }}
                     />
                 ))}
             </div>
 
-            <span style={copyrightStyle}>
+            <span style={{
+                fontFamily: 'Bai Jamjuree, sans-serif',
+                fontWeight: 400,
+                fontSize: '12px',
+                lineHeight: '100%',
+                textAlign: 'center',
+                textTransform: 'uppercase',
+                color: "#B8BDCC",
+                marginTop: '24px'
+            }}>
                 {copyright}
             </span>
         </div>

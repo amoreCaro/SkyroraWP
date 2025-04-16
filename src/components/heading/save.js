@@ -46,7 +46,7 @@ const save = ({ attributes }) => {
           paddingBottom: `${paddingBottom}px`,
           paddingLeft: `${paddingLeft}px`,
           paddingRight: `${paddingRight}px`,
-          margin: "0px" 
+          margin: "0px",
         }}
       />
     </div>
