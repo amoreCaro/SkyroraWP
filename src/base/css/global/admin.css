@@ -38,11 +38,14 @@ html :where(.editor-styles-wrapper) {
 }
 
 .wp-block {
-  /* padding-top: 24px;
-  padding-bottom: 24px; */
   background: white;
   margin-top: 0px !important;
   margin-bottom: 0px !important;
+}
+
+#wp-add-new-block {
+  background: red !important; 
+  padding: 16px 20px !important;
 }
 
 @media (max-width: 430px) {

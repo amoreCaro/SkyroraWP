@@ -33,8 +33,6 @@ const save = ({ attributes }) => {
                 {...useBlockProps.save({
                     className: "wp-button",
                     style: {
-                        // marginTop: '20px',
-                        // marginBottom: '20px',
                         paddingTop,
                         paddingBottom,
                         paddingLeft: paddingX,

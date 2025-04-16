@@ -3,7 +3,7 @@
   "title": "Header",
   "name": "app/header",
   "category": "advanced",
-  "icon": "smiley",
+  "icon": "table-row-before",
   "keywords": ["layouts"],
   "description": "",
   "attributes": {
