@@ -64,7 +64,18 @@ const Edit = ({
     onChange: val => setAttributes({
       paddingRight: parseFloat(val)
     })
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    dangerouslySetInnerHTML: {
+      __html: `
+						@media (max-width: 768px) {
+							.wp-block.wp-divider {
+								padding-left: 12px !important;
+								padding-right: 12px !important;
+							}
+						}
+					`
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(),
     className: "wp-block wp-divider",
     style: {

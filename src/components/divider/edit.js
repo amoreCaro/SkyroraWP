@@ -38,13 +38,29 @@ const Edit = ({ attributes, setAttributes }) => {
                     />
                 </PanelBody>
             </InspectorControls>
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: `
+						@media (max-width: 768px) {
+							.wp-block.wp-divider {
+								padding-left: 12px !important;
+								padding-right: 12px !important;
+							}
+						}
+					`,
+                }}
+            />
 
-            <div {...useBlockProps()} className="wp-block wp-divider" style={{
-                paddingTop: '16px',
-                paddingBottom: '16px',
-                paddingLeft: `${paddingLeft}px`,
-                paddingRight: `${paddingRight}px`
-            }}>
+            <div
+                {...useBlockProps()}
+                className="wp-block wp-divider"
+                style={{
+                    paddingTop: '16px',
+                    paddingBottom: '16px',
+                    paddingLeft: `${paddingLeft}px`,
+                    paddingRight: `${paddingRight}px`
+                }}
+            >
                 <div
                     className="divider-line"
                     style={{
