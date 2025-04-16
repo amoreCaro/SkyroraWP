@@ -5,42 +5,37 @@ import {
     MediaUpload,
     MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { PanelBody, Button, TextControl, SelectControl, ColorPalette } from '@wordpress/components';
+import {
+    PanelBody,
+    TextControl,
+    SelectControl,
+    ColorPalette,
+    Button
+} from '@wordpress/components';
 import './editor.css';
 
 export default function Edit({ attributes, setAttributes }) {
-    const { id, imgUrl, text1, text2, paddingLeft, paddingRight, fontFamily, fontSize, lineHeight, color, textTransform, fontWeight } = attributes;
+    const {
+        imgUrl,
+        text1,
+        text2,
+        paddingLeft,
+        paddingRight,
+        fontFamily,
+        fontSize,
+        lineHeight,
+        color,
+        textTransform,
+        fontWeight
+    } = attributes;
+
     const blockProps = useBlockProps();
 
-    const isEditable = attributes.isEditable !== false;
-
-    const onSelectImage = (media) => {
-        if (isEditable) {
-            setAttributes({ imgUrl: media.url });
-        }
-    };
-
-    const onChangeText1 = (value) => {
-        if (isEditable) {
-            setAttributes({ text1: value });
-        }
-    };
-
-    const onChangeText2 = (value) => {
-        if (isEditable) {
-            setAttributes({ text2: value });
-        }
-    };
-
-    const onChangePaddingLeft = (value) => {
-        const paddingValue = value ? parseInt(value) : 0;
-        setAttributes({ paddingLeft: paddingValue });
-    };
-
-    const onChangePaddingRight = (value) => {
-        const paddingValue = value ? parseInt(value) : 0;
-        setAttributes({ paddingRight: paddingValue });
-    };
+    const onSelectImage = (media) => setAttributes({ imgUrl: media.url });
+    const onChangeText1 = (value) => setAttributes({ text1: value });
+    const onChangeText2 = (value) => setAttributes({ text2: value });
+    const onChangePaddingLeft = (value) => setAttributes({ paddingLeft: parseInt(value) || 0 });
+    const onChangePaddingRight = (value) => setAttributes({ paddingRight: parseInt(value) || 0 });
 
     return (
         <>
@@ -58,7 +53,7 @@ export default function Edit({ attributes, setAttributes }) {
                         onChange={(value) => setAttributes({ fontSize: value })}
                     />
                     <TextControl
-                        label="Line Height"
+                        label="Line Height (px)"
                         type="number"
                         value={lineHeight}
                         onChange={(value) => setAttributes({ lineHeight: value })}
@@ -90,37 +85,36 @@ export default function Edit({ attributes, setAttributes }) {
                         onChange={(value) => setAttributes({ textTransform: value })}
                     />
                 </PanelBody>
+
                 <PanelBody title="Padding Settings" initialOpen={true}>
                     <TextControl
                         label="Padding Left (px)"
+                        type="number"
                         value={paddingLeft}
                         onChange={onChangePaddingLeft}
-                        type="number"
-                        min={0}
                     />
                     <TextControl
                         label="Padding Right (px)"
+                        type="number"
                         value={paddingRight}
                         onChange={onChangePaddingRight}
-                        type="number"
-                        min={0}
                     />
                 </PanelBody>
             </InspectorControls>
-            <div id={id} {...blockProps}>
+
+            <div {...blockProps}>
                 <div
-                    className="app-block app-block--preview"
                     style={{
                         display: 'flex',
                         justifyContent: 'space-between',
                         background: '#181b24',
-                        paddingLeft: `${paddingLeft}px`,  
-                        paddingRight: `${paddingRight}px`,  
+                        paddingLeft: `${paddingLeft}px`,
+                        paddingRight: `${paddingRight}px`,
                         paddingTop: '20px',
                         paddingBottom: '32px',
                     }}
                 >
-                    {/* logo */}
+                    {/* Logo */}
                     <div>
                         <div style={{ maxWidth: '114px', height: '60px', width: '100%' }}>
                             {imgUrl ? (
@@ -132,7 +126,6 @@ export default function Edit({ attributes, setAttributes }) {
                                         width: '100%',
                                         objectFit: 'contain',
                                     }}
-                                    className="uploaded-img"
                                 />
                             ) : (
                                 <div>No image uploaded</div>
@@ -144,14 +137,15 @@ export default function Edit({ attributes, setAttributes }) {
                                 allowedTypes={['image']}
                                 value={imgUrl}
                                 render={({ open }) => (
-                                    <Button onClick={open} disabled={!isEditable}>
+                                    <Button onClick={open}>
                                         <span className="dashicons dashicons-upload"></span> Upload Image
                                     </Button>
                                 )}
                             />
                         </MediaUploadCheck>
                     </div>
-                    {/* header__right */}
+
+                    {/* Text */}
                     <div style={{ position: 'relative' }}>
                         <div
                             style={{
@@ -163,35 +157,33 @@ export default function Edit({ attributes, setAttributes }) {
                         >
                             <RichText
                                 tagName="p"
-                                placeholder="Enter the first text..."
                                 value={text1}
                                 onChange={onChangeText1}
+                                placeholder="Enter the first text..."
                                 style={{
-                                    margin: '0px 0px 8px 0px',
-                                    color: color,
-                                    fontFamily: fontFamily,
-                                    fontSize: fontSize ? `${fontSize}px` : '16px',
-                                    lineHeight: lineHeight ? `${lineHeight}px` : '20px',
-                                    fontWeight: fontWeight,
-                                    textTransform: textTransform,
+                                    margin: '0 0 8px 0',
+                                    color,
+                                    fontFamily,
+                                    fontSize: `${fontSize}px`,
+                                    lineHeight: `${lineHeight}px`,
+                                    fontWeight,
+                                    textTransform,
                                 }}
-                                disabled={!isEditable}
                             />
                             <RichText
                                 tagName="p"
-                                placeholder="Enter the second text..."
                                 value={text2}
                                 onChange={onChangeText2}
+                                placeholder="Enter the second text..."
                                 style={{
-                                    margin: '0px',
-                                    color: color,
-                                    fontFamily: fontFamily,
-                                    fontSize: fontSize ? `${fontSize}px` : '16px',
-                                    lineHeight: lineHeight ? `${lineHeight}px` : '20px',
-                                    fontWeight: fontWeight,
-                                    textTransform: textTransform,
+                                    margin: 0,
+                                    color,
+                                    fontFamily,
+                                    fontSize: `${fontSize}px`,
+                                    lineHeight: `${lineHeight}px`,
+                                    fontWeight,
+                                    textTransform,
                                 }}
-                                disabled={!isEditable}
                             />
                         </div>
                         <div

@@ -1,13 +1,11 @@
 {
   "apiVersion": 3,
   "title": "Header",
-  "description": "",
   "name": "app/header",
   "category": "advanced",
   "icon": "smiley",
-  "keywords": [
-    "layouts"
-  ],
+  "keywords": ["layouts"],
+  "description": "",
   "attributes": {
     "imgUrl": {
       "type": "string",
@@ -15,39 +13,43 @@
     },
     "text1": {
       "type": "string",
-      "default": {
-        "content": "Enter your paragraph",
-        "textAlign": "left",
-        "color": "#fff",
-        "fontWeight": "400",
-        "fontSize": "1rem",
-        "lineHeight": "1.2",
-        "fontFamily": "Bai Jamjuree, sans-serif",
-        "textTransform": "none",
-        "backgroundColor": "#FFFFFF",
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "paddingBottom": 0
-      }
+      "default": "Enter your paragraph"
     },
     "text2": {
       "type": "string",
-      "default": {
-        "content": "Enter your paragraph",
-        "textAlign": "left",
-        "color": "#fff",
-        "fontWeight": "400",
-        "fontSize": "1rem",
-        "lineHeight": "1.2",
-        "fontFamily": "Bai Jamjuree, sans-serif",
-        "textTransform": "none",
-        "backgroundColor": "#FFFFFF",
-        "paddingLeft": 0,
-        "paddingRight": 0,
-        "paddingTop": 0,
-        "paddingBottom": 0
-      }
+      "default": "Enter your paragraph"
+    },
+    "paddingLeft": {
+      "type": "number",
+      "default": 0
+    },
+    "paddingRight": {
+      "type": "number",
+      "default": 0
+    },
+    "fontFamily": {
+      "type": "string",
+      "default": "Bai Jamjuree, sans-serif"
+    },
+    "fontSize": {
+      "type": "number",
+      "default": 16
+    },
+    "lineHeight": {
+      "type": "number",
+      "default": 20
+    },
+    "color": {
+      "type": "string",
+      "default": "#fff"
+    },
+    "textTransform": {
+      "type": "string",
+      "default": "none"
+    },
+    "fontWeight": {
+      "type": "string",
+      "default": "400"
     }
   },
   "editorScript": "file:./index.js",
