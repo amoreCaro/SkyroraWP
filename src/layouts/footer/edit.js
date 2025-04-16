@@ -117,6 +117,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                     {...provided.draggableProps}
                                                     {...provided.dragHandleProps}
                                                     style={{
+
                                                         display: 'flex',
                                                         flexDirection: 'column',
                                                         justifyContent: 'center',
@@ -136,6 +137,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                             <Button
                                                                 onClick={onToggle}
                                                                 style={{
+                                                                    all: 'unset',
                                                                     padding: '8px 12px',
                                                                     backgroundColor: 'transparent',
                                                                     borderRadius: '2px',
@@ -163,17 +165,28 @@ export default function Edit({ attributes, setAttributes }) {
                                                                 }}
                                                             >
                                                                 {item ? (
-                                                                    <img
-                                                                        src={item}
-                                                                        alt={`Image Preview ${index + 1}`}
+                                                                    <div
                                                                         style={{
-                                                                            width: '100%',
-                                                                            height: 'auto',
+                                                                            background: '#dedede', 
+                                                                            padding: '12px',
                                                                             borderRadius: '2px',
-                                                                            objectFit: 'cover',
+                                                                            display: 'flex',
+                                                                            justifyContent: 'center',
+                                                                            alignItems: 'center',
                                                                             marginBottom: '16px',
                                                                         }}
-                                                                    />
+                                                                    >
+                                                                        <img
+                                                                            src={item}
+                                                                            alt={`Image Preview ${index + 1}`}
+                                                                            style={{
+                                                                                width: '100%',
+                                                                                height: 'auto',
+                                                                                borderRadius: '2px',
+                                                                                objectFit: 'cover',
+                                                                            }}
+                                                                        />
+                                                                    </div>
                                                                 ) : (
                                                                     <div
                                                                         style={{
@@ -181,7 +194,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                             height: '200px',
                                                                             border: '2px dashed #D1D5DB',
                                                                             borderRadius: '2px',
-                                                                            background: '#F9FAFB',
+                                                                            background: 'transparent',
                                                                             display: 'flex',
                                                                             flexDirection: 'column',
                                                                             alignItems: 'center',
@@ -194,7 +207,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                         <span style={{ fontSize: '15px', fontWeight: '500' }}>Завантажити зображення</span>
                                                                     </div>
                                                                 )}
-
+                                                        
                                                                 <MediaUpload
                                                                     onSelect={(media) => addImageItem(media, index)}
                                                                     allowedTypes={['image']}
@@ -215,7 +228,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                         </Button>
                                                                     )}
                                                                 />
-
+                                                        
                                                                 <Button
                                                                     onClick={() => removeImageColumn(index)}
                                                                     style={{
@@ -233,6 +246,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                 </Button>
                                                             </div>
                                                         )}
+                                                        
                                                     />
                                                 </div>
                                             )}
@@ -402,9 +416,6 @@ export default function Edit({ attributes, setAttributes }) {
                         <span>Додати колонку</span>
                     </Button>
                 </PanelBody>
-
-
-
             </InspectorControls>
 
             <div

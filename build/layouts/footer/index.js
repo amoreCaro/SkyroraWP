@@ -274,6 +274,7 @@ function Edit({
     }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
       onClick: onToggle,
       style: {
+        all: 'unset',
         padding: '8px 12px',
         backgroundColor: 'transparent',
         borderRadius: '2px',
@@ -296,23 +297,32 @@ function Edit({
         boxShadow: '0 6px 18px rgba(0, 0, 0, 0.08)',
         borderRadius: '2px'
       }
-    }, item ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    }, item ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        background: '#dedede',
+        padding: '12px',
+        borderRadius: '2px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: '16px'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
       src: item,
       alt: `Image Preview ${index + 1}`,
       style: {
         width: '100%',
         height: 'auto',
         borderRadius: '2px',
-        objectFit: 'cover',
-        marginBottom: '16px'
+        objectFit: 'cover'
       }
-    }) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       style: {
         width: '100%',
         height: '200px',
         border: '2px dashed #D1D5DB',
         borderRadius: '2px',
-        background: '#F9FAFB',
+        background: 'transparent',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
