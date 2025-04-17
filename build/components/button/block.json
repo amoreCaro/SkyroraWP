@@ -2,16 +2,23 @@
   "apiVersion": 3,
   "name": "app/button",
   "title": "Button",
-  "category": "advanced",
+  "category": "design",
   "icon": "button",
-  "description": "Button block with customizable styles.",
+  "description": "A customizable button block with flexible styles.",
   "supports": {
-    "html": false
+    "html": false,
+    "align": [
+      "left",
+      "center",
+      "right"
+    ]
   },
   "attributes": {
     "content": {
       "type": "string",
-      "default": "Enter your heading"
+      "source": "html",
+      "selector": "a span",
+      "default": "Click me"
     },
     "textAlign": {
       "type": "string",
@@ -39,7 +46,7 @@
     },
     "fontFamily": {
       "type": "string",
-      "default": "Bai Jamjure, sans-serif"
+      "default": "Bai Jamjuree, sans-serif"
     },
     "textTransform": {
       "type": "string",
@@ -56,10 +63,20 @@
     "paddingBottom": {
       "type": "string",
       "default": "20px"
+    },
+    "url": {
+      "type": "string",
+      "default": "#"
     }
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
   "style": "file:./style.css",
-  "example": null
+  "example": {
+    "attributes": {
+      "content": "Learn More",
+      "backgroundColor": "#1E40AF",
+      "color": "#FFFFFF"
+    }
+  }
 }

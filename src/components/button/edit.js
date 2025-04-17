@@ -1,6 +1,17 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, RichText, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ColorPalette, SelectControl, TextControl } from '@wordpress/components';
+import {
+	useBlockProps,
+	RichText,
+	InspectorControls,
+	BlockControls,
+	AlignmentToolbar
+} from '@wordpress/block-editor';
+import {
+	PanelBody,
+	ColorPalette,
+	SelectControl,
+	TextControl
+} from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
 	const {
@@ -13,28 +24,38 @@ export default function Edit({ attributes, setAttributes }) {
 		lineHeight,
 		fontFamily,
 		textTransform,
-		paddingLeft,
-		paddingRight,
+		paddingX,
 		paddingTop,
 		paddingBottom
 	} = attributes;
 
 	const blockStyle = {
+		backgroundColor: '#fff',
 		display: 'flex',
-		justifyContent: 'flex-start',
+		justifyContent:
+			textAlign === 'center'
+				? 'center'
+				: textAlign === 'right'
+				? 'flex-end'
+				: 'flex-start',
 		textAlign,
-		paddingTop: `${paddingTop}px`,
-		paddingBottom: `${paddingBottom}px`,
-		paddingLeft: `${paddingLeft}px`,
-		paddingRight: `${paddingRight}px`
-	};
-
-	const onChangePadding = (side, value) => {
-		setAttributes({ [side]: parseFloat(value || 0) });
+		paddingTop,
+		paddingBottom,
+		paddingLeft: paddingX,
+		paddingRight: paddingX
 	};
 
 	return (
 		<>
+			<BlockControls>
+				<AlignmentToolbar
+					value={textAlign}
+					onChange={(newAlign) =>
+						setAttributes({ textAlign: newAlign || 'left' })
+					}
+				/>
+			</BlockControls>
+
 			<InspectorControls>
 				<PanelBody title={__('Button Settings', 'app')}>
 					<TextControl
@@ -50,22 +71,17 @@ export default function Edit({ attributes, setAttributes }) {
 					<TextControl
 						label={__('Padding Top (px)', 'app')}
 						value={paddingTop}
-						onChange={(val) => onChangePadding('paddingTop', val)}
+						onChange={(val) => setAttributes({ paddingTop: val })}
 					/>
 					<TextControl
 						label={__('Padding Bottom (px)', 'app')}
 						value={paddingBottom}
-						onChange={(val) => onChangePadding('paddingBottom', val)}
+						onChange={(val) => setAttributes({ paddingBottom: val })}
 					/>
 					<TextControl
-						label={__('Padding Left (px)', 'app')}
-						value={paddingLeft}
-						onChange={(val) => onChangePadding('paddingLeft', val)}
-					/>
-					<TextControl
-						label={__('Padding Right (px)', 'app')}
-						value={paddingRight}
-						onChange={(val) => onChangePadding('paddingRight', val)}
+						label={__('Padding X (px)', 'app')}
+						value={paddingX}
+						onChange={(val) => setAttributes({ paddingX: val })}
 					/>
 					<SelectControl
 						label={__('Font Weight', 'app')}
@@ -102,7 +118,6 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 
-			{/* Responsive padding via media query */}
 			<style
 				dangerouslySetInnerHTML={{
 					__html: `
@@ -119,7 +134,8 @@ export default function Edit({ attributes, setAttributes }) {
 			/>
 
 			<div {...useBlockProps({ className: 'wp-button', style: blockStyle })}>
-				<button
+				<a
+					href="#"
 					style={{
 						color,
 						backgroundColor,
@@ -133,7 +149,11 @@ export default function Edit({ attributes, setAttributes }) {
 						display: 'inline-block',
 						maxWidth: '256px',
 						width: '100%',
-						height: '56px'
+						height: '56px',
+						textDecoration: 'none',
+						padding: '16px 24px',
+						boxSizing: 'border-box',
+						textAlign: 'center'
 					}}
 				>
 					<RichText
@@ -142,7 +162,7 @@ export default function Edit({ attributes, setAttributes }) {
 						onChange={(value) => setAttributes({ content: value })}
 						placeholder={__('Enter your button text', 'app')}
 					/>
-				</button>
+				</a>
 			</div>
 		</>
 	);

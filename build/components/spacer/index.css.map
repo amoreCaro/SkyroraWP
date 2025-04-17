@@ -1,0 +1,1 @@
+{"version":3,"file":"components/spacer/index.css","mappings":";;;AAAA;IACI,wBAAwB;AAC5B","sources":["webpack://@app/minimal-block-ca6eda/./src/components/spacer/editor.css"],"sourcesContent":[".wp-block-app-spacer {\n    outline: 1px dashed #ccc;\n}\n"],"names":[],"sourceRoot":""}
