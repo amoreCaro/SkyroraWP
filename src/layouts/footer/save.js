@@ -38,8 +38,9 @@ export default function Save({ attributes }) {
                             lineHeight: '100%',
                             color: '#FFFFFF',
                             textAlign: 'center',
-                            textTransform: 'uppercase',                           
+                            textTransform: 'uppercase',
                             fontFamily: 'Bai Jamjuree, sans-serif',
+                            textDecoration: 'none'
                         }}
                     />
                 ))}
