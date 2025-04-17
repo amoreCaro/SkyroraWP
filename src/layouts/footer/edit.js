@@ -79,7 +79,7 @@ export default function Edit({ attributes, setAttributes }) {
         }
 
         try {
-            new URL(url); 
+            new URL(url);
         } catch {
             alert('Некоректне посилання');
             return;
@@ -143,11 +143,12 @@ export default function Edit({ attributes, setAttributes }) {
                                                         flexDirection: 'column',
                                                         justifyContent: 'center',
                                                         marginBottom: '12px',
-                                                        borderRadius: '2px',
                                                         backgroundColor: '#fff',
                                                         padding: '12px 24px',
                                                         height: '48px',
-                                                        border: '1px solid #1e1e1e',
+
+                                                        border: '1px solid #949494',
+                                                        borderRadius: '2px',
                                                         width: '100%',
                                                         fontWeight: '600',
                                                         ...provided.draggableProps.style,
@@ -161,14 +162,13 @@ export default function Edit({ attributes, setAttributes }) {
                                                                     all: 'unset',
                                                                     padding: '8px 12px',
                                                                     backgroundColor: 'transparent',
-                                                                    borderRadius: '2px',
-                                                                    color: '#1e1e1e',
                                                                     fontSize: '14px',
                                                                     fontWeight: '500',
                                                                     width: '100%',
                                                                     display: 'flex',
                                                                     justifyContent: 'space-between',
                                                                     alignItems: 'center',
+                                                                    color: '#1e1e1e',
                                                                 }}
                                                             >
                                                                 <span>{item ? 'Редагувати зображення' : 'Додати зображення'}</span>
@@ -382,12 +382,12 @@ export default function Edit({ attributes, setAttributes }) {
                                                         flexDirection: 'column',
                                                         justifyContent: 'center',
                                                         marginBottom: '12px',
-                                                        borderRadius: '2px',
                                                         backgroundColor: '#fff',
                                                         padding: '12px 24px',
                                                         height: '48px',
-                                                        border: '1px solid #1e1e1e',
                                                         width: '100%',
+                                                        border: '1px solid #949494',
+                                                        borderRadius: '2px',
                                                         ...provided.draggableProps.style,
                                                     }}
                                                 >
@@ -408,6 +408,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                     display: 'flex',
                                                                     justifyContent: 'space-between',
                                                                     alignItems: 'center',
+                                                                    color: '#1e1e1e'
                                                                 }}
                                                             >
                                                                 <span>
