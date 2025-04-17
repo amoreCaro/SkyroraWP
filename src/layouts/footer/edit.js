@@ -79,7 +79,7 @@ export default function Edit({ attributes, setAttributes }) {
         }
 
         try {
-            new URL(url); // Перевірка правильності посилання
+            new URL(url); 
         } catch {
             alert('Некоректне посилання');
             return;
@@ -112,7 +112,7 @@ export default function Edit({ attributes, setAttributes }) {
                         min={0}
                     />
                 </PanelBody>
-                <PanelBody title="Image Upload Controls" initialOpen={true}>
+                <PanelBody title="Footer Socials" initialOpen={true}>
                     <DragDropContext
                         onDragEnd={(result) => {
                             const { source, destination } = result;
@@ -202,7 +202,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                             alt={`Image Preview ${index + 1}`}
                                                                             style={{
                                                                                 width: '100%',
-                                                                                height: 'auto',
+                                                                                height: '150px',
                                                                                 borderRadius: '2px',
                                                                                 objectFit: 'cover',
                                                                             }}
@@ -349,7 +349,7 @@ export default function Edit({ attributes, setAttributes }) {
                         </Button>
                     </div>
                 </PanelBody>
-                <PanelBody title="Text Columns Controls" initialOpen={true}>
+                <PanelBody title="Footer Links" initialOpen={true}>
                     <DragDropContext
                         onDragEnd={(result) => {
                             const { source, destination } = result;
@@ -543,6 +543,7 @@ export default function Edit({ attributes, setAttributes }) {
                         fontSize: '15px',
                         fontWeight: '500',
                         textAlign: 'center',
+                        textTransform: 'uppercase',
                     }}
                 >
                     {listItems.map((item, index) => (

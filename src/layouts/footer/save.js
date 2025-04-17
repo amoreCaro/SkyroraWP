@@ -4,8 +4,6 @@ export default function Save({ attributes }) {
     const { copyright, paddingLeft, paddingRight, listItems = [], imageItems = [] } = attributes;
     const blockProps = useBlockProps.save();
 
-
-
     return (
         <div
             {...blockProps}
