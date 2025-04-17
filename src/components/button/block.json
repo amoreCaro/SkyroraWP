@@ -6,8 +6,7 @@
   "icon": "button",
   "description": "A customizable button block with flexible styles.",
   "supports": {
-    "html": false,
-    "align": ["left", "center", "right"]
+    "html": false
   },
   "attributes": {
     "content": {

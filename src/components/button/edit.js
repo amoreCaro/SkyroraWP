@@ -48,6 +48,7 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<>
 			<BlockControls>
+				{/* Uncomment and enable the AlignmentToolbar */}
 				<AlignmentToolbar
 					value={textAlign}
 					onChange={(newAlign) => setAttributes({ textAlign: newAlign || 'left' })}
@@ -137,6 +138,7 @@ export default function Edit({ attributes, setAttributes }) {
 						padding: '16px 24px',
 						boxSizing: 'border-box',
 						textAlign: 'center'
+						
 					}}
 				>
 					<RichText

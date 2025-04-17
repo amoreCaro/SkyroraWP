@@ -189,8 +189,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 const save = ({
@@ -211,7 +214,7 @@ const save = ({
     paddingBottom
   } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
       className: 'wp-button',
       style: {
         backgroundColor: '#fff',
@@ -242,7 +245,8 @@ const save = ({
       height: '56px',
       textDecoration: 'none',
       padding: '16px 24px',
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
+      textAlign: 'center'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, content)));
 };
@@ -318,7 +322,7 @@ module.exports = window["wp"]["i18n"];
   \******************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/button","title":"Button","category":"design","icon":"button","description":"A customizable button block with flexible styles.","supports":{"html":false,"align":["left","center","right"]},"attributes":{"content":{"type":"string","source":"html","selector":"a span","default":"Click me"},"textAlign":{"type":"string","default":"center"},"color":{"type":"string","default":"#FFFFFF"},"backgroundColor":{"type":"string","default":"#164BDC"},"fontWeight":{"type":"string","default":"600"},"fontSize":{"type":"string","default":"14px"},"lineHeight":{"type":"string","default":"1.4"},"fontFamily":{"type":"string","default":"Bai Jamjuree, sans-serif"},"textTransform":{"type":"string","default":"uppercase"},"paddingX":{"type":"string","default":"48px"},"paddingTop":{"type":"string","default":"20px"},"paddingBottom":{"type":"string","default":"20px"},"url":{"type":"string","default":"#"}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":{"attributes":{"content":"Learn More","backgroundColor":"#1E40AF","color":"#FFFFFF"}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/button","title":"Button","category":"design","icon":"button","description":"A customizable button block with flexible styles.","supports":{"html":false},"attributes":{"content":{"type":"string","source":"html","selector":"a span","default":"Click me"},"textAlign":{"type":"string","default":"center"},"color":{"type":"string","default":"#FFFFFF"},"backgroundColor":{"type":"string","default":"#164BDC"},"fontWeight":{"type":"string","default":"600"},"fontSize":{"type":"string","default":"14px"},"lineHeight":{"type":"string","default":"1.4"},"fontFamily":{"type":"string","default":"Bai Jamjuree, sans-serif"},"textTransform":{"type":"string","default":"uppercase"},"paddingX":{"type":"string","default":"48px"},"paddingTop":{"type":"string","default":"20px"},"paddingBottom":{"type":"string","default":"20px"},"url":{"type":"string","default":"#"}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":{"attributes":{"content":"Learn More","backgroundColor":"#1E40AF","color":"#FFFFFF"}}}');
 
 /***/ })
 
