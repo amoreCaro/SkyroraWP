@@ -50,9 +50,7 @@ export default function Edit({ attributes, setAttributes }) {
 			<BlockControls>
 				<AlignmentToolbar
 					value={textAlign}
-					onChange={(newAlign) =>
-						setAttributes({ textAlign: newAlign || 'left' })
-					}
+					onChange={(newAlign) => setAttributes({ textAlign: newAlign || 'left' })}
 				/>
 			</BlockControls>
 
@@ -117,21 +115,6 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-
-			<style
-				dangerouslySetInnerHTML={{
-					__html: `
-						@media (max-width: 768px) {
-							.wp-button {
-								padding-left: 12px !important;
-								padding-right: 12px !important;
-								padding-top: 16px !important;
-								padding-bottom: 16px !important;
-							}
-						}
-					`,
-				}}
-			/>
 
 			<div {...useBlockProps({ className: 'wp-button', style: blockStyle })}>
 				<a

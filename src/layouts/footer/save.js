@@ -15,8 +15,8 @@ export default function Save({ attributes }) {
                 background: '#181B24',
                 paddingTop: '30px',
                 paddingBottom: '48px',
-                paddingLeft: `${paddingLeft || 0}rem`,
-                paddingRight: `${paddingRight || 0}rem`,
+                paddingLeft: `${paddingLeft }rem`,
+                paddingRight: `${paddingRight }rem`,
             }}
         >
 
