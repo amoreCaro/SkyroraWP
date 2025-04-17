@@ -12,7 +12,7 @@ import {
     Icon,
 } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
-import { plus, trash, edit, close } from '@wordpress/icons';
+import { plus, trash, edit, close, link } from '@wordpress/icons';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 
@@ -67,7 +67,26 @@ export default function Edit({ attributes, setAttributes }) {
         const newItems = imageItems.filter((_, index) => index !== indexToRemove);
         setAttributes({ imageItems: newItems });
     };
-    
+
+    const [url, setUrl] = useState('');
+    const [urls, setUrls] = useState([]); // якщо треба зберігати кілька посилань
+
+    const handleSubmitUrl = () => {
+        if (!url.trim()) {
+            alert('Введіть посилання!');
+            return;
+        }
+
+        try {
+            new URL(url); // проста перевірка, що це справжній URL
+        } catch (err) {
+            alert('Некоректне посилання');
+            return;
+        }
+
+        setUrls((prev) => [...prev, url]);
+        setUrl('');
+    };
     return (
         <>
             <InspectorControls>
@@ -201,11 +220,14 @@ export default function Edit({ attributes, setAttributes }) {
                                                                             justifyContent: 'center',
                                                                             color: '#6B7280',
                                                                             marginBottom: '16px',
+                                                                            gap: '8px'
                                                                         }}
                                                                     >
-                                                                        <Icon icon={plus} style={{ fontSize: '28px', marginBottom: '8px' }} />
+                                                                        <Icon icon={plus} style={{ fontSize: '28px', }} />
                                                                         <span style={{ fontSize: '15px', fontWeight: '500' }}>Завантажити зображення</span>
                                                                     </div>
+
+
                                                                 )}
 
                                                                 <MediaUpload
@@ -215,7 +237,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                         <Button
                                                                             onClick={open}
                                                                             style={{
-                                                                                backgroundColor: '#000',
+                                                                                backgroundColor: '#1e1e1e',
                                                                                 color: '#fff',
                                                                                 width: '100%',
                                                                                 height: '44px',
@@ -228,6 +250,48 @@ export default function Edit({ attributes, setAttributes }) {
                                                                         </Button>
                                                                     )}
                                                                 />
+                                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                                                    <input
+                                                                        type="text"
+                                                                        placeholder="Введіть посилання"
+                                                                        value={url}
+                                                                        onChange={(e) => setUrl(e.target.value)}
+                                                                        style={{
+                                                                            padding: '10px',
+                                                                            border: '2px solid #1e1e1e',
+                                                                            borderRadius: '2px',
+                                                                            fontSize: '16px',
+                                                                            height: '44px',
+                                                                            width: '100%',
+                                                                        }}
+                                                                    />
+
+                                                                    <Button
+                                                                        onClick={handleSubmitUrl}
+                                                                        style={{
+                                                                            all: 'unset',
+                                                                            display: 'flex',
+                                                                            alignItems: 'center',
+                                                                            justifyContent: 'center',
+
+                                                                            backgroundColor: '#fff',
+                                                                            color: '#1e1e1e',
+                                                                            border: '2px solid #1e1e1e',
+                                                                            borderRadius: '2px',
+                                                                            fontSize: '16px',
+                                                                            fontWeight: '500',
+                                                                            height: '44px',
+                                                                            width: '100%',
+                                                                            cursor: 'pointer',
+                                                                            gap: '8px',
+                                                                            marginBottom:'8px'
+                                                                        }}
+                                                                    >
+                                                                        <Icon icon={link} />
+                                                                        Додати посилання
+                                                                    </Button>
+                                                                </div>
+
 
                                                                 <Button
                                                                     onClick={() => removeImageColumn(index)}
@@ -238,10 +302,12 @@ export default function Edit({ attributes, setAttributes }) {
                                                                         borderRadius: '2px',
                                                                         fontSize: '16px',
                                                                         fontWeight: '500',
+                                                                        height: '44px',
                                                                         width: '100%',
+                                                                        gap: '8px'
                                                                     }}
                                                                 >
-                                                                    <Icon icon={close} style={{ marginRight: '6px' }} />
+                                                                    <Icon icon={close} />
                                                                     Видалити
                                                                 </Button>
                                                             </div>
