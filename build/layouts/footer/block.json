@@ -29,9 +29,9 @@
       "type": "array",
       "default": []
     },
-    "imageLinks": {
-      "type": "array",
-      "default": []
+    "imageLink": {
+      "type": "string",
+      "default": ""
     }
   },
   "editorScript": "file:./index.js",

@@ -68,8 +68,9 @@ export default function Edit({ attributes, setAttributes }) {
         setAttributes({ imageItems: newItems });
     };
 
-    const [url, setUrl] = useState('');
-    const [urls, setUrls] = useState([]); // якщо треба зберігати кілька посилань
+    const { imageLink = '' } = attributes;
+
+    const [url, setUrl] = useState(imageLink);
 
     const handleSubmitUrl = () => {
         if (!url.trim()) {
@@ -78,15 +79,16 @@ export default function Edit({ attributes, setAttributes }) {
         }
 
         try {
-            new URL(url); // проста перевірка, що це справжній URL
-        } catch (err) {
+            new URL(url); // Перевірка правильності посилання
+        } catch {
             alert('Некоректне посилання');
             return;
         }
 
-        setUrls((prev) => [...prev, url]);
-        setUrl('');
+        setAttributes({ imageLink: url });
+        alert('Посилання збережено!');
     };
+
     return (
         <>
             <InspectorControls>
@@ -250,6 +252,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                         </Button>
                                                                     )}
                                                                 />
+
                                                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                                                                     <input
                                                                         type="text"
@@ -273,7 +276,6 @@ export default function Edit({ attributes, setAttributes }) {
                                                                             display: 'flex',
                                                                             alignItems: 'center',
                                                                             justifyContent: 'center',
-
                                                                             backgroundColor: '#fff',
                                                                             color: '#1e1e1e',
                                                                             border: '2px solid #1e1e1e',
@@ -284,12 +286,15 @@ export default function Edit({ attributes, setAttributes }) {
                                                                             width: '100%',
                                                                             cursor: 'pointer',
                                                                             gap: '8px',
-                                                                            marginBottom:'8px'
+                                                                            marginBottom: '8px'
                                                                         }}
                                                                     >
                                                                         <Icon icon={link} />
                                                                         Додати посилання
                                                                     </Button>
+
+                                                                    {/* Відображення збереженого посилання */}
+                                                                    {imageLink && <div>Збережене посилання: <a href={imageLink} target="_blank" rel="noreferrer">{imageLink}</a></div>}
                                                                 </div>
 
 
@@ -312,7 +317,6 @@ export default function Edit({ attributes, setAttributes }) {
                                                                 </Button>
                                                             </div>
                                                         )}
-
                                                     />
                                                 </div>
                                             )}

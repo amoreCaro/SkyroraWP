@@ -237,22 +237,25 @@ function Edit({
       imageItems: newItems
     });
   };
-  const [url, setUrl] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)('');
-  const [urls, setUrls] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)([]); // якщо треба зберігати кілька посилань
-
+  const {
+    imageLink = ''
+  } = attributes;
+  const [url, setUrl] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useState)(imageLink);
   const handleSubmitUrl = () => {
     if (!url.trim()) {
       alert('Введіть посилання!');
       return;
     }
     try {
-      new URL(url); // проста перевірка, що це справжній URL
-    } catch (err) {
+      new URL(url); // Перевірка правильності посилання
+    } catch {
       alert('Некоректне посилання');
       return;
     }
-    setUrls(prev => [...prev, url]);
-    setUrl('');
+    setAttributes({
+      imageLink: url
+    });
+    alert('Посилання збережено!');
   };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: "Padding Controls",
@@ -447,7 +450,11 @@ function Edit({
       }
     }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Icon, {
       icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_7__["default"]
-    }), "\u0414\u043E\u0434\u0430\u0442\u0438 \u043F\u043E\u0441\u0438\u043B\u0430\u043D\u043D\u044F")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    }), "\u0414\u043E\u0434\u0430\u0442\u0438 \u043F\u043E\u0441\u0438\u043B\u0430\u043D\u043D\u044F"), imageLink && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, "\u0417\u0431\u0435\u0440\u0435\u0436\u0435\u043D\u0435 \u043F\u043E\u0441\u0438\u043B\u0430\u043D\u043D\u044F: ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: imageLink,
+      target: "_blank",
+      rel: "noreferrer"
+    }, imageLink))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
       onClick: () => removeImageColumn(index),
       style: {
         padding: '12px 20px',
@@ -15533,7 +15540,7 @@ function invariant(condition, message) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/footer","title":"Footer","category":"advanced","icon":"table-row-after","description":"Footer block with customizable columns and copyright.","supports":{"html":false},"attributes":{"copyright":{"type":"string","default":"© 2025 SKYRORA LIMITED"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"listItems":{"type":"array","default":[]},"imageItems":{"type":"array","default":[]},"imageLinks":{"type":"array","default":[]}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/footer","title":"Footer","category":"advanced","icon":"table-row-after","description":"Footer block with customizable columns and copyright.","supports":{"html":false},"attributes":{"copyright":{"type":"string","default":"© 2025 SKYRORA LIMITED"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"listItems":{"type":"array","default":[]},"imageItems":{"type":"array","default":[]},"imageLink":{"type":"string","default":""}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
 
 /***/ })
 
