@@ -40,7 +40,8 @@ function Edit({
     textTransform,
     paddingX,
     paddingTop,
-    paddingBottom
+    paddingBottom,
+    tabSelected
   } = attributes;
   const blockStyle = {
     backgroundColor: '#fff',
@@ -52,94 +53,143 @@ function Edit({
     paddingLeft: paddingX,
     paddingRight: paddingX
   };
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.AlignmentToolbar, {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    dangerouslySetInnerHTML: {
+      __html: `
+						@media (max-width: 768px) {
+							.wp-button {
+								padding-left: 12px !important;
+								padding-right: 12px !important;
+							}
+						}
+					`
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.BlockControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.AlignmentToolbar, {
     value: textAlign,
     onChange: newAlign => setAttributes({
       textAlign: newAlign || 'left'
     })
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Settings', 'app')
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Size', 'app'),
-    value: fontSize,
-    onChange: value => setAttributes({
-      fontSize: value
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Line Height', 'app'),
-    value: lineHeight,
-    onChange: value => setAttributes({
-      lineHeight: value
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Top (px)', 'app'),
-    value: paddingTop,
-    onChange: val => setAttributes({
-      paddingTop: val
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Bottom (px)', 'app'),
-    value: paddingBottom,
-    onChange: val => setAttributes({
-      paddingBottom: val
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding X (px)', 'app'),
-    value: paddingX,
-    onChange: val => setAttributes({
-      paddingX: val
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Weight', 'app'),
-    value: fontWeight,
-    options: [{
-      label: 'Normal',
-      value: '400'
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TabPanel, {
+    className: "my-tab-panel",
+    activeClass: "active-tab",
+    initialTabName: tabSelected || 'tab1',
+    onSelect: tabName => setAttributes({
+      tabSelected: tabName
+    }),
+    tabs: [{
+      name: 'tab1',
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Tab 1', 'app'),
+      className: 'tab1'
     }, {
-      label: 'Medium',
-      value: '500'
+      name: 'tab2',
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Tab 2', 'app'),
+      className: 'tab2'
     }, {
-      label: 'Semi-Bold',
-      value: '600'
-    }, {
-      label: 'Bold',
-      value: '700'
-    }],
-    onChange: value => setAttributes({
-      fontWeight: value
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Transform', 'app'),
-    value: textTransform,
-    options: [{
-      label: 'None',
-      value: 'none'
-    }, {
-      label: 'Uppercase',
-      value: 'uppercase'
-    }, {
-      label: 'Lowercase',
-      value: 'lowercase'
-    }, {
-      label: 'Capitalize',
-      value: 'capitalize'
-    }],
-    onChange: value => setAttributes({
-      textTransform: value
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Color', 'app'),
-    value: color,
-    onChange: value => setAttributes({
-      color: value
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background Color', 'app'),
-    value: backgroundColor,
-    onChange: value => setAttributes({
-      backgroundColor: value
-    })
-  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      name: 'tab3',
+      title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Tab 3', 'app'),
+      className: 'tab3'
+    }]
+  }, tab => {
+    switch (tab.name) {
+      case 'tab1':
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Typography Settings', 'app'),
+          initialOpen: true
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Size', 'app'),
+          value: fontSize,
+          onChange: value => setAttributes({
+            fontSize: value
+          })
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Line Height', 'app'),
+          value: lineHeight,
+          onChange: value => setAttributes({
+            lineHeight: value
+          })
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Font Weight', 'app'),
+          value: fontWeight,
+          options: [{
+            label: 'Normal',
+            value: '400'
+          }, {
+            label: 'Medium',
+            value: '500'
+          }, {
+            label: 'Semi-Bold',
+            value: '600'
+          }, {
+            label: 'Bold',
+            value: '700'
+          }],
+          onChange: value => setAttributes({
+            fontWeight: value
+          })
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Transform', 'app'),
+          value: textTransform,
+          options: [{
+            label: 'None',
+            value: 'none'
+          }, {
+            label: 'Uppercase',
+            value: 'uppercase'
+          }, {
+            label: 'Lowercase',
+            value: 'lowercase'
+          }, {
+            label: 'Capitalize',
+            value: 'capitalize'
+          }],
+          onChange: value => setAttributes({
+            textTransform: value
+          })
+        }));
+      case 'tab2':
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Spacing', 'app'),
+          initialOpen: true
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Top (px)', 'app'),
+          value: paddingTop,
+          onChange: val => setAttributes({
+            paddingTop: val
+          })
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding Bottom (px)', 'app'),
+          value: paddingBottom,
+          onChange: val => setAttributes({
+            paddingBottom: val
+          })
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Padding X (px)', 'app'),
+          value: paddingX,
+          onChange: val => setAttributes({
+            paddingX: val
+          })
+        }));
+      case 'tab3':
+        return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colors', 'app'),
+          initialOpen: true
+        }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Text Color', 'app'),
+          value: color,
+          onChange: value => setAttributes({
+            color: value
+          })
+        }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background Color', 'app'),
+          value: backgroundColor,
+          onChange: value => setAttributes({
+            backgroundColor: value
+          })
+        }));
+      default:
+        return null;
+    }
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
       className: 'wp-button',
       style: blockStyle
@@ -189,11 +239,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
 
 
 const save = ({
@@ -213,23 +260,33 @@ const save = ({
     paddingTop,
     paddingBottom
   } = attributes;
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
-      className: 'wp-button',
-      style: {
-        backgroundColor: '#fff',
-        paddingTop,
-        paddingBottom,
-        paddingLeft: paddingX,
-        paddingRight: paddingX,
-        display: 'flex',
-        justifyContent: textAlign === 'center' ? 'center' : textAlign === 'right' ? 'flex-end' : 'flex-start'
-      }
-    })
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    dangerouslySetInnerHTML: {
+      __html: `
+						@media (max-width: 768px) {
+							.wp-button {
+								padding-left: 12px !important;
+								padding-right: 12px !important;
+							}
+						}
+					`
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+      className: 'wp-button'
+    }),
+    style: {
+      backgroundColor: '#fff',
+      paddingTop,
+      paddingBottom,
+      paddingLeft: paddingX,
+      paddingRight: paddingX,
+      display: 'flex',
+      justifyContent: textAlign === 'center' ? 'center' : textAlign === 'right' ? 'flex-end' : 'flex-start'
+    }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#",
     style: {
-      textAlign,
       color,
       backgroundColor,
       fontWeight,
@@ -248,7 +305,7 @@ const save = ({
       boxSizing: 'border-box',
       textAlign: 'center'
     }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, content)));
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, content))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (save);
 

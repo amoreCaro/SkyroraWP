@@ -32,6 +32,14 @@
     "imageLink": {
       "type": "string",
       "default": ""
+    },
+    "textTransform": {
+      "type": "string",
+      "default": "none"
+    },
+    "activeTab": {
+      "type": "string",
+      "default": "General"  
     }
   },
   "editorScript": "file:./index.js",

@@ -15542,7 +15542,7 @@ function invariant(condition, message) {
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/footer","title":"Footer","category":"advanced","icon":"table-row-after","description":"Footer block with customizable columns and copyright.","supports":{"html":false},"attributes":{"copyright":{"type":"string","default":"© 2025 SKYRORA LIMITED"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"listItems":{"type":"array","default":[]},"imageItems":{"type":"array","default":[]},"imageLink":{"type":"string","default":""}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":3,"name":"app/footer","title":"Footer","category":"advanced","icon":"table-row-after","description":"Footer block with customizable columns and copyright.","supports":{"html":false},"attributes":{"copyright":{"type":"string","default":"© 2025 SKYRORA LIMITED"},"paddingLeft":{"type":"number","default":3},"paddingRight":{"type":"number","default":3},"listItems":{"type":"array","default":[]},"imageItems":{"type":"array","default":[]},"imageLink":{"type":"string","default":""},"textTransform":{"type":"string","default":"none"},"activeTab":{"type":"string","default":"General"}},"editorScript":"file:./index.js","editorStyle":"file:./editor.css","style":"file:./style.css","example":null}');
 
 /***/ })
 

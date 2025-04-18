@@ -3,6 +3,7 @@ import {
     RichText,
     MediaUpload,
     InspectorControls,
+
 } from '@wordpress/block-editor';
 import {
     PanelBody,
@@ -297,7 +298,6 @@ export default function Edit({ attributes, setAttributes }) {
                                                                     {imageLink && <div>Збережене посилання: <a href={imageLink} target="_blank" rel="noreferrer">{imageLink}</a></div>}
                                                                 </div>
 
-
                                                                 <Button
                                                                     onClick={() => removeImageColumn(index)}
                                                                     style={{
@@ -440,6 +440,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                         width: '100%',
                                                                     }}
                                                                 />
+                                                               
                                                                 <Button
                                                                     onClick={() => removeTextColumn(index)}
                                                                     style={{
