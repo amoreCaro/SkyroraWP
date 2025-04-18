@@ -28,7 +28,8 @@ export default function Edit({ attributes, setAttributes }) {
 		paddingX,
 		paddingTop,
 		paddingBottom,
-		tabSelected
+		tabSelected,
+		url
 	} = attributes;
 
 	const blockStyle = {
@@ -65,75 +66,78 @@ export default function Edit({ attributes, setAttributes }) {
 			<BlockControls>
 				<AlignmentToolbar
 					value={textAlign}
-					onChange={(newAlign) => setAttributes({ textAlign: newAlign || 'left' })}
+					onChange={(newAlign) => setAttributes({ textAlign: newAlign || 'center' })}
 				/>
 			</BlockControls>
 
 			<InspectorControls>
 				<TabPanel
 					className="my-tab-panel"
-					activeClass="active-tab"
-					initialTabName={tabSelected || 'tab1'}
+					initialTabName={tabSelected || 'settings'}
 					onSelect={(tabName) => setAttributes({ tabSelected: tabName })}
 					tabs={[
 						{
-							name: 'tab1',
-							title: __('Tab 1', 'app'),
-							className: 'tab1'
+							name: 'settings',
+							title: (
+								<span className="dashicons dashicons-admin-generic" />
+							)
 						},
 						{
-							name: 'tab2',
-							title: __('Tab 2', 'app'),
-							className: 'tab2'
-						},
-						{
-							name: 'tab3',
-							title: __('Tab 3', 'app'),
-							className: 'tab3'
+							name: 'styles',
+							title: (
+								<span className="dashicons dashicons-admin-appearance" />
+							)
 						}
 					]}
 				>
 					{(tab) => {
-						switch (tab.name) {
-							case 'tab1':
-								return (
-									<PanelBody title={__('Typography Settings', 'app')} initialOpen={true}>
-										<TextControl
-											label={__('Font Size', 'app')}
-											value={fontSize}
-											onChange={(value) => setAttributes({ fontSize: value })}
-										/>
-										<TextControl
-											label={__('Line Height', 'app')}
-											value={lineHeight}
-											onChange={(value) => setAttributes({ lineHeight: value })}
-										/>
-										<SelectControl
-											label={__('Font Weight', 'app')}
-											value={fontWeight}
-											options={[
-												{ label: 'Normal', value: '400' },
-												{ label: 'Medium', value: '500' },
-												{ label: 'Semi-Bold', value: '600' },
-												{ label: 'Bold', value: '700' }
-											]}
-											onChange={(value) => setAttributes({ fontWeight: value })}
-										/>
-										<SelectControl
-											label={__('Text Transform', 'app')}
-											value={textTransform}
-											options={[
-												{ label: 'None', value: 'none' },
-												{ label: 'Uppercase', value: 'uppercase' },
-												{ label: 'Lowercase', value: 'lowercase' },
-												{ label: 'Capitalize', value: 'capitalize' }
-											]}
-											onChange={(value) => setAttributes({ textTransform: value })}
-										/>
-									</PanelBody>
-								);
-							case 'tab2':
-								return (
+						if (tab.name === 'settings') {
+							return (
+								<PanelBody title={__('Typography Settings', 'app')} initialOpen={true}>
+									<TextControl
+										label={__('Font Size', 'app')}
+										value={fontSize}
+										onChange={(value) => setAttributes({ fontSize: value })}
+									/>
+									<TextControl
+										label={__('Line Height', 'app')}
+										value={lineHeight}
+										onChange={(value) => setAttributes({ lineHeight: value })}
+									/>
+									<SelectControl
+										label={__('Font Weight', 'app')}
+										value={fontWeight}
+										options={[
+											{ label: 'Normal', value: '400' },
+											{ label: 'Medium', value: '500' },
+											{ label: 'Semi-Bold', value: '600' },
+											{ label: 'Bold', value: '700' }
+										]}
+										onChange={(value) => setAttributes({ fontWeight: value })}
+									/>
+									<SelectControl
+										label={__('Text Transform', 'app')}
+										value={textTransform}
+										options={[
+											{ label: 'None', value: 'none' },
+											{ label: 'Uppercase', value: 'uppercase' },
+											{ label: 'Lowercase', value: 'lowercase' },
+											{ label: 'Capitalize', value: 'capitalize' }
+										]}
+										onChange={(value) => setAttributes({ textTransform: value })}
+									/>
+									<TextControl
+										label={__('Button Link URL', 'app')}
+										value={url}
+										onChange={(value) => setAttributes({ url: value })}
+										placeholder={__('Enter button URL', 'app')}
+									/>
+								</PanelBody>
+							);
+						}
+						if (tab.name === 'styles') {
+							return (
+								<>
 									<PanelBody title={__('Spacing', 'app')} initialOpen={true}>
 										<TextControl
 											label={__('Padding Top (px)', 'app')}
@@ -151,9 +155,7 @@ export default function Edit({ attributes, setAttributes }) {
 											onChange={(val) => setAttributes({ paddingX: val })}
 										/>
 									</PanelBody>
-								);
-							case 'tab3':
-								return (
+
 									<PanelBody title={__('Colors', 'app')} initialOpen={true}>
 										<ColorPalette
 											label={__('Text Color', 'app')}
@@ -166,17 +168,17 @@ export default function Edit({ attributes, setAttributes }) {
 											onChange={(value) => setAttributes({ backgroundColor: value })}
 										/>
 									</PanelBody>
-								);
-							default:
-								return null;
+								</>
+							);
 						}
+						return null;
 					}}
 				</TabPanel>
 			</InspectorControls>
 
 			<div {...useBlockProps({ className: 'wp-button', style: blockStyle })}>
 				<a
-					href="#"
+					href={url || '#'}
 					style={{
 						color,
 						backgroundColor,

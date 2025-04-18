@@ -71,7 +71,8 @@
     "attributes": {
       "content": "Learn More",
       "backgroundColor": "#1E40AF",
-      "color": "#FFFFFF"
+      "color": "#FFFFFF",
+      "url": "https://example.com"
     }
   }
 }

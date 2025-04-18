@@ -13,7 +13,8 @@ const save = ({ attributes }) => {
 		textTransform,
 		paddingX,
 		paddingTop,
-		paddingBottom
+		paddingBottom,
+		url
 	} = attributes;
 
 	return (
@@ -31,9 +32,7 @@ const save = ({ attributes }) => {
 				}}
 			/>
 			<div
-				{...useBlockProps.save({
-					className: 'wp-button',
-				})}
+				{...useBlockProps.save({ className: 'wp-button' })}
 				style={{
 					backgroundColor: '#fff',
 					paddingTop,
@@ -50,7 +49,7 @@ const save = ({ attributes }) => {
 				}}
 			>
 				<a
-					href="#"
+					href={url || '#'}
 					style={{
 						color,
 						backgroundColor,
