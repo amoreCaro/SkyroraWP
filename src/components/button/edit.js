@@ -11,8 +11,9 @@ import {
 	ColorPalette,
 	SelectControl,
 	TextControl,
-	TabPanel
+	TabPanel, Button, ButtonGroup
 } from '@wordpress/components';
+import { alignLeft, alignCenter, alignRight } from '@wordpress/icons';
 
 export default function Edit({ attributes, setAttributes }) {
 	const {
@@ -39,8 +40,8 @@ export default function Edit({ attributes, setAttributes }) {
 			textAlign === 'center'
 				? 'center'
 				: textAlign === 'right'
-				? 'flex-end'
-				: 'flex-start',
+					? 'flex-end'
+					: 'flex-start',
 		textAlign,
 		paddingTop,
 		paddingBottom,
@@ -98,11 +99,13 @@ export default function Edit({ attributes, setAttributes }) {
 										label={__('Font Size', 'app')}
 										value={fontSize}
 										onChange={(value) => setAttributes({ fontSize: value })}
+
 									/>
 									<TextControl
 										label={__('Line Height', 'app')}
 										value={lineHeight}
 										onChange={(value) => setAttributes({ lineHeight: value })}
+
 									/>
 									<SelectControl
 										label={__('Font Weight', 'app')}
@@ -114,6 +117,7 @@ export default function Edit({ attributes, setAttributes }) {
 											{ label: 'Bold', value: '700' }
 										]}
 										onChange={(value) => setAttributes({ fontWeight: value })}
+
 									/>
 									<SelectControl
 										label={__('Text Transform', 'app')}
@@ -125,13 +129,63 @@ export default function Edit({ attributes, setAttributes }) {
 											{ label: 'Capitalize', value: 'capitalize' }
 										]}
 										onChange={(value) => setAttributes({ textTransform: value })}
+
 									/>
 									<TextControl
-										label={__('Button Link URL', 'app')}
+										label={__('Button Link', 'app')}
 										value={url}
 										onChange={(value) => setAttributes({ url: value })}
 										placeholder={__('Enter button URL', 'app')}
+
 									/>
+									<PanelBody title={__('Alignment', 'app')} initialOpen={true}>
+										<ButtonGroup
+											style={{
+												display: 'flex',
+												gap: '8px',
+												width: '100%',
+											}}
+										>
+											<Button
+												icon={alignLeft}
+												label={__('Align Left', 'app')}
+												isPressed={textAlign === 'left'}
+												onClick={() => setAttributes({ textAlign: 'left' })}
+												style={{
+													flex: 1,
+													justifyContent: 'center',
+
+
+
+												}}
+											/>
+											<Button
+												icon={alignCenter}
+												label={__('Align Center', 'app')}
+												isPressed={textAlign === 'center'}
+												onClick={() => setAttributes({ textAlign: 'center' })}
+												style={{
+													flex: 1,
+													justifyContent: 'center',
+
+
+												}}
+											/>
+											<Button
+												icon={alignRight}
+												label={__('Align Right', 'app')}
+												isPressed={textAlign === 'right'}
+												onClick={() => setAttributes({ textAlign: 'right' })}
+												style={{
+													flex: 1,
+													justifyContent: 'center',
+
+
+												}}
+											/>
+										</ButtonGroup>
+									</PanelBody>
+
 								</PanelBody>
 							);
 						}
@@ -148,11 +202,13 @@ export default function Edit({ attributes, setAttributes }) {
 											label={__('Padding Bottom (px)', 'app')}
 											value={paddingBottom}
 											onChange={(val) => setAttributes({ paddingBottom: val })}
+
 										/>
 										<TextControl
 											label={__('Padding X (px)', 'app')}
 											value={paddingX}
 											onChange={(val) => setAttributes({ paddingX: val })}
+
 										/>
 									</PanelBody>
 
@@ -161,11 +217,13 @@ export default function Edit({ attributes, setAttributes }) {
 											label={__('Text Color', 'app')}
 											value={color}
 											onChange={(value) => setAttributes({ color: value })}
+
 										/>
 										<ColorPalette
 											label={__('Background Color', 'app')}
 											value={backgroundColor}
 											onChange={(value) => setAttributes({ backgroundColor: value })}
+
 										/>
 									</PanelBody>
 								</>
