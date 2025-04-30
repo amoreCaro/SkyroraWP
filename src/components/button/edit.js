@@ -228,7 +228,18 @@ export default function Edit({ attributes, setAttributes }) {
 					}}
 				</TabPanel>
 			</InspectorControls>
-
+            <style
+                dangerouslySetInnerHTML={{
+                    __html: `
+						@media (max-width: 768px) {
+							.wp-block.wp-button {
+								padding-left: 12px !important;
+								padding-right: 12px !important;
+							}
+						}
+					`,
+                }}
+            />
 			<div
 				{...useBlockProps({
 					className: 'wp-button',

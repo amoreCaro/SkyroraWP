@@ -58,7 +58,8 @@ const Edit = ({ attributes, setAttributes }) => {
                     paddingTop: '16px',
                     paddingBottom: '16px',
                     paddingLeft: `${paddingLeft}px`,
-                    paddingRight: `${paddingRight}px`
+                    paddingRight: `${paddingRight}px`,
+                    background: '#fff'
                 }}
             >
                 <div

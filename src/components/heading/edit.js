@@ -4,14 +4,13 @@ import {
 	RichText,
 	InspectorControls,
 	BlockControls,
+	PanelColorSettings,
 } from '@wordpress/block-editor';
 import {
 	PanelBody,
 	SelectControl,
-	ColorPalette,
 	TextControl,
-	ToolbarGroup,
-	ToolbarButton,
+	TabPanel,
 } from '@wordpress/components';
 
 const HeadingEdit = ({ attributes, setAttributes }) => {
@@ -20,6 +19,7 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
 		level,
 		textAlign,
 		color,
+		backgroundColor,
 		fontWeight,
 		fontSize,
 		lineHeight,
@@ -29,36 +29,30 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
 		paddingRight,
 		paddingTop,
 		paddingBottom,
+		tabSelected,
 	} = attributes;
 
-	// Функція для встановлення розміру заголовка залежно від рівня
 	const headingSize = (hLevel) => {
 		switch (hLevel) {
-			case 1:
-				return '2.5rem';
-			case 2:
-				return '2.0rem';
-			case 3:
-				return '1.75rem';
-			case 4:
-				return '1.5rem';
-			case 5:
-				return '1.25rem';
-			case 6:
-				return '1.0rem';
-			default:
-				return '2rem';
+			case 1: return '2.5rem';
+			case 2: return '2.0rem';
+			case 3: return '1.75rem';
+			case 4: return '1.5rem';
+			case 5: return '1.25rem';
+			case 6: return '1.0rem';
+			default: return '2rem';
 		}
 	};
 
-	const onChangePadding = (side, value) =>
+	const onChangePadding = (side, value) => {
 		setAttributes({ [side]: parseFloat(value || 0) });
+	};
 
-	// Додаємо додатковий клас для адаптивного стилю
 	const blockProps = useBlockProps({
 		className: 'custom-heading',
 		style: {
 			color,
+			backgroundColor: backgroundColor || '#FFFFFF', // Default to white if undefined
 			fontWeight,
 			fontSize: headingSize(level),
 			lineHeight,
@@ -75,141 +69,142 @@ const HeadingEdit = ({ attributes, setAttributes }) => {
 
 	return (
 		<>
-			<BlockControls>
-				<ToolbarGroup>
-					{[1, 2, 3, 4, 5, 6].map((hLevel) => (
-						<ToolbarButton
-							key={hLevel}
-							isPressed={level === hLevel}
-							onClick={() => setAttributes({ level: hLevel })}
-						>
-							H{hLevel}
-						</ToolbarButton>
-					))}
-				</ToolbarGroup>
-			</BlockControls>
-
+			<BlockControls />
 			<InspectorControls>
-				<PanelBody title={__('Heading Settings', 'custom-heading')}>
-					<SelectControl
-						label={__('Heading Level', 'custom-heading')}
-						value={level}
-						options={Array.from({ length: 6 }, (_, i) => ({
-							label: `H${i + 1}`,
-							value: i + 1,
-						}))}
-						onChange={(val) => setAttributes({ level: parseInt(val, 10) })}
-					/>
-					<SelectControl
-						label={__('Text Align', 'custom-heading')}
-						value={textAlign}
-						options={[
-							{ label: 'Left', value: 'left' },
-							{ label: 'Center', value: 'center' },
-							{ label: 'Right', value: 'right' },
-						]}
-						onChange={(val) => setAttributes({ textAlign: val })}
-					/>
-					<ColorPalette
-						label={__('Text Color', 'custom-heading')}
-						value={color}
-						onChange={(val) => setAttributes({ color: val || '#000000' })}
-					/>
-					<TextControl
-						label={__('Font Size (rem)', 'custom-heading')}
-						type="number"
-						value={fontSize.replace('rem', '')}
-						onChange={(val) => setAttributes({ fontSize: `${val}rem` })}
-					/>
-					<TextControl
-						label={__('Line Height', 'custom-heading')}
-						type="number"
-						step="0.1"
-						value={lineHeight}
-						onChange={(val) => setAttributes({ lineHeight: val })}
-					/>
-					<TextControl
-						label={__('Font Family', 'custom-heading')}
-						value={fontFamily}
-						onChange={(val) => setAttributes({ fontFamily: val })}
-					/>
-					<SelectControl
-						label={__('Font Weight', 'custom-heading')}
-						value={fontWeight}
-						options={[
-							{ label: 'Normal', value: '400' },
-							{ label: 'Bold', value: '700' },
-							{ label: 'Bolder', value: '900' },
-						]}
-						onChange={(val) => setAttributes({ fontWeight: val })}
-					/>
-					<SelectControl
-						label={__('Text Transform', 'custom-heading')}
-						value={textTransform}
-						options={[
-							{ label: 'None', value: 'none' },
-							{ label: 'Uppercase', value: 'uppercase' },
-							{ label: 'Lowercase', value: 'lowercase' },
-							{ label: 'Capitalize', value: 'capitalize' },
-						]}
-						onChange={(val) => setAttributes({ textTransform: val })}
-					/>
-				</PanelBody>
-
-				<PanelBody title={__('Padding Settings', 'custom-heading')} initialOpen={true}>
-					<TextControl
-						label={__('Padding Top (px)', 'custom-heading')}
-						value={paddingTop}
-						onChange={(val) => onChangePadding('paddingTop', val)}
-						type="number"
-						min={0}
-					/>
-					<TextControl
-						label={__('Padding Bottom (px)', 'custom-heading')}
-						value={paddingBottom}
-						onChange={(val) => onChangePadding('paddingBottom', val)}
-						type="number"
-						min={0}
-					/>
-					<TextControl
-						label={__('Padding Left (px)', 'custom-heading')}
-						value={paddingLeft}
-						onChange={(val) => onChangePadding('paddingLeft', val)}
-						type="number"
-						min={0}
-					/>
-					<TextControl
-						label={__('Padding Right (px)', 'custom-heading')}
-						value={paddingRight}
-						onChange={(val) => onChangePadding('paddingRight', val)}
-						type="number"
-						min={0}
-					/>
-				</PanelBody>
-			</InspectorControls>
-
-			{/* Додаємо адаптивний padding через media-запит */}
-			<style
-				dangerouslySetInnerHTML={{
-					__html: `
-						@media (max-width: 768px) {
-							.custom-heading {
-								padding-left: 12px !important;
-								padding-right: 12px !important;
-								padding-top: 8px !important;
-								padding-bottom: 8px !important;
-							}
+				<TabPanel
+					className="my-tab-panel"
+					initialTabName={tabSelected || 'settings'}
+					onSelect={(tabName) => setAttributes({ tabSelected: tabName })}
+					tabs={[
+						{ name: 'settings', title: <span className="dashicons dashicons-admin-generic" /> },
+						{ name: 'styles', title: <span className="dashicons dashicons-admin-appearance" /> },
+					]}
+				>
+					{(tab) => {
+						if (tab.name === 'settings') {
+							return (
+								<PanelBody title={__('Heading Settings', 'custom-heading')}>
+									<RichText
+										tagName="div"
+										value={content}
+										onChange={(value) => setAttributes({ content: value })}
+										placeholder={__('Enter heading', 'app')}
+										style={{
+											padding: '10px 14px',
+											border: '1px solid #ccc',
+											borderRadius: '2px',
+											marginBottom: '12px',
+											width: '100%',
+										}}
+									/>
+								</PanelBody>
+							);
 						}
-					`,
-				}}
-			/>
+
+						if (tab.name === 'styles') {
+							return (
+								<>
+									<PanelColorSettings
+										title={__('Colors', 'app')}
+										initialOpen={true}
+										colorSettings={[
+											{
+												value: color,
+												onChange: (value) => setAttributes({ color: value }),
+												label: __('Text Color', 'app'),
+											},
+											{
+												value: backgroundColor,
+												onChange: (value) => setAttributes({ backgroundColor: value }),
+												label: __('Background Color', 'app'),
+											},
+										]}
+									/>
+									<PanelBody title={__('Style Settings', 'custom-heading')}>
+										<SelectControl
+											label={__('Heading Level', 'custom-heading')}
+											value={level}
+											options={[
+												{ label: 'H1', value: 1 },
+												{ label: 'H2', value: 2 },
+												{ label: 'H3', value: 3 },
+												{ label: 'H4', value: 4 },
+												{ label: 'H5', value: 5 },
+												{ label: 'H6', value: 6 },
+											]}
+											onChange={(val) => setAttributes({ level: parseInt(val, 10) })}
+										/>
+
+										<TextControl
+											label={__('Font Size (rem)', 'custom-heading')}
+											type="number"
+											value={(fontSize || '').replace('rem', '')}
+											onChange={(val) => setAttributes({ fontSize: `${val}rem` })}
+										/>
+										<TextControl
+											label={__('Line Height', 'custom-heading')}
+											type="number"
+											step="0.1"
+											value={lineHeight}
+											onChange={(val) => setAttributes({ lineHeight: val })}
+										/>
+										<SelectControl
+											label={__('Font Weight', 'custom-heading')}
+											value={fontWeight}
+											options={[
+												{ label: 'Normal', value: '400' },
+												{ label: 'Bold', value: '700' },
+												{ label: 'Bolder', value: '900' },
+											]}
+											onChange={(val) => setAttributes({ fontWeight: val })}
+										/>
+										<SelectControl
+											label={__('Text Transform', 'custom-heading')}
+											value={textTransform}
+											options={[
+												{ label: 'None', value: 'none' },
+												{ label: 'Uppercase', value: 'uppercase' },
+												{ label: 'Lowercase', value: 'lowercase' },
+												{ label: 'Capitalize', value: 'capitalize' },
+											]}
+											onChange={(val) => setAttributes({ textTransform: val })}
+										/>
+										<TextControl
+											label={__('Padding Top (px)', 'custom-heading')}
+											value={paddingTop}
+											onChange={(value) => onChangePadding('paddingTop', value)}
+										/>
+										<TextControl
+											label={__('Padding Bottom (px)', 'custom-heading')}
+											value={paddingBottom}
+											onChange={(value) => onChangePadding('paddingBottom', value)}
+										/>
+										<TextControl
+											label={__('Padding Left (px)', 'custom-heading')}
+											value={paddingLeft}
+											onChange={(value) => onChangePadding('paddingLeft', value)}
+										/>
+										<TextControl
+											label={__('Padding Right (px)', 'custom-heading')}
+											value={paddingRight}
+											onChange={(value) => onChangePadding('paddingRight', value)}
+										/>
+									</PanelBody>
+								</>
+							);
+						}
+
+						return null;
+					}}
+				</TabPanel>
+			</InspectorControls>
 
 			<RichText
 				{...blockProps}
 				tagName={`h${level}`}
 				value={content}
-				onChange={(val) => setAttributes({ content: val })}
-				placeholder={__('Enter heading text...', 'custom-heading')}
+				onChange={(value) => setAttributes({ content: value })}
+				placeholder={__('Enter heading text', 'custom-heading')}
 			/>
 		</>
 	);

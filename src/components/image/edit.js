@@ -29,6 +29,7 @@ const ImageEdit = ({ attributes, setAttributes }) => {
 		paddingRight: `${paddingRight}px`,
 		width: "auto",
 		margin: "0",
+		background: '#fff'
 	};
 
 	const image = {
