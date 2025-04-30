@@ -3,7 +3,6 @@ import {
     RichText,
     MediaUpload,
     InspectorControls,
-
 } from '@wordpress/block-editor';
 import {
     PanelBody,
@@ -144,12 +143,11 @@ export default function Edit({ attributes, setAttributes }) {
                                                         flexDirection: 'column',
                                                         justifyContent: 'center',
                                                         marginBottom: '12px',
+                                                        borderRadius: '2px',
                                                         backgroundColor: '#fff',
                                                         padding: '12px 24px',
                                                         height: '48px',
-
-                                                        border: '1px solid #949494',
-                                                        borderRadius: '2px',
+                                                        border: '1px solid #1e1e1e',
                                                         width: '100%',
                                                         fontWeight: '600',
                                                         ...provided.draggableProps.style,
@@ -163,13 +161,15 @@ export default function Edit({ attributes, setAttributes }) {
                                                                     all: 'unset',
                                                                     padding: '8px 12px',
                                                                     backgroundColor: 'transparent',
+                                                                    borderRadius: '2px',
+                                                                    color: '#949494',
+
                                                                     fontSize: '14px',
                                                                     fontWeight: '500',
                                                                     width: '100%',
                                                                     display: 'flex',
                                                                     justifyContent: 'space-between',
                                                                     alignItems: 'center',
-                                                                    color: '#1e1e1e',
                                                                 }}
                                                             >
                                                                 <span>{item ? 'Редагувати зображення' : 'Додати зображення'}</span>
@@ -298,6 +298,7 @@ export default function Edit({ attributes, setAttributes }) {
                                                                     {imageLink && <div>Збережене посилання: <a href={imageLink} target="_blank" rel="noreferrer">{imageLink}</a></div>}
                                                                 </div>
 
+
                                                                 <Button
                                                                     onClick={() => removeImageColumn(index)}
                                                                     style={{
@@ -382,12 +383,12 @@ export default function Edit({ attributes, setAttributes }) {
                                                         flexDirection: 'column',
                                                         justifyContent: 'center',
                                                         marginBottom: '12px',
+                                                        borderRadius: '2px',
                                                         backgroundColor: '#fff',
                                                         padding: '12px 24px',
                                                         height: '48px',
+                                                        border: '1px solid #1e1e1e',
                                                         width: '100%',
-                                                        border: '1px solid #949494',
-                                                        borderRadius: '2px',
                                                         ...provided.draggableProps.style,
                                                     }}
                                                 >
@@ -408,7 +409,6 @@ export default function Edit({ attributes, setAttributes }) {
                                                                     display: 'flex',
                                                                     justifyContent: 'space-between',
                                                                     alignItems: 'center',
-                                                                    color: '#1e1e1e'
                                                                 }}
                                                             >
                                                                 <span>
@@ -440,7 +440,6 @@ export default function Edit({ attributes, setAttributes }) {
                                                                         width: '100%',
                                                                     }}
                                                                 />
-                                                               
                                                                 <Button
                                                                     onClick={() => removeTextColumn(index)}
                                                                     style={{
@@ -467,6 +466,7 @@ export default function Edit({ attributes, setAttributes }) {
                                 </div>
                             )}
                         </Droppable>
+
                     </DragDropContext>
 
                     <Button

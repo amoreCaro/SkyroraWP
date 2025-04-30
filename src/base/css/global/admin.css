@@ -3,6 +3,7 @@ body.admin-bar {
   padding: 0px !important;
 }
 
+
 .wp-block-post-content.wp-block-post-content {
   background: #181b24;
   max-width: 640px;
@@ -43,6 +44,18 @@ html :where(.editor-styles-wrapper) {
   color: white !important;
   border: 2px dashed #2963ff !important;
 }
+.wp-block {
+  background: #fff;
+  margin: 0 !important;
+}
+.wp-image,                   
+.wp-block-app-heading,    
+.wp-divider,                
+.wp-block-app-paragraph { 
+  margin: 0 !important;
+  background: #fff;
+}
+
 
 @media (max-width: 430px) {
   .wp-block-post-content.wp-block-post-content {

@@ -47,17 +47,21 @@
       "type": "string",
       "default": "uppercase"
     },
-    "paddingX": {
-      "type": "string",
-      "default": "48px"
+    "paddingLeft": {
+      "type": "number",
+      "default": "48"
+    },
+    "paddingRight": {
+      "type": "number",
+      "default": "48"
     },
     "paddingTop": {
-      "type": "string",
-      "default": "20px"
+      "type": "number",
+      "default": "20"
     },
     "paddingBottom": {
-      "type": "string",
-      "default": "20px"
+      "type": "number",
+      "default": "20"
     },
     "url": {
       "type": "string",

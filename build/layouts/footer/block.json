@@ -40,6 +40,10 @@
     "activeTab": {
       "type": "string",
       "default": "General"
+    },
+    "url": {
+      "type": "string",
+      "default": "#"
     }
   },
   "editorScript": "file:./index.js",
