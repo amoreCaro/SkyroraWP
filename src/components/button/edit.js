@@ -69,7 +69,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 			<InspectorControls>
 				<TabPanel
-					className="my-tab-panel"
+					className="button__tab"
 					initialTabName={tabSelected || 'settings'}
 					onSelect={(tabName) => setAttributes({ tabSelected: tabName })}
 					tabs={[
@@ -228,9 +228,9 @@ export default function Edit({ attributes, setAttributes }) {
 					}}
 				</TabPanel>
 			</InspectorControls>
-            <style
-                dangerouslySetInnerHTML={{
-                    __html: `
+			<style
+				dangerouslySetInnerHTML={{
+					__html: `
 						@media (max-width: 768px) {
 							.wp-block.wp-button {
 								padding-left: 12px !important;
@@ -238,8 +238,8 @@ export default function Edit({ attributes, setAttributes }) {
 							}
 						}
 					`,
-                }}
-            />
+				}}
+			/>
 			<div
 				{...useBlockProps({
 					className: 'wp-button',
@@ -247,6 +247,7 @@ export default function Edit({ attributes, setAttributes }) {
 						...blockStyle,
 						color,
 						backgroundColor: '#fff',
+					
 					}
 				})}
 			>

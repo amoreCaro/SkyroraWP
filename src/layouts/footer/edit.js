@@ -10,6 +10,7 @@ import {
     Button,
     Dropdown,
     Icon,
+    TabPanel,
 } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 import { plus, trash, edit, close, link } from '@wordpress/icons';
@@ -88,10 +89,12 @@ export default function Edit({ attributes, setAttributes }) {
         setAttributes({ imageLink: url });
         alert('Посилання збережено!');
     };
+    const [selectedColumnIndex, setSelectedColumnIndex] = useState(null);
 
     return (
         <>
             <InspectorControls>
+
                 <PanelBody title="Padding Controls" initialOpen={true}>
                     <TextControl
                         label="Padding Left (rem)"
@@ -351,51 +354,52 @@ export default function Edit({ attributes, setAttributes }) {
                     </div>
                 </PanelBody>
                 <PanelBody title="Footer Links" initialOpen={true}>
-                    <DragDropContext
-                        onDragEnd={(result) => {
-                            const { source, destination } = result;
-                            if (!destination) return;
-                            const reorderedItems = Array.from(listItems);
-                            const [movedItem] = reorderedItems.splice(source.index, 1);
-                            reorderedItems.splice(destination.index, 0, movedItem);
-                            setAttributes({ listItems: reorderedItems });
-                        }}
-                    >
-                        <Droppable droppableId="columns-list">
-                            {(provided) => (
-                                <div
-                                    ref={provided.innerRef}
-                                    {...provided.droppableProps}
-                                >
-                                    {listItems.map((column, index) => (
-                                        <Draggable
-                                            key={`item-${index}`}
-                                            draggableId={`item-${index}`}
-                                            index={index}
+                    {selectedColumnIndex === null ? (
+                        <>
+                            <DragDropContext
+                                onDragEnd={(result) => {
+                                    const { source, destination } = result;
+                                    if (!destination) return;
+                                    const reorderedItems = Array.from(listItems);
+                                    const [movedItem] = reorderedItems.splice(source.index, 1);
+                                    reorderedItems.splice(destination.index, 0, movedItem);
+                                    setAttributes({ listItems: reorderedItems });
+                                }}
+                            >
+                                <Droppable droppableId="columns-list">
+                                    {(provided) => (
+                                        <div
+                                            className="columns--list"
+                                            ref={provided.innerRef}
+                                            {...provided.droppableProps}
                                         >
-                                            {(provided) => (
-                                                <div
-                                                    ref={provided.innerRef}
-                                                    {...provided.draggableProps}
-                                                    {...provided.dragHandleProps}
-                                                    style={{
-                                                        display: 'flex',
-                                                        flexDirection: 'column',
-                                                        justifyContent: 'center',
-                                                        marginBottom: '12px',
-                                                        borderRadius: '2px',
-                                                        backgroundColor: '#fff',
-                                                        padding: '12px 24px',
-                                                        height: '48px',
-                                                        border: '1px solid #1e1e1e',
-                                                        width: '100%',
-                                                        ...provided.draggableProps.style,
-                                                    }}
+                                            {listItems.map((column, index) => (
+                                                <Draggable
+                                                    key={`item-${index}`}
+                                                    draggableId={`item-${index}`}
+                                                    index={index}
                                                 >
-                                                    <Dropdown
-                                                        renderToggle={({ onToggle }) => (
+                                                    {(provided) => (
+                                                        <div
+                                                            ref={provided.innerRef}
+                                                            {...provided.draggableProps}
+                                                            {...provided.dragHandleProps}
+                                                            style={{
+                                                                display: 'flex',
+                                                                flexDirection: 'column',
+                                                                justifyContent: 'center',
+                                                                marginBottom: '12px',
+                                                                borderRadius: '2px',
+                                                                backgroundColor: '#fff',
+                                                                padding: '12px 24px',
+                                                                height: '48px',
+                                                                border: '1px solid #1e1e1e',
+                                                                width: '100%',
+                                                                ...provided.draggableProps.style,
+                                                            }}
+                                                        >
                                                             <Button
-                                                                onClick={onToggle}
+                                                                onClick={() => setSelectedColumnIndex(index)}
                                                                 style={{
                                                                     all: 'unset',
                                                                     padding: '12px 16px',
@@ -411,83 +415,92 @@ export default function Edit({ attributes, setAttributes }) {
                                                                     alignItems: 'center',
                                                                 }}
                                                             >
-                                                                <span>
-                                                                    {column && column.trim() !== '' ? column : `Колонка ${index + 1}`}
-                                                                </span>
+                                                                <span>{column && column.trim() !== '' ? column : `Колонка ${index + 1}`}</span>
                                                                 <Icon icon={edit} />
                                                             </Button>
-                                                        )}
-                                                        renderContent={() => (
-                                                            <div
-                                                                style={{
-                                                                    padding: '20px',
-                                                                    background: '#fff',
-                                                                    width: '280px',
-                                                                    boxShadow: '0 6px 18px rgba(0, 0, 0, 0.08)',
-                                                                    borderRadius: '2px',
-                                                                }}
-                                                            >
-                                                                <RichText
-                                                                    tagName="div"
-                                                                    value={column}
-                                                                    onChange={(value) => handleEditTextColumn(value, index)}
-                                                                    placeholder={`Елемент номер ${index + 1}`}
-                                                                    style={{
-                                                                        padding: '10px 14px',
-                                                                        border: '1px solid #ccc',
-                                                                        borderRadius: '2px',
-                                                                        marginBottom: '12px',
-                                                                        width: '100%',
-                                                                    }}
-                                                                />
-                                                                <Button
-                                                                    onClick={() => removeTextColumn(index)}
-                                                                    style={{
-                                                                        padding: '12px 20px',
-                                                                        backgroundColor: '#FFE4E6',
-                                                                        color: '#B91C1C',
-                                                                        borderRadius: '2px',
-                                                                        fontSize: '16px',
-                                                                        fontWeight: '500',
-                                                                        width: '100%',
-                                                                    }}
-                                                                >
-                                                                    <Icon icon={close} style={{ marginRight: '8px' }} />
-                                                                    Видалити
-                                                                </Button>
-                                                            </div>
-                                                        )}
-                                                    />
-                                                </div>
-                                            )}
-                                        </Draggable>
-                                    ))}
-                                    {provided.placeholder}
-                                </div>
-                            )}
-                        </Droppable>
+                                                        </div>
+                                                    )}
+                                                </Draggable>
+                                            ))}
+                                            {provided.placeholder}
+                                        </div>
+                                    )}
+                                </Droppable>
+                            </DragDropContext>
 
-                    </DragDropContext>
-
-                    <Button
-                        onClick={addTextColumn}
-                        style={{
-                            backgroundColor: '#1e1e1e',
-                            color: '#fff',
-                            width: '100%',
-                            height: '44px',
-                            borderRadius: '2px',
-                            fontWeight: '600',
-                            fontSize: '16px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <Icon icon={plus} style={{ marginRight: '8px' }} />
-                        <span>Додати колонку</span>
-                    </Button>
+                            <Button
+                                onClick={addTextColumn}
+                                style={{
+                                    backgroundColor: '#1e1e1e',
+                                    color: '#fff',
+                                    width: '100%',
+                                    height: '44px',
+                                    borderRadius: '2px',
+                                    fontWeight: '600',
+                                    fontSize: '16px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    marginTop: '16px',
+                                }}
+                            >
+                                <Icon icon={plus} style={{ marginRight: '8px' }} />
+                                <span>Додати колонку</span>
+                            </Button>
+                        </>
+                    ) : (
+                        <PanelBody
+                            title={`Редагувати колонку ${selectedColumnIndex + 1}`}
+                            initialOpen={true}
+                        >
+                            <RichText
+                                tagName="div"
+                                value={listItems[selectedColumnIndex]}
+                                onChange={(value) => handleEditTextColumn(value, selectedColumnIndex)}
+                                placeholder={`Елемент номер ${selectedColumnIndex + 1}`}
+                                style={{
+                                    padding: '10px 14px',
+                                    border: '1px solid #ccc',
+                                    borderRadius: '2px',
+                                    marginBottom: '12px',
+                                    width: '100%',
+                                }}
+                            />
+                            <Button
+                                onClick={() => {
+                                    removeTextColumn(selectedColumnIndex);
+                                    setSelectedColumnIndex(null);
+                                }}
+                                style={{
+                                    padding: '12px 20px',
+                                    backgroundColor: '#FFE4E6',
+                                    color: '#B91C1C',
+                                    borderRadius: '2px',
+                                    fontSize: '16px',
+                                    fontWeight: '500',
+                                    width: '100%',
+                                }}
+                            >
+                                <Icon icon={close} style={{ marginRight: '8px' }} />
+                                Видалити
+                            </Button>
+                            <Button
+                                onClick={() => setSelectedColumnIndex(null)}
+                                style={{
+                                    marginTop: '12px',
+                                    backgroundColor: '#e2e8f0',
+                                    color: '#1e1e1e',
+                                    borderRadius: '2px',
+                                    width: '100%',
+                                    padding: '10px',
+                                }}
+                            >
+                                Закрити
+                            </Button>
+                        </PanelBody>
+                    )}
                 </PanelBody>
+
             </InspectorControls>
 
             <div

@@ -54,14 +54,28 @@ const ImageEdit = ({ attributes, setAttributes }) => {
 					<Button
 						variant="link"
 						onClick={ onRemoveImage }
-						icon="no-alt"
 						label={ __( 'Remove Image' ) }
 						className="remove-image-button"
 						aria-label={ __( 'Remove Image' ) }
-						iconSize={ 20 }
-					/>
+					>
+						<svg
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M18 6L6 18M6 6l12 12"
+								stroke="black"
+								strokeWidth="2"
+								strokeLinecap="round"
+							/>
+						</svg>
+					</Button>
 				) }
 			</BlockControls>
+
 			<InspectorControls>
 				<PanelBody title={ __( 'Image Settings', 'custom-image' ) }>
 					<TextControl

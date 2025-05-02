@@ -11,7 +11,8 @@ const save = ({ attributes }) => {
 		lineHeight,
 		fontFamily,
 		textTransform,
-		paddingX,
+		paddingLeft,
+		paddingRight,
 		paddingTop,
 		paddingBottom,
 		url
@@ -37,8 +38,8 @@ const save = ({ attributes }) => {
 					backgroundColor: '#fff',
 					paddingTop,
 					paddingBottom,
-					paddingLeft: paddingX,
-					paddingRight: paddingX,
+					paddingLeft,
+					paddingRight,
 					display: 'flex',
 					justifyContent:
 						textAlign === 'center'
